@@ -1,0 +1,5 @@
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\WhistleiOS.exe
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\WhistleiOS.pdb
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\obj\iPhone\Debug\Whistle.iOS.csprojResolveAssemblyReference.cache
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\obj\iPhone\Debug\WhistleiOS.exe
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\obj\iPhone\Debug\WhistleiOS.pdb

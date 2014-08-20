@@ -1,5 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" />
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/txtWhistleMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WHISTLE"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp" />
+        <TextView
+            android:id="@+id/txtWhistleMessage1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EVERY ONE'S NEW WAY OF"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
+        <TextView
+            android:id="@+id/txtWhistleMessage2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRAVELING!"
+            android:textColor="#000000"
+            android:textSize="16dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp" />
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/ic_launcher"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#EEF0FF">
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp"
+            android:background="#3D3F47" />
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="160dp"
+            android:layout_height="50dp"
+            android:text="Sign IN"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp"
+            android:layout_toRightOf="@+id/btnRegister"
+            android:background="#00CD98" />
+    </RelativeLayout>
+</RelativeLayout>

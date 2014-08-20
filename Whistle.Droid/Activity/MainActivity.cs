@@ -6,16 +6,16 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Whistle.Droid.Fragments;
-using ListFragment = Android.Support.V4.App.ListFragment;
+using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Whistle.Droid
 {
-    [Activity(Label = "Whistle.Droid", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(MainLauncher = true, Icon = "@drawable/whistle_logo_green")]
     public class MainActivity : SlidingFragmentActivity
     {
         int baseFragment;
         private readonly int _titleRes;
-        protected ListFragment listFragment;
+        protected Fragment menuFragment;
 
         protected override void OnCreate(Bundle bundle)
         {
@@ -26,7 +26,7 @@ namespace Whistle.Droid
 
             #region Menu
 
-            SetBehindContentView(Resource.Layout.Menu);
+            SetBehindContentView(Resource.Layout.MenuHolder);
 
             #endregion
 
@@ -37,13 +37,13 @@ namespace Whistle.Droid
                 try
                 {
                     var transaction = SupportFragmentManager.BeginTransaction();
-                    listFragment = new MenuFragments();
-                    transaction.Replace(Resource.Id.MenuFrame, listFragment);
+                    menuFragment = new MenuFragments();
+                    transaction.Replace(Resource.Id.MenuFrame, menuFragment);
                     transaction.Commit();
 
-                    var mailFragment = new LandingFragments();
-                    baseFragment = mailFragment.Id;
-                    SwitchScreen(mailFragment, false, true);
+                    var landingFragment = new LandingFragments();
+                    baseFragment = landingFragment.Id;
+                    SwitchScreen(landingFragment, false, true);
 
                 }
                 catch (Exception ex)
@@ -51,16 +51,26 @@ namespace Whistle.Droid
                     Console.WriteLine("Exception : " + ex.Message);
                 }
             }
+            else
+                menuFragment =
+                   (Fragment)
+                   SupportFragmentManager.FindFragmentById(Resource.Id.MenuFrame);
+            SlidingMenu.ShadowWidthRes = Resource.Dimension.shadow_width;
+            SlidingMenu.BehindOffsetRes = Resource.Dimension.slidingmenu_offset;
+            SlidingMenu.ShadowDrawableRes = Resource.Drawable.shadow;
+            SlidingMenu.FadeDegree = 0.25f;
+            //SlidingMenu.TouchModeAbove = TouchMode.Fullscreen;
+
+            SetSlidingActionBarEnabled(false);
 
             #endregion
-
         }
 
         #region Switch Screen
 
-        public int SwitchScreen(Fragment fragment, bool animated = true, bool isRoot = false)
+        public int SwitchScreen( Fragment fragment, bool animated = true, bool isRoot = false)
         {
-            var transaction = FragmentManager.BeginTransaction();
+            var transaction = SupportFragmentManager.BeginTransaction();
             if (animated)
             {
                 int animIn, animOut;

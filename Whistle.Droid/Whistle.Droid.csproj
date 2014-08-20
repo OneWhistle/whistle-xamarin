@@ -70,45 +70,45 @@
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Drawable-hdpi\about_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\favorites_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\heart_small_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\howitworks_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\main_menu_bg_img.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\male_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_grey_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\profile_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\settings_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\signout_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\whistle_logo_green.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\whistle_white_icon.png" />
-    <AndroidResource Include="Resources\Layout\ContentMenu.axml">
+    <AndroidResource Include="Resources\drawable-hdpi\about_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\favorites_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\heart_small_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\howitworks_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\main_menu_bg_img.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\settings_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\signout_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_logo_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_white_icon.png" />
+    <AndroidResource Include="Resources\layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\About.axml">
+    <AndroidResource Include="Resources\layout\Main.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\Main.axml">
+    <AndroidResource Include="Resources\layout\Landing.axml" />
+    <AndroidResource Include="Resources\layout\Login.axml" />
+    <AndroidResource Include="Resources\layout\Registration.axml" />
+    <AndroidResource Include="Resources\layout\MenuItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\Landing.axml" />
-    <AndroidResource Include="Resources\Layout\Login.axml" />
-    <AndroidResource Include="Resources\Layout\Registration.axml" />
-    <AndroidResource Include="Resources\Layout\MenuItem.axml">
+    <AndroidResource Include="Resources\layout\MenuHolder.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Layout\Menu.axml">
+    <AndroidResource Include="Resources\layout\Menu.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\Icon.png" />
+    <AndroidResource Include="Resources\Drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Properties\AndroidManifest.xml" />
@@ -118,6 +118,9 @@
     <AndroidResource Include="Resources\anim\exit.xml" />
     <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
+    <AndroidResource Include="Resources\Drawable\shadow.xml" />
+    <AndroidResource Include="Resources\values\themes.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

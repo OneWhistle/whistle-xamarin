@@ -49,7 +49,7 @@ namespace Whistle.Core.ViewModels
         /// </summary>
         public void Show()
         {
-            this.ShowViewModel<FirstViewModel>();
+            this.ShowViewModel<MainViewModel>();
         }
     }
 }

@@ -79,7 +79,10 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Setup.cs" />
+    <Compile Include="Views\BaseView.cs" />
     <Compile Include="Views\FirstView.cs" />
+    <Compile Include="Views\LandingView.cs" />
+    <Compile Include="Views\MainView.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />

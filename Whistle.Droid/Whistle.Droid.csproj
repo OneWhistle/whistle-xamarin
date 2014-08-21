@@ -104,6 +104,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
     <Compile Include="SplashScreen.cs" />
+    <Compile Include="Views\BaseView.cs" />
+    <Compile Include="Views\LandingView.cs" />
+    <Compile Include="Views\MainView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -140,6 +143,8 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\SplashScreen.axml" />
+    <BundleResource Include="Resources\layout\LandingView.axml" />
+    <BundleResource Include="Resources\layout\MainView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Menu.axml">
@@ -168,9 +173,7 @@
     <AndroidResource Include="Resources\drawable\splash.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Whistle.Core\Whistle.Core.csproj">
       <Project>{3e3d9a5e-571a-4fb9-9ba7-5568d348c38a}</Project>

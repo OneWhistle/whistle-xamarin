@@ -11,7 +11,7 @@ namespace Whistle.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				
-            RegisterAppStart<ViewModels.FirstViewModel>();
+            RegisterAppStart<ViewModels.MainViewModel>();
         }
     }
 }

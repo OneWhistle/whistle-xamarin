@@ -36,11 +36,7 @@ namespace Whistle.iOS.Views
             UITextField uiTextField = new UITextField(new RectangleF(10, 50, 300, 40));
             View.AddSubview(uiTextField);
 
-            var set = this.CreateBindingSet<LandingView, LandingViewModel>();
-            set.Bind(uiLabel).To(vm => vm.MyProperty);
-            set.Bind(uiTextField).To(vm => vm.MyProperty);
-            set.Apply();
-
+           
             UITapGestureRecognizer tap = new UITapGestureRecognizer(() => uiTextField.ResignFirstResponder());
             View.AddGestureRecognizer(tap);
         }

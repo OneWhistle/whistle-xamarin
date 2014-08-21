@@ -1,4 +1,11 @@
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Whistle.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Lib\SlidingMenuSharp.dll
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\bin\Debug\Whistle.Core.dll
 C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v1.0\Facades\System.Collections.Concurrent.dll

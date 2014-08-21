@@ -67,6 +67,13 @@ public class MonoPackageManager {
 class MonoPackageManager_Resources {
 	public static final String[] Assemblies = new String[]{
 		"Whistle.Droid.dll",
+		"Cirrious.CrossCore.dll",
+		"Cirrious.CrossCore.Droid.dll",
+		"Cirrious.MvvmCross.Binding.dll",
+		"Cirrious.MvvmCross.Binding.Droid.dll",
+		"Cirrious.MvvmCross.dll",
+		"Cirrious.MvvmCross.Droid.dll",
+		"Cirrious.MvvmCross.Localization.dll",
 		"SlidingMenuSharp.dll",
 		"Whistle.Core.dll",
 		"System.Collections.Concurrent.dll",

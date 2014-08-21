@@ -42,6 +42,27 @@
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Binding.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Droid.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="Mono.Android.Support.v4" />
@@ -51,40 +72,58 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Net">
+      <Private>True</Private>
+      <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows">
+      <Private>True</Private>
+      <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Windows.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Serialization">
+      <Private>True</Private>
+      <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Xml.Serialization.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Activity\LandingActivity.cs" />
     <Compile Include="Activity\MainActivity.cs" />
     <Compile Include="Activity\SlideFragmentActivity.cs" />
     <Compile Include="Adepters\MenuAdapter.cs" />
+    <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />
+    <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Setup.cs" />
+    <Compile Include="SplashScreen.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\drawable-hdpi\about_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\favorites_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\heart_small_green_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\howitworks_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\main_menu_bg_img.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\male_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\options_green_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\options_grey_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\options_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\profile_green_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\settings_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\signout_white_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\whistle_logo_green.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\whistle_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\about_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\favorites_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\heart_small_green_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\howitworks_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\main_menu_bg_img.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\male_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\options_green_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\options_grey_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\options_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\profile_green_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\settings_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\signout_white_icon.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\whistle_logo_green.png" />
+    <AndroidResource Include="Resources\Drawable-hdpi\whistle_white_icon.png" />
     <AndroidResource Include="Resources\layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -100,27 +139,34 @@
     <AndroidResource Include="Resources\layout\MenuHolder.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Menu.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\Values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\Drawable\Icon.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Properties\AndroidManifest.xml" />
+    <Content Include="Properties\AndroidManifest.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <AndroidResource Include="Resources\anim\add_to_basket_in.xml" />
     <AndroidResource Include="Resources\anim\basket_in.xml" />
     <AndroidResource Include="Resources\anim\enter.xml" />
     <AndroidResource Include="Resources\anim\exit.xml" />
     <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
-    <AndroidResource Include="Resources\values\dimens.xml" />
-    <AndroidResource Include="Resources\Drawable\shadow.xml" />
-    <AndroidResource Include="Resources\values\themes.xml" />
+    <AndroidResource Include="Resources\Values\dimens.xml" />
+    <AndroidResource Include="Resources\drawable\shadow.xml" />
+    <AndroidResource Include="Resources\Values\themes.xml" />
+    <AndroidResource Include="Resources\Values\SplashStyle.xml" />
+    <AndroidResource Include="Resources\Values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\drawable\splash.png" />
+    <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\" />

@@ -47,3 +47,17 @@ D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\values\dimens.xml
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\drawable\shadow.xml
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\values\themes.xml
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.CrossCore.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.CrossCore.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.MvvmCross.Binding.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.MvvmCross.Binding.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.MvvmCross.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.MvvmCross.Droid.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\Cirrious.MvvmCross.Localization.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\System.Net.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\System.Windows.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\bin\Debug\System.Xml.Serialization.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\layout\splashscreen.xml
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\values\splashstyle.xml
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\values\mvxbindingattributes.xml
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Droid\obj\Debug\res\drawable\splash.png

@@ -98,6 +98,24 @@ namespace Whistle.Droid
 		public partial class Attribute
 		{
 			
+			// aapt resource value: 0x7f01000e
+			public const int MvxBind = 2130771982;
+			
+			// aapt resource value: 0x7f010012
+			public const int MvxDropDownItemTemplate = 2130771986;
+			
+			// aapt resource value: 0x7f010011
+			public const int MvxItemTemplate = 2130771985;
+			
+			// aapt resource value: 0x7f01000f
+			public const int MvxLang = 2130771983;
+			
+			// aapt resource value: 0x7f010013
+			public const int MvxSource = 2130771987;
+			
+			// aapt resource value: 0x7f010010
+			public const int MvxTemplate = 2130771984;
+			
 			// aapt resource value: 0x7f010003
 			public const int behindOffset = 2130771971;
 			
@@ -224,10 +242,13 @@ namespace Whistle.Droid
 			public const int signout_white_icon = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int whistle_logo_green = 2130837519;
+			public const int splash = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int whistle_white_icon = 2130837520;
+			public const int whistle_logo_green = 2130837520;
+			
+			// aapt resource value: 0x7f020011
+			public const int whistle_white_icon = 2130837521;
 			
 			static Drawable()
 			{
@@ -242,56 +263,59 @@ namespace Whistle.Droid
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f05001c
+			public const int Badge = 2131034140;
+			
+			// aapt resource value: 0x7f05000d
+			public const int FlyOutMenu = 2131034125;
+			
+			// aapt resource value: 0x7f050018
+			public const int MenuFrame = 2131034136;
+			
+			// aapt resource value: 0x7f050005
+			public const int MvxBindingTagUnique = 2131034117;
+			
 			// aapt resource value: 0x7f05001b
-			public const int Badge = 2131034139;
-			
-			// aapt resource value: 0x7f05000c
-			public const int FlyOutMenu = 2131034124;
-			
-			// aapt resource value: 0x7f050017
-			public const int MenuFrame = 2131034135;
-			
-			// aapt resource value: 0x7f05001a
-			public const int Title = 2131034138;
-			
-			// aapt resource value: 0x7f050009
-			public const int btnRegister = 2131034121;
+			public const int Title = 2131034139;
 			
 			// aapt resource value: 0x7f05000a
-			public const int btnSignIn = 2131034122;
+			public const int btnRegister = 2131034122;
 			
 			// aapt resource value: 0x7f05000b
-			public const int contentArea = 2131034123;
+			public const int btnSignIn = 2131034123;
+			
+			// aapt resource value: 0x7f05000c
+			public const int contentArea = 2131034124;
 			
 			// aapt resource value: 0x7f050003
 			public const int fullscreen = 2131034115;
 			
-			// aapt resource value: 0x7f050010
-			public const int imageView1 = 2131034128;
+			// aapt resource value: 0x7f050011
+			public const int imageView1 = 2131034129;
 			
-			// aapt resource value: 0x7f050014
-			public const int imageView2 = 2131034132;
+			// aapt resource value: 0x7f050015
+			public const int imageView2 = 2131034133;
 			
-			// aapt resource value: 0x7f050008
-			public const int imgView = 2131034120;
+			// aapt resource value: 0x7f050009
+			public const int imgView = 2131034121;
 			
 			// aapt resource value: 0x7f050000
 			public const int left = 2131034112;
 			
-			// aapt resource value: 0x7f05000f
-			public const int linearLayout1 = 2131034127;
+			// aapt resource value: 0x7f050010
+			public const int linearLayout1 = 2131034128;
 			
-			// aapt resource value: 0x7f050013
-			public const int linearLayout2 = 2131034131;
+			// aapt resource value: 0x7f050014
+			public const int linearLayout2 = 2131034132;
 			
-			// aapt resource value: 0x7f050019
-			public const int linearLayout3 = 2131034137;
+			// aapt resource value: 0x7f05001a
+			public const int linearLayout3 = 2131034138;
 			
 			// aapt resource value: 0x7f050002
 			public const int margin = 2131034114;
 			
-			// aapt resource value: 0x7f050018
-			public const int menuIcon = 2131034136;
+			// aapt resource value: 0x7f050019
+			public const int menuIcon = 2131034137;
 			
 			// aapt resource value: 0x7f050001
 			public const int right = 2131034113;
@@ -299,35 +323,35 @@ namespace Whistle.Droid
 			// aapt resource value: 0x7f050004
 			public const int selected_view = 2131034116;
 			
-			// aapt resource value: 0x7f05001c
-			public const int slidingmenumain = 2131034140;
-			
-			// aapt resource value: 0x7f05000d
-			public const int textView1 = 2131034125;
-			
-			// aapt resource value: 0x7f050011
-			public const int textView2 = 2131034129;
-			
-			// aapt resource value: 0x7f050015
-			public const int textView3 = 2131034133;
-			
-			// aapt resource value: 0x7f050005
-			public const int txtWhistleMessage = 2131034117;
-			
-			// aapt resource value: 0x7f050006
-			public const int txtWhistleMessage1 = 2131034118;
-			
-			// aapt resource value: 0x7f050007
-			public const int txtWhistleMessage2 = 2131034119;
+			// aapt resource value: 0x7f05001d
+			public const int slidingmenumain = 2131034141;
 			
 			// aapt resource value: 0x7f05000e
-			public const int view1 = 2131034126;
+			public const int textView1 = 2131034126;
 			
 			// aapt resource value: 0x7f050012
-			public const int view2 = 2131034130;
+			public const int textView2 = 2131034130;
 			
 			// aapt resource value: 0x7f050016
-			public const int view3 = 2131034134;
+			public const int textView3 = 2131034134;
+			
+			// aapt resource value: 0x7f050006
+			public const int txtWhistleMessage = 2131034118;
+			
+			// aapt resource value: 0x7f050007
+			public const int txtWhistleMessage1 = 2131034119;
+			
+			// aapt resource value: 0x7f050008
+			public const int txtWhistleMessage2 = 2131034120;
+			
+			// aapt resource value: 0x7f05000f
+			public const int view1 = 2131034127;
+			
+			// aapt resource value: 0x7f050013
+			public const int view2 = 2131034131;
+			
+			// aapt resource value: 0x7f050017
+			public const int view3 = 2131034135;
 			
 			static Id()
 			{
@@ -385,6 +409,9 @@ namespace Whistle.Droid
 			// aapt resource value: 0x7f030008
 			public const int slidingmenumain = 2130903048;
 			
+			// aapt resource value: 0x7f030009
+			public const int SplashScreen = 2130903049;
+			
 			static Layout()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
@@ -398,11 +425,11 @@ namespace Whistle.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f080001
-			public const int ApplicationName = 2131230721;
+			// aapt resource value: 0x7f090001
+			public const int ApplicationName = 2131296257;
 			
-			// aapt resource value: 0x7f080000
-			public const int Hello = 2131230720;
+			// aapt resource value: 0x7f090000
+			public const int Hello = 2131296256;
 			
 			static String()
 			{
@@ -417,20 +444,23 @@ namespace Whistle.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f090001
-			public const int XamActionBarStyle = 2131296257;
+			// aapt resource value: 0x7f080000
+			public const int Theme_Splash = 2131230720;
 			
-			// aapt resource value: 0x7f090000
-			public const int XamActionBarTheme = 2131296256;
+			// aapt resource value: 0x7f080002
+			public const int XamActionBarStyle = 2131230722;
 			
-			// aapt resource value: 0x7f090004
-			public const int XamButton = 2131296260;
+			// aapt resource value: 0x7f080001
+			public const int XamActionBarTheme = 2131230721;
 			
-			// aapt resource value: 0x7f090003
-			public const int XamSubtitleText = 2131296259;
+			// aapt resource value: 0x7f080005
+			public const int XamButton = 2131230725;
 			
-			// aapt resource value: 0x7f090002
-			public const int XamTitleText = 2131296258;
+			// aapt resource value: 0x7f080004
+			public const int XamSubtitleText = 2131230724;
+			
+			// aapt resource value: 0x7f080003
+			public const int XamTitleText = 2131230723;
 			
 			static Style()
 			{
@@ -444,6 +474,38 @@ namespace Whistle.Droid
 		
 		public partial class Styleable
 		{
+			
+			public static int[] MvxBinding = new int[] {
+					2130771982,
+					2130771983};
+			
+			// aapt resource value: 0
+			public const int MvxBinding_MvxBind = 0;
+			
+			// aapt resource value: 1
+			public const int MvxBinding_MvxLang = 1;
+			
+			public static int[] MvxControl = new int[] {
+					2130771984};
+			
+			// aapt resource value: 0
+			public const int MvxControl_MvxTemplate = 0;
+			
+			public static int[] MvxImageView = new int[] {
+					2130771987};
+			
+			// aapt resource value: 0
+			public const int MvxImageView_MvxSource = 0;
+			
+			public static int[] MvxListView = new int[] {
+					2130771985,
+					2130771986};
+			
+			// aapt resource value: 1
+			public const int MvxListView_MvxDropDownItemTemplate = 1;
+			
+			// aapt resource value: 0
+			public const int MvxListView_MvxItemTemplate = 0;
 			
 			public static int[] SlidingMenu = new int[] {
 					2130771968,

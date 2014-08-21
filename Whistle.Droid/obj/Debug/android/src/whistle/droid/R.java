@@ -17,6 +17,54 @@ public final class R {
         public static final int product_detail_out=0x7f040005;
     }
     public static final class attr {
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int MvxBind=0x7f01000e;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int MvxDropDownItemTemplate=0x7f010012;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int MvxItemTemplate=0x7f010011;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int MvxLang=0x7f01000f;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int MvxSource=0x7f010013;
+        /** <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int MvxTemplate=0x7f010010;
         /** <p>Must be a dimension value, which is a floating point number appended with a unit such as "<code>14.5sp</code>".
 Available units are: px (pixels), dp (density-independent pixels), sp (scaled pixels based on preferred font size),
 in (inches), mm (millimeters).
@@ -153,39 +201,41 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int settings_white_icon=0x7f02000c;
         public static final int shadow=0x7f02000d;
         public static final int signout_white_icon=0x7f02000e;
-        public static final int whistle_logo_green=0x7f02000f;
-        public static final int whistle_white_icon=0x7f020010;
+        public static final int splash=0x7f02000f;
+        public static final int whistle_logo_green=0x7f020010;
+        public static final int whistle_white_icon=0x7f020011;
     }
     public static final class id {
-        public static final int Badge=0x7f05001b;
-        public static final int FlyOutMenu=0x7f05000c;
-        public static final int MenuFrame=0x7f050017;
-        public static final int Title=0x7f05001a;
-        public static final int btnRegister=0x7f050009;
-        public static final int btnSignIn=0x7f05000a;
-        public static final int contentArea=0x7f05000b;
+        public static final int Badge=0x7f05001c;
+        public static final int FlyOutMenu=0x7f05000d;
+        public static final int MenuFrame=0x7f050018;
+        public static final int MvxBindingTagUnique=0x7f050005;
+        public static final int Title=0x7f05001b;
+        public static final int btnRegister=0x7f05000a;
+        public static final int btnSignIn=0x7f05000b;
+        public static final int contentArea=0x7f05000c;
         public static final int fullscreen=0x7f050003;
-        public static final int imageView1=0x7f050010;
-        public static final int imageView2=0x7f050014;
-        public static final int imgView=0x7f050008;
+        public static final int imageView1=0x7f050011;
+        public static final int imageView2=0x7f050015;
+        public static final int imgView=0x7f050009;
         public static final int left=0x7f050000;
-        public static final int linearLayout1=0x7f05000f;
-        public static final int linearLayout2=0x7f050013;
-        public static final int linearLayout3=0x7f050019;
+        public static final int linearLayout1=0x7f050010;
+        public static final int linearLayout2=0x7f050014;
+        public static final int linearLayout3=0x7f05001a;
         public static final int margin=0x7f050002;
-        public static final int menuIcon=0x7f050018;
+        public static final int menuIcon=0x7f050019;
         public static final int right=0x7f050001;
         public static final int selected_view=0x7f050004;
-        public static final int slidingmenumain=0x7f05001c;
-        public static final int textView1=0x7f05000d;
-        public static final int textView2=0x7f050011;
-        public static final int textView3=0x7f050015;
-        public static final int txtWhistleMessage=0x7f050005;
-        public static final int txtWhistleMessage1=0x7f050006;
-        public static final int txtWhistleMessage2=0x7f050007;
-        public static final int view1=0x7f05000e;
-        public static final int view2=0x7f050012;
-        public static final int view3=0x7f050016;
+        public static final int slidingmenumain=0x7f05001d;
+        public static final int textView1=0x7f05000e;
+        public static final int textView2=0x7f050012;
+        public static final int textView3=0x7f050016;
+        public static final int txtWhistleMessage=0x7f050006;
+        public static final int txtWhistleMessage1=0x7f050007;
+        public static final int txtWhistleMessage2=0x7f050008;
+        public static final int view1=0x7f05000f;
+        public static final int view2=0x7f050013;
+        public static final int view3=0x7f050017;
     }
     public static final class integer {
         public static final int num_cols=0x7f070000;
@@ -200,13 +250,15 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int menuitem=0x7f030006;
         public static final int registration=0x7f030007;
         public static final int slidingmenumain=0x7f030008;
+        public static final int splashscreen=0x7f030009;
     }
     public static final class string {
-        public static final int ApplicationName=0x7f080001;
-        public static final int Hello=0x7f080000;
+        public static final int ApplicationName=0x7f090001;
+        public static final int Hello=0x7f090000;
     }
     public static final class style {
-        public static final int XamActionBarStyle=0x7f090001;
+        public static final int Theme_Splash=0x7f080000;
+        public static final int XamActionBarStyle=0x7f080002;
         /**  Colors 
 
 	<color name="main_background">#eeeeee</color>
@@ -220,9 +272,9 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
  Styles 
 <item name="android:windowBackground">@color/main_background</item>
          */
-        public static final int XamActionBarTheme=0x7f090000;
-        public static final int XamButton=0x7f090004;
-        public static final int XamSubtitleText=0x7f090003;
+        public static final int XamActionBarTheme=0x7f080001;
+        public static final int XamButton=0x7f080005;
+        public static final int XamSubtitleText=0x7f080004;
         /** <style name="App_EditTextStyle" parent="@android:style/Widget.EditText">
 		<item name="android:background">@drawable/edittextbackground</item>
 		<item name="android:textColor">#808080</item>
@@ -236,9 +288,149 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 		<item name="android:textStyle">bold</item>
 	</style>
          */
-        public static final int XamTitleText=0x7f090002;
+        public static final int XamTitleText=0x7f080003;
     }
     public static final class styleable {
+        /** Attributes that can be used with a MvxBinding.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MvxBinding_MvxBind Whistle.Droid:MvxBind}</code></td><td></td></tr>
+           <tr><td><code>{@link #MvxBinding_MvxLang Whistle.Droid:MvxLang}</code></td><td></td></tr>
+           </table>
+           @see #MvxBinding_MvxBind
+           @see #MvxBinding_MvxLang
+         */
+        public static final int[] MvxBinding = {
+            0x7f01000e, 0x7f01000f
+        };
+        /**
+          <p>This symbol is the offset where the {@link Whistle.Droid.R.attr#MvxBind}
+          attribute's value can be found in the {@link #MvxBinding} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:MvxBind
+        */
+        public static final int MvxBinding_MvxBind = 0;
+        /**
+          <p>This symbol is the offset where the {@link Whistle.Droid.R.attr#MvxLang}
+          attribute's value can be found in the {@link #MvxBinding} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:MvxLang
+        */
+        public static final int MvxBinding_MvxLang = 1;
+        /** Attributes that can be used with a MvxControl.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MvxControl_MvxTemplate Whistle.Droid:MvxTemplate}</code></td><td></td></tr>
+           </table>
+           @see #MvxControl_MvxTemplate
+         */
+        public static final int[] MvxControl = {
+            0x7f010010
+        };
+        /**
+          <p>This symbol is the offset where the {@link Whistle.Droid.R.attr#MvxTemplate}
+          attribute's value can be found in the {@link #MvxControl} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:MvxTemplate
+        */
+        public static final int MvxControl_MvxTemplate = 0;
+        /** Attributes that can be used with a MvxImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MvxImageView_MvxSource Whistle.Droid:MvxSource}</code></td><td></td></tr>
+           </table>
+           @see #MvxImageView_MvxSource
+         */
+        public static final int[] MvxImageView = {
+            0x7f010013
+        };
+        /**
+          <p>This symbol is the offset where the {@link Whistle.Droid.R.attr#MvxSource}
+          attribute's value can be found in the {@link #MvxImageView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:MvxSource
+        */
+        public static final int MvxImageView_MvxSource = 0;
+        /** Attributes that can be used with a MvxListView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #MvxListView_MvxDropDownItemTemplate Whistle.Droid:MvxDropDownItemTemplate}</code></td><td></td></tr>
+           <tr><td><code>{@link #MvxListView_MvxItemTemplate Whistle.Droid:MvxItemTemplate}</code></td><td></td></tr>
+           </table>
+           @see #MvxListView_MvxDropDownItemTemplate
+           @see #MvxListView_MvxItemTemplate
+         */
+        public static final int[] MvxListView = {
+            0x7f010011, 0x7f010012
+        };
+        /**
+          <p>This symbol is the offset where the {@link Whistle.Droid.R.attr#MvxDropDownItemTemplate}
+          attribute's value can be found in the {@link #MvxListView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:MvxDropDownItemTemplate
+        */
+        public static final int MvxListView_MvxDropDownItemTemplate = 1;
+        /**
+          <p>This symbol is the offset where the {@link Whistle.Droid.R.attr#MvxItemTemplate}
+          attribute's value can be found in the {@link #MvxListView} array.
+
+
+          <p>Must be a string value, using '\\;' to escape characters such as '\\n' or '\\uxxxx' for a unicode character.
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name android:MvxItemTemplate
+        */
+        public static final int MvxListView_MvxItemTemplate = 0;
         /** Attributes that can be used with a SlidingMenu.
            <p>Includes the following attributes:</p>
            <table>

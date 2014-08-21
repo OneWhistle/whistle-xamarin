@@ -3,3 +3,13 @@ D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debu
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\obj\iPhone\Debug\Whistle.iOS.csprojResolveAssemblyReference.cache
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\obj\iPhone\Debug\WhistleiOS.exe
 D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\obj\iPhone\Debug\WhistleiOS.pdb
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.CrossCore.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.CrossCore.Touch.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.MvvmCross.Binding.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.MvvmCross.Binding.Touch.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.MvvmCross.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.MvvmCross.Localization.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Cirrious.MvvmCross.Touch.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Whistle.Core.dll
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Whistle.Core.pdb
+D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.iOS\bin\iPhone\Debug\Whistle.Core.dll.mdb

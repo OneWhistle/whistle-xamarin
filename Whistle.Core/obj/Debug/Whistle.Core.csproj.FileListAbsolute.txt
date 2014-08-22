@@ -1,8 +1,0 @@
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\bin\Debug\Whistle.Core.dll
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\bin\Debug\Whistle.Core.pdb
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\obj\Debug\Whistle.Core.csprojResolveAssemblyReference.cache
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\obj\Debug\Whistle.Core.dll
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\obj\Debug\Whistle.Core.pdb
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\bin\Debug\Cirrious.CrossCore.dll
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\bin\Debug\Cirrious.MvvmCross.dll
-D:\RSSoftSolution\RZEE\Projects\Raja\Whistle\Whistle\Whistle.Core\bin\Debug\Cirrious.MvvmCross.Localization.dll

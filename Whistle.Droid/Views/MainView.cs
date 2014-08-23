@@ -21,7 +21,8 @@ namespace Whistle.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            this.SetContentView(Resource.Layout.MainView);
+            this.SetContentView(Resource.Layout.Main);
+
         }
     }
 }

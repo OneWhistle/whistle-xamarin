@@ -10,7 +10,7 @@ namespace Whistle.Core.Modal
     {
         public int Badges { get; set; }
         public string Title { get; set; }
-        public string MenuIcon { get; set; }
+        public int MenuIcon { get; set; }
     }
 
 }

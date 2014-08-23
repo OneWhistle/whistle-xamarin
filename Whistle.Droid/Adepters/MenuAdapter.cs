@@ -24,10 +24,16 @@ namespace Whistle.Droid.Adepters
 
         #region Constructor
 
-        public MenuAdapter(Context _context, List<Menus> _items)
+        public MenuAdapter(Context _context)
         {
             this.context = _context;
-            this.items = _items;
+            this.items = new List<Menus>() { new Menus { Title = "WHISTLE", MenuIcon = Resource.Drawable.whistle_white_icon },
+            new Menus { Title = "EDIT PROFILE", MenuIcon = Resource.Drawable.profile_green_icon},
+            new Menus { Title = "MY FAVORITE", MenuIcon = Resource.Drawable.favorites_white_icon },
+            new Menus { Title = "SETTING", MenuIcon = Resource.Drawable.settings_white_icon },
+            new Menus { Title = "ABOUT WHISTLE", MenuIcon = Resource.Drawable.about_white_icon },
+            new Menus { Title = "HOW WHISTLE WORK", MenuIcon = Resource.Drawable.howitworks_white_icon },
+            new Menus { Title = "SIGN OUT", MenuIcon = Resource.Drawable.signout_white_icon }};
         }
 
         #endregion
@@ -72,10 +78,10 @@ namespace Whistle.Droid.Adepters
             }
 
             view.FindViewById<TextView>(Resource.Id.Title).Text = menuItem.Title;
-            view.FindViewById<TextView>(Resource.Id.Badge).Text = Convert.ToString(menuItem.Badges);
+           // view.FindViewById<TextView>(Resource.Id.Badge).Text = Convert.ToString(menuItem.Badges);
 
-            var mailImage = view.FindViewById<ImageView>(Resource.Id.menuIcon);
-
+            var menuIcon = view.FindViewById<ImageView>(Resource.Id.menuIcon);
+            menuIcon.SetImageResource(menuItem.MenuIcon);
             return view;
         }
 

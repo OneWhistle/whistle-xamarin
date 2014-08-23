@@ -23,7 +23,6 @@
 		<!--<item name="android:titleTextStyle">@style/XamActionBarTitleStyle</item>-->
 		<!--<item name="android:background">@drawable/ab_background</item>-->
 		<!--<item name="android:backgroundStacked">@drawable/ab_background</item>-->
-		<item name="android:displayOptions">homeAsUp|showHome|useLogo</item>
 		<item name="android:logo">@drawable/whistle_logo_green</item>
 
 	</style>

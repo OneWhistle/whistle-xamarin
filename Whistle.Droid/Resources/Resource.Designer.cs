@@ -168,20 +168,48 @@ namespace Whistle.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f060004
+			public const int black = 2131099652;
+			
+			// aapt resource value: 0x7f060002
+			public const int blue = 2131099650;
+			
+			// aapt resource value: 0x7f060001
+			public const int green = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int red = 2131099648;
+			
+			// aapt resource value: 0x7f060003
+			public const int white = 2131099651;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
 		public partial class Dimension
 		{
 			
-			// aapt resource value: 0x7f060003
-			public const int btn_corner_radius = 2131099651;
+			// aapt resource value: 0x7f070003
+			public const int btn_corner_radius = 2131165187;
 			
-			// aapt resource value: 0x7f060001
-			public const int list_padding = 2131099649;
+			// aapt resource value: 0x7f070001
+			public const int list_padding = 2131165185;
 			
-			// aapt resource value: 0x7f060002
-			public const int shadow_width = 2131099650;
+			// aapt resource value: 0x7f070002
+			public const int shadow_width = 2131165186;
 			
-			// aapt resource value: 0x7f060000
-			public const int slidingmenu_offset = 2131099648;
+			// aapt resource value: 0x7f070000
+			public const int slidingmenu_offset = 2131165184;
 			
 			static Dimension()
 			{
@@ -242,7 +270,7 @@ namespace Whistle.Droid
 			public const int signout_white_icon = 2130837518;
 			
 			// aapt resource value: 0x7f02000f
-			public const int splash = 2130837519;
+			public const int Splash = 2130837519;
 			
 			// aapt resource value: 0x7f020010
 			public const int whistle_logo_green = 2130837520;
@@ -263,59 +291,74 @@ namespace Whistle.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f05001c
-			public const int Badge = 2131034140;
+			// aapt resource value: 0x7f05001f
+			public const int AboutMenu = 2131034143;
 			
-			// aapt resource value: 0x7f05000d
-			public const int FlyOutMenu = 2131034125;
+			// aapt resource value: 0x7f05001d
+			public const int FavoriteMenu = 2131034141;
 			
-			// aapt resource value: 0x7f050018
-			public const int MenuFrame = 2131034136;
+			// aapt resource value: 0x7f050014
+			public const int FlyOutMenu = 2131034132;
+			
+			// aapt resource value: 0x7f050021
+			public const int LogoutMenu = 2131034145;
+			
+			// aapt resource value: 0x7f050022
+			public const int MenuFrame = 2131034146;
 			
 			// aapt resource value: 0x7f050005
 			public const int MvxBindingTagUnique = 2131034117;
 			
-			// aapt resource value: 0x7f05001b
-			public const int Title = 2131034139;
+			// aapt resource value: 0x7f050019
+			public const int ProfileMenu = 2131034137;
 			
-			// aapt resource value: 0x7f05000a
-			public const int btnRegister = 2131034122;
+			// aapt resource value: 0x7f05001e
+			public const int SettingMenu = 2131034142;
 			
-			// aapt resource value: 0x7f05000b
-			public const int btnSignIn = 2131034123;
+			// aapt resource value: 0x7f050025
+			public const int Title = 2131034149;
 			
-			// aapt resource value: 0x7f05000c
-			public const int contentArea = 2131034124;
+			// aapt resource value: 0x7f050016
+			public const int WhistleMenu = 2131034134;
+			
+			// aapt resource value: 0x7f050020
+			public const int WhistleWorkMenu = 2131034144;
+			
+			// aapt resource value: 0x7f050011
+			public const int btnRegister = 2131034129;
+			
+			// aapt resource value: 0x7f050012
+			public const int btnSignIn = 2131034130;
+			
+			// aapt resource value: 0x7f050013
+			public const int contentArea = 2131034131;
 			
 			// aapt resource value: 0x7f050003
 			public const int fullscreen = 2131034115;
 			
-			// aapt resource value: 0x7f050011
-			public const int imageView1 = 2131034129;
+			// aapt resource value: 0x7f05000f
+			public const int imageView1 = 2131034127;
 			
-			// aapt resource value: 0x7f050015
-			public const int imageView2 = 2131034133;
+			// aapt resource value: 0x7f05001a
+			public const int imageView2 = 2131034138;
 			
 			// aapt resource value: 0x7f050009
 			public const int imgView = 2131034121;
 			
+			// aapt resource value: 0x7f05000d
+			public const int imgViewBottomIcon = 2131034125;
+			
 			// aapt resource value: 0x7f050000
 			public const int left = 2131034112;
-			
-			// aapt resource value: 0x7f050010
-			public const int linearLayout1 = 2131034128;
-			
-			// aapt resource value: 0x7f050014
-			public const int linearLayout2 = 2131034132;
-			
-			// aapt resource value: 0x7f05001a
-			public const int linearLayout3 = 2131034138;
 			
 			// aapt resource value: 0x7f050002
 			public const int margin = 2131034114;
 			
-			// aapt resource value: 0x7f050019
-			public const int menuIcon = 2131034137;
+			// aapt resource value: 0x7f050024
+			public const int menuIcon = 2131034148;
+			
+			// aapt resource value: 0x7f050023
+			public const int relativeLayout1 = 2131034147;
 			
 			// aapt resource value: 0x7f050001
 			public const int right = 2131034113;
@@ -323,17 +366,29 @@ namespace Whistle.Droid
 			// aapt resource value: 0x7f050004
 			public const int selected_view = 2131034116;
 			
-			// aapt resource value: 0x7f05001d
-			public const int slidingmenumain = 2131034141;
+			// aapt resource value: 0x7f050026
+			public const int slidingmenumain = 2131034150;
+			
+			// aapt resource value: 0x7f050010
+			public const int textView1 = 2131034128;
+			
+			// aapt resource value: 0x7f050017
+			public const int textView2 = 2131034135;
+			
+			// aapt resource value: 0x7f05001b
+			public const int textView3 = 2131034139;
+			
+			// aapt resource value: 0x7f05000b
+			public const int txtFullMessage = 2131034123;
 			
 			// aapt resource value: 0x7f05000e
-			public const int textView1 = 2131034126;
+			public const int txtViewInIndia = 2131034126;
 			
-			// aapt resource value: 0x7f050012
-			public const int textView2 = 2131034130;
+			// aapt resource value: 0x7f05000c
+			public const int txtViewMadeWith = 2131034124;
 			
-			// aapt resource value: 0x7f050016
-			public const int textView3 = 2131034134;
+			// aapt resource value: 0x7f05000a
+			public const int txtViewVersion = 2131034122;
 			
 			// aapt resource value: 0x7f050006
 			public const int txtWhistleMessage = 2131034118;
@@ -344,14 +399,14 @@ namespace Whistle.Droid
 			// aapt resource value: 0x7f050008
 			public const int txtWhistleMessage2 = 2131034120;
 			
-			// aapt resource value: 0x7f05000f
-			public const int view1 = 2131034127;
+			// aapt resource value: 0x7f050015
+			public const int view1 = 2131034133;
 			
-			// aapt resource value: 0x7f050013
-			public const int view2 = 2131034131;
+			// aapt resource value: 0x7f050018
+			public const int view2 = 2131034136;
 			
-			// aapt resource value: 0x7f050017
-			public const int view3 = 2131034135;
+			// aapt resource value: 0x7f05001c
+			public const int view3 = 2131034140;
 			
 			static Id()
 			{
@@ -366,8 +421,8 @@ namespace Whistle.Droid
 		public partial class Integer
 		{
 			
-			// aapt resource value: 0x7f070000
-			public const int num_cols = 2131165184;
+			// aapt resource value: 0x7f080000
+			public const int num_cols = 2131230720;
 			
 			static Integer()
 			{
@@ -386,31 +441,49 @@ namespace Whistle.Droid
 			public const int About = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Landing = 2130903041;
+			public const int EditProfile = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Login = 2130903042;
+			public const int Favorite = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int Landing = 2130903043;
 			
 			// aapt resource value: 0x7f030004
-			public const int Menu = 2130903044;
+			public const int List = 2130903044;
 			
 			// aapt resource value: 0x7f030005
-			public const int MenuHolder = 2130903045;
+			public const int Login = 2130903045;
 			
 			// aapt resource value: 0x7f030006
-			public const int MenuItem = 2130903046;
+			public const int Main = 2130903046;
 			
 			// aapt resource value: 0x7f030007
-			public const int Registration = 2130903047;
+			public const int Menu = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int slidingmenumain = 2130903048;
+			public const int MenuHolder = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int SplashScreen = 2130903049;
+			public const int MenuItem = 2130903049;
+			
+			// aapt resource value: 0x7f03000a
+			public const int Registration = 2130903050;
+			
+			// aapt resource value: 0x7f03000b
+			public const int Setting = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int slidingmenumain = 2130903052;
+			
+			// aapt resource value: 0x7f03000d
+			public const int SplashScreen = 2130903053;
+			
+			// aapt resource value: 0x7f03000e
+			public const int Whistle = 2130903054;
+			
+			// aapt resource value: 0x7f03000f
+			public const int WhistleWork = 2130903055;
 			
 			static Layout()
 			{
@@ -425,11 +498,11 @@ namespace Whistle.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f090001
-			public const int ApplicationName = 2131296257;
+			// aapt resource value: 0x7f0a0001
+			public const int ApplicationName = 2131361793;
 			
-			// aapt resource value: 0x7f090000
-			public const int Hello = 2131296256;
+			// aapt resource value: 0x7f0a0000
+			public const int Hello = 2131361792;
 			
 			static String()
 			{
@@ -444,23 +517,23 @@ namespace Whistle.Droid
 		public partial class Style
 		{
 			
-			// aapt resource value: 0x7f080000
-			public const int Theme_Splash = 2131230720;
+			// aapt resource value: 0x7f090000
+			public const int Theme_Splash = 2131296256;
 			
-			// aapt resource value: 0x7f080002
-			public const int XamActionBarStyle = 2131230722;
+			// aapt resource value: 0x7f090002
+			public const int XamActionBarStyle = 2131296258;
 			
-			// aapt resource value: 0x7f080001
-			public const int XamActionBarTheme = 2131230721;
+			// aapt resource value: 0x7f090001
+			public const int XamActionBarTheme = 2131296257;
 			
-			// aapt resource value: 0x7f080005
-			public const int XamButton = 2131230725;
+			// aapt resource value: 0x7f090005
+			public const int XamButton = 2131296261;
 			
-			// aapt resource value: 0x7f080004
-			public const int XamSubtitleText = 2131230724;
+			// aapt resource value: 0x7f090004
+			public const int XamSubtitleText = 2131296260;
 			
-			// aapt resource value: 0x7f080003
-			public const int XamTitleText = 2131230723;
+			// aapt resource value: 0x7f090003
+			public const int XamTitleText = 2131296259;
 			
 			static Style()
 			{

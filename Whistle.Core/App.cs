@@ -1,4 +1,5 @@
 using Cirrious.CrossCore.IoC;
+using Whistle.Core.ViewModels;
 
 namespace Whistle.Core
 {
@@ -11,7 +12,7 @@ namespace Whistle.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				
-            RegisterAppStart<ViewModels.MainViewModel>();
+            //RegisterAppStart<LandingViewModel>();
         }
     }
 }

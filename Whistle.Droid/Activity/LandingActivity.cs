@@ -9,10 +9,11 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Whistle.Droid.Fragments;
 
 namespace Whistle.Droid
 {
-    [Activity(MainLauncher = true)]
+    [Activity]
     public class LandingActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -22,9 +23,18 @@ namespace Whistle.Droid
 
             //LoginButton > Login
             //registration > regi.
+            var registrationButton = FindViewById<Button>(Resource.Id.btnRegister);
+            registrationButton.Click += registrationButton_Click;
+            var signInButton = FindViewById<Button>(Resource.Id.btnSignIn);
+            signInButton.Click += registrationButton_Click;
 
+            ActionBar.Hide();
+        }
 
-            // Create your application here
+        void registrationButton_Click(object sender, EventArgs e)
+        {
+            StartActivity(typeof(MenuFragmentActivity));
+           // OverridePendingTransition(Resource.Animation.enter, Resource.Animation.exit);
         }
     }
 }

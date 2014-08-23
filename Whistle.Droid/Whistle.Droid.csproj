@@ -94,11 +94,19 @@
     <Compile Include="Adepters\MenuAdapter.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
+    <Compile Include="Fragments\ContentFragment.cs" />
+    <Compile Include="Fragments\ContentMenuFragment.cs" />
+    <Compile Include="Fragments\EditFragment.cs" />
+    <Compile Include="Fragments\FavoriteFragment.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
+    <Compile Include="Fragments\MenuFragmentActivity.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />
+    <Compile Include="Fragments\SignOutFragment.cs" />
+    <Compile Include="Fragments\WhistleFragment.cs" />
+    <Compile Include="Fragments\WhistleWorkFragment.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,30 +135,46 @@
     <AndroidResource Include="Resources\Drawable-hdpi\signout_white_icon.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\whistle_logo_green.png" />
     <AndroidResource Include="Resources\Drawable-hdpi\whistle_white_icon.png" />
-    <AndroidResource Include="Resources\layout\About.axml">
+    <AndroidResource Include="Resources\Layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Main.axml">
+    <AndroidResource Include="Resources\Layout\Main.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Landing.axml" />
-    <AndroidResource Include="Resources\layout\Login.axml" />
-    <AndroidResource Include="Resources\layout\Registration.axml" />
-    <AndroidResource Include="Resources\layout\MenuItem.axml">
+    <AndroidResource Include="Resources\Layout\Landing.axml" />
+    <AndroidResource Include="Resources\Layout\Login.axml" />
+    <AndroidResource Include="Resources\Layout\Registration.axml" />
+    <AndroidResource Include="Resources\Layout\MenuItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\MenuHolder.axml">
+    <AndroidResource Include="Resources\Layout\MenuHolder.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
-    <BundleResource Include="Resources\layout\LandingView.axml" />
-    <BundleResource Include="Resources\layout\MainView.axml" />
+    <AndroidResource Include="Resources\Layout\SplashScreen.axml" />
+    <AndroidResource Include="Resources\Layout\List.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Whistle.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\EditProfile.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Favorite.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Setting.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\WhistleWork.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Menu.axml">
+    <AndroidResource Include="Resources\Layout\Menu.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -165,15 +189,21 @@
     <AndroidResource Include="Resources\anim\exit.xml" />
     <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
-    <AndroidResource Include="Resources\Values\dimens.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\drawable\shadow.xml" />
-    <AndroidResource Include="Resources\Values\themes.xml" />
-    <AndroidResource Include="Resources\Values\SplashStyle.xml" />
-    <AndroidResource Include="Resources\Values\MvxBindingAttributes.xml" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
+    <AndroidResource Include="Resources\values\themes.xml" />
+    <AndroidResource Include="Resources\values\SplashStyle.xml" />
+    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\Splash.PNG" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <XamarinComponentReference Include="xamandroidsupportv4-18">
+      <Visible>False</Visible>
+      <Version>20.0.0.3</Version>
+    </XamarinComponentReference>
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Whistle.Core\Whistle.Core.csproj">
       <Project>{3e3d9a5e-571a-4fb9-9ba7-5568d348c38a}</Project>

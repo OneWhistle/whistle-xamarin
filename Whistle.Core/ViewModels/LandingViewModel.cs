@@ -13,24 +13,11 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class LandingViewModel : BaseViewModel
     {
-        /// <summary>
-        /// Backing field for my property.
-        /// </summary>
-        private string myProperty = "Mvx Ninja Coder!";
 
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
-        private MvxCommand myCommand;
-
-        /// <summary>
-        /// Gets or sets my property.
-        /// </summary>
-        public string MyProperty
-        {
-            get { return this.myProperty; }
-            set { this.SetProperty(ref this.myProperty, value, () => this.MyProperty); }
-        }
+        private MvxCommand mainViewCommand;
 
         /// <summary>
         /// Gets My Command.
@@ -39,9 +26,9 @@ namespace Whistle.Core.ViewModels
         /// Note the ViewModel inside of ShowViewModel needs to change!
         /// </para>
         /// </summary>
-        public ICommand MyCommand
+        public ICommand MainViewCommand
         {
-            get { return this.myCommand ?? (this.myCommand = new MvxCommand(this.Show)); }
+            get { return this.mainViewCommand ?? (this.mainViewCommand = new MvxCommand(this.Show)); }
         }
 
         /// <summary>

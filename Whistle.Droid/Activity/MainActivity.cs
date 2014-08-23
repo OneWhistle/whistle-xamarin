@@ -10,19 +10,19 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Whistle.Droid
 {
-    [Activity(MainLauncher = true, Icon = "@drawable/whistle_logo_green")]
+    [Activity(Icon = "@drawable/whistle_logo_green")]
     public class MainActivity : SlidingFragmentActivity
     {
         int baseFragment;
         private readonly int _titleRes;
-        protected Fragment menuFragment;
+        protected MenuFragments menuFragment;
 
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Main);
+            //SetContentView(Resource.Layout.Main);
 
             #region Menu
 
@@ -38,12 +38,14 @@ namespace Whistle.Droid
                 {
                     var transaction = SupportFragmentManager.BeginTransaction();
                     menuFragment = new MenuFragments();
+                    menuFragment.SelectedMenu -= menFrag_SelectedMenu;
+                    menuFragment.SelectedMenu += menFrag_SelectedMenu;
                     transaction.Replace(Resource.Id.MenuFrame, menuFragment);
                     transaction.Commit();
 
-                    var landingFragment = new LandingFragments();
-                    baseFragment = landingFragment.Id;
-                    SwitchScreen(landingFragment, false, true);
+                    //var landingFragment = new AboutFragments();
+                    //baseFragment = landingFragment.Id;
+                    //SwitchScreen(landingFragment, false, true);
 
                 }
                 catch (Exception ex)
@@ -52,9 +54,7 @@ namespace Whistle.Droid
                 }
             }
             else
-                menuFragment =
-                   (Fragment)
-                   SupportFragmentManager.FindFragmentById(Resource.Id.MenuFrame);
+                menuFragment = (MenuFragments)SupportFragmentManager.FindFragmentById(Resource.Id.MenuFrame);
             SlidingMenu.ShadowWidthRes = Resource.Dimension.shadow_width;
             SlidingMenu.BehindOffsetRes = Resource.Dimension.slidingmenu_offset;
             SlidingMenu.ShadowDrawableRes = Resource.Drawable.shadow;
@@ -62,13 +62,18 @@ namespace Whistle.Droid
             //SlidingMenu.TouchModeAbove = TouchMode.Fullscreen;
 
             SetSlidingActionBarEnabled(false);
-
+            
             #endregion
+        }
+
+        void menFrag_SelectedMenu(int obj)
+        {
+            SwitchScreen(new SettingFragments());
         }
 
         #region Switch Screen
 
-        public int SwitchScreen( Fragment fragment, bool animated = true, bool isRoot = false)
+        public int SwitchScreen(Fragment fragment, bool animated = true, bool isRoot = false)
         {
             var transaction = SupportFragmentManager.BeginTransaction();
             if (animated)

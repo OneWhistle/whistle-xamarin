@@ -12,10 +12,9 @@ using Android.Views;
 using Android.Widget;
 using Fragment = Android.Support.V4.App.Fragment;
 
-
 namespace Whistle.Droid.Fragments
 {
-    public class SettingFragments : Fragment
+    public class FavoriteFragment : Fragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
@@ -25,7 +24,7 @@ namespace Whistle.Droid.Fragments
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return inflater.Inflate(Resource.Layout.Setting, container, false);
+            return inflater.Inflate(Resource.Layout.Favorite, container, false);
         }
     }
 }

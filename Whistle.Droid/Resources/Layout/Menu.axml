@@ -27,8 +27,8 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:id="@+id/linearLayout1"
+        android:layout_height="30dp"
+        android:id="@+id/WhistleMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/whistle_white_icon"
@@ -59,7 +59,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/ProfileMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/profile_green_icon"
@@ -89,7 +89,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/FavoriteMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/favorites_white_icon"
@@ -119,7 +119,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/SettingMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/settings_white_icon"
@@ -149,7 +149,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/AboutMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/about_white_icon"
@@ -179,7 +179,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/WhistleWorkMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/howitworks_white_icon"
@@ -209,7 +209,7 @@
         android:orientation="horizontal"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:id="@+id/linearLayout2"
+        android:id="@+id/LogoutMenu"
         android:layout_margin="8dp">
         <ImageView
             android:src="@drawable/signout_white_icon"

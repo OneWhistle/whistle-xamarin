@@ -10,6 +10,8 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Fragment = Android.Support.V4.App.Fragment;
+
 
 namespace Whistle.Droid.Fragments
 {
@@ -20,6 +22,10 @@ namespace Whistle.Droid.Fragments
             base.OnCreate(savedInstanceState);
 
             // Create your fragment here
+        }
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            return inflater.Inflate(Resource.Layout.Setting, container, false);
         }
     }
 }

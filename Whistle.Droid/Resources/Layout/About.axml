@@ -55,7 +55,7 @@
             android:id="@+id/txtFullMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="flkwhfiewruhweiryewrhkjbdmjasnd,exfsakljfhskljfhsalkjhfkasjfhkljashfkjlsahfkjshfkjlf,nmx c,nmcnkaljdhiuasdhkldmnsams,bdiowhdwqbdmnsabcm,nsabcoiashdksajbm,nasb"
+            android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged"
             android:textColor="#00CD98"
             android:textSize="14dp"
             android:layout_gravity="center"
@@ -68,7 +68,7 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#EEF0FF"
-        android:layout_marginBottom="5dp">
+        android:layout_marginBottom="0.0dp">
         <TextView
             android:id="@+id/txtViewMadeWith"
             android:layout_width="wrap_content"

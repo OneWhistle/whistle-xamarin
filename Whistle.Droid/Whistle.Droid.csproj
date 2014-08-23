@@ -3,6 +3,8 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{37A3DFF0-0073-4D63-B967-EC9F7EDC2491}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -13,9 +15,10 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <AndroidUseLatestPlatformSdk>
+    </AndroidUseLatestPlatformSdk>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
-    <TargetFrameworkVersion>v3.1</TargetFrameworkVersion>
-    <AndroidUseLatestPlatformSdk />
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,6 +28,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -35,6 +39,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -68,14 +73,17 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net">
+      <Private>True</Private>
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Net.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows">
+      <Private>True</Private>
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Serialization">
+      <Private>True</Private>
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Xml.Serialization.dll</HintPath>
     </Reference>
   </ItemGroup>
@@ -86,11 +94,19 @@
     <Compile Include="Adepters\MenuAdapter.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
+    <Compile Include="Fragments\ContentFragment.cs" />
+    <Compile Include="Fragments\ContentMenuFragment.cs" />
+    <Compile Include="Fragments\EditFragment.cs" />
+    <Compile Include="Fragments\FavoriteFragment.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
+    <Compile Include="Fragments\MenuFragmentActivity.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />
+    <Compile Include="Fragments\SignOutFragment.cs" />
+    <Compile Include="Fragments\WhistleFragment.cs" />
+    <Compile Include="Fragments\WhistleWorkFragment.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,45 +120,61 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Drawable-hdpi\about_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\favorites_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\heart_small_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\howitworks_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\main_menu_bg_img.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\male_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_grey_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\profile_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\settings_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\signout_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\whistle_logo_green.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\whistle_white_icon.png" />
-    <AndroidResource Include="Resources\layout\About.axml">
+    <AndroidResource Include="Resources\drawable-hdpi\about_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\favorites_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\heart_small_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\howitworks_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\main_menu_bg_img.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\settings_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\signout_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_logo_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_white_icon.png" />
+    <AndroidResource Include="Resources\Layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Main.axml">
+    <AndroidResource Include="Resources\Layout\Main.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Landing.axml" />
-    <AndroidResource Include="Resources\layout\Login.axml" />
-    <AndroidResource Include="Resources\layout\Registration.axml" />
-    <AndroidResource Include="Resources\layout\MenuItem.axml">
+    <AndroidResource Include="Resources\Layout\Landing.axml" />
+    <AndroidResource Include="Resources\Layout\Login.axml" />
+    <AndroidResource Include="Resources\Layout\Registration.axml" />
+    <AndroidResource Include="Resources\Layout\MenuItem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\MenuHolder.axml">
+    <AndroidResource Include="Resources\Layout\MenuHolder.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\SplashScreen.axml" />
-    <BundleResource Include="Resources\layout\LandingView.axml" />
-    <BundleResource Include="Resources\layout\MainView.axml" />
+    <AndroidResource Include="Resources\Layout\SplashScreen.axml" />
+    <AndroidResource Include="Resources\Layout\List.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Whistle.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\EditProfile.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Favorite.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\Setting.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\WhistleWork.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\layout\Menu.axml">
+    <AndroidResource Include="Resources\Layout\Menu.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Values\Strings.xml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\Icon.png" />
@@ -157,24 +189,20 @@
     <AndroidResource Include="Resources\anim\exit.xml" />
     <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
-    <AndroidResource Include="Resources\Values\dimens.xml" />
+    <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\drawable\shadow.xml" />
-    <AndroidResource Include="Resources\Values\themes.xml" />
-    <AndroidResource Include="Resources\Values\SplashStyle.xml" />
-    <AndroidResource Include="Resources\Values\MvxBindingAttributes.xml" />
-    <AndroidResource Include="Resources\drawable\splash.png" />
-    <AndroidResource Include="Resources\Values\Colors.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-    <AndroidResource Include="Resources\drawable\whistle_logo_big.png" />
+    <AndroidResource Include="Resources\values\themes.xml" />
+    <AndroidResource Include="Resources\values\SplashStyle.xml" />
+    <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\Splash.PNG" />
+    <BundleResource Include="Resources\drawable\Whistle.PNG" />
+    <AndroidResource Include="Resources\drawable-hdpi\Whistle.PNG" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\Drawable-mdpi\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Whistle.Core\Whistle.Core.csproj">
-      <Project>{3E3D9A5E-571A-4FB9-9BA7-5568D348C38A}</Project>
+      <Project>{3e3d9a5e-571a-4fb9-9ba7-5568d348c38a}</Project>
       <Name>Whistle.Core</Name>
     </ProjectReference>
   </ItemGroup>

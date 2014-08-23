@@ -11,7 +11,7 @@ namespace Whistle.Droid.Views
     /// <summary>
     /// Defines the MainView type.
     /// </summary>
-    [Activity(Label = "View for MainView", NoHistory=true)]
+    [Activity(Label = "View for MainView")]
     public class MainView : BaseView
     {
         /// <summary>
@@ -21,7 +21,8 @@ namespace Whistle.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            this.SetContentView(Resource.Layout.Landing);
+            this.SetContentView(Resource.Layout.Main);
+
         }
     }
 }

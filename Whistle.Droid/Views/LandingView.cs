@@ -5,14 +5,18 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Whistle.Droid.Views
 {
+    using System;
     using Android.App;
     using Android.OS;
+    using Android.Widget;
+    using Cirrious.MvvmCross.Droid.Views;
+    using Whistle.Core.ViewModels;
 
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(Label = "View for LandingView", Theme = "@android:style/Theme.Holo.Light.NoActionBar")]
-    public class LandingView : BaseView
+    [Activity(Label = "View for LandingView")]
+    public class LandingView : MvxActivity
     {
         /// <summary>
         /// Called when [create].
@@ -20,8 +24,12 @@ namespace Whistle.Droid.Views
         /// <param name="bundle">The bundle.</param>
         protected override void OnCreate(Bundle bundle)
         {
-			base.OnCreate(bundle);
-            this.SetContentView(Resource.Layout.Landing);
+            base.OnCreate(bundle);
+            this.SetContentView(Resource.Layout.SplashScreen);
+            ActionBar.Hide();
+            
         }
+
+       
     }
 }

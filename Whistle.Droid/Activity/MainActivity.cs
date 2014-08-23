@@ -7,10 +7,11 @@ using Android.Widget;
 using Android.OS;
 using Whistle.Droid.Fragments;
 using Fragment = Android.Support.V4.App.Fragment;
+using SlidingMenuSharp;
 
 namespace Whistle.Droid
 {
-    [Activity(Icon = "@drawable/whistle_logo_green")]
+    [Activity]
     public class MainActivity : SlidingFragmentActivity
     {
         int baseFragment;
@@ -32,7 +33,7 @@ namespace Whistle.Droid
 
             #region First Screen
 
-            if (FragmentManager.BackStackEntryCount == 0)
+            if (SupportFragmentManager.BackStackEntryCount == 0)
             {
                 try
                 {
@@ -59,13 +60,13 @@ namespace Whistle.Droid
             SlidingMenu.BehindOffsetRes = Resource.Dimension.slidingmenu_offset;
             SlidingMenu.ShadowDrawableRes = Resource.Drawable.shadow;
             SlidingMenu.FadeDegree = 0.25f;
-            //SlidingMenu.TouchModeAbove = TouchMode.Fullscreen;
+            SlidingMenu.TouchModeAbove = TouchMode.Fullscreen;
 
            // SetSlidingActionBarEnabled(false);
             
             #endregion
         }
-
+       
         void menFrag_SelectedMenu(int obj)
         {
             SwitchScreen(new SettingFragments());

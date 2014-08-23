@@ -18,6 +18,9 @@ namespace Whistle.Droid.Fragments
 {
     public class ContentMenuFragment : ListFragment
     {
+
+        Fragment newContent = null;
+
         public override View OnCreateView(LayoutInflater inflater, ViewGroup p1, Bundle p2)
         {
             return inflater.Inflate(Resource.Layout.List, null);
@@ -28,11 +31,16 @@ namespace Whistle.Droid.Fragments
             base.OnActivityCreated(p0);
 
             var colorAdapter = new MenuAdapter(Activity.ApplicationContext); //new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, Android.Resource.Id.Text1, new List<string>() { "R", "RR", "RRR", "RRRR" });
+            newContent = new WhistleFragment();
+            SwitchFragment(newContent);
+
+            //var fca = Activity as MenuFragmentActivity;
+            //fca.ShowMenu();
             ListAdapter = colorAdapter;
         }
         public override void OnListItemClick(ListView p0, View p1, int position, long p3)
         {
-            Fragment newContent = null;
+            
             switch (position)
             {
                 case 0:

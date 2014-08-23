@@ -7,9 +7,9 @@ using Java.Lang;
 namespace Whistle.Droid
 {
     [Activity(
-		Label = "Whistle.Droid"
+		Label = "Whistle"
 		, MainLauncher = true
-		, Icon = "@drawable/icon"
+        , Icon = "@drawable/whistle_logo_green"
 		, Theme = "@style/Theme.Splash"
 		, NoHistory = true
 		, ScreenOrientation = ScreenOrientation.Portrait)]
@@ -18,7 +18,6 @@ namespace Whistle.Droid
         //public SplashScreen()
         //    : base(Resource.Layout.SplashScreen)
         //{
-        //    ActionBar.Hide();
         //}
 
         protected override void OnCreate(Bundle bundle)

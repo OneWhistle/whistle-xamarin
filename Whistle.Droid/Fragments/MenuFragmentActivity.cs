@@ -15,7 +15,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Whistle.Droid.Fragments
 {
-    [Activity(Icon = "@drawable/whistle_logo_green")]
+    [Activity]
     public class MenuFragmentActivity : MainActivity
     {
         private Android.Support.V4.App.Fragment _content;
@@ -45,10 +45,12 @@ namespace Whistle.Droid.Fragments
 
             SlidingMenu.TouchModeAbove = TouchMode.Fullscreen;
         }
+
         protected override void OnSaveInstanceState(Bundle outState)
         {
             base.OnSaveInstanceState(outState);
             SupportFragmentManager.PutFragment(outState, "_content", _content);
+            
         }
 
         public void SwitchContent(Android.Support.V4.App.Fragment fragment)
@@ -59,7 +61,7 @@ namespace Whistle.Droid.Fragments
                 .Replace(Resource.Id.contentArea, fragment)
                 .Commit();
             SlidingMenu.ShowContent();
+
         }
-        
     }
 }

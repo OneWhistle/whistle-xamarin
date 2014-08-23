@@ -13,7 +13,7 @@ using Whistle.Droid.Fragments;
 
 namespace Whistle.Droid
 {
-    [Activity]
+    [Activity(Icon = "@drawable/whistle_logo_green")]
     public class LandingActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)
@@ -28,7 +28,7 @@ namespace Whistle.Droid
             var signInButton = FindViewById<Button>(Resource.Id.btnSignIn);
             signInButton.Click += registrationButton_Click;
 
-            ActionBar.Hide();
+           // ActionBar.Hide();
         }
 
         void registrationButton_Click(object sender, EventArgs e)

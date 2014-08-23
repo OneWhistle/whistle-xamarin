@@ -120,21 +120,21 @@
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\Drawable-hdpi\about_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\favorites_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\heart_small_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\howitworks_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\ic_launcher.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\main_menu_bg_img.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\male_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_grey_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\options_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\profile_green_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\settings_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\signout_white_icon.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\whistle_logo_green.png" />
-    <AndroidResource Include="Resources\Drawable-hdpi\whistle_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\about_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\favorites_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\heart_small_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\howitworks_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\main_menu_bg_img.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\options_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\settings_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\signout_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_logo_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_white_icon.png" />
     <AndroidResource Include="Resources\Layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -196,13 +196,9 @@
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\drawable\Splash.PNG" />
+    <BundleResource Include="Resources\drawable\Whistle.PNG" />
+    <AndroidResource Include="Resources\drawable-hdpi\Whistle.PNG" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="xamandroidsupportv4-18">
-      <Visible>False</Visible>
-      <Version>20.0.0.3</Version>
-    </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Whistle.Core\Whistle.Core.csproj">

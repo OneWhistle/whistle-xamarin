@@ -37,9 +37,9 @@
             android:layout_marginTop="0dp" />
         <ImageView
             android:id="@+id/imgView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:src="@drawable/ic_launcher"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/Whistle"
             android:layout_gravity="center"
             android:scaleType="fitXY"
             android:layout_marginTop="10dp" />

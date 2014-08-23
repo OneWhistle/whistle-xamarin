@@ -61,7 +61,7 @@ namespace Whistle.Droid
             SlidingMenu.FadeDegree = 0.25f;
             //SlidingMenu.TouchModeAbove = TouchMode.Fullscreen;
 
-            SetSlidingActionBarEnabled(false);
+           // SetSlidingActionBarEnabled(false);
             
             #endregion
         }

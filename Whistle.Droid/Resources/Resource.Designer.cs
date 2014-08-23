@@ -273,10 +273,13 @@ namespace Whistle.Droid
 			public const int Splash = 2130837519;
 			
 			// aapt resource value: 0x7f020010
-			public const int whistle_logo_green = 2130837520;
+			public const int Whistle = 2130837520;
 			
 			// aapt resource value: 0x7f020011
-			public const int whistle_white_icon = 2130837521;
+			public const int whistle_logo_green = 2130837521;
+			
+			// aapt resource value: 0x7f020012
+			public const int whistle_white_icon = 2130837522;
 			
 			static Drawable()
 			{

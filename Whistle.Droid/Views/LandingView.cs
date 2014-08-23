@@ -26,7 +26,7 @@ namespace Whistle.Droid.Views
         {
             base.OnCreate(bundle);
             this.SetContentView(Resource.Layout.SplashScreen);
-            ActionBar.Hide();
+           // ActionBar.Hide();
             
         }
 

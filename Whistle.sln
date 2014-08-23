@@ -117,7 +117,6 @@ Global
 		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Debug|iPhoneSimulator.Deploy.0 = Debug|iPhoneSimulator
 		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Debug|Mixed Platforms.ActiveCfg = Debug|iPhone
 		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Debug|Mixed Platforms.Build.0 = Debug|iPhone
-		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Debug|Mixed Platforms.Deploy.0 = Debug|iPhone
 		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Release|Any CPU.ActiveCfg = Release|iPhone
 		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Release|iPhone.ActiveCfg = Release|iPhone
 		{54255361-B184-46C1-B8AB-A39EB6172F8C}.Release|iPhone.Build.0 = Release|iPhone
@@ -131,8 +130,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Whistle.Droid\Whistle.Droid.csproj
 	EndGlobalSection
 EndGlobal

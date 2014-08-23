@@ -3,7 +3,8 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#fff">
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -55,7 +56,6 @@
             android:layout_height="50dp"
             android:text="Register"
             android:textColor="#FFFFFF"
-            local:MvxBind="Click MainViewCommand"
             android:textSize="14dp"
             android:background="#3D3F47" />
         <Button
@@ -65,7 +65,6 @@
             android:text="Sign IN"
             android:textColor="#FFFFFF"
             android:textSize="14dp"
-            local:MvxBind="Click MainViewCommand"
             android:layout_toRightOf="@+id/btnRegister"
             android:background="#00CD98" />
     </RelativeLayout>

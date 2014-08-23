@@ -20,10 +20,12 @@ namespace Whistle.Droid
         //{
         //}
 
-        protected override void OnCreate(Bundle bundle)
-        {
+        protected async override void OnCreate(Bundle bundle)
+        {            
             base.OnCreate(bundle);
-            Thread.Sleep(5000); // Simulate a long loading process on app startup.
+            SetContentView(Resource.Layout.SplashScreen);
+
+            await System.Threading.Tasks.Task.Delay(6000); // Simulate a long loading process on app startup.
             StartActivity(typeof(LandingActivity));
         }
     }

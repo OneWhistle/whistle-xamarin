@@ -219,6 +219,7 @@
     <AndroidResource Include="Resources\anim\exit.xml" />
     <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
+    <AndroidResource Include="Resources\drawable\whistle_logo_big.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

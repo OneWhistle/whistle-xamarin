@@ -21,7 +21,7 @@ namespace Whistle.Core.ViewModels
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
-        private MvxCommand myCommand;
+        private MvxCommand signIn;
 
         /// <summary>
         /// Gets or sets my property.
@@ -39,9 +39,9 @@ namespace Whistle.Core.ViewModels
         /// Note the ViewModel inside of ShowViewModel needs to change!
         /// </para>
         /// </summary>
-        public ICommand MyCommand
+        public ICommand SignIn
         {
-            get { return this.myCommand ?? (this.myCommand = new MvxCommand(this.Show)); }
+            get { return this.signIn ?? (this.signIn = new MvxCommand(this.Show)); }
         }
 
         /// <summary>

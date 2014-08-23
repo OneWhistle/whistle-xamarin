@@ -10,7 +10,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 
 namespace Whistle.Droid
 {
-    [Activity(MainLauncher = true, Icon = "@drawable/whistle_logo_green")]
+    [Activity(Icon = "@drawable/whistle_logo_green")]
     public class MainActivity : SlidingFragmentActivity
     {
         int baseFragment;

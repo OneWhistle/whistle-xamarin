@@ -132,4 +132,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Whistle.Droid\Whistle.Droid.csproj
+	EndGlobalSection
 EndGlobal

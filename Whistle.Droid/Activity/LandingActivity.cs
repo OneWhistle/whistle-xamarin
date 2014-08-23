@@ -12,7 +12,7 @@ using Android.Widget;
 
 namespace Whistle.Droid
 {
-    [Activity(MainLauncher = true)]
+   // [Activity(MainLauncher = true)]
     public class LandingActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

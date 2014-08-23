@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical">
@@ -45,25 +46,33 @@
     </LinearLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="#EEF0FF">
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:text="Register"
-            android:textColor="#FFFFFF"
-            android:textSize="14dp"
-            android:background="#3D3F47" />
-        <Button
-            android:id="@+id/btnSignIn"
-            android:layout_width="160dp"
-            android:layout_height="50dp"
-            android:text="Sign IN"
-            android:textColor="#FFFFFF"
-            android:textSize="14dp"
-            android:layout_toRightOf="@+id/btnRegister"
-            android:background="#00CD98" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true">
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="Register"
+                android:textColor="#FFFFFF"
+                android:textSize="14dp"
+                android:layout_weight="0.5"
+                local:MvxBind="Click SignIn"
+                android:background="#3D3F47" />
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="Sign IN"
+                android:textColor="#FFFFFF"
+                android:textSize="14dp"
+                android:layout_weight="0.5"
+                local:MvxBind="Click SignIn"
+                android:layout_toRightOf="@+id/btnRegister"
+                android:background="#00CD98" />
+        </LinearLayout>
     </RelativeLayout>
 </RelativeLayout>

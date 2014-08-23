@@ -11,7 +11,7 @@ namespace Whistle.Droid.Views
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(Label = "View for LandingView")]
+    [Activity(Label = "View for LandingView", Theme = "@android:style/Theme.Holo.Light.NoActionBar")]
     public class LandingView : BaseView
     {
         /// <summary>
@@ -20,8 +20,8 @@ namespace Whistle.Droid.Views
         /// <param name="bundle">The bundle.</param>
         protected override void OnCreate(Bundle bundle)
         {
-            base.OnCreate(bundle);
-            this.SetContentView(Resource.Layout.LandingView);
+			base.OnCreate(bundle);
+            this.SetContentView(Resource.Layout.Landing);
         }
     }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="3">
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".90"
+        android:gravity="center"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/consumer_active_icon"
+            android:id="@+id/btnConsumer" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Consumer"
+            android:textColor="#FFFFFF"
+            android:layout_marginTop="-35dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".90"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/provider_normal_icon"
+            android:id="@+id/btnProvider" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Provider"
+            android:textColor="#000000"
+            android:layout_marginTop="-35dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".90"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+        <ImageButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:background="@drawable/tracking_normal_icon"
+            android:id="@+id/btnTracking" />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Tracking"
+            android:textColor="#000000"
+            android:layout_marginTop="-35dp"
+            android:textSize="14sp" />
+    </LinearLayout>
+</LinearLayout>

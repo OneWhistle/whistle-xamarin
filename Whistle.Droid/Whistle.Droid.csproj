@@ -31,6 +31,7 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidLinkSkip />
+	<MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
@@ -48,6 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+	<MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidLinkSkip>Mono.Android.Export</AndroidLinkSkip>
@@ -189,6 +191,21 @@
     <AndroidResource Include="Resources\Layout\WhistleWork.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <BundleResource Include="Resources\Layout\UserTypes.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ForgotPassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ForgotPassowrdCode.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ResetPassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ChangePassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -220,6 +237,132 @@
     <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
     <AndroidResource Include="Resources\drawable\whistle_logo_big.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\provider_active_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\provider_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\consumer_active_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\consumer_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\eye_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\facebook_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\check_mark_white_small_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\googleplus_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\twitter_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tracking_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tracking_active_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\about_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\agree_terms_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\auto_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\auto_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\back_arrow_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bike_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bike_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bus_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\bus_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\camera_active_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\camera_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\camera_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\cancelled_journey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\car_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\car_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\chat_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\chat_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\check_mark_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\check_mark_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\checked_lock_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\checked_lock_small_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\completed_journey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\date_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\date_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\expand_lightgrey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\expand_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\eye_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\eye_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\favorites_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\favorites_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\female_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\female_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\female_lightgrey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\female_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\flag_green_big_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\flag_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\flag_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\flight_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\flight_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\gallery_active_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\gallery_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\happy_face_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\hourglass_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\howitworks_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\key_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\key_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\key_lock_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\listview_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\male_lightgrey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\mappin_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\mappin_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\mapview_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\menu_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\notification_counter_bg.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\notification_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ongoing_journey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\others_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\others_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\pending_journey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\phone_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\phone_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\play_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\plus_mark_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\preferences_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_photo_big_img.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_photo_img.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\question_mark_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\question_mark_small_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\question_mark_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\radio_btn_active_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\radio_btn_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\sad_face_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\sad_face_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\search_lightgrey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\settings_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\signout_green_big_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\signout_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\smscode_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\star_white_filled_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\star_white_outline_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\thumbsdown_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\thumbsdown_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\thumbsup_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\thumbsup_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\thumbsup_white_small_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\tick_mark_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\time_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\train_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\train_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\trans_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\trans_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\trans_lightgrey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\trans_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\truck_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\truck_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\user_account_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\userstatus_available_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\userstatus_notavailable_white_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\video_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\video_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_logo_big.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistle_logo_small.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistler_alert_green_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistlers_pin_blue_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistlers_pin_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistlers_pin_lightgrey_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\whistlers_pin_red_icon.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\wrong_lock_white_icon.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

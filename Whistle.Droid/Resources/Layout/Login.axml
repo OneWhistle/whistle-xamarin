@@ -1,5 +1,165 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent" />
+    android:weightSum="7"
+    android:background="#3D3F47">
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".75"
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="REGISTER"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:background="#3D3F47" />
+        <Button
+            android:id="@+id/btnSignIn"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:text="SIGN IN"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:background="#00CD98" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:background="#5D606B">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="START WHISTLING"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".02"
+        android:background="#FFFFFF" />
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".75"
+        android:background="#5D606B"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editEmail"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:hint="USERNAME@EXAMPLE.COM"
+            android:layout_weight="1"
+            android:textColorHint="#FFFFFF"
+            android:layout_gravity="center_vertical"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".02"
+        android:background="#FFFFFF" />
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".75"
+        android:background="#5D606B"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editPassword"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:hint="PASSWORD"
+            android:textColorHint="#FFFFFF"
+            android:layout_gravity="center_vertical"
+            android:layout_weight=".80"
+            android:textSize="14sp" />
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.20"
+            android:src="@drawable/eye_white_icon"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".75"
+        android:background="#787B89">
+        <TextView
+            android:id="@+id/btnForgotPassword"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:text="FORGOT PASSWORD"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".75"
+        android:background="#00CD98"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FORGOT PASSWORD"
+            android:src="@drawable/check_mark_white_small_icon" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight=".5"
+        android:background="#404148"
+        android:layout_marginTop="20dp">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="FEELING LAZY? PULL IN YOUR PROFILE"
+            android:textColor="#FFFFFF"
+            android:gravity="center"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="2"
+        android:background="#404148">
+        <LinearLayout
+            android:layout_height="fill_parent"
+            android:layout_width="fill_parent"
+            android:layout_weight="2"
+            android:background="#404148"
+            android:orientation="horizontal"
+            android:gravity="center">
+            <Button
+                android:id="@+id/btnFacebook"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/facebook_icon" />
+            <Button
+                android:id="@+id/btnTwitter"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/twitter_icon"
+                android:layout_marginLeft="20dp" />
+            <Button
+                android:id="@+id/btnGoogle"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/googleplus_icon"
+                android:layout_marginLeft="20dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -115,8 +115,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Activity\LandingActivity.cs" />
-    <Compile Include="Activity\MainActivity.cs" />
     <Compile Include="Activity\SlideFragmentActivity.cs" />
     <Compile Include="Adepters\MenuAdapter.cs" />
     <Compile Include="DebugTrace.cs" />
@@ -127,7 +125,6 @@
     <Compile Include="Fragments\FavoriteFragment.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
-    <Compile Include="Fragments\MenuFragmentActivity.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />

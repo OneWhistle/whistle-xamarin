@@ -6,3 +6,4 @@ packages
 Components
 *.userprefs
 /Whistle.Droid/Resources/Resource.Designer.cs
+/SlidingMenuSharp/Resources/Resource.Designer.cs

@@ -1,20 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Android.App;
-using Android.Content;
 using Android.OS;
-using Android.Runtime;
-using Android.Support.V4.App;
 using Android.Views;
-using Android.Widget;
+using Cirrious.MvvmCross.Droid.Fragging;
 using SlidingMenuSharp;
 using SlidingMenuSharp.App;
 
 namespace Whistle.Droid
 {
-    public class SlidingFragmentActivity : FragmentActivity, ISlidingActivity
+    public abstract class WhistleSlidingFragmentActivity : MvxFragmentActivity, ISlidingActivity
     {
         private SlidingActivityHelper _helper;
 
@@ -111,5 +103,7 @@ namespace Whistle.Droid
             var b = _helper.OnKeyUp(keyCode, e);
             return b ? b : base.OnKeyUp(keyCode, e);
         }
+
+        public abstract void SwitchContent(Android.Support.V4.App.Fragment fragment);
     }
 }

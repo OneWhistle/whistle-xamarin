@@ -12,7 +12,8 @@ using SlidingMenuSharp;
 namespace Whistle.Droid
 {
     [Activity]
-    public class MainActivity : SlidingFragmentActivity
+    [Obsolete("Please use MainView instead.")]
+    public class MainActivity : SlidingMenuSharp.App.SlidingFragmentActivity
     {
         int baseFragment;
         private readonly int _titleRes;

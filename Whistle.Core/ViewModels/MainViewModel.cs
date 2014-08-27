@@ -16,34 +16,15 @@ namespace Whistle.Core.ViewModels
         /// <summary>
         /// Backing field for my property.
         /// </summary>
-        private string myProperty = "Mvx Ninja Coder!";
-
-        /// <summary>
-        ///  Backing field for my command.
-        /// </summary>
-        private MvxCommand signIn;
+        private string _userName = "GEORGE";
 
         /// <summary>
         /// Gets or sets my property.
         /// </summary>
-        public string MyProperty
+        public string UserName
         {
-            get { return this.myProperty; }
-            set { this.SetProperty(ref this.myProperty, value, () => this.MyProperty); }
+            get { return this._userName; }
         }
-
-        /// <summary>
-        /// Gets My Command.
-        /// <para>
-        /// An example of a command and how to navigate to another view model
-        /// Note the ViewModel inside of ShowViewModel needs to change!
-        /// </para>
-        /// </summary>
-        public ICommand SignIn
-        {
-            get { return this.signIn ?? (this.signIn = new MvxCommand(this.Show)); }
-        }
-
         /// <summary>
         /// Show the view model.
         /// </summary>

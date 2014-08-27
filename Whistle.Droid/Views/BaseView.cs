@@ -10,7 +10,7 @@ namespace Whistle.Droid
     /// <summary>
     ///    Defines the BaseView type.
     /// </summary>
-    public abstract class BaseView : SlidingFragmentActivity
-    {
-    }
+    //public abstract class BaseView : SlidingFragmentActivity
+    //{
+    //}
 }

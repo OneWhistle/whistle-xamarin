@@ -25,16 +25,15 @@ namespace Whistle.Droid.Views
             base.OnCreate(bundle);
             this.SetContentView(Resource.Layout.Landing);
 
-            ///we'll remove the code below, when the mainView 
-            /// will be upgraded using mvvmcross
-            System.EventHandler actionHanding = (sender, args) =>
-                {
-                    StartActivity(typeof(Whistle.Droid.Fragments.MenuFragmentActivity));
-                };
             var registrationButton = FindViewById<Button>(Resource.Id.btnRegister);
             var signInButton = FindViewById<Button>(Resource.Id.btnSignIn);
-            signInButton.Click += actionHanding;
-            registrationButton.Click += actionHanding;
+            signInButton.Click += _clickAction;
+            registrationButton.Click += _clickAction;
+        }
+
+        void _clickAction(object sender, System.EventArgs e)
+        {
+            (this.ViewModel as Whistle.Core.ViewModels.LandingViewModel).Show();            
         }
 
 

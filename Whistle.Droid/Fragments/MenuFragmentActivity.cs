@@ -16,6 +16,7 @@ using Fragment = Android.Support.V4.App.Fragment;
 namespace Whistle.Droid.Fragments
 {
     [Activity]
+    [Obsolete("Please use MainView instead.")]
     public class MenuFragmentActivity : MainActivity
     {
         private Android.Support.V4.App.Fragment _content;

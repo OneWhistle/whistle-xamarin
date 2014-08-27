@@ -14,6 +14,7 @@ using Whistle.Droid.Fragments;
 namespace Whistle.Droid
 {
     [Activity(Icon = "@drawable/whistle_logo_green")]
+    [Obsolete("Please use LandingView instead.")]
     public class LandingActivity : Activity
     {
         protected override void OnCreate(Bundle bundle)

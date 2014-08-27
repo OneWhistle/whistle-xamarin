@@ -3,5 +3,6 @@
 bin
 obj
 packages
+Components
 *.userprefs
 /Whistle.Droid/Resources/Resource.Designer.cs

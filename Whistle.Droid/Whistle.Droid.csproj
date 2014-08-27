@@ -31,7 +31,7 @@
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
     <AndroidLinkSkip />
-	<MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
@@ -49,7 +49,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-	<MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidLinkMode>Full</AndroidLinkMode>
     <AndroidLinkSkip>Mono.Android.Export</AndroidLinkSkip>
@@ -191,19 +191,7 @@
     <AndroidResource Include="Resources\Layout\WhistleWork.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\UserTypes.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\ForgotPassword.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\ForgotPassowrdCode.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\ResetPassword.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\ChangePassword.axml">
+    <BundleResource Include="Resources\Layout\UserType.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
   </ItemGroup>
@@ -363,6 +351,144 @@
     <AndroidResource Include="Resources\drawable-hdpi\whistlers_pin_lightgrey_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\whistlers_pin_red_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\wrong_lock_white_icon.png" />
+    <BundleResource Include="Resources\drawable\consumer_active_icon.png" />
+    <BundleResource Include="Resources\drawable\consumer_normal_icon.png" />
+    <BundleResource Include="Resources\drawable\date_green_icon.png" />
+    <BundleResource Include="Resources\drawable\date_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\delete_green_icon.png" />
+    <BundleResource Include="Resources\drawable\delete_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\delete_white_icon.png" />
+    <BundleResource Include="Resources\drawable\expand_lightgrey_icon.png" />
+    <BundleResource Include="Resources\drawable\expand_white_icon.png" />
+    <BundleResource Include="Resources\drawable\eye_green_icon.png" />
+    <BundleResource Include="Resources\drawable\eye_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\eye_white_icon.png" />
+    <BundleResource Include="Resources\drawable\facebook_icon.png" />
+    <BundleResource Include="Resources\drawable\favorites_green_icon.png" />
+    <BundleResource Include="Resources\drawable\favorites_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\favorites_white_icon.png" />
+    <BundleResource Include="Resources\drawable\female_green_icon.png" />
+    <BundleResource Include="Resources\drawable\female_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\female_lightgrey_icon.png" />
+    <BundleResource Include="Resources\drawable\female_white_icon.png" />
+    <BundleResource Include="Resources\drawable\flag_green_big_icon.png" />
+    <BundleResource Include="Resources\drawable\flag_green_icon.png" />
+    <BundleResource Include="Resources\drawable\flag_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\flight_green_icon.png" />
+    <BundleResource Include="Resources\drawable\flight_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\gallery_active_icon.png" />
+    <BundleResource Include="Resources\drawable\gallery_normal_icon.png" />
+    <BundleResource Include="Resources\drawable\googleplus_icon.png" />
+    <BundleResource Include="Resources\drawable\happy_face_white_icon.png" />
+    <BundleResource Include="Resources\drawable\heart_small_green_icon.png" />
+    <BundleResource Include="Resources\drawable\hourglass_green_icon.png" />
+    <BundleResource Include="Resources\drawable\howitworks_green_icon.png" />
+    <BundleResource Include="Resources\drawable\howitworks_white_icon.png" />
+    <BundleResource Include="Resources\drawable\key_green_icon.png" />
+    <BundleResource Include="Resources\drawable\key_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\key_lock_green_icon.png" />
+    <BundleResource Include="Resources\drawable\listview_white_icon.png" />
+    <BundleResource Include="Resources\drawable\main_menu_bg_img.png" />
+    <BundleResource Include="Resources\drawable\male_green_icon.png" />
+    <BundleResource Include="Resources\drawable\male_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\male_lightgrey_icon.png" />
+    <BundleResource Include="Resources\drawable\male_white_icon.png" />
+    <BundleResource Include="Resources\drawable\mappin_green_icon.png" />
+    <BundleResource Include="Resources\drawable\mappin_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\mapview_white_icon.png" />
+    <BundleResource Include="Resources\drawable\menu_white_icon.png" />
+    <BundleResource Include="Resources\drawable\notification_counter_bg.png" />
+    <BundleResource Include="Resources\drawable\notification_green_icon.png" />
+    <BundleResource Include="Resources\drawable\ongoing_journey_icon.png" />
+    <BundleResource Include="Resources\drawable\options_green_icon.png" />
+    <BundleResource Include="Resources\drawable\options_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\options_white_icon.png" />
+    <BundleResource Include="Resources\drawable\others_green_icon.png" />
+    <BundleResource Include="Resources\drawable\others_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\pending_journey_icon.png" />
+    <BundleResource Include="Resources\drawable\phone_green_icon.png" />
+    <BundleResource Include="Resources\drawable\phone_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\play_green_icon.png" />
+    <BundleResource Include="Resources\drawable\plus_mark_green_icon.png" />
+    <BundleResource Include="Resources\drawable\preferences_green_icon.png" />
+    <BundleResource Include="Resources\drawable\profile_green_icon.png" />
+    <BundleResource Include="Resources\drawable\profile_photo_big_img.png" />
+    <BundleResource Include="Resources\drawable\profile_photo_img.png" />
+    <BundleResource Include="Resources\drawable\profile_white_icon.png" />
+    <BundleResource Include="Resources\drawable\provider_active_icon.png" />
+    <BundleResource Include="Resources\drawable\provider_normal_icon.png" />
+    <BundleResource Include="Resources\drawable\question_mark_green_icon.png" />
+    <BundleResource Include="Resources\drawable\question_mark_small_green_icon.png" />
+    <BundleResource Include="Resources\drawable\question_mark_white_icon.png" />
+    <BundleResource Include="Resources\drawable\radio_btn_active_icon.png" />
+    <BundleResource Include="Resources\drawable\radio_btn_normal_icon.png" />
+    <BundleResource Include="Resources\drawable\sad_face_green_icon.png" />
+    <BundleResource Include="Resources\drawable\sad_face_white_icon.png" />
+    <BundleResource Include="Resources\drawable\search_lightgrey_icon.png" />
+    <BundleResource Include="Resources\drawable\settings_green_icon.png" />
+    <BundleResource Include="Resources\drawable\settings_white_icon.png" />
+    <BundleResource Include="Resources\drawable\signout_green_big_icon.png" />
+    <BundleResource Include="Resources\drawable\signout_green_icon.png" />
+    <BundleResource Include="Resources\drawable\signout_white_icon.png" />
+    <BundleResource Include="Resources\drawable\smscode_green_icon.png" />
+    <BundleResource Include="Resources\drawable\star_white_filled_icon.png" />
+    <BundleResource Include="Resources\drawable\star_white_outline_icon.png" />
+    <BundleResource Include="Resources\drawable\thumbsdown_green_icon.png" />
+    <BundleResource Include="Resources\drawable\thumbsdown_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\thumbsup_green_icon.png" />
+    <BundleResource Include="Resources\drawable\thumbsup_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\thumbsup_white_small_icon.png" />
+    <BundleResource Include="Resources\drawable\tick_mark_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\time_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\tracking_active_icon.png" />
+    <BundleResource Include="Resources\drawable\tracking_normal_icon.png" />
+    <BundleResource Include="Resources\drawable\train_green_icon.png" />
+    <BundleResource Include="Resources\drawable\train_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\trans_green_icon.png" />
+    <BundleResource Include="Resources\drawable\trans_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\trans_lightgrey_icon.png" />
+    <BundleResource Include="Resources\drawable\trans_white_icon.png" />
+    <BundleResource Include="Resources\drawable\truck_green_icon.png" />
+    <BundleResource Include="Resources\drawable\truck_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\twitter_icon.png" />
+    <BundleResource Include="Resources\drawable\user_account_green_icon.png" />
+    <BundleResource Include="Resources\drawable\userstatus_available_white_icon.png" />
+    <BundleResource Include="Resources\drawable\userstatus_notavailable_white_icon.png" />
+    <BundleResource Include="Resources\drawable\video_green_icon.png" />
+    <BundleResource Include="Resources\drawable\video_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\whistle_green_icon.png" />
+    <BundleResource Include="Resources\drawable\whistle_logo_small.png" />
+    <BundleResource Include="Resources\drawable\whistle_white_icon.png" />
+    <BundleResource Include="Resources\drawable\whistler_alert_green_icon.png" />
+    <BundleResource Include="Resources\drawable\whistlers_pin_blue_icon.png" />
+    <BundleResource Include="Resources\drawable\whistlers_pin_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\whistlers_pin_lightgrey_icon.png" />
+    <BundleResource Include="Resources\drawable\whistlers_pin_red_icon.png" />
+    <BundleResource Include="Resources\drawable\wrong_lock_white_icon.png" />
+    <BundleResource Include="Resources\drawable\about_green_icon.png" />
+    <BundleResource Include="Resources\drawable\about_white_icon.png" />
+    <BundleResource Include="Resources\drawable\agree_terms_green_icon.png" />
+    <BundleResource Include="Resources\drawable\auto_green_icon.png" />
+    <BundleResource Include="Resources\drawable\auto_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\back_arrow_white_icon.png" />
+    <BundleResource Include="Resources\drawable\bike_green_icon.png" />
+    <BundleResource Include="Resources\drawable\bike_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\bus_green_icon.png" />
+    <BundleResource Include="Resources\drawable\bus_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\camera_active_icon.png" />
+    <BundleResource Include="Resources\drawable\camera_normal_icon.png" />
+    <BundleResource Include="Resources\drawable\camera_white_icon.png" />
+    <BundleResource Include="Resources\drawable\cancelled_journey_icon.png" />
+    <BundleResource Include="Resources\drawable\car_green_icon.png" />
+    <BundleResource Include="Resources\drawable\car_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\chat_green_icon.png" />
+    <BundleResource Include="Resources\drawable\chat_grey_icon.png" />
+    <BundleResource Include="Resources\drawable\check_mark_green_icon.png" />
+    <BundleResource Include="Resources\drawable\check_mark_white_icon.png" />
+    <BundleResource Include="Resources\drawable\check_mark_white_small_icon.png" />
+    <BundleResource Include="Resources\drawable\checked_lock_green_icon.png" />
+    <BundleResource Include="Resources\drawable\checked_lock_small_green_icon.png" />
+    <BundleResource Include="Resources\drawable\completed_journey_icon.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

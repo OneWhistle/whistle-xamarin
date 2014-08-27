@@ -199,6 +199,9 @@
     <BundleResource Include="Resources\Layout\UserType.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
+    <BundleResource Include="Resources\Layout\ForgetPassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -494,6 +497,11 @@
     <BundleResource Include="Resources\drawable\checked_lock_green_icon.png" />
     <BundleResource Include="Resources\drawable\checked_lock_small_green_icon.png" />
     <BundleResource Include="Resources\drawable\completed_journey_icon.png" />
+    <AndroidResource Include="Resources\drawable\rounded_button_corner.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <BundleResource Include="Resources\Layout\whistle_action_bar.xml" />
+    <AndroidResource Include="Resources\drawable\rounded_corner_edittext.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

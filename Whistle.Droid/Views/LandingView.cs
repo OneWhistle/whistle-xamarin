@@ -5,17 +5,15 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Whistle.Droid.Views
 {
-    using System;
     using Android.App;
     using Android.OS;
     using Android.Widget;
     using Cirrious.MvvmCross.Droid.Views;
-    using Whistle.Core.ViewModels;
 
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(Label = "View for LandingView")]
+    [Activity(Label = "View for LandingView", NoHistory = true)]
     public class LandingView : MvxActivity
     {
         /// <summary>
@@ -25,11 +23,20 @@ namespace Whistle.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            this.SetContentView(Resource.Layout.SplashScreen);
-           // ActionBar.Hide();
-            
+            this.SetContentView(Resource.Layout.Landing);
+
+            ///we'll remove the code below, when the mainView 
+            /// will be upgraded using mvvmcross
+            System.EventHandler actionHanding = (sender, args) =>
+                {
+                    StartActivity(typeof(Whistle.Droid.Fragments.MenuFragmentActivity));
+                };
+            var registrationButton = FindViewById<Button>(Resource.Id.btnRegister);
+            var signInButton = FindViewById<Button>(Resource.Id.btnSignIn);
+            signInButton.Click += actionHanding;
+            registrationButton.Click += actionHanding;
         }
 
-       
+
     }
 }

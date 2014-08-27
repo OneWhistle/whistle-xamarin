@@ -1,8 +1,6 @@
 using Android.App;
 using Android.Content.PM;
-using Android.OS;
 using Cirrious.MvvmCross.Droid.Views;
-using Java.Lang;
 
 namespace Whistle.Droid
 {
@@ -13,20 +11,11 @@ namespace Whistle.Droid
 		, Theme = "@style/Theme.Splash"
 		, NoHistory = true
 		, ScreenOrientation = ScreenOrientation.Portrait)]
-    public class SplashScreen : Activity
+    public class SplashScreen : MvxSplashScreenActivity
     {
-        //public SplashScreen()
-        //    : base(Resource.Layout.SplashScreen)
-        //{
-        //}
-
-        protected async override void OnCreate(Bundle bundle)
-        {            
-            base.OnCreate(bundle);
-            SetContentView(Resource.Layout.SplashScreen);
-
-            await System.Threading.Tasks.Task.Delay(6000); // Simulate a long loading process on app startup.
-            StartActivity(typeof(LandingActivity));
+        public SplashScreen()
+            : base(Resource.Layout.SplashScreen)
+        {
         }
     }
 }

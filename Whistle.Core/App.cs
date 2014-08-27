@@ -12,7 +12,7 @@ namespace Whistle.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 				
-            //RegisterAppStart<LandingViewModel>();
+            RegisterAppStart<LandingViewModel>();
         }
     }
 }

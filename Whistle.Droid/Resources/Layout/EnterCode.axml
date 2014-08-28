@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="0dp"
+    android:orientation="vertical"
+    android:weightSum="8">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#3D474C"
+        android:gravity="center" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#3D474C"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/smscode_green_icon" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="5"
+        android:background="#3D474C"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:weightSum="7.3">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ENTER THE CODE"
+            android:textColor="#09AA82"
+            android:textSize="24sp" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="We'll send you a  4 digit SMS code."
+            android:textColor="#FFFFFF" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="-10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Please enter it."
+            android:textColor="#FFFFFF" />
+        <EditText
+            android:id="@+id/txtSmsCode"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/rounded_corner_edittext"
+            android:hint="ENTER CODE"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:textColorHint="#000000"
+            android:textSize="14sp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight=".8"
+            android:background="#3D474C"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:gravity="center"
+                android:text="ENTERED A WRONG MOBILE NUMBER?"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text=" TAP HERE"
+                android:textColor="#00CD98" />
+        </LinearLayout>
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:text="DIDN'T GET AN SMS"
+            android:textColor="#00CD98"
+            android:layout_weight=".8"
+            android:gravity="center" />
+        <Button
+            android:id="@+id/btnResendCode"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1.5"
+            android:background="@drawable/rounded_button_corner"
+            android:gravity="center"
+            android:text="RESEND THE CODE"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#3D474C"
+        android:gravity="center" />
+</LinearLayout>

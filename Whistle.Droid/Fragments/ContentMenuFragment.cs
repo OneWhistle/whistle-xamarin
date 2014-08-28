@@ -7,6 +7,7 @@ using Android.Widget;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Binding.Droid.Views;
 using Cirrious.MvvmCross.Droid.Fragging.Fragments;
+using Whistle.Core.Modal;
 using Whistle.Droid.Adepters;
 
 namespace Whistle.Droid.Fragments
@@ -25,20 +26,23 @@ namespace Whistle.Droid.Fragments
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.List, null);
             listView = view.FindViewById<ListView>(Resource.Id.listMenu);
+            
             listView.ItemClick += OnListItemClick;
-            //OnListItemClick;
             return view;
         }
-  
+        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+        }
         public override void OnActivityCreated(Bundle p0)
         {
             base.OnActivityCreated(p0);
 
-            var colorAdapter = new MenuAdapter(Activity.ApplicationContext); //new ArrayAdapter<string>(Activity, Android.Resource.Layout.SimpleListItem1, Android.Resource.Id.Text1, new List<string>() { "R", "RR", "RRR", "RRRR" });
+            var menuAdapter = new MenuAdapter(Activity.ApplicationContext); 
             newContent = new WhistleFragment(); // hum hum....
             SwitchFragment(newContent);
            
-            listView.Adapter = colorAdapter;
+            listView.Adapter = menuAdapter;
             
         }
 

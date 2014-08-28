@@ -1,5 +1,9 @@
+using System;
+using Android.Content;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using Cirrious.MvvmCross.Droid.Fragging;
 using SlidingMenuSharp;
 using SlidingMenuSharp.App;
@@ -105,5 +109,9 @@ namespace Whistle.Droid
         }
 
         public abstract void SwitchContent(Android.Support.V4.App.Fragment fragment);
+
+       
     }
+
+
 }

@@ -131,6 +131,7 @@
     <Compile Include="Fragments\SignOutFragment.cs" />
     <Compile Include="Fragments\WhistleFragment.cs" />
     <Compile Include="Fragments\WhistleWorkFragment.cs" />
+    <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -141,6 +142,11 @@
     <Compile Include="Views\MainView.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Bold.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Extrabold.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Light.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Regular.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Semibold.otf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -193,9 +199,9 @@
     <AndroidResource Include="Resources\Layout\WhistleWork.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\UserType.axml">
+    <AndroidResource Include="Resources\Layout\UserType.axml">
       <SubType>AndroidResource</SubType>
-    </BundleResource>
+    </AndroidResource>
     <BundleResource Include="Resources\Layout\ForgetPassword.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
@@ -227,7 +233,6 @@
     <AndroidResource Include="Resources\anim\basket_in.xml" />
     <AndroidResource Include="Resources\anim\enter.xml" />
     <AndroidResource Include="Resources\anim\exit.xml" />
-    <AndroidResource Include="Resources\anim\product_detail_in.xml" />
     <AndroidResource Include="Resources\anim\product_detail_out.xml" />
     <AndroidResource Include="Resources\drawable\whistle_logo_big.png" />
     <AndroidResource Include="Resources\drawable-hdpi\provider_active_icon.png" />
@@ -499,6 +504,9 @@
     </AndroidResource>
     <BundleResource Include="Resources\Layout\whistle_action_bar.xml" />
     <AndroidResource Include="Resources\drawable\rounded_corner_edittext.xml" />
+    <AndroidResource Include="Resources\drawable\transparent.png" />
+    <AndroidResource Include="Resources\anim\popup_show.xml" />
+    <AndroidResource Include="Resources\anim\popup_hide.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

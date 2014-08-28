@@ -9,6 +9,7 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Whistle.Core.Modal;
 using Whistle.Droid.Adepters;
 using Fragment = Android.Support.V4.App.Fragment;
 
@@ -36,6 +37,8 @@ namespace Whistle.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = inflater.Inflate(Resource.Layout.Menu, container, false);
+
+            
 
             #region Finding Menu View and Init their Click Event
 
@@ -89,7 +92,7 @@ namespace Whistle.Droid.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            
+            UIHelper.ApplyFont(view.Context, view, Constants.FontProximaNovaRegular);
         }
 
         #endregion

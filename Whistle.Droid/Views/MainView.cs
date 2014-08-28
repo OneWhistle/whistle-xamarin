@@ -30,8 +30,6 @@ namespace Whistle.Droid.Views
 
             if (null != savedInstanceState)
                 _content = SupportFragmentManager.GetFragment(savedInstanceState, "_content");
-            //if (null == _content)
-            //    _content = new ContentFragment(Resource.Color.red);
 
             SetContentView(Resource.Layout.Main);
 
@@ -40,8 +38,6 @@ namespace Whistle.Droid.Views
                     .BeginTransaction()
                     .Replace(Resource.Id.contentArea, _content)
                     .Commit();
-
-
             SetBehindContentView(Resource.Layout.MenuHolder);
             SupportFragmentManager
                 .BeginTransaction()
@@ -51,12 +47,10 @@ namespace Whistle.Droid.Views
             SlidingMenu.TouchModeAbove = SlidingMenuSharp.TouchMode.Fullscreen;
         }
 
-
         protected override void OnSaveInstanceState(Bundle outState)
         {
             base.OnSaveInstanceState(outState);
             SupportFragmentManager.PutFragment(outState, "_content", _content);
-
         }
 
         public override void SwitchContent(Android.Support.V4.App.Fragment fragment)

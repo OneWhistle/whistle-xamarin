@@ -5,10 +5,16 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Whistle.Droid.Views
 {
+    using System;
     using Android.App;
+    using Android.Content;
+    using Android.Graphics;
+    using Android.Graphics.Drawables;
     using Android.OS;
+    using Android.Views;
     using Android.Widget;
     using Cirrious.MvvmCross.Droid.Views;
+    using Whistle.Core.Modal;
 
     /// <summary>
     /// Defines the LandingView type.
@@ -29,13 +35,14 @@ namespace Whistle.Droid.Views
             var signInButton = FindViewById<Button>(Resource.Id.btnSignIn);
             signInButton.Click += _clickAction;
             registrationButton.Click += _clickAction;
+            
         }
 
         void _clickAction(object sender, System.EventArgs e)
         {
-            (this.ViewModel as Whistle.Core.ViewModels.LandingViewModel).Show();            
+            (this.ViewModel as Whistle.Core.ViewModels.LandingViewModel).Show();
+          
         }
-
-
+       
     }
 }

@@ -52,9 +52,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>Full</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <AndroidLinkSkip>Mono.Android.Export</AndroidLinkSkip>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
@@ -142,11 +141,11 @@
     <Compile Include="Views\MainView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Bold.otf" />
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Extrabold.otf" />
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Light.otf" />
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Regular.otf" />
     <AndroidAsset Include="Assets\fonts\ProximaNova-Semibold.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Regular.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Light.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Extrabold.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Bold.otf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -199,9 +198,9 @@
     <AndroidResource Include="Resources\Layout\WhistleWork.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\UserType.axml">
+    <BundleResource Include="Resources\Layout\UserType.axml">
       <SubType>AndroidResource</SubType>
-    </AndroidResource>
+    </BundleResource>
     <BundleResource Include="Resources\Layout\ForgetPassword.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
@@ -504,9 +503,9 @@
     </AndroidResource>
     <BundleResource Include="Resources\Layout\whistle_action_bar.xml" />
     <AndroidResource Include="Resources\drawable\rounded_corner_edittext.xml" />
-    <AndroidResource Include="Resources\drawable\transparent.png" />
-    <AndroidResource Include="Resources\anim\popup_show.xml" />
     <AndroidResource Include="Resources\anim\popup_hide.xml" />
+    <AndroidResource Include="Resources\anim\popup_show.xml" />
+    <AndroidResource Include="Resources\drawable\transparent.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

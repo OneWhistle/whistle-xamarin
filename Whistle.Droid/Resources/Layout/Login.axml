@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -55,6 +56,7 @@
         android:orientation="horizontal">
         <EditText
             android:id="@+id/editEmail"
+            local:MvxBind="Text UserName"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:hint="USERNAME@EXAMPLE.COM"
@@ -79,6 +81,7 @@
             android:id="@+id/editPassword"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            local:MvxBind="Text Password"
             android:hint="PASSWORD"
             android:textColorHint="#FFFFFF"
             android:layout_gravity="center_vertical"
@@ -111,10 +114,10 @@
         android:layout_weight=".75"
         android:background="#00CD98"
         android:gravity="center">
-        <ImageView
+        <Button
+            local:MvxBind="Click CheckLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="FORGOT PASSWORD"
             android:src="@drawable/check_mark_white_small_icon" />
     </LinearLayout>
     <LinearLayout

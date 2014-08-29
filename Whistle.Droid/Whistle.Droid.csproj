@@ -54,8 +54,9 @@
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>Full</AndroidLinkMode>
-    <AndroidLinkSkip>Mono.Android.Export</AndroidLinkSkip>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
@@ -90,6 +91,9 @@
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
+      <HintPath>..\..\..\raygun4net-2.0.6\lib\android\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
@@ -205,6 +209,16 @@
     <BundleResource Include="Resources\Layout\ForgetPassword.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
+    <BundleResource Include="Resources\Layout\ResetPassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ChangePassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\EnterCode.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <AndroidResource Include="Resources\Layout\LandingView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">

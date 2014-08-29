@@ -14,6 +14,24 @@ namespace Whistle.Core.ViewModels
     public class LandingViewModel : BaseViewModel
     {
 
+
+        #region Properties
+
+        private string userName;
+        public string UserName
+        {
+            get { return userName; }
+            set { userName = value; RaisePropertyChanged("UserName"); }
+        }
+
+        private string password;
+        public string Password
+        {
+            get { return password; }
+            set { password = value; RaisePropertyChanged("Password"); }
+        }
+        #endregion
+
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
@@ -31,12 +49,20 @@ namespace Whistle.Core.ViewModels
             get { return this.mainViewCommand ?? (this.mainViewCommand = new MvxCommand(this.Show)); }
         }
 
+        private ICommand checkLogin;
+
+        public ICommand CheckLogin
+        {
+            get { return this.checkLogin ?? (this.checkLogin = new MvxCommand(this.Show)); }
+        }
+
         /// <summary>
         /// Show the view model.
         /// </summary>
         public void Show()
         {
-            this.ShowViewModel<MainViewModel>();
+            if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
+                this.ShowViewModel<MainViewModel>();
         }
     }
 }

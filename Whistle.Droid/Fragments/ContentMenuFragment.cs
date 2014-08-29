@@ -41,7 +41,6 @@ namespace Whistle.Droid.Fragments
             var menuAdapter = new MenuAdapter(Activity.ApplicationContext); 
             newContent = new WhistleFragment(); // hum hum....
             SwitchFragment(newContent);
-           
             listView.Adapter = menuAdapter;
             
         }

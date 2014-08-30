@@ -116,10 +116,10 @@
         android:layout_height="0dp"
         android:layout_width="fill_parent"
         android:layout_weight=".75"
+        local:MvxBind="Click UserAction, CommandParameter=ACTION_LOGIN_VALIDATE"
         android:background="#00CD98"
         android:gravity="center">
         <ImageButton
-            local:MvxBind="Click UserAction, CommandParameter=ACTION_LOGIN_VALIDATE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/check_mark_white_small_icon" />

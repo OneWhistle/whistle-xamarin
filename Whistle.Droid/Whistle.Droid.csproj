@@ -194,6 +194,7 @@
     <AndroidResource Include="Resources\Layout\MenuHolder.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\Layout\ServiceOptions.axml" />
     <AndroidResource Include="Resources\Layout\SplashScreen.axml" />
     <AndroidResource Include="Resources\Layout\List.axml">
       <SubType>AndroidResource</SubType>
@@ -229,14 +230,9 @@
       <SubType>AndroidResource</SubType>
     </BundleResource>
     <AndroidResource Include="Resources\Layout\LandingView.axml" />
-<<<<<<< HEAD
     <BundleResource Include="Resources\Layout\Whistlers.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
-    <BundleResource Include="Resources\Layout\ServiceOptions.axml" />
-=======
-    <AndroidResource Include="Resources\Layout\ServiceOptions.axml" />
->>>>>>> 34b7f40be45a16383ae3d695ac8d46dff6537b0b
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">

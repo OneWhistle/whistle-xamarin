@@ -48,7 +48,7 @@ namespace Whistle.Core.ViewModels
         /// Note the ViewModel inside of ShowViewModel needs to change!
         /// </para>
         /// </summary>
-        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand <string>(onUserAction)); } }
+        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
 
         private ICommand checkLogin;
 
@@ -62,8 +62,8 @@ namespace Whistle.Core.ViewModels
         /// </summary>
         public void Show()
         {
-            if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
-                this.ShowViewModel<MainViewModel>();
+            // if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
+            this.ShowViewModel<MainViewModel>();
         }
 
         private void onUserAction(string action)
@@ -71,7 +71,17 @@ namespace Whistle.Core.ViewModels
             var messenger = Mvx.Resolve<IMvxMessenger>();
             if (!LandingConstants.ActionList.Contains(action))
                 throw new InvalidOperationException();
-            messenger.Publish(new LandingMessage(this, action));
+            switch (action)
+            {
+                case LandingConstants.ACTION_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_REGISTER_CONTINUE:
+                case LandingConstants.ACTION_REGISTER_DONE:
+                    this.Show();
+                    break;
+                default:
+                    messenger.Publish(new LandingMessage(this, action));
+                    break;
+            }
         }
     }
 }

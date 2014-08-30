@@ -18,17 +18,18 @@ namespace Whistle.Droid.Views
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class LandingView : MvxFragmentActivity
     {
         IMvxMessenger _messenger;
+        MvxSubscriptionToken _subscriptionToken;
 
         int baseFragment;
         protected override void OnViewModelSet()
         {
             base.OnViewModelSet();
             _messenger = Mvx.Resolve<IMvxMessenger>();
-            _messenger.SubscribeOnMainThread<LandingMessage>(onReceive);
+            _subscriptionToken = _messenger.SubscribeOnMainThread<LandingMessage>(onReceive);
         }
 
         protected void onReceive(LandingMessage message)
@@ -41,6 +42,10 @@ namespace Whistle.Droid.Views
                 case LandingConstants.ACTION_SIGNIN:
                     SwitchScreen(new GenericFragment(Resource.Layout.Login) { ViewModel = this.ViewModel });
                     break;
+                case LandingConstants.ACTION_FORGOT_PASSWORD:
+                    SwitchScreen(new GenericFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel });
+                    break;
+                    // Others are handled by the view model
                 default:
                     break;
             }
@@ -52,18 +57,27 @@ namespace Whistle.Droid.Views
         /// <param name="bundle">The bundle.</param>
         protected override void OnCreate(Bundle bundle)
         {
-            
             this.SetContentView(Resource.Layout.LandingView);
-
-            SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel });
             base.OnCreate(bundle);
         }
 
-        protected int SwitchScreen(MvxFragment fragment)
+        protected override void OnResumeFragments()
         {
-            var transaction = SupportFragmentManager.BeginTransaction();
-            transaction.Replace(Resource.Id.contentFrame, fragment); // need to add first view
-            return transaction.Commit();
+            base.OnResumeFragments();
+            SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel });
+        }
+
+        protected void SwitchScreen(MvxFragment fragment)
+        {
+            SupportFragmentManager.BeginTransaction()
+                 .Replace(Resource.Id.contentFrame, fragment)
+                 .Commit();
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            _messenger.Unsubscribe<LandingMessage>(_subscriptionToken);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -73,10 +87,7 @@ namespace Whistle.Droid.Views
         }
 
 
-        protected override void OnResumeFragments()
-        {
-            base.OnResumeFragments();
-        }
+
 
 
         protected override void OnRestoreInstanceState(Bundle savedInstanceState)

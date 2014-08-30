@@ -7,6 +7,10 @@ namespace Whistle.Core.ViewModels
 {
     using System.Windows.Input;
     using Cirrious.MvvmCross.ViewModels;
+    using Cirrious.CrossCore;
+    using Cirrious.MvvmCross.Plugins.Messenger;
+    using System.Linq;
+    using System;
 
     /// <summary>
     /// Define the LandingViewModel type.
@@ -35,7 +39,7 @@ namespace Whistle.Core.ViewModels
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
-        private MvxCommand mainViewCommand;
+        private MvxCommand<string> userAction;
 
         /// <summary>
         /// Gets My Command.
@@ -44,10 +48,7 @@ namespace Whistle.Core.ViewModels
         /// Note the ViewModel inside of ShowViewModel needs to change!
         /// </para>
         /// </summary>
-        public ICommand MainViewCommand
-        {
-            get { return this.mainViewCommand ?? (this.mainViewCommand = new MvxCommand(this.Show)); }
-        }
+        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand <string>(onUserAction)); } }
 
         private ICommand checkLogin;
 
@@ -63,6 +64,14 @@ namespace Whistle.Core.ViewModels
         {
             if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
                 this.ShowViewModel<MainViewModel>();
+        }
+
+        private void onUserAction(string action)
+        {
+            var messenger = Mvx.Resolve<IMvxMessenger>();
+            if (!LandingConstants.ActionList.Contains(action))
+                throw new InvalidOperationException();
+            messenger.Publish(new LandingMessage(this, action));
         }
     }
 }

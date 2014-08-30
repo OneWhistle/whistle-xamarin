@@ -20,5 +20,10 @@ namespace Whistle.Droid
         {
             return new DebugTrace();
         }
+        public override void LoadPlugins(Cirrious.CrossCore.Plugins.IMvxPluginManager pluginManager)
+        {
+            pluginManager.EnsurePluginLoaded<Cirrious.MvvmCross.Plugins.Messenger.PluginLoader>();
+            base.LoadPlugins(pluginManager);
+        }
     }
 }

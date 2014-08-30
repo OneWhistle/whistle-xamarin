@@ -10,7 +10,9 @@ namespace Whistle.Core
         public const string ACTION_REGISTER_CONTINUE = "ACTION_REGISTER_CONTINUE";
         public const string ACTION_REGISTER_DONE = "ACTION_REGISTER_DONE";
         public const string ACTION_LOGIN_VALIDATE = "ACTION_LOGIN_VALIDATE";
-
+        public const string ACTION_FB_LOGIN_VALIDATE = "ACTION_FB_LOGIN_VALIDATE";
+        public const string ACTION_TWITTER_LOGIN_VALIDATE = "ACTION_TWITTER_LOGIN_VALIDATE";
+        public const string ACTION_GOOGLE_LOGIN_VALIDATE = "ACTION_GOOGLE_LOGIN_VALIDATE";
         internal static readonly string[] ActionList = new[]
         {
             ACTION_LOGIN_VALIDATE,
@@ -18,7 +20,10 @@ namespace Whistle.Core
             ACTION_REGISTER_CONTINUE,
             ACTION_REGISTER_DONE,
             ACTION_REGISTER,
-            ACTION_SIGNIN
+            ACTION_SIGNIN,
+            ACTION_TWITTER_LOGIN_VALIDATE,
+            ACTION_GOOGLE_LOGIN_VALIDATE,
+            ACTION_FB_LOGIN_VALIDATE
         };
     }
 

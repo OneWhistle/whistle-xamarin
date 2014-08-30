@@ -229,6 +229,10 @@
       <SubType>AndroidResource</SubType>
     </BundleResource>
     <AndroidResource Include="Resources\Layout\LandingView.axml" />
+    <BundleResource Include="Resources\Layout\Whistlers.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ServiceOptions.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -533,15 +537,12 @@
     <AndroidResource Include="Resources\drawable\transparent.png" />
     <AndroidResource Include="Resources\anim\popup_show.xml" />
     <AndroidResource Include="Resources\anim\popup_hide.xml" />
-<<<<<<< HEAD
     <AndroidResource Include="Resources\drawable\upper.png" />
     <AndroidResource Include="Resources\drawable\lower.png" />
     <AndroidResource Include="Resources\drawable-hdpi\upper.png" />
     <AndroidResource Include="Resources\drawable-hdpi\lower.png" />
     <AndroidResource Include="Resources\drawable\mapdummy.png" />
-=======
     <AndroidResource Include="Resources\values\Attrs.xml" />
->>>>>>> 5fcc5c24b8a19f850d444440f7839ab15f0c05e7
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

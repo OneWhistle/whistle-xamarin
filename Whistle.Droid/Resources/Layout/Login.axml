@@ -154,17 +154,20 @@
                 android:id="@+id/btnFacebook"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_FB_LOGIN_VALIDATE"
                 android:background="@drawable/facebook_icon" />
             <Button
                 android:id="@+id/btnTwitter"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_TWITTER_LOGIN_VALIDATE"
                 android:background="@drawable/twitter_icon"
                 android:layout_marginLeft="20dp" />
             <Button
                 android:id="@+id/btnGoogle"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_GOOGLE_LOGIN_VALIDATE"
                 android:background="@drawable/googleplus_icon"
                 android:layout_marginLeft="20dp" />
         </LinearLayout>

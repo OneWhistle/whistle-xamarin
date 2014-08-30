@@ -22,18 +22,29 @@ namespace Whistle.Core.ViewModels
         #region Properties
 
         private string userName;
+
         public string UserName
         {
             get { return userName; }
-            set { userName = value; RaisePropertyChanged("UserName"); }
+            set
+            {
+                userName = value;
+                RaisePropertyChanged("UserName");
+            }
         }
 
         private string password;
+
         public string Password
         {
             get { return password; }
-            set { password = value; RaisePropertyChanged("Password"); }
+            set
+            {
+                password = value;
+                RaisePropertyChanged("Password");
+            }
         }
+
         #endregion
 
         /// <summary>
@@ -48,7 +59,10 @@ namespace Whistle.Core.ViewModels
         /// Note the ViewModel inside of ShowViewModel needs to change!
         /// </para>
         /// </summary>
-        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); } }
+        public ICommand UserAction
+        {
+            get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); }
+        }
 
         private ICommand checkLogin;
 
@@ -74,6 +88,17 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
+                    this.Show();
+                    break;
+                case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
+                    this.Show();
+                    break;
+                case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
+                    this.Show();
+                    break;
+                case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
+                    this.Show();
+                    break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                 case LandingConstants.ACTION_REGISTER_DONE:
                     this.Show();

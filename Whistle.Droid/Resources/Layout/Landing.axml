@@ -9,33 +9,28 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
+        <whistle.droid.views.WhistleTextView
             android:id="@+id/txtWhistleMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="WHISTLE"
             android:textColor="#000000"
             android:textSize="24dp"
+            android:textStyle="bold"
+            local:customFont="fonts/ProximaNova-Bold.otf"
             android:layout_gravity="center"
             android:layout_marginTop="20dp" />
-        <TextView
+        <whistle.droid.views.WhistleTextView
             android:id="@+id/txtWhistleMessage1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="EVERY ONE'S NEW WAY OF"
+            android:text="EVERY ONE'S NEW WAY OF\r\nTRAVELING!"
+            local:customFont="fonts/ProximaNova-Light.otf"
             android:textColor="#000000"
             android:textSize="16dp"
+            android:gravity="center"
             android:layout_gravity="center"
             android:layout_marginTop="10dp" />
-        <TextView
-            android:id="@+id/txtWhistleMessage2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TRAVELING!"
-            android:textColor="#000000"
-            android:textSize="16dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="0dp" />
         <ImageView
             android:id="@+id/imgView"
             android:layout_width="wrap_content"
@@ -50,22 +45,26 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#EEF0FF">
-        <Button
+        <whistle.droid.views.WhistleButton
             android:layout_width="0dp"
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER"
+            local:customFont="fonts/ProximaNova-Regular.otf"
             android:layout_height="50dp"
-            android:text="Register"
+            android:text="REGISTER"
             android:textColor="#FFFFFF"
             android:textSize="14dp"
             android:layout_weight="0.5"
+            android:gravity="center"
             android:background="#3D3F47" />
-        <Button
+        <whistle.droid.views.WhistleButton
             local:MvxBind="Click UserAction, CommandParameter=ACTION_SIGNIN"
+            local:customFont="fonts/ProximaNova-Regular.otf"
             android:layout_width="0dp"
             android:layout_height="50dp"
-            android:text="Sign IN"
+            android:text="SIGN IN"
             android:textColor="#FFFFFF"
             android:textSize="14dp"
+            android:gravity="center"
             android:layout_weight="0.5"
             android:background="#00CD98" />
     </LinearLayout>

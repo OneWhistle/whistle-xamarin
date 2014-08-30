@@ -3,34 +3,53 @@
 //    Defines the LandingView type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
-
-using Android.Util;
-
 namespace Whistle.Droid.Views
 {
-    using System;
     using Android.App;
-    using Android.Content;
-    using Android.Graphics;
-    using Android.Graphics.Drawables;
+    using Android.Content.PM;
     using Android.OS;
-    using Android.Views;
-    using Android.Widget;
+    using Cirrious.CrossCore;
     using Cirrious.MvvmCross.Droid.Fragging;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
-    using Cirrious.MvvmCross.Droid.Views;
-    using Whistle.Core.Modal;
-    using Whistle.Core.ViewModels;
+    using Cirrious.MvvmCross.Plugins.Messenger;
+    using Whistle.Core;
     using Whistle.Droid.Fragments;
 
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(NoHistory = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
+    [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class LandingView : MvxFragmentActivity
     {
+        IMvxMessenger _messenger;
+        MvxSubscriptionToken _subscriptionToken;
 
         int baseFragment;
+        protected override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
+            _messenger = Mvx.Resolve<IMvxMessenger>();
+            _subscriptionToken = _messenger.SubscribeOnMainThread<LandingMessage>(onReceive);
+        }
+
+        protected void onReceive(LandingMessage message)
+        {
+            switch (message.UserAction)
+            {
+                case LandingConstants.ACTION_REGISTER:
+                    SwitchScreen(new GenericFragment(Resource.Layout.Registration) { ViewModel = this.ViewModel });
+                    break;
+                case LandingConstants.ACTION_SIGNIN:
+                    SwitchScreen(new GenericFragment(Resource.Layout.Login) { ViewModel = this.ViewModel });
+                    break;
+                case LandingConstants.ACTION_FORGOT_PASSWORD:
+                    SwitchScreen(new GenericFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel });
+                    break;
+                    // Others are handled by the view model
+                default:
+                    break;
+            }
+        }
 
         /// <summary>
         /// Called when [create].
@@ -38,68 +57,38 @@ namespace Whistle.Droid.Views
         /// <param name="bundle">The bundle.</param>
         protected override void OnCreate(Bundle bundle)
         {
-            RequestWindowFeature(WindowFeatures.NoTitle);
-            base.OnCreate(bundle);
             this.SetContentView(Resource.Layout.LandingView);
-
-            #region Landing Fragment Handling
-
-            try
-            {
-                var landingFragment = new LandingFragments(); //TODO: Need to add data
-                landingFragment.LandingButtonClick += AppEntry; // or not..:)
-                baseFragment = landingFragment.Id;
-                SwitchScreen(landingFragment, false, true);
-            }
-            catch (Exception ex)
-            {
-
-                throw;
-            }
-
-            #endregion
+            base.OnCreate(bundle);
         }
 
-        void _clickAction(object sender, System.EventArgs e)
+        protected override void OnResumeFragments()
         {
-            (this.ViewModel as Whistle.Core.ViewModels.LandingViewModel).Show();
+            base.OnResumeFragments();
+            SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel });
         }
 
-        void AppEntry(int screenID)
+        protected void SwitchScreen(MvxFragment fragment)
         {
-            switch (screenID)
-            {
-                case 0:
-                    var registrationFrag = new RegistrationFragment();
-                    registrationFrag.ViewModel = ((LandingViewModel) ViewModel);
-                    SwitchScreen(registrationFrag);
-                    break;
-                case 1:
-                    var loginFrag = new LoginFragments();
-                    loginFrag.SignUpButtonClick += AppEntry;
-                    loginFrag.ViewModel = ((LandingViewModel) ViewModel);
-                    SwitchScreen(loginFrag);
-                    break;
-                default:
-                    break;
-            }
+            SupportFragmentManager.BeginTransaction()
+                 .Replace(Resource.Id.contentFrame, fragment)
+                 .Commit();
         }
-        public int SwitchScreen(MvxFragment fragment, bool animated = true, bool isRoot = false)
+
+        protected override void OnDestroy()
         {
-            var transaction = SupportFragmentManager.BeginTransaction();
-           /* if (animated)
-            {
-                transaction.SetCustomAnimations(Resource.Animation.enter, Resource.Animation.exit);
-            }*/
-            transaction.Replace(Resource.Id.contentFrame, fragment); // need to add first view
-            return transaction.Commit();
+            base.OnDestroy();
+            _messenger.Unsubscribe<LandingMessage>(_subscriptionToken);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
         {
-            base.OnSaveInstanceState(outState);
             outState.PutInt("baseFragment", baseFragment);
+            base.OnSaveInstanceState(outState);
         }
+
+
+
+
 
         protected override void OnRestoreInstanceState(Bundle savedInstanceState)
         {

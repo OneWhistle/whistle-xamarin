@@ -92,8 +92,11 @@
     <Reference Include="Cirrious.MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
+    </Reference>
     <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
-      <HintPath>..\..\..\raygun4net-2.0.6\lib\android\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
+      <HintPath>..\packages\Mindscape.Raygun4Net.3.3.0\lib\MonoAndroid2.2\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
@@ -121,8 +124,10 @@
   <ItemGroup>
     <Compile Include="Activity\SlideFragmentActivity.cs" />
     <Compile Include="Adepters\MenuAdapter.cs" />
+    <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
+    <Compile Include="Fragments\GenericFragment.cs" />
     <Compile Include="Fragments\ContentFragment.cs" />
     <Compile Include="Fragments\ContentMenuFragment.cs" />
     <Compile Include="Fragments\EditFragment.cs" />
@@ -206,9 +211,9 @@
     <AndroidResource Include="Resources\Layout\UserType.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\ForgetPassword.axml">
+    <AndroidResource Include="Resources\Layout\ForgetPassword.axml">
       <SubType>AndroidResource</SubType>
-    </BundleResource>
+    </AndroidResource>
     <BundleResource Include="Resources\Layout\ResetPassword.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
@@ -235,7 +240,9 @@
     </Content>
     <AndroidResource Include="Resources\values\dimens.xml" />
     <AndroidResource Include="Resources\drawable\shadow.xml" />
-    <AndroidResource Include="Resources\values\themes.xml" />
+    <AndroidResource Include="Resources\values\themes.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />

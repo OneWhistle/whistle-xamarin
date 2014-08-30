@@ -45,6 +45,8 @@ namespace Whistle.Droid.Views
                 .Commit();
 
             SlidingMenu.TouchModeAbove = SlidingMenuSharp.TouchMode.Fullscreen;
+            SlidingMenu.BehindOffset = 80;
+            SlidingMenu.ShadowWidth = 20;
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

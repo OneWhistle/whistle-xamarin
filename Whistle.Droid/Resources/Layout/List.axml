@@ -14,6 +14,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#00CD98"
         android:padding="4dp" />
+<!--Text Format('HELLO! {0}', UserName)-->
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"

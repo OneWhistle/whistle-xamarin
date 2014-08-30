@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -235,40 +236,27 @@
         android:background="#9A9CA6"
         android:gravity="center" />
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1.1"
-        android:weightSum="2"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_height="fill_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="#EEF0FF">
+        <Button
+            local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_DONE"
             android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#00CD98"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="I'M DONE"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="fill_parent"
+            android:layout_height="50dp"
+            android:text="I'M DONE"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp"
+            android:layout_weight="0.5"
+            android:background="#00CD98" />
+        <Button
             android:layout_width="0dp"
-            android:layout_weight=".01"
-            android:background="#9A9CA6"
-            android:gravity="center" />
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#3D3F47"
-            android:gravity="center">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="CONTINUE"
-                android:textColor="#FFFFFF" />
-        </LinearLayout>
+            local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_CONTINUE"
+            android:layout_height="50dp"
+            android:text="Register"
+            android:textColor="#FFFFFF"
+            android:textSize="14dp"
+            android:layout_weight="0.5"
+            android:background="#3D3F47" />
     </LinearLayout>
 </LinearLayout>

@@ -61,7 +61,9 @@
             android:layout_height="fill_parent"
             android:hint="USERNAME@EXAMPLE.COM"
             android:layout_weight="1"
-            android:textColorHint="#FFFFFF"
+            android:background="@color/app_gray_color"
+            android:textColor="@color/default_text_color"
+            android:textColorHint="@color/default_text_color"
             android:layout_gravity="center_vertical"
             android:textSize="14sp" />
     </LinearLayout>
@@ -83,7 +85,9 @@
             android:layout_height="fill_parent"
             local:MvxBind="Text Password"
             android:hint="PASSWORD"
-            android:textColorHint="#FFFFFF"
+            android:background="@color/app_gray_color"
+            android:textColorHint="@color/default_text_color"
+            android:textColor="@color/default_text_color"
             android:layout_gravity="center_vertical"
             android:layout_weight=".80"
             android:textSize="14sp" />

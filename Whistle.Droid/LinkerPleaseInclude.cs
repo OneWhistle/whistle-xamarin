@@ -2,6 +2,7 @@ using System.Collections.Specialized;
 using System.Windows.Input;
 using Android.Views;
 using Android.Widget;
+using Cirrious.CrossCore.IoC;
 
 namespace Whistle.Droid
 {
@@ -9,6 +10,21 @@ namespace Whistle.Droid
     // are preserved in the deployed app
     public class LinkerPleaseInclude
     {
+        public void Include(MvxPropertyInjector injector)
+        {
+            injector = new MvxPropertyInjector();
+        }
+        public void Include(Whistle.Core.ViewModels.LandingViewModel injector)
+        {
+            injector = new Whistle.Core.ViewModels.LandingViewModel();
+        }
+        public void Include(Whistle.Core.ViewModels.MainViewModel injector)
+        {
+            injector = new Whistle.Core.ViewModels.MainViewModel();
+        }
+
+
+
         public void Include(Button button)
         {
             button.Click += (s,e) => button.Text = button.Text + "";
@@ -26,6 +42,7 @@ namespace Whistle.Droid
 
         public void Include(TextView text)
         {
+            text.Text = text.Text + "";
             text.TextChanged += (sender, args) => text.Text = "" + text.Text;
 			text.Hint = "" + text.Hint;
         }

@@ -7,10 +7,11 @@
     android:background="@drawable/main_menu_bg_img"
     android:id="@+id/FlyOutMenu"
     android:padding="4dp">
-    <TextView
+    <whistle.droid.views.WhistleTextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         local:MvxBind="Text Format('HELLO! {0}', UserName)"
+        local:customFont="fonts/ProximaNova-Bold.otf"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#00CD98"
         android:padding="4dp" />

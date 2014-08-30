@@ -47,6 +47,14 @@ namespace Whistle.Droid
 			text.Hint = "" + text.Hint;
         }
 
+        public void Include(Whistle.Droid.Views.WhistleTextView text)
+        {
+            text.Text = text.Text + "";
+            text.TextChanged += (sender, args) => text.Text = "" + text.Text;
+            text.Hint = "" + text.Hint;
+        }
+
+
         public void Include(CompoundButton cb)
         {
             cb.CheckedChange += (sender, args) => cb.Checked = !cb.Checked;

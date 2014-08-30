@@ -149,6 +149,8 @@
     <Compile Include="Views\BaseView.cs" />
     <Compile Include="Views\LandingView.cs" />
     <Compile Include="Views\MainView.cs" />
+    <Compile Include="Views\WhistleButton.cs" />
+    <Compile Include="Views\WhistleTextView.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\ProximaNova-Bold.otf" />
@@ -531,11 +533,15 @@
     <AndroidResource Include="Resources\drawable\transparent.png" />
     <AndroidResource Include="Resources\anim\popup_show.xml" />
     <AndroidResource Include="Resources\anim\popup_hide.xml" />
+<<<<<<< HEAD
     <AndroidResource Include="Resources\drawable\upper.png" />
     <AndroidResource Include="Resources\drawable\lower.png" />
     <AndroidResource Include="Resources\drawable-hdpi\upper.png" />
     <AndroidResource Include="Resources\drawable-hdpi\lower.png" />
     <AndroidResource Include="Resources\drawable\mapdummy.png" />
+=======
+    <AndroidResource Include="Resources\values\Attrs.xml" />
+>>>>>>> 5fcc5c24b8a19f850d444440f7839ab15f0c05e7
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

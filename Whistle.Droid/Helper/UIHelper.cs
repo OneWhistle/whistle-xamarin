@@ -93,7 +93,7 @@ namespace Whistle.Droid
      */
         public static void SetCustomFont(TextView textview, Context context, IAttributeSet attrs)
         {
-            TypedArray a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CustomFonts);
+            var a = context.ObtainStyledAttributes(attrs, Resource.Styleable.CustomFonts);
             var customFont = a.GetString(Resource.Styleable.CustomFonts_customFont);
             SetCustomFont(textview,customFont, context);
             a.Recycle();

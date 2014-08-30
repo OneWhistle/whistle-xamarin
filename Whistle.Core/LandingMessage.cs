@@ -10,6 +10,7 @@ namespace Whistle.Core
         public const string ACTION_REGISTER_CONTINUE = "ACTION_REGISTER_CONTINUE";
         public const string ACTION_REGISTER_DONE = "ACTION_REGISTER_DONE";
         public const string ACTION_LOGIN_VALIDATE = "ACTION_LOGIN_VALIDATE";
+        public const string ACTION_REGISTER_VALIDATE = "ACTION_REGISTER_VALIDATE";
 
         internal static readonly string[] ActionList = new[]
         {
@@ -17,6 +18,7 @@ namespace Whistle.Core
             ACTION_FORGOT_PASSWORD,
             ACTION_REGISTER_CONTINUE,
             ACTION_REGISTER_DONE,
+            ACTION_REGISTER_VALIDATE,
             ACTION_REGISTER,
             ACTION_SIGNIN
         };

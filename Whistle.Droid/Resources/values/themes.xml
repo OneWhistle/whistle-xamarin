@@ -16,7 +16,7 @@
 	<!-- Styles -->
 	<style name="XamActionBarTheme" parent="@android:style/Theme.Holo.Light">
 		<!--<item name="android:windowNoTitle">true</item>-->
-		<item name="android:actionBarStyle">@style/XamActionBarStyle</item>
+		<!--<item name="android:actionBarStyle">@style/XamActionBarStyle</item>-->
 		<!--<item name="android:windowBackground">@color/main_background</item>-->
 	</style>
 

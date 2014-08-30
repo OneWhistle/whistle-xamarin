@@ -17,6 +17,9 @@ namespace Whistle.Droid.Fragments
 {
     public class LoginFragments : MvxFragment
     {
+
+        public event Action<int> SignUpButtonClick = delegate { };
+
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -27,9 +30,18 @@ namespace Whistle.Droid.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-           // return inflater.Inflate(Resource.Layout.Login, container, false);
-            base.OnCreateView(inflater, container, savedInstanceState);
-            return this.BindingInflate(Resource.Layout.Login, null);
+          // return inflater.Inflate(Resource.Layout.Login, container, false);
+           var ignored = base.OnCreateView(inflater, container, savedInstanceState);
+            var view =this.BindingInflate(Resource.Layout.Login, null);
+            var registrationBotton = view.FindViewById<Button>(Resource.Id.btnRegister);
+            registrationBotton.Tag = 0;
+            registrationBotton.Click += registrationBotton_Click;
+            return view;
+        }
+
+        void registrationBotton_Click(object sender, EventArgs e)
+        {
+            SignUpButtonClick((int) ((Button) sender).Tag);
         }
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)

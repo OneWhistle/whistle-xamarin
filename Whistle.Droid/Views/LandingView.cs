@@ -3,6 +3,9 @@
 //    Defines the LandingView type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using Android.Util;
+
 namespace Whistle.Droid.Views
 {
     using System;
@@ -23,7 +26,7 @@ namespace Whistle.Droid.Views
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(NoHistory = true)]
+    [Activity(NoHistory = true, Theme = "@android:style/Theme.Holo.NoActionBar")]
     public class LandingView : MvxFragmentActivity
     {
 
@@ -35,6 +38,7 @@ namespace Whistle.Droid.Views
         /// <param name="bundle">The bundle.</param>
         protected override void OnCreate(Bundle bundle)
         {
+            RequestWindowFeature(WindowFeatures.NoTitle);
             base.OnCreate(bundle);
             this.SetContentView(Resource.Layout.LandingView);
 
@@ -66,14 +70,15 @@ namespace Whistle.Droid.Views
             switch (screenID)
             {
                 case 0:
-                    var RegistrationFrag = new RegistrationFragment();
-                    RegistrationFrag.ViewModel = ((LandingViewModel)ViewModel);
-                    SwitchScreen(RegistrationFrag);
+                    var registrationFrag = new RegistrationFragment();
+                    registrationFrag.ViewModel = ((LandingViewModel) ViewModel);
+                    SwitchScreen(registrationFrag);
                     break;
                 case 1:
-                    var LoginFrag = new LoginFragments();
-                    LoginFrag.ViewModel = ((LandingViewModel)ViewModel);
-                    SwitchScreen(LoginFrag);
+                    var loginFrag = new LoginFragments();
+                    loginFrag.SignUpButtonClick += AppEntry;
+                    loginFrag.ViewModel = ((LandingViewModel) ViewModel);
+                    SwitchScreen(loginFrag);
                     break;
                 default:
                     break;

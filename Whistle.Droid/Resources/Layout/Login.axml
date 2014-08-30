@@ -114,11 +114,11 @@
         android:layout_weight=".75"
         android:background="#00CD98"
         android:gravity="center">
-        <Button
+        <ImageButton
             local:MvxBind="Click CheckLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/check_mark_white_small_icon" />
+            android:background="@drawable/check_mark_white_small_icon" />
     </LinearLayout>
     <LinearLayout
         android:layout_height="0dp"

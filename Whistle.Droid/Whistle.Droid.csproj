@@ -517,7 +517,7 @@
     <BundleResource Include="Resources\drawable\bus_grey_icon.png" />
     <BundleResource Include="Resources\drawable\camera_active_icon.png" />
     <BundleResource Include="Resources\drawable\camera_normal_icon.png" />
-    <BundleResource Include="Resources\drawable\camera_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\camera_white_icon.png" />
     <BundleResource Include="Resources\drawable\cancelled_journey_icon.png" />
     <BundleResource Include="Resources\drawable\car_green_icon.png" />
     <BundleResource Include="Resources\drawable\car_grey_icon.png" />

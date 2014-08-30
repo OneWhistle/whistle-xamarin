@@ -17,6 +17,9 @@ namespace Whistle.Droid.Views
     using Cirrious.MvvmCross.Plugins.Messenger;
     using Whistle.Droid.Fragments;
 
+
+    
+
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
@@ -34,21 +37,31 @@ namespace Whistle.Droid.Views
             _subscriptionToken = _messenger.SubscribeOnMainThread<LandingMessage>(OnReceive);
         }
 
+        public override void OnBackPressed()
+        {
+            if (SupportFragmentManager.BackStackEntryCount == 1) // landing fragment
+            {
+                Finish();
+                return;
+            }
+            SupportFragmentManager.PopBackStackImmediate();
+        }
+
         protected void OnReceive(LandingMessage message)
         {
             switch (message.UserAction)
             {
                 case LandingConstants.ACTION_REGISTER:
-                    SwitchScreen(new GenericFragment(Resource.Layout.Registration) { ViewModel = this.ViewModel });
+                    SwitchScreen(new GenericFragment(Resource.Layout.Registration) { ViewModel = this.ViewModel }, "registration");
                     break;
                 case LandingConstants.ACTION_SIGNIN:
-                    SwitchScreen(new GenericFragment(Resource.Layout.Login) { ViewModel = this.ViewModel });
+                    SwitchScreen(new GenericFragment(Resource.Layout.Login) { ViewModel = this.ViewModel }, "signin");
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
-                    SwitchScreen(new GenericFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel });
+                    SwitchScreen(new GenericFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }, "forgot_password");
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
-                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions) { ViewModel = this.ViewModel });
+                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions) { ViewModel = this.ViewModel }, "register_continue");
                     break;
                     // Others are handled by the view model
                 default:
@@ -69,13 +82,15 @@ namespace Whistle.Droid.Views
         protected override void OnResumeFragments()
         {
             base.OnResumeFragments();
-            SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel });
+            SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel }, "landing");
         }
 
-        protected void SwitchScreen(MvxFragment fragment)
+
+        protected void SwitchScreen(MvxFragment fragment, string stackInfo)
         {
             SupportFragmentManager.BeginTransaction()
                  .Replace(Resource.Id.contentFrame, fragment)
+                 .AddToBackStack(stackInfo)
                  .Commit();
         }
 

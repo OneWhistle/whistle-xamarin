@@ -6,29 +6,10 @@
     android:orientation="vertical"
     android:weightSum="7"
     android:background="#3D3F47">
-    <LinearLayout
-        android:layout_height="0dp"
+    <include
         android:layout_width="fill_parent"
-        android:layout_weight=".75"
-        android:weightSum="2"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:text="REGISTER"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"
-            android:background="#3D3F47" />
-        <Button
-            android:id="@+id/btnSignIn"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:text="SIGN IN"
-            android:textColor="#FFFFFF"
-            android:layout_weight="1"
-            android:background="#00CD98" />
-    </LinearLayout>
+        android:layout_weight="1"
+        layout="@layout/whistle_action_bar" />
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
@@ -103,8 +84,8 @@
         android:layout_width="fill_parent"
         android:layout_weight=".75"
         android:background="#787B89">
-        <TextView
-            android:id="@+id/btnForgotPassword"
+        <whistle.droid.views.WhistleButton
+            local:MvxBind="Click UserAction, CommandParameter=ACTION_FORGOT_PASSWORD"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="FORGOT PASSWORD"
@@ -119,10 +100,10 @@
         local:MvxBind="Click UserAction, CommandParameter=ACTION_LOGIN_VALIDATE"
         android:background="#00CD98"
         android:gravity="center">
-        <ImageButton
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/check_mark_white_small_icon" />
+            android:src="@drawable/check_mark_white_icon" />
     </LinearLayout>
     <LinearLayout
         android:layout_height="0dp"

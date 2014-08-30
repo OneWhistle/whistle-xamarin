@@ -88,18 +88,9 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
-                    this.Show();
-                    break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
-                    this.Show();
-                    break;
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
-                    this.Show();
-                    break;
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
-                    this.Show();
-                    break;
-               // case LandingConstants.ACTION_REGISTER_CONTINUE:
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                 case LandingConstants.ACTION_REGISTER_DONE:
                     this.Show();

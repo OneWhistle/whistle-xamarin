@@ -119,7 +119,7 @@
         android:background="#00CD98"
         android:gravity="center">
         <ImageButton
-            local:MvxBind="Click CheckLogin"
+            local:MvxBind="Click UserAction, CommandParameter=ACTION_LOGIN_VALIDATE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/check_mark_white_small_icon" />

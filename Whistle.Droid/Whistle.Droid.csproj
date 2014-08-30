@@ -177,6 +177,9 @@
     <AndroidResource Include="Resources\Layout\About.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <BundleResource Include="Resources\Layout\Consumers.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
     <AndroidResource Include="Resources\Layout\Main.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
@@ -528,6 +531,11 @@
     <AndroidResource Include="Resources\drawable\transparent.png" />
     <AndroidResource Include="Resources\anim\popup_show.xml" />
     <AndroidResource Include="Resources\anim\popup_hide.xml" />
+    <AndroidResource Include="Resources\drawable\upper.png" />
+    <AndroidResource Include="Resources\drawable\lower.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\upper.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\lower.png" />
+    <AndroidResource Include="Resources\drawable\mapdummy.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

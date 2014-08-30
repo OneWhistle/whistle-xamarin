@@ -48,7 +48,7 @@ namespace Whistle.Core.ViewModels
         /// Note the ViewModel inside of ShowViewModel needs to change!
         /// </para>
         /// </summary>
-        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
+        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); } }
 
         private ICommand checkLogin;
 
@@ -66,7 +66,7 @@ namespace Whistle.Core.ViewModels
             this.ShowViewModel<MainViewModel>();
         }
 
-        private void onUserAction(string action)
+        private void OnUserAction(string action)
         {
             var messenger = Mvx.Resolve<IMvxMessenger>();
             if (!LandingConstants.ActionList.Contains(action))

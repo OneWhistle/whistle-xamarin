@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="0dp"
+    android:orientation="vertical"
+    android:weightSum="8">
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        layout="@layout/whistle_action_bar" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="6">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:scaleType="fitXY"
+            android:src="@drawable/mapdummy" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="1"
+        android:background="#3D3F47">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <ImageView
+                android:id="@+id/imgOption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/listview_white_icon"
+                android:layout_weight="1" />
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/whistle_white_icon"
+                android:layout_weight="1" />
+            <ImageView
+                android:id="@+id/imgOption"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/expand_white_icon"
+                android:layout_weight="1" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

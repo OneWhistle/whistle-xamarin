@@ -3,6 +3,9 @@
 //    Defines the LandingView type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using Whistle.Core;
+
 namespace Whistle.Droid.Views
 {
     using Android.App;
@@ -12,7 +15,6 @@ namespace Whistle.Droid.Views
     using Cirrious.MvvmCross.Droid.Fragging;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
     using Cirrious.MvvmCross.Plugins.Messenger;
-    using Whistle.Core;
     using Whistle.Droid.Fragments;
 
     /// <summary>
@@ -29,10 +31,10 @@ namespace Whistle.Droid.Views
         {
             base.OnViewModelSet();
             _messenger = Mvx.Resolve<IMvxMessenger>();
-            _subscriptionToken = _messenger.SubscribeOnMainThread<LandingMessage>(onReceive);
+            _subscriptionToken = _messenger.SubscribeOnMainThread<LandingMessage>(OnReceive);
         }
 
-        protected void onReceive(LandingMessage message)
+        protected void OnReceive(LandingMessage message)
         {
             switch (message.UserAction)
             {
@@ -85,10 +87,6 @@ namespace Whistle.Droid.Views
             outState.PutInt("baseFragment", baseFragment);
             base.OnSaveInstanceState(outState);
         }
-
-
-
-
 
         protected override void OnRestoreInstanceState(Bundle savedInstanceState)
         {

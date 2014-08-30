@@ -240,8 +240,10 @@
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
         android:background="#EEF0FF">
-        <Button
+        <whistle.droid.views.WhistleButton
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_DONE"
+            local:customFont="fonts/ProximaNova-Regular.otf"
+            android:gravity="center"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:text="I'M DONE"
@@ -249,11 +251,13 @@
             android:textSize="14dp"
             android:layout_weight="0.5"
             android:background="#00CD98" />
-        <Button
+        <whistle.droid.views.WhistleButton
             android:layout_width="0dp"
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_CONTINUE"
+            local:customFont="fonts/ProximaNova-Regular.otf"
+            android:gravity="center"
             android:layout_height="50dp"
-            android:text="Register"
+            android:text="CONTINUE"
             android:textColor="#FFFFFF"
             android:textSize="14dp"
             android:layout_weight="0.5"

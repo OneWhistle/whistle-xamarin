@@ -88,6 +88,7 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
+<<<<<<< HEAD
                     this.Show();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
@@ -100,6 +101,9 @@ namespace Whistle.Core.ViewModels
                     this.Show();
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
+=======
+                case LandingConstants.ACTION_REGISTER_VALIDATE:
+>>>>>>> 34b7f40be45a16383ae3d695ac8d46dff6537b0b
                 case LandingConstants.ACTION_REGISTER_DONE:
                     this.Show();
                     break;

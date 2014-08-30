@@ -229,10 +229,14 @@
       <SubType>AndroidResource</SubType>
     </BundleResource>
     <AndroidResource Include="Resources\Layout\LandingView.axml" />
+<<<<<<< HEAD
     <BundleResource Include="Resources\Layout\Whistlers.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
     <BundleResource Include="Resources\Layout\ServiceOptions.axml" />
+=======
+    <AndroidResource Include="Resources\Layout\ServiceOptions.axml" />
+>>>>>>> 34b7f40be45a16383ae3d695ac8d46dff6537b0b
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -523,16 +527,16 @@
     <BundleResource Include="Resources\drawable\car_grey_icon.png" />
     <BundleResource Include="Resources\drawable\chat_green_icon.png" />
     <BundleResource Include="Resources\drawable\chat_grey_icon.png" />
-    <BundleResource Include="Resources\drawable\check_mark_green_icon.png" />
-    <BundleResource Include="Resources\drawable\check_mark_white_icon.png" />
-    <BundleResource Include="Resources\drawable\check_mark_white_small_icon.png" />
-    <BundleResource Include="Resources\drawable\checked_lock_green_icon.png" />
-    <BundleResource Include="Resources\drawable\checked_lock_small_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\check_mark_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\check_mark_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\check_mark_white_small_icon.png" />
+    <AndroidResource Include="Resources\drawable\checked_lock_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\checked_lock_small_green_icon.png" />
     <BundleResource Include="Resources\drawable\completed_journey_icon.png" />
     <AndroidResource Include="Resources\drawable\rounded_button_corner.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\whistle_action_bar.xml" />
+    <AndroidResource Include="Resources\Layout\whistle_action_bar.axml" />
     <AndroidResource Include="Resources\drawable\rounded_corner_edittext.xml" />
     <AndroidResource Include="Resources\drawable\transparent.png" />
     <AndroidResource Include="Resources\anim\popup_show.xml" />

@@ -20,7 +20,7 @@ namespace Whistle.Droid.Views
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
-    [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@android:style/Theme.Holo.NoActionBar")]
+    [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : MvxFragmentActivity
     {
         IMvxMessenger _messenger;
@@ -46,6 +46,9 @@ namespace Whistle.Droid.Views
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     SwitchScreen(new GenericFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel });
+                    break;
+                case LandingConstants.ACTION_REGISTER_CONTINUE:
+                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions) { ViewModel = this.ViewModel });
                     break;
                     // Others are handled by the view model
                 default:

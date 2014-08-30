@@ -10,16 +10,33 @@ using Android.Runtime;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Cirrious.MvvmCross.Droid.Fragging.Fragments;
+using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 
 namespace Whistle.Droid.Fragments
 {
-    public class LoginFragments : Fragment
+    public class LoginFragments : MvxFragment
     {
         public override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your fragment here
+            RetainInstance = true;
         }
+
+        #region OnCreateView Method
+
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+           // return inflater.Inflate(Resource.Layout.Login, container, false);
+            base.OnCreateView(inflater, container, savedInstanceState);
+            return this.BindingInflate(Resource.Layout.Login, null);
+        }
+
+        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            base.OnViewCreated(view, savedInstanceState);
+        }
+
+        #endregion
     }
 }

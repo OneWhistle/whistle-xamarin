@@ -52,9 +52,11 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <AndroidLinkSkip>Mono.Android.Export</AndroidLinkSkip>
+    <AndroidLinkSkip>
+    </AndroidLinkSkip>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
@@ -89,6 +91,9 @@
     </Reference>
     <Reference Include="Cirrious.MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
+      <HintPath>..\..\..\raygun4net-2.0.6\lib\android\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
     </Reference>
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
@@ -141,11 +146,11 @@
     <Compile Include="Views\MainView.cs" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Semibold.otf" />
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Regular.otf" />
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Light.otf" />
-    <AndroidAsset Include="Assets\fonts\ProximaNova-Extrabold.otf" />
     <AndroidAsset Include="Assets\fonts\ProximaNova-Bold.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Extrabold.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Light.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Regular.otf" />
+    <AndroidAsset Include="Assets\fonts\ProximaNova-Semibold.otf" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
@@ -198,12 +203,22 @@
     <AndroidResource Include="Resources\Layout\WhistleWork.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\UserType.axml">
+    <AndroidResource Include="Resources\Layout\UserType.axml">
       <SubType>AndroidResource</SubType>
-    </BundleResource>
+    </AndroidResource>
     <BundleResource Include="Resources\Layout\ForgetPassword.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
+    <BundleResource Include="Resources\Layout\ResetPassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\ChangePassword.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <BundleResource Include="Resources\Layout\EnterCode.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
+    <AndroidResource Include="Resources\Layout\LandingView.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -503,9 +518,9 @@
     </AndroidResource>
     <BundleResource Include="Resources\Layout\whistle_action_bar.xml" />
     <AndroidResource Include="Resources\drawable\rounded_corner_edittext.xml" />
-    <AndroidResource Include="Resources\anim\popup_hide.xml" />
-    <AndroidResource Include="Resources\anim\popup_show.xml" />
     <AndroidResource Include="Resources\drawable\transparent.png" />
+    <AndroidResource Include="Resources\anim\popup_show.xml" />
+    <AndroidResource Include="Resources\anim\popup_hide.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -11,13 +11,19 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.Plugins.Messenger;
     using System.Linq;
     using System;
+    using Whistle.Core.Services;
 
     /// <summary>
     /// Define the LandingViewModel type.
     /// </summary>
     public class LandingViewModel : BaseViewModel
     {
+        #region Private fields
+        IMvxMessenger _messenger;
+        IAuthenticationService _authService;
+        IRegistrationService _regService;
 
+        #endregion
 
         #region Properties
 
@@ -51,25 +57,12 @@ namespace Whistle.Core.ViewModels
         ///  Backing field for my command.
         /// </summary>
         private MvxCommand<string> userAction;
-
         /// <summary>
-        /// Gets My Command.
-        /// <para>
-        /// An example of a command and how to navigate to another view model
-        /// Note the ViewModel inside of ShowViewModel needs to change!
+        /// Gets user action command.
         /// </para>
         /// </summary>
-        public ICommand UserAction
-        {
-            get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); }
-        }
+        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); } }
 
-        private ICommand checkLogin;
-
-        public ICommand CheckLogin
-        {
-            get { return this.checkLogin ?? (this.checkLogin = new MvxCommand(this.Show)); }
-        }
 
         /// <summary>
         /// Show the view model.
@@ -80,7 +73,7 @@ namespace Whistle.Core.ViewModels
             this.ShowViewModel<MainViewModel>();
         }
 
-        private void OnUserAction(string action)
+        private async void OnUserAction(string action)
         {
             var messenger = Mvx.Resolve<IMvxMessenger>();
             if (!LandingConstants.ActionList.Contains(action))
@@ -88,6 +81,9 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
+                    await _authService.Authenticate(UserName, Password);
+                    this.Show();
+                    break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
@@ -96,9 +92,19 @@ namespace Whistle.Core.ViewModels
                     this.Show();
                     break;
                 default:
-                    messenger.Publish(new LandingMessage(this, action));
+                    _messenger.Publish(new LandingMessage(this, action));
                     break;
             }
+        }
+
+        protected override void InitFromBundle(IMvxBundle parameters)
+        {
+            base.InitFromBundle(parameters);
+            if (_messenger != null)
+                return;
+            _messenger = Mvx.Resolve<IMvxMessenger>();
+            _authService = Mvx.Resolve<IAuthenticationService>();
+            _regService = Mvx.Resolve<IRegistrationService>();
         }
     }
 }

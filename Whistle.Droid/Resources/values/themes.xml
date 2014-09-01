@@ -14,13 +14,17 @@
 	<color name="btn_bg_shadow_color">#47A035</color>-->
 
 	<!-- Styles -->
-
-  <style name="LandingViewTheme" parent="@android:style/Theme.Holo.Light">
+  <style name="WhistleTheme" parent="@android:style/Theme.Holo.Light">
     <item name="android:windowNoTitle">true</item>
     <!--<item name="android:actionBarStyle">@style/XamActionBarStyle</item>-->
     <!--<item name="android:windowBackground">@color/main_background</item>-->
   </style>
-  
+    
+
+  <style name="LandingViewTheme" parent="@style/WhistleTheme">
+  </style>
+  <style name="MainViewTheme" parent="@style/WhistleTheme">
+  </style>  
   
 	<style name="XamActionBarTheme" parent="@android:style/Theme.Holo.Light">
 		<item name="android:windowNoTitle">true</item>

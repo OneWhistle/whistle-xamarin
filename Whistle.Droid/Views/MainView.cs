@@ -6,6 +6,7 @@
 namespace Whistle.Droid.Views
 {
     using Android.App;
+    using Android.Content.PM;
     using Android.OS;
     using Cirrious.MvvmCross.Droid.Fragging;
     using SlidingMenuSharp.App;
@@ -14,7 +15,7 @@ namespace Whistle.Droid.Views
     /// <summary>
     /// Defines the MainView type.
     /// </summary>
-    [Activity(Label = "View for MainView")]
+    [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
     public class MainView : WhistleSlidingFragmentActivity
     {
         private Android.Support.V4.App.Fragment _content;

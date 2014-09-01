@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="0dp"
+    android:background="#3D474C"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="8">
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="6.4"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:weightSum="7.4">
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/checked_lock_green_icon" />
+        <whistle.droid.views.WhistleTextView
+            android:layout_width="fill_parent"
+            local:customFont="fonts/ProximaNova-Bold.otf"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="OOPS!"
+            android:textColor="#09AA82"
+            android:textSize="24sp" />
+        <whistle.droid.views.WhistleTextView
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            local:customFont="fonts/ProximaNova-Regular.otf"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="The email &amp; password do not match."
+            android:textColor="#FFFFFF"
+            android:textSize="16sp" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3.2"
+            android:orientation="vertical"
+            android:gravity="center_vertical">
+            <RadioGroup
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical"
+                android:checkedButton="@+id/first">
+                <RadioButton
+                    android:id="@+id/first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/button_radio"
+                    android:text="Report 1"
+                    android:textColor="#FFFFFF" />
+                <RadioButton
+                    android:id="@+id/second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/button_radio"
+                    android:text="Report 2"
+                    android:textColor="#FFFFFF" />
+                <RadioButton
+                    android:id="@+id/third"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/button_radio"
+                    android:text="Report 3"
+                    android:textColor="#FFFFFF" />
+            </RadioGroup>
+        </LinearLayout>
+        <whistle.droid.views.WhistleButton
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1.5"
+            android:background="#00CD98"
+            android:text="START JOURNEY"
+            local:customFont="fonts/ProximaNova-Bold.otf"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp" />
+    </LinearLayout>
+</LinearLayout>

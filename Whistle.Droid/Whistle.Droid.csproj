@@ -254,7 +254,6 @@
     </AndroidResource>
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
     <AndroidResource Include="Resources\drawable\Splash.PNG" />
     <BundleResource Include="Resources\drawable\Whistle.PNG" />
     <AndroidResource Include="Resources\drawable-hdpi\Whistle.PNG" />
@@ -543,6 +542,7 @@
     <AndroidResource Include="Resources\drawable-hdpi\lower.png" />
     <AndroidResource Include="Resources\drawable\mapdummy.png" />
     <AndroidResource Include="Resources\values\Attrs.xml" />
+    <AndroidResource Include="Resources\values\colors.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

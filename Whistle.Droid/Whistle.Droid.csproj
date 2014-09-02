@@ -243,6 +243,7 @@
     <BundleResource Include="Resources\Layout\AlertDialog.axml" />
     <BundleResource Include="Resources\Layout\GeorgeColony.axml" />
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
+    <AndroidResource Include="Resources\Layout\WrongPassword.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -558,6 +559,8 @@
     <AndroidResource Include="Resources\drawable\button_radio.xml" />
     <AndroidResource Include="Resources\drawable\radio_on.png" />
     <AndroidResource Include="Resources\drawable\radio_off.png" />
+    <AndroidResource Include="Resources\drawable\logo_features.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\logo_features.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

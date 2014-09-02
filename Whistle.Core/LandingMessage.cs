@@ -15,6 +15,8 @@ namespace Whistle.Core
         public const string ACTION_GOOGLE_LOGIN_VALIDATE = "ACTION_GOOGLE_LOGIN_VALIDATE";
         public const string ACTION_REGISTER_VALIDATE = "ACTION_REGISTER_VALIDATE";
 
+        public const string RESULT_LOGIN_FAILED = "RESULT_LOGIN_FAILED";
+
         internal static readonly string[] ActionList = new[]
         {
             ACTION_LOGIN_VALIDATE,

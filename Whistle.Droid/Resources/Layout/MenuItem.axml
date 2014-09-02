@@ -27,7 +27,6 @@
             local:customFont="fonts/ProximaNova-Light.otf"
             android:layout_centerVertical="true"
             android:layout_marginLeft="15dp"
-            android:textSize="16sp"
-            android:textColor="#fff" />
+            android:textSize="16sp" />
     </RelativeLayout>
 </LinearLayout>

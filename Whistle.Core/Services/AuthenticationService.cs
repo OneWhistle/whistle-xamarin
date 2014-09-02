@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Whistle.Core.Interfaces;
 
@@ -10,12 +11,13 @@ namespace Whistle.Core.Services
     /// </summary>
     public class AuthResult
     {
+        public bool Success { get; set; }
         // need some property there..
     }
 
     public interface IAuthenticationService
     {
-        Task<AuthResult> Authenticate(string username, string password);
+        Task<AuthResult> Authenticate(string email, string password);
         Task<AuthResult> Authenticate(string socialNetwork);
     }
     /// <summary>
@@ -47,10 +49,44 @@ namespace Whistle.Core.Services
         /// <param name="email">user email</param>
         /// <param name="password">user password</param>
         /// <returns></returns>
-        public async Task<AuthResult> Authenticate(string username, string password)
+        public async Task<AuthResult> Authenticate(string email, string password)
         {
-            await Task.Delay(50); //need to have a progress bar or something..
-            return new AuthResult();
+            /// If you want to see the streams on fiddler
+            /// http://stackoverflow.com/questions/21554235/how-to-setup-fiddler-and-genymotion
+            using (var client = CreateClient())
+            {
+                try
+                {
+                    if (client.DefaultRequestHeaders.CacheControl == null)
+                        client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
+
+                    client.DefaultRequestHeaders.CacheControl.NoCache = true;
+                    client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
+                    client.DefaultRequestHeaders.CacheControl.NoStore = true;
+                    client.Timeout = new TimeSpan(0, 0, 30);
+
+                    var dynamicContent = new { email = email, password = password };
+                    var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(dynamicContent));
+                    content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+                    var result = await client.PostAsync(API.LOGIN, content);
+                    if (!result.IsSuccessStatusCode)
+                    {
+                        return new AuthResult();
+                    }
+                    var response = await result.Content.ReadAsStringAsync();
+                  
+                              
+
+                }
+                catch (Exception ex)
+                {
+                  
+                }
+
+            }
+
+            return new AuthResult { Success = true };
         }
         /// <summary>
         /// Lazy authentication..

@@ -30,9 +30,18 @@ namespace Whistle.Droid.Fragments
     public class GenericDialogFragment : MvxDialogFragment
     {
         readonly int _layoutId;
-        public GenericDialogFragment(int layoutId)
+        readonly int _backgroundResourceId;
+     
+
+        public GenericDialogFragment(int layoutId): this(layoutId, Resource.Color.app_gray_modal_color)
         {
-            _layoutId = layoutId;
+           
+        }
+
+        public GenericDialogFragment(int layoutId, int backgroundResourceId)
+        {
+            this._layoutId = layoutId;
+            this._backgroundResourceId = backgroundResourceId;
         }
 
         public override Dialog OnCreateDialog(Bundle savedState)
@@ -44,7 +53,7 @@ namespace Whistle.Droid.Fragments
             dialog.RequestWindowFeature((int)WindowFeatures.NoTitle);
             dialog.SetContentView(view);
             dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
-            dialog.Window.SetBackgroundDrawableResource(Resource.Color.app_gray_modal_color);
+            dialog.Window.SetBackgroundDrawableResource(_backgroundResourceId);
             return dialog;
         }
     }

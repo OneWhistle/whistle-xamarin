@@ -81,7 +81,12 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
-                    await _authService.Authenticate(UserName, Password);
+                    var result = await _authService.Authenticate(UserName, Password);
+                    if (!result.Success)
+                    {
+                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
+                        return;
+                    }
                     this.Show();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
@@ -102,7 +107,7 @@ namespace Whistle.Core.ViewModels
             base.InitFromBundle(parameters);
             if (_messenger != null)
                 return;
-            _messenger = Mvx.Resolve<IMvxMessenger>();
+            _messenger = Mvx.Resolve<IMvxMessenger>(); 
             _authService = Mvx.Resolve<IAuthenticationService>();
             _regService = Mvx.Resolve<IRegistrationService>();
         }

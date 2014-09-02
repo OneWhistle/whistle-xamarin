@@ -16,6 +16,12 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public abstract class BaseViewModel : MvxViewModel
     {
+        private bool isBusy = false;
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set { isBusy = value; RaisePropertyChanged(() => IsBusy); }
+        }
         /// <summary>
         /// Gets the service.
         /// </summary>

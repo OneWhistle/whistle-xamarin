@@ -37,8 +37,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/Whistle"
             android:layout_gravity="center"
-            android:scaleType="fitXY"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:scaleType="fitXY" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -51,21 +51,19 @@
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:layout_height="50dp"
             android:text="REGISTER"
-            android:textColor="#FFFFFF"
             android:textSize="14dp"
             android:layout_weight="0.5"
             android:gravity="center"
-            android:background="#3D3F47" />
+            android:background="@color/app_green_color" />
         <whistle.droid.views.WhistleButton
             local:MvxBind="Click UserAction, CommandParameter=ACTION_SIGNIN"
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:text="SIGN IN"
-            android:textColor="#FFFFFF"
             android:textSize="14dp"
             android:gravity="center"
             android:layout_weight="0.5"
-            android:background="#00CD98" />
+            android:background="@color/app_dark_gray_color" />
     </LinearLayout>
 </RelativeLayout>

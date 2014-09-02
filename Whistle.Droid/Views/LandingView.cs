@@ -59,10 +59,13 @@ namespace Whistle.Droid.Views
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     (new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "forgot_password");
-                   // SwitchScreen(new GenericFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }, "forgot_password");
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                     SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions) { ViewModel = this.ViewModel }, "register_continue");
+                    break;
+
+                case LandingConstants.RESULT_LOGIN_FAILED:
+                    (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
                     break;
                     // Others are handled by the view model
                 default:

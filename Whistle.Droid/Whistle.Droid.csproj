@@ -101,6 +101,12 @@
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
+    <Reference Include="Refractored.MvxPlugins.Settings">
+      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0.2\lib\monoandroid\Refractored.MvxPlugins.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Refractored.MvxPlugins.Settings.Droid">
+      <HintPath>..\packages\Mvx.Plugins.Settings.1.2.0.2\lib\monoandroid\Refractored.MvxPlugins.Settings.Droid.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net">
@@ -125,6 +131,7 @@
     <Compile Include="Activity\SlideFragmentActivity.cs" />
     <Compile Include="Adepters\MenuAdapter.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
     <Compile Include="Fragments\GenericFragment.cs" />
@@ -233,6 +240,9 @@
     <BundleResource Include="Resources\Layout\Whistlers.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
+    <BundleResource Include="Resources\Layout\AlertDialog.axml" />
+    <BundleResource Include="Resources\Layout\GeorgeColony.axml" />
+    <BundleResource Include="Resources\Layout\ReportAlert.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -542,7 +552,12 @@
     <AndroidResource Include="Resources\drawable-hdpi\lower.png" />
     <AndroidResource Include="Resources\drawable\mapdummy.png" />
     <AndroidResource Include="Resources\values\Attrs.xml" />
-    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\values\colors.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\button_radio.xml" />
+    <AndroidResource Include="Resources\drawable\radio_on.png" />
+    <AndroidResource Include="Resources\drawable\radio_off.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,10 @@
 using Android.Content;
+using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
+using Refractored.MvxPlugins.Settings;
+using Refractored.MvxPlugins.Settings.Droid;
 
 namespace Whistle.Droid
 {
@@ -14,6 +17,12 @@ namespace Whistle.Droid
         protected override IMvxApplication CreateApp()
         {
             return new Core.App();
+        }
+
+        protected override void InitializeLastChance()
+        {
+            base.InitializeLastChance();
+            Mvx.RegisterSingleton<ISettings>(() => new MvxAndroidSettings());
         }
 		
         protected override IMvxTrace CreateDebugTrace()

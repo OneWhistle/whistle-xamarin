@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
+using Whistle.Core.Interfaces;
 
 namespace Whistle.Core.Services
 {
@@ -13,21 +15,39 @@ namespace Whistle.Core.Services
 
     public interface IAuthenticationService
     {
-        Task<AuthResult> Authenticate(string email, string password);
+        Task<AuthResult> Authenticate(string username, string password);
         Task<AuthResult> Authenticate(string socialNetwork);
     }
-    
-    public class AuthenticationService: IAuthenticationService
+    /// <summary>
+    /// Simple authentication utility calling rest services...
+    /// http://stackoverflow.com/questions/21029416/mvvm-cross-rest-service-post-and-get
+    /// </summary>
+    public class AuthenticationService : IAuthenticationService
     {
         internal const string AUTH_FB = "{3D4E2F26-F06F-462C-A6E5-E66B0494BDEE}"; // random..
         internal const string AUTH_GPLUS = "{23C69149-2576-46FB-9BF8-F03B67F0B615}"; // same...
+
+        private IHttpClientHelper httpClientHelper;
+        public AuthenticationService(IHttpClientHelper httpClientHelper = null)
+        {
+            this.httpClientHelper = httpClientHelper;
+        }
+
+        private HttpClient CreateClient()
+        {
+            if (httpClientHelper == null)
+                return new HttpClient();
+
+            return new HttpClient(httpClientHelper.MessageHandler);
+        }
+
         /// <summary>
         /// Classic authentication
         /// </summary>
         /// <param name="email">user email</param>
         /// <param name="password">user password</param>
         /// <returns></returns>
-        public async Task<AuthResult> Authenticate(string email, string password)
+        public async Task<AuthResult> Authenticate(string username, string password)
         {
             await Task.Delay(50); //need to have a progress bar or something..
             return new AuthResult();

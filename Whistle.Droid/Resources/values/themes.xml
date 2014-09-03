@@ -62,12 +62,18 @@
   </style>
   <style name="MainViewTheme" parent="@style/WhistleTheme">
   </style>
-  <!--<style name="App_EditTextStyle" parent="@android:style/Widget.EditText">
-		<item name="android:background">@drawable/edittextbackground</item>
-		<item name="android:textColor">#808080</item>
-		<item name="android:layout_height">45dp</item>
-	</style>-->
 
+
+  <!--<style name="LandingFormEditTextStyle" parent="@android:style/Widget.EditText">
+    <item name="android:gravity">center</item>
+    <item name="android:color">@color/black</item>
+    <item name="android:inputType">text</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:background">#FFFFFF</item>
+    <item name="android:paddingLeft">10dp</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+  </style>-->
 
   <!--<item name="android:textColor">@color/action_bar_title_color</item>-->
   <!--

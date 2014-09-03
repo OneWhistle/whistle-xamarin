@@ -138,6 +138,7 @@
     <Compile Include="Helper\MvxActionBarActivity.cs" />
     <Compile Include="Helper\MvxActionBarEventSourceActivity.cs" />
     <Compile Include="Helper\UIHelper.cs" />
+    <Compile Include="Helper\WhistleActivity.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

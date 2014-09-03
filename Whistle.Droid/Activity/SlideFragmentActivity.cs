@@ -1,17 +1,13 @@
-using System;
-using Android.Content;
-using Android.Graphics;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
-using Cirrious.MvvmCross.Droid.Fragging;
+using Cirrious.MvvmCross.Plugins.Messenger;
 using SlidingMenuSharp;
 using SlidingMenuSharp.App;
-using MeetupManager.Droid.Helpers;
+using Whistle.Droid.Helper;
 
 namespace Whistle.Droid
 {
-    public abstract class WhistleSlidingFragmentActivity : MvxActionBarActivity, ISlidingActivity
+    public abstract class WhistleSlidingFragmentActivity<TMessage> : WhistleActivity<TMessage>, ISlidingActivity where TMessage : MvxMessage
     {
         private SlidingActivityHelper _helper;
 

@@ -5,14 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="8">
-    <include
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        layout="@layout/whistle_action_bar" />
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:gravity="center"
         android:background="#3D3F47">
         <ImageView
@@ -23,7 +19,7 @@
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:weightSum="2"
         android:orientation="horizontal">
         <LinearLayout
@@ -38,10 +34,9 @@
                 android:layout_height="wrap_content"
                 android:src="@drawable/male_grey_icon" />
         </LinearLayout>
-        <LinearLayout
+        <View
             android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight=".01"
+            android:layout_width="1px"
             android:background="#9A9CA6"
             android:gravity="center" />
         <LinearLayout
@@ -61,37 +56,34 @@
         android:layout_height="0dp"
         android:layout_width="fill_parent"
         android:layout_weight="3"
-        android:background="#FFFFFF"
         android:layout_marginTop="0dp"
         android:orientation="vertical"
         android:weightSum="3">
         <EditText
-            android:id="@+id/txtFullName"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="0dp"
-            android:background="#FFFFFF"
             android:inputType="text"
+            local:MvxBind="Text NewUser.FullName"
             android:hint="YOUR FULL NAME"
+            android:background="#FFFFFF"
             android:textSize="14sp"
-            android:textColorHint="#000000"
             android:paddingLeft="10dp" />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:background="#9A9CA6" />
         <EditText
-            android:id="@+id/txtEmail"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="0dp"
-            android:background="#FFFFFF"
             android:inputType="text"
-            android:hint="YOURNAME@EXAMPLE.COM"
+            local:MvxBind="Text NewUser.UserName"
+            android:hint="USERNAME"
             android:textSize="14sp"
-            android:textColorHint="#000000"
+            android:background="#FFFFFF"
             android:paddingLeft="10dp" />
         <View
             android:layout_width="fill_parent"
@@ -104,10 +96,10 @@
             android:layout_weight="1"
             android:layout_marginTop="0dp"
             android:background="#FFFFFF"
+            local:MvxBind="Text NewUser.Password"
             android:inputType="text"
             android:hint="PASSWORD"
             android:textSize="14sp"
-            android:textColorHint="#000000"
             android:paddingLeft="10dp" />
         <View
             android:layout_width="fill_parent"
@@ -119,140 +111,63 @@
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:weightSum="2"
-        android:orientation="horizontal"
-        android:layout_marginTop="-5dp">
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
+        android:orientation="horizontal">
+        <EditText
             android:layout_weight="1"
-            android:background="#EEF0FF"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="MOBILE"
+            local:MvxBind="Text NewUser.Mobile"
+            android:background="#FFFFFF"
+            android:textSize="14sp"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
-                android:gravity="center_vertical">
-                <TextView
-                    android:id="@+id/txtCountry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="COUNTRY"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/options_green_icon"
-                    android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true" />
-            </RelativeLayout>
-        </LinearLayout>
+            android:paddingLeft="10dp" />
         <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight=".01"
-            android:background="#9A9CA6"
-            android:gravity="center" />
-        <LinearLayout
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:background="#EEF0FF"
-            android:gravity="center">
+            android:background="#EEF0FF">
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="MOBILE"
+                android:text="DOB"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="10dp" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_height="0dp"
-        android:layout_width="fill_parent"
-        android:layout_weight=".02"
-        android:background="#9A9CA6"
-        android:gravity="center" />
-    <LinearLayout
-        android:layout_height="0dp"
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        android:weightSum="2"
-        android:orientation="horizontal"
-        android:layout_marginTop="0dp">
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#EEF0FF"
-            android:gravity="center">
-            <TextView
-                android:layout_width="match_parent"
+                android:paddingLeft="10dp" />
+            <ImageView
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="CITY"
-                android:gravity="center_vertical"
-                android:layout_marginLeft="10dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight=".01"
-            android:background="#9A9CA6"
-            android:gravity="center" />
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:background="#EEF0FF"
-            android:gravity="center_vertical"
-            android:orientation="horizontal">
-            <RelativeLayout
-                android:layout_height="fill_parent"
-                android:layout_width="fill_parent"
-                android:gravity="center">
-                <TextView
-                    android:id="@+id/txtCountry"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="DOB"
-                    android:gravity="center_vertical"
-                    android:layout_marginLeft="10dp" />
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/date_grey_icon"
-                    android:layout_marginRight="10dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_alignParentRight="true" />
-            </RelativeLayout>
-        </LinearLayout>
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                android:src="@drawable/date_green_icon"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
     </LinearLayout>
-    <LinearLayout
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#9A9CA6" />
+    <EditText
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:layout_width="fill_parent"
-        android:layout_weight=".02"
-        android:background="#9A9CA6"
-        android:gravity="center" />
+        android:layout_weight="1"
+        android:layout_marginTop="0dp"
+        android:background="#FFFFFF"
+        android:inputType="text"
+        local:MvxBind="Text NewUser.Email"
+        android:hint="E-MAIL ADDRESS"
+        android:textSize="14sp"
+        android:paddingLeft="10dp" />
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_alignParentBottom="true"
-        android:background="#EEF0FF">
+        android:layout_alignParentBottom="true">
         <whistle.droid.views.WhistleButton
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_DONE"
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="fill_parent"
             android:text="I'M DONE"
-            android:textColor="#FFFFFF"
             android:textSize="14dp"
             android:layout_weight="0.5"
             android:background="#00CD98" />
@@ -261,9 +176,8 @@
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_CONTINUE"
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
-            android:layout_height="50dp"
-            android:text="CONTINUE"
-            android:textColor="#FFFFFF"
+            android:layout_height="fill_parent"
+            android:text="NEXT"
             android:textSize="14dp"
             android:layout_weight="0.5"
             android:background="#3D3F47" />

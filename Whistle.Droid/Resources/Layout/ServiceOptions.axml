@@ -4,38 +4,104 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="7">
-    <include
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        layout="@layout/whistle_action_bar" />
-    <LinearLayout
+    android:background="#FFFFFF"
+    android:weightSum="8">
+    <EditText
         android:layout_width="fill_parent"
         android:layout_height="0dp"
+        android:inputType="text"
+        android:hint="ADDRESS"
+        android:background="#FFFFFF"
+        android:paddingLeft="10dp"
+        android:layout_weight="1" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#9A9CA6" />
+    <LinearLayout
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
         android:layout_weight="1"
-        android:background="#3D3F47"
-        android:gravity="center">
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_height="fill_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <RelativeLayout
+                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical">
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:hint="CITY"
+                    android:background="#FFFFFF"
+                    android:paddingLeft="10dp"
+                    android:gravity="center_vertical" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/options_grey_icon"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentRight="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#9A9CA6" />
+        <EditText
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:background="#FFFFFF"
+            android:paddingLeft="10dp"
+            android:hint="ZIPCODE"
+            android:gravity="center_vertical"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="#9A9CA6" />
+    <RelativeLayout
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#EEF0FF"
+        android:layout_width="fill_parent">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#EEF0FF"
+            android:paddingLeft="10dp"
+            android:hint="COUNTRY" />
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@android:drawable/ic_menu_gallery" />
-    </LinearLayout>
+            android:layout_height="match_parent"
+            android:src="@drawable/options_green_icon"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_vertical"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#5D606B"
+        android:background="@color/app_dark_gray_color"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:weightSum="2">
-        <TextView
+        <whistle.droid.views.WhistleTextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1.9"
             android:gravity="center_vertical"
-            android:text="ADD YOUR IDENTIFICATION"
-            android:textColor="#FFFFFF" />
+            local:customFont="fonts/ProximaNova-Light.otf"
+            android:text="ADD YOUR IDENTIFICATION" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,12 +111,12 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#FFFFFF"
         android:gravity="center">
-        <TextView
+        <whistle.droid.views.WhistleTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CHOOSE YOUR RIDE"
+            local:customFont="fonts/ProximaNova-Bold.otf"
             android:textColor="#000000" />
     </LinearLayout>
     <LinearLayout
@@ -273,22 +339,6 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#EEF0FF"
-        android:gravity="center"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="BY CREATING WHISTLE ACCOUNT,YOU AGREE" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TO OUR TERMS AND PRIVACY" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".95"
         android:background="#00CD98"
         android:gravity="center"
         android:orientation="vertical">
@@ -297,6 +347,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="START WHISTLING"
+            local:customFont="fonts/ProximaNova-Light.otf"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </LinearLayout>

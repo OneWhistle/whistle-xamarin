@@ -15,16 +15,17 @@ namespace Whistle.Droid.Views
     using Cirrious.MvvmCross.Droid.Fragging;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
     using Cirrious.MvvmCross.Plugins.Messenger;
+    using MeetupManager.Droid.Helpers;
     using Whistle.Droid.Fragments;
 
 
-    
+
 
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
-    public class LandingView : MvxFragmentActivity
+    public class LandingView : MvxActionBarActivity
     {
         IMvxMessenger _messenger;
         MvxSubscriptionToken _subscriptionToken;
@@ -45,16 +46,24 @@ namespace Whistle.Droid.Views
                 return;
             }
             SupportFragmentManager.PopBackStackImmediate();
+            if (SupportFragmentManager.BackStackEntryCount == 1) // landing fragment
+            {
+                SupportActionBar.Hide();
+            }
         }
 
         protected void OnReceive(LandingMessage message)
         {
+            if (!SupportActionBar.IsShowing)
+                SupportActionBar.Show();
             switch (message.UserAction)
             {
                 case LandingConstants.ACTION_REGISTER:
+                    SupportActionBar.Title = "Create an account";
                     SwitchScreen(new GenericFragment(Resource.Layout.Registration) { ViewModel = this.ViewModel }, "registration");
                     break;
                 case LandingConstants.ACTION_SIGNIN:
+                    SupportActionBar.Title = "Sign in";
                     SwitchScreen(new GenericFragment(Resource.Layout.Login) { ViewModel = this.ViewModel }, "signin");
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
@@ -67,7 +76,7 @@ namespace Whistle.Droid.Views
                 case LandingConstants.RESULT_LOGIN_FAILED:
                     (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
                     break;
-                    // Others are handled by the view model
+                // Others are handled by the view model
                 default:
                     break;
             }
@@ -79,14 +88,30 @@ namespace Whistle.Droid.Views
         /// <param name="bundle">The bundle.</param>
         protected override void OnCreate(Bundle bundle)
         {
-            this.SetContentView(Resource.Layout.LandingView);
             base.OnCreate(bundle);
+            //SupportActionBar.SetHomeButtonEnabled
+            this.SetContentView(Resource.Layout.LandingView);
+            this.SupportActionBar.SetHomeButtonEnabled(true);
         }
 
         protected override void OnResumeFragments()
         {
             base.OnResumeFragments();
             SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel }, "landing");
+            SupportActionBar.Hide();
+        }
+
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Android.Resource.Id.Home:
+                    OnBackPressed();
+                    break;
+                default:
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
         }
 
 

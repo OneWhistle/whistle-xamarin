@@ -7,10 +7,11 @@ using Android.Widget;
 using Cirrious.MvvmCross.Droid.Fragging;
 using SlidingMenuSharp;
 using SlidingMenuSharp.App;
+using MeetupManager.Droid.Helpers;
 
 namespace Whistle.Droid
 {
-    public abstract class WhistleSlidingFragmentActivity : MvxFragmentActivity, ISlidingActivity
+    public abstract class WhistleSlidingFragmentActivity : MvxActionBarActivity, ISlidingActivity
     {
         private SlidingActivityHelper _helper;
 

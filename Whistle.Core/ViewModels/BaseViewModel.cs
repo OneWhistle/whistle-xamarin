@@ -7,21 +7,35 @@ namespace Whistle.Core.ViewModels
 {
     using System;
     using System.Linq.Expressions;
-
+    using System.Threading;
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.ViewModels;
+    using Whistle.Core.Services;
 
     /// <summary>
     ///    Defines the BaseViewModel type.
     /// </summary>
     public abstract class BaseViewModel : MvxViewModel
     {
+        public BaseViewModel()
+        {
+        }
+
         private bool isBusy = false;
         public bool IsBusy
         {
             get { return isBusy; }
-            set { isBusy = value; RaisePropertyChanged(() => IsBusy); }
+            set
+            {
+                isBusy = value; RaisePropertyChanged(() => IsBusy);
+                if (IsBusyChanged != null)
+                    IsBusyChanged(isBusy);
+            }
         }
+
+        public Action<bool> IsBusyChanged { get; set; }
+
+
         /// <summary>
         /// Gets the service.
         /// </summary>

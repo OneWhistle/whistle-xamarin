@@ -71,7 +71,7 @@ namespace Whistle.Core.Services
                     System.Diagnostics.Debug.WriteLine(jsonData);
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                    var result = await client.PostAsync(API.CreateUrl(ApiSection.User + "/", ApiAction.LOGIN), content);
+                    var result = await client.PostAsync(API.CreateUrl(ApiSection.User), content);
                     if (!result.IsSuccessStatusCode)
                     {
                         return new AuthResult();

@@ -42,7 +42,9 @@
             android:textColor="@color/default_text_color"
             android:textColorHint="@color/default_text_color"
             android:layout_gravity="center_vertical"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginLeft="6dp"
+            android:layout_marginRight="6dp" />
     </LinearLayout>
     <LinearLayout
         android:layout_height="0dp"
@@ -67,7 +69,8 @@
             android:textColor="@color/default_text_color"
             android:layout_gravity="center_vertical"
             android:layout_weight=".80"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:layout_marginLeft="6dp" />
         <ImageView
             android:layout_width="0dp"
             android:layout_height="wrap_content"

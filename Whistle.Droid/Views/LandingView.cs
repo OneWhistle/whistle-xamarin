@@ -16,6 +16,7 @@ namespace Whistle.Droid.Views
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
     using Cirrious.MvvmCross.Plugins.Messenger;
     using MeetupManager.Droid.Helpers;
+    using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
 
 
@@ -75,6 +76,7 @@ namespace Whistle.Droid.Views
 
                 case LandingConstants.RESULT_LOGIN_FAILED:
                     (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
+                    ((LandingViewModel)ViewModel).IsBusy = false;
                     break;
                 // Others are handled by the view model
                 default:

@@ -3,7 +3,6 @@ namespace Whistle.Core.Services
 {
     internal class Constant
     {
-        //Sorry :)
 
         //For future : If URL change then we'll change only here
 
@@ -27,9 +26,9 @@ namespace Whistle.Core.Services
 
     public static class API
     {
-        public static string CreateUrl(string apiSection, string apiAction="")
+        public static string CreateUrl(string apiSection)
         {
-            return string.Format("{0}{1}{2}", Constant.UATWebUrl, apiSection, apiAction);
+            return string.Format("{0}{1}", Constant.UATWebUrl, apiSection);
         }
     }
 }

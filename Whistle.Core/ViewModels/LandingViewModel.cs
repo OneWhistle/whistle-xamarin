@@ -86,6 +86,7 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
+                    IsBusy = true;
                     var result = await ServiceHandler.PostAction<Users>(new Users { email = UserName, password = Password }, ApiAction.LOGIN);
                     if (!result.Success)
                     {

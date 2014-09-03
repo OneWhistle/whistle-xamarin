@@ -21,7 +21,8 @@ namespace Whistle.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-            GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel };
+            GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndecator) { ViewModel = this.ViewModel };
+           // busyFrag.
             //Adding Busy view
             ((LandingViewModel)ViewModel).IsBusyChanged = (busy) =>
             {
@@ -34,7 +35,11 @@ namespace Whistle.Droid.Fragments
 
             return this.BindingInflate(_layoutId, null);
         }
+
     }
+
+
+ 
 
     /// <summary>
     /// https://github.com/MvvmCross/MvvmCross-Tutorials/blob/master/Fragments/FragmentSample.UI.Droid/Views/Frags/Dialog/NameDialogFragment.cs

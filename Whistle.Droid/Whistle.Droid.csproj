@@ -230,10 +230,13 @@
     <BundleResource Include="Resources\Layout\Whistlers.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
-    <BundleResource Include="Resources\Layout\AlertDialog.axml" />
-    <BundleResource Include="Resources\Layout\GeorgeColony.axml" />
+    <AndroidResource Include="Resources\Layout\AlertDialog.axml" />
+    <AndroidResource Include="Resources\Layout\UserDetails.axml" />
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
     <AndroidResource Include="Resources\Layout\WrongPassword.axml" />
+    <AndroidResource Include="Resources\Layout\BusyIndecator.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -551,6 +554,7 @@
     <AndroidResource Include="Resources\drawable\radio_off.png" />
     <AndroidResource Include="Resources\drawable\logo_features.png" />
     <AndroidResource Include="Resources\drawable-hdpi\logo_features.png" />
+    <AndroidResource Include="Resources\drawable\busy.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

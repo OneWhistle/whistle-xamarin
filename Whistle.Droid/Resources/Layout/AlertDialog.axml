@@ -22,10 +22,12 @@
         <ImageView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:id="@+id/alertIcon"
             android:layout_weight="1"
             android:src="@drawable/checked_lock_green_icon" />
         <whistle.droid.views.WhistleTextView
             android:layout_width="fill_parent"
+            android:id="@+id/alertTitle"
             android:layout_height="0dp"
             android:layout_marginTop="10dp"
             local:customFont="fonts/ProximaNova-Bold.otf"
@@ -42,7 +44,9 @@
             android:gravity="center_horizontal"
             android:text="sadaslkdjlasjdlasjldjasl vsdkjsahfkjsasf safkjsahfkjashf safsakjfhsakjfhsak "
             android:textColor="#FFFFFF"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:visibility="gone"
+            android:id="@+id/alertMsg" />
         <whistle.droid.views.WhistleButton
             android:layout_width="fill_parent"
             android:layout_height="0dp"
@@ -52,7 +56,8 @@
             android:text="START JOURNEY"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:id="@+id/alertButton" />
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
@@ -72,7 +77,8 @@
                 android:background="#00CD98"
                 android:text="FIND"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:id="@+id/alertButtonFind" />
             <whistle.droid.views.WhistleButton
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
@@ -82,7 +88,8 @@
                 android:background="#00CD98"
                 android:text="RESEND"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp" />
+                android:textSize="20sp"
+                android:id="@+id/alertButtonResend" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

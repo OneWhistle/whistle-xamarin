@@ -6,20 +6,16 @@
     android:orientation="vertical"
     android:weightSum="7"
     android:background="#3D3F47">
-    <include
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        layout="@layout/whistle_action_bar" />
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:background="#5D606B">
-        <TextView
+        <whistle.droid.views.WhistleTextView
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:text="START WHISTLING"
-            android:textColor="#FFFFFF"
+            local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
             android:textSize="20sp" />
     </LinearLayout>
@@ -31,7 +27,7 @@
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight=".75"
+        android:layout_weight="1"
         android:background="#5D606B"
         android:weightSum="1"
         android:orientation="horizontal">
@@ -111,18 +107,18 @@
         android:layout_weight=".5"
         android:background="#404148"
         android:layout_marginTop="20dp">
-        <TextView
+        <whistle.droid.views.WhistleTextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:text="FEELING LAZY? PULL IN YOUR PROFILE"
-            android:textColor="#FFFFFF"
+            local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
             android:textSize="14sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="2"
+        android:layout_weight="1"
         android:background="#404148">
         <LinearLayout
             android:layout_height="fill_parent"

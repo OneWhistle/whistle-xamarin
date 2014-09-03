@@ -5,14 +5,10 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:weightSum="8">
-    <include
-        android:layout_width="fill_parent"
-        android:layout_weight="1"
-        layout="@layout/whistle_action_bar" />
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1.2"
         android:gravity="center"
         android:background="#3D3F47">
         <ImageView
@@ -23,7 +19,7 @@
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1.5"
+        android:layout_weight="1"
         android:weightSum="2"
         android:orientation="horizontal">
         <LinearLayout
@@ -241,16 +237,15 @@
         android:gravity="center" />
     <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_alignParentBottom="true"
-        android:background="#EEF0FF">
+        android:layout_alignParentBottom="true">
         <whistle.droid.views.WhistleButton
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_DONE"
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="fill_parent"
             android:text="I'M DONE"
             android:textColor="#FFFFFF"
             android:textSize="14dp"
@@ -261,7 +256,7 @@
             local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_CONTINUE"
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
-            android:layout_height="50dp"
+            android:layout_height="fill_parent"
             android:text="CONTINUE"
             android:textColor="#FFFFFF"
             android:textSize="14dp"

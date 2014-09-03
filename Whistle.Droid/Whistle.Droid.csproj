@@ -3,8 +3,6 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{37A3DFF0-0073-4D63-B967-EC9F7EDC2491}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
@@ -15,12 +13,15 @@
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>
-    </AndroidUseLatestPlatformSdk>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <TargetFrameworkVersion>v4.4</TargetFrameworkVersion>
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <AndroidLinkSkip />
+    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
+    <AndroidStoreUncompressedFileExtensions />
+    <JavaMaximumHeapSize />
+    <JavaOptions />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,19 +31,14 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
     <AndroidLinkMode>None</AndroidLinkMode>
-    <AndroidLinkSkip />
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi-v7a,x86</AndroidSupportedAbis>
-    <AndroidStoreUncompressedFileExtensions />
-    <MandroidI18n />
-    <JavaMaximumHeapSize />
-    <JavaOptions />
-    <MonoDroidExtraArgs />
+    <MandroidI18n>
+    </MandroidI18n>
+    <MonoDroidExtraArgs>
+    </MonoDroidExtraArgs>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -52,20 +48,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <AndroidUseSharedRuntime>True</AndroidUseSharedRuntime>
-    <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
-    <AndroidLinkSkip>
-    </AndroidLinkSkip>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
-    <BundleAssemblies>False</BundleAssemblies>
-    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
-    <AndroidStoreUncompressedFileExtensions />
-    <MandroidI18n />
-    <JavaMaximumHeapSize />
-    <JavaOptions />
-    <MonoDroidExtraArgs />
+    <MandroidI18n>
+    </MandroidI18n>
+    <MonoDroidExtraArgs>
+    </MonoDroidExtraArgs>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cirrious.CrossCore">
@@ -110,21 +98,21 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net">
-      <Private>True</Private>
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Net.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows">
-      <Private>True</Private>
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Serialization">
-      <Private>True</Private>
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.Android.Support.v4">
       <HintPath>..\Components\xamandroidsupportv4-18-20.0.0.3\lib\android\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\Components\xamandroidsupportv7appcompat-19.1.0\lib\android\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -147,6 +135,8 @@
     <Compile Include="Fragments\SignOutFragment.cs" />
     <Compile Include="Fragments\WhistleFragment.cs" />
     <Compile Include="Fragments\WhistleWorkFragment.cs" />
+    <Compile Include="Helper\MvxActionBarActivity.cs" />
+    <Compile Include="Helper\MvxActionBarEventSourceActivity.cs" />
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -446,7 +436,7 @@
     <BundleResource Include="Resources\drawable\mappin_green_icon.png" />
     <BundleResource Include="Resources\drawable\mappin_grey_icon.png" />
     <BundleResource Include="Resources\drawable\mapview_white_icon.png" />
-    <BundleResource Include="Resources\drawable\menu_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\menu_white_icon.png" />
     <BundleResource Include="Resources\drawable\notification_counter_bg.png" />
     <BundleResource Include="Resources\drawable\notification_green_icon.png" />
     <BundleResource Include="Resources\drawable\ongoing_journey_icon.png" />
@@ -520,7 +510,7 @@
     <BundleResource Include="Resources\drawable\agree_terms_green_icon.png" />
     <BundleResource Include="Resources\drawable\auto_green_icon.png" />
     <BundleResource Include="Resources\drawable\auto_grey_icon.png" />
-    <BundleResource Include="Resources\drawable\back_arrow_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\back_arrow_white_icon.png" />
     <BundleResource Include="Resources\drawable\bike_green_icon.png" />
     <BundleResource Include="Resources\drawable\bike_grey_icon.png" />
     <BundleResource Include="Resources\drawable\bus_green_icon.png" />
@@ -565,18 +555,22 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SlidingMenuSharp\SlidingMenuSharp.csproj">
-      <Project>{555937d8-1533-4d19-a346-55c192c35a5d}</Project>
+      <Project>{555937D8-1533-4D19-A346-55C192C35A5D}</Project>
       <Name>SlidingMenuSharp</Name>
     </ProjectReference>
     <ProjectReference Include="..\Whistle.Core\Whistle.Core.csproj">
-      <Project>{3e3d9a5e-571a-4fb9-9ba7-5568d348c38a}</Project>
+      <Project>{3E3D9A5E-571A-4FB9-9BA7-5568D348C38A}</Project>
       <Name>Whistle.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
-      <Visible>False</Visible>
       <Version>20.0.0.3</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamandroidsupportv7appcompat">
+      <Version>19.1.0</Version>
+      <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

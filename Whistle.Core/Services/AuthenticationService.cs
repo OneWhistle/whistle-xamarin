@@ -66,18 +66,17 @@ namespace Whistle.Core.Services
                     client.Timeout = new TimeSpan(0, 0, 30);
 
                     var dynamicContent = new { email = email, password = password };
-                    var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(dynamicContent));
+                    string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(dynamicContent);
+                    var content = new StringContent(jsonData);
+                    System.Diagnostics.Debug.WriteLine(jsonData);
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-                    var result = await client.PostAsync(API.LOGIN, content);
+                    var result = await client.PostAsync(API.CreateUrl(ApiSection.User + "/", ApiAction.LOGIN), content);
                     if (!result.IsSuccessStatusCode)
                     {
                         return new AuthResult();
                     }
                     var response = await result.Content.ReadAsStringAsync();
-                  
-                              
-
                 }
                 catch (Exception ex)
                 {

@@ -3,6 +3,10 @@
 //    Defines the LandingViewModel type.
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
+
+using System.Linq.Expressions;
+using Whistle.Core.Modal;
+
 namespace Whistle.Core.ViewModels
 {
     using System.Windows.Input;
@@ -12,6 +16,7 @@ namespace Whistle.Core.ViewModels
     using System.Linq;
     using System;
     using Whistle.Core.Services;
+    using Whistle.Core.Helper;
 
     /// <summary>
     /// Define the LandingViewModel type.
@@ -81,7 +86,7 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
-                    var result = await _authService.Authenticate(UserName, Password);
+                    var result = await ServiceHandler.PostAction<Users>(new Users { email = UserName, password = Password }, ApiAction.LOGIN);
                     if (!result.Success)
                     {
                         _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
@@ -93,8 +98,19 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
+
                 case LandingConstants.ACTION_REGISTER_DONE:
-                    this.Show();
+                    //testing
+                    await ServiceHandler.PostAction(new Users()
+                    {
+                        dob = new DateTime(1987, 03, 18),
+                        firstName = "Mohd",
+                        lastName = "RIYAZ77",
+                        password = "IAm7MOM",
+                        cnfmPassword = "IAm7MOM",
+                        phone = "970000000",
+                        email = "rze7@whistle.com"
+                    }, ApiAction.REGISTRATION);
                     break;
                 default:
                     _messenger.Publish(new LandingMessage(this, action));

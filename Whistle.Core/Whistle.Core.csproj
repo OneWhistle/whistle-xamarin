@@ -42,6 +42,7 @@
     <Compile Include="App.cs" />
     <Compile Include="Helpers\ServiceHandler.cs" />
     <Compile Include="Helpers\Settings.cs" />
+    <Compile Include="HomeMessage.cs" />
     <Compile Include="Interfaces\IHttpClientHelper.cs" />
     <Compile Include="LandingMessage.cs" />
     <Compile Include="Modal\Constants.cs" />

@@ -25,7 +25,7 @@ using Cirrious.CrossCore.Droid.Views;
 using Android.Support.V7.App;
 using Cirrious.CrossCore.Core;
 
-namespace MeetupManager.Droid.Helpers
+namespace Whistle.Droid.Helper
 {
 	public class MvxActionBarEventSourceActivity : ActionBarActivity, IMvxEventSourceActivity
 	{

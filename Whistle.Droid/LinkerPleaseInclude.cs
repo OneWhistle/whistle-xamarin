@@ -29,6 +29,10 @@ namespace Whistle.Droid
         {
             button.Click += (s,e) => button.Text = button.Text + "";
         }
+        public void Include(ImageButton button)
+        {
+            button.Click += (s, e) => { };
+        }
 
         public void Include(CheckBox checkBox)
         {

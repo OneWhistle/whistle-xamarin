@@ -81,7 +81,7 @@ namespace Whistle.Droid.Fragments
             if (Activity == null)
                 return;
 
-            var fca = Activity as WhistleSlidingFragmentActivity;
+            var fca = Activity as Whistle.Droid.Views.MainView;
             if (fca != null)
                 fca.SwitchContent(fragment);
 

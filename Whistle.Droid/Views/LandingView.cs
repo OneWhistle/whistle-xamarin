@@ -11,49 +11,27 @@ namespace Whistle.Droid.Views
     using Android.App;
     using Android.Content.PM;
     using Android.OS;
-    using Cirrious.CrossCore;
-    using Cirrious.MvvmCross.Droid.Fragging;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
+<<<<<<< HEAD
     using Cirrious.MvvmCross.Plugins.Messenger;
     using MeetupManager.Droid.Helpers;
     using Whistle.Core.ViewModels;
+=======
+>>>>>>> ab74b09fa313b16a2a57fbb533f771480ee7f243
     using Whistle.Droid.Fragments;
-
-
+    using Whistle.Droid.Helper;
 
 
     /// <summary>
     /// Defines the LandingView type.
     /// </summary>
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
-    public class LandingView : MvxActionBarActivity
+    public class LandingView : WhistleActivity<LandingMessage>
     {
-        IMvxMessenger _messenger;
-        MvxSubscriptionToken _subscriptionToken;
 
-        int baseFragment;
-        protected override void OnViewModelSet()
-        {
-            base.OnViewModelSet();
-            _messenger = Mvx.Resolve<IMvxMessenger>();
-            _subscriptionToken = _messenger.SubscribeOnMainThread<LandingMessage>(OnReceive);
-        }
 
-        public override void OnBackPressed()
-        {
-            if (SupportFragmentManager.BackStackEntryCount == 1) // landing fragment
-            {
-                Finish();
-                return;
-            }
-            SupportFragmentManager.PopBackStackImmediate();
-            if (SupportFragmentManager.BackStackEntryCount == 1) // landing fragment
-            {
-                SupportActionBar.Hide();
-            }
-        }
-
-        protected void OnReceive(LandingMessage message)
+    
+        protected override void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
                 SupportActionBar.Show();
@@ -91,7 +69,6 @@ namespace Whistle.Droid.Views
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            //SupportActionBar.SetHomeButtonEnabled
             this.SetContentView(Resource.Layout.LandingView);
             this.SupportActionBar.SetHomeButtonEnabled(true);
         }
@@ -119,28 +96,13 @@ namespace Whistle.Droid.Views
 
         protected void SwitchScreen(MvxFragment fragment, string stackInfo)
         {
+            _content = fragment as Android.Support.V4.App.Fragment;
             SupportFragmentManager.BeginTransaction()
                  .Replace(Resource.Id.contentFrame, fragment)
                  .AddToBackStack(stackInfo)
                  .Commit();
         }
 
-        protected override void OnDestroy()
-        {
-            base.OnDestroy();
-            _messenger.Unsubscribe<LandingMessage>(_subscriptionToken);
-        }
-
-        protected override void OnSaveInstanceState(Bundle outState)
-        {
-            outState.PutInt("baseFragment", baseFragment);
-            base.OnSaveInstanceState(outState);
-        }
-
-        protected override void OnRestoreInstanceState(Bundle savedInstanceState)
-        {
-            base.OnRestoreInstanceState(savedInstanceState);
-            baseFragment = savedInstanceState.GetInt("baseFragment");
-        }
+ 
     }
 }

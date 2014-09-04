@@ -83,6 +83,9 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
+    <Reference Include="GooglePlayServicesFroyoLib">
+      <HintPath>..\Components\googleplayservicesfroyo-12.0.5\lib\android\GooglePlayServicesFroyoLib.dll</HintPath>
+    </Reference>
     <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
       <HintPath>..\packages\Mindscape.Raygun4Net.3.3.0\lib\MonoAndroid2.2\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
     </Reference>
@@ -569,6 +572,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="googleplayservicesfroyo">
+      <Visible>False</Visible>
+      <Version>12.0.5</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Version>20.0.0.3</Version>
       <Visible>False</Visible>

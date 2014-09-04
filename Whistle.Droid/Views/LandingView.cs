@@ -12,12 +12,8 @@ namespace Whistle.Droid.Views
     using Android.Content.PM;
     using Android.OS;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
-<<<<<<< HEAD
     using Cirrious.MvvmCross.Plugins.Messenger;
-    using MeetupManager.Droid.Helpers;
     using Whistle.Core.ViewModels;
-=======
->>>>>>> ab74b09fa313b16a2a57fbb533f771480ee7f243
     using Whistle.Droid.Fragments;
     using Whistle.Droid.Helper;
 

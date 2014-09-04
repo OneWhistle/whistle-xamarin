@@ -1,5 +1,6 @@
 using Android.OS;
 using Android.Views;
+using Cirrious.MvvmCross.Droid.Fragging.Fragments;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using SlidingMenuSharp;
 using SlidingMenuSharp.App;
@@ -105,7 +106,7 @@ namespace Whistle.Droid
             return b ? b : base.OnKeyUp(keyCode, e);
         }
 
-        public abstract void SwitchContent(Android.Support.V4.App.Fragment fragment);
+        public abstract void SwitchContent(MvxFragment fragment);
 
        
     }

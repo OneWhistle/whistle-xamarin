@@ -10,6 +10,7 @@ namespace Whistle.Droid.Views
     using Android.OS;
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.Droid.Fragging;
+    using Cirrious.MvvmCross.Droid.Fragging.Fragments;
     using Cirrious.MvvmCross.Plugins.Messenger;
     using SlidingMenuSharp.App;
     using Whistle.Core;
@@ -61,7 +62,7 @@ namespace Whistle.Droid.Views
         }
 
 
-        public override void SwitchContent(Android.Support.V4.App.Fragment fragment)
+        public override void SwitchContent(MvxFragment fragment)
         {
             _content = fragment;
             SupportFragmentManager

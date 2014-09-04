@@ -13,27 +13,44 @@ namespace Whistle.Droid.Fragments
     public class GenericFragment : MvxFragment
     {
         readonly int _layoutId;
-        public GenericFragment(int layoutId)
+        readonly int _menuIconRes;
+
+        public GenericFragment(int layoutId, int menuIconRes)
         {
             _layoutId = layoutId;
+            _menuIconRes = menuIconRes;
+        }
+
+        public override void OnCreate(Bundle savedInstanceState)
+        {
+            base.OnCreate(savedInstanceState);
+            HasOptionsMenu = true;
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
             GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndecator) { ViewModel = this.ViewModel };
+            
            // busyFrag.
             //Adding Busy view
-            ((LandingViewModel)ViewModel).IsBusyChanged = (busy) =>
+            ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
             {
                 if (busy)
                     busyFrag.Show(FragmentManager, "BusyIndicator");
                 else
                     busyFrag.Dialog.Hide();
-            };
-               
+            };               
 
             return this.BindingInflate(_layoutId, null);
+        }
+
+        public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
+        {
+            var item = menu.Add(Resource.String.menu_help);
+            item.SetIcon(_menuIconRes);
+            item.SetShowAsAction(ShowAsAction.Always);
+            base.OnCreateOptionsMenu(menu, inflater);
         }
 
     }

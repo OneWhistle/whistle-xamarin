@@ -34,6 +34,11 @@ namespace Whistle.Droid.Helper
             }
         }
 
+        public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
+        {
+            return base.OnCreateOptionsMenu(menu);
+        }
+
         protected abstract void OnReceive(TMessage message);
 
         protected override void OnDestroy()

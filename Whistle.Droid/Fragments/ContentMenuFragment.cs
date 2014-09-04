@@ -14,7 +14,6 @@ namespace Whistle.Droid.Fragments
 {
     public class ContentMenuFragment : MvxFragment
     {
-        Android.Support.V4.App.Fragment newContent = null;
         ListView listView;
 
         public ContentMenuFragment()
@@ -26,6 +25,7 @@ namespace Whistle.Droid.Fragments
             base.OnCreateView(inflater, container, savedInstanceState);
             var view = this.BindingInflate(Resource.Layout.List, null);
             listView = view.FindViewById<ListView>(Resource.Id.listMenu);
+            
             
             listView.ItemClick += OnListItemClick;
             return view;
@@ -39,14 +39,14 @@ namespace Whistle.Droid.Fragments
             base.OnActivityCreated(p0);
 
             var menuAdapter = new MenuAdapter(Activity.ApplicationContext); 
-            newContent = new WhistleFragment(); // hum hum....
-            SwitchFragment(newContent);
+            SwitchFragment(new WhistleFragment());
             listView.Adapter = menuAdapter;
             
         }
 
         public void OnListItemClick(object sender, AdapterView.ItemClickEventArgs args)
         {
+            MvxFragment newContent = null;
             switch (args.Position)
             {
                 case 0:
@@ -76,7 +76,7 @@ namespace Whistle.Droid.Fragments
             if (newContent != null)
                 SwitchFragment(newContent);
         }
-        private void SwitchFragment(Android.Support.V4.App.Fragment fragment)
+        private void SwitchFragment(MvxFragment fragment)
         {
             if (Activity == null)
                 return;

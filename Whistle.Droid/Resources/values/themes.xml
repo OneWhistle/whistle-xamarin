@@ -40,7 +40,7 @@
     <item name="logo">@drawable/menu_white_icon</item>
   </style>
   <!--https://github.com/socialize/android-appcompat/blob/master/res/values/styles.xml-->
-  <style name="XamActionBarTitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse">
+  <style name="XamActionBarTitleStyle" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
     <item name="android:gravity">center_horizontal</item>
   </style>
 

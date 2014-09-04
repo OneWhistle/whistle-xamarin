@@ -12,7 +12,10 @@ namespace Whistle.Droid.Views
     using Android.Content.PM;
     using Android.OS;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
+<<<<<<< HEAD
     using Cirrious.MvvmCross.Plugins.Messenger;
+=======
+>>>>>>> 7391d76280c54d80ff1c2064cac18df7c477302a
     using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
     using Whistle.Droid.Helper;
@@ -35,17 +38,17 @@ namespace Whistle.Droid.Views
             {
                 case LandingConstants.ACTION_REGISTER:
                     SupportActionBar.Title = "Create an account";
-                    SwitchScreen(new GenericFragment(Resource.Layout.Registration) { ViewModel = this.ViewModel }, "registration");
+                    SwitchScreen(new GenericFragment(Resource.Layout.Registration, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "registration");
                     break;
                 case LandingConstants.ACTION_SIGNIN:
                     SupportActionBar.Title = "Sign in";
-                    SwitchScreen(new GenericFragment(Resource.Layout.Login) { ViewModel = this.ViewModel }, "signin");
+                    SwitchScreen(new GenericFragment(Resource.Layout.Login, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "signin");
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     (new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "forgot_password");
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
-                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions) { ViewModel = this.ViewModel }, "register_continue");
+                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "register_continue");
                     break;
 
                 case LandingConstants.RESULT_LOGIN_FAILED:
@@ -72,7 +75,7 @@ namespace Whistle.Droid.Views
         protected override void OnResumeFragments()
         {
             base.OnResumeFragments();
-            SwitchScreen(new GenericFragment(Resource.Layout.Landing) { ViewModel = this.ViewModel }, "landing");
+            SwitchScreen(new GenericFragment(Resource.Layout.Landing, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "landing");
             SupportActionBar.Hide();
         }
 

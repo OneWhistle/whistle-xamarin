@@ -93,12 +93,7 @@ namespace Whistle.Core.ViewModels
                         _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
                         return;
                     }
-                    this.Show();
                     break;
-                case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
-                case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
-                case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
-                case LandingConstants.ACTION_REGISTER_VALIDATE:
 
                 case LandingConstants.ACTION_REGISTER_DONE:
                     //testing
@@ -113,6 +108,14 @@ namespace Whistle.Core.ViewModels
                         email = "rze7@whistle.com"
                     }, ApiAction.REGISTRATION);
                     break;
+
+
+                case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_REGISTER_VALIDATE:
+                    this.Show();
+                    break;
                 default:
                     _messenger.Publish(new LandingMessage(this, action));
                     break;
@@ -124,7 +127,7 @@ namespace Whistle.Core.ViewModels
             base.InitFromBundle(parameters);
             if (_messenger != null)
                 return;
-            _messenger = Mvx.Resolve<IMvxMessenger>(); 
+            _messenger = Mvx.Resolve<IMvxMessenger>();
             _authService = Mvx.Resolve<IAuthenticationService>();
             _regService = Mvx.Resolve<IRegistrationService>();
         }

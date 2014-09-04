@@ -352,7 +352,6 @@
             android:layout_height="wrap_content"
             android:text="START WHISTLING"
             local:customFont="fonts/ProximaNova-Light.otf"
-            android:textColor="#FFFFFF"
             android:textSize="20sp" />
     </LinearLayout>
 </LinearLayout>

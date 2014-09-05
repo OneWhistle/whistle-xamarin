@@ -92,7 +92,6 @@ namespace Whistle.Droid.Fragments
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             base.OnViewCreated(view, savedInstanceState);
-            UIHelper.ApplyFont(view.Context, view, Constants.FontProximaNovaRegular);
         }
 
         #endregion

@@ -5,12 +5,10 @@
     android:layout_height="match_parent"
     android:layout_marginBottom="0dp"
     android:layout_marginTop="0dp"
-    android:background="#3D474C"
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="8">
     <LinearLayout
-        android:id="@+id/TopLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
@@ -25,7 +23,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/alertIcon"
             android:layout_weight="1"
-            android:src="@drawable/checked_lock_green_icon" />
+            android:src="@drawable/agree_terms_green_icon" />
         <whistle.droid.views.WhistleTextView
             android:layout_width="fill_parent"
             android:id="@+id/alertTitle"
@@ -34,7 +32,7 @@
             local:customFont="fonts/ProximaNova-Bold.otf"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="OOPS!"
+            android:text="LEGAL TERMS"
             android:textColor="#09AA82"
             android:textSize="24sp" />
         <whistle.droid.views.WhistleTextView
@@ -43,22 +41,10 @@
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:layout_marginTop="0dp"
             android:gravity="center_horizontal"
-            android:text="sadaslkdjlasjdlasjldjasl vsdkjsahfkjsasf safkjsahfkjashf safsakjfhsakjfhsak "
+            android:text="Please do read our terms and policy carefully before accepting."
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:visibility="gone"
             android:id="@+id/alertMsg" />
-        <whistle.droid.views.WhistleButton
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            local:customFont="fonts/ProximaNova-Regular.otf"
-            android:layout_weight="1.2"
-            android:background="#00CD98"
-            android:text="START JOURNEY"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/alertButton" />
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
@@ -68,7 +54,6 @@
             android:layout_height="0dp"
             android:layout_marginTop="0dp"
             android:layout_weight="1.2"
-            android:id="@+id/bottomLayout"
             android:orientation="horizontal"
             android:weightSum="2">
             <whistle.droid.views.WhistleButton
@@ -77,7 +62,7 @@
                 local:customFont="fonts/ProximaNova-Regular.otf"
                 android:layout_weight="1"
                 android:background="#00CD98"
-                android:text="FIND"
+                android:text="I AGREE"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:id="@+id/alertButtonFind" />
@@ -88,7 +73,7 @@
                 android:layout_marginLeft="8dp"
                 android:layout_weight="1"
                 android:background="#00CD98"
-                android:text="RESEND"
+                android:text="I DISAGREE"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 android:id="@+id/alertButtonResend" />

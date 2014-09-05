@@ -122,7 +122,7 @@
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
-    <Compile Include="Fragments\AlertFragment.cs" />
+    <Compile Include="Fragments\GenericAlertFragment.cs" />
     <Compile Include="Fragments\GenericFragment.cs" />
     <Compile Include="Fragments\ContentFragment.cs" />
     <Compile Include="Fragments\ContentMenuFragment.cs" />
@@ -239,27 +239,6 @@
     <AndroidResource Include="Resources\Layout\BusyIndicator.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\Dialog_Identity.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Success.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Failed.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Terms.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_WhistlerAlert.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Happy.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Delivered.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">

@@ -10,7 +10,6 @@
     android:orientation="vertical"
     android:weightSum="8">
     <LinearLayout
-        android:id="@+id/TopLayout"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_marginLeft="10dp"
@@ -25,7 +24,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/alertIcon"
             android:layout_weight="1"
-            android:src="@drawable/checked_lock_green_icon" />
+            android:src="@drawable/check_mark_white_icon" />
         <whistle.droid.views.WhistleTextView
             android:layout_width="fill_parent"
             android:id="@+id/alertTitle"
@@ -34,7 +33,7 @@
             local:customFont="fonts/ProximaNova-Bold.otf"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="OOPS!"
+            android:text="SUCCESSFUL!"
             android:textColor="#09AA82"
             android:textSize="24sp" />
         <whistle.droid.views.WhistleTextView
@@ -43,10 +42,9 @@
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:layout_marginTop="0dp"
             android:gravity="center_horizontal"
-            android:text="sadaslkdjlasjdlasjldjasl vsdkjsahfkjsasf safkjsahfkjashf safsakjfhsakjfhsak "
+            android:text="Your journey request has been accepted. Have a nice trip!"
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:visibility="gone"
             android:id="@+id/alertMsg" />
         <whistle.droid.views.WhistleButton
             android:layout_width="fill_parent"
@@ -58,40 +56,10 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
-            android:id="@+id/alertButton" />
+            android:id="@+id/btnStartjourney" />
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight=".02" />
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="0dp"
-            android:layout_weight="1.2"
-            android:id="@+id/bottomLayout"
-            android:orientation="horizontal"
-            android:weightSum="2">
-            <whistle.droid.views.WhistleButton
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                local:customFont="fonts/ProximaNova-Regular.otf"
-                android:layout_weight="1"
-                android:background="#00CD98"
-                android:text="FIND"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:id="@+id/alertButtonFind" />
-            <whistle.droid.views.WhistleButton
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                local:customFont="fonts/ProximaNova-Regular.otf"
-                android:layout_marginLeft="8dp"
-                android:layout_weight="1"
-                android:background="#00CD98"
-                android:text="RESEND"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:id="@+id/alertButtonResend" />
-        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -71,9 +71,9 @@ namespace Whistle.Droid.Fragments
                 case 6:
                     Intent intent = new Intent(View.Context, typeof(Whistle.Droid.Views.LandingView));
                     StartActivity(intent);
-                    break;
+                    return;
             }
-            newContent.ViewModel = mainAct.ViewModel;
+            newContent.ViewModel = mainAct.ViewModel; //this causes crash
             if (mainAct != null)
                 mainAct.SwitchContent(newContent);
         }

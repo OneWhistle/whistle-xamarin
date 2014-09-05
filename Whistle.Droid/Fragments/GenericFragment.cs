@@ -30,7 +30,7 @@ namespace Whistle.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-            GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndecator) { ViewModel = this.ViewModel };
+            GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndicator) { ViewModel = this.ViewModel };
             
            // busyFrag.
             //Adding Busy view

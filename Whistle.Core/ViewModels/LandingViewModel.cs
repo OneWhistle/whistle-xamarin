@@ -88,10 +88,15 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
                     IsBusy = true;
                     var result = await ServiceHandler.PostAction<Users>(new Users { email = UserName, password = Password }, ApiAction.LOGIN);
+                    IsBusy = false;
                     if (!result.Success)
                     {
                         _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
                         return;
+                    }
+                    else
+                    {
+                       this.Show();
                     }
                     break;
 

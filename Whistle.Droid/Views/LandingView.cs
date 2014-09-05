@@ -12,10 +12,7 @@ namespace Whistle.Droid.Views
     using Android.Content.PM;
     using Android.OS;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
-<<<<<<< HEAD
     using Cirrious.MvvmCross.Plugins.Messenger;
-=======
->>>>>>> 7391d76280c54d80ff1c2064cac18df7c477302a
     using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
     using Whistle.Droid.Helper;
@@ -29,7 +26,7 @@ namespace Whistle.Droid.Views
     {
 
 
-    
+
         protected override void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
@@ -92,7 +89,6 @@ namespace Whistle.Droid.Views
             return base.OnOptionsItemSelected(item);
         }
 
-
         protected void SwitchScreen(MvxFragment fragment, string stackInfo)
         {
             _content = fragment as Android.Support.V4.App.Fragment;
@@ -101,7 +97,5 @@ namespace Whistle.Droid.Views
                  .AddToBackStack(stackInfo)
                  .Commit();
         }
-
- 
     }
 }

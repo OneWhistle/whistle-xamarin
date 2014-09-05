@@ -27,7 +27,9 @@ namespace Whistle.Droid.Fragments
             HasOptionsMenu = true;
             base.OnCreate(savedInstanceState);
 
+            
         }
+
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {

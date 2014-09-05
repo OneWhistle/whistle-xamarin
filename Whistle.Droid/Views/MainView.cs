@@ -7,6 +7,8 @@ namespace Whistle.Droid.Views
 {
     using Android.App;
     using Android.Content.PM;
+    using Android.Gms.Location;
+    using Android.Gms.Maps;
     using Android.OS;
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.Droid.Fragging;
@@ -20,9 +22,11 @@ namespace Whistle.Droid.Views
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>
+    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, ILocationListener
     {
-        Android.Support.V4.App.DialogFragment _currentDialog;
+        Android.Support.V4.App.DialogFragment _currentDialog; 
+        internal SupportMapFragment mapfragment;
+
 
         /// <summary>
         /// Called when [create].
@@ -32,6 +36,7 @@ namespace Whistle.Droid.Views
         {
             base.OnCreate(savedInstanceState);
             bool isNewInstance = true;
+            mapfragment = SupportMapFragment.NewInstance();
 
             if (null != savedInstanceState) // check WhistleActivity
             {
@@ -52,7 +57,7 @@ namespace Whistle.Droid.Views
                 .Commit();
 
             SlidingMenu.TouchModeAbove = SlidingMenuSharp.TouchMode.Fullscreen;
-            SlidingMenu.BehindOffset = 80;
+            SlidingMenu.BehindOffset = 60;
             SlidingMenu.ShadowWidth = 20;
             if (isNewInstance)
             {
@@ -103,6 +108,11 @@ namespace Whistle.Droid.Views
                     break;
             }
 
+        }
+
+        public void OnLocationChanged(Android.Locations.Location p0)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Whistle.Droid.Fragments
             switch (position)
             {
                 case 0:
-                    newContent = new MapHostFragment(Resource.Layout.Whistle, Resource.Menu.menu_switch);
+                    newContent = new MapHostFragment(mainAct.mapfragment, Resource.Layout.Whistle, Resource.Menu.menu_switch);
                     title = getUserTypeTitle(Settings.UserType);
                     break;
                 case 1:
@@ -95,7 +95,7 @@ namespace Whistle.Droid.Fragments
                 case 6:
                     Intent intent = new Intent(View.Context, typeof(Whistle.Droid.Views.LandingView));
                     StartActivity(intent);
-                    break;
+                    return;
             }
             var viewmodel = (BaseViewModel)mainAct.ViewModel;
             viewmodel.Title = title;

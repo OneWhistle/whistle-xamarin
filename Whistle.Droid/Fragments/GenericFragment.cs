@@ -1,12 +1,10 @@
 
 
 using Android.App;
-using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Fragging.Fragments;
-using Whistle.Core.ViewModels;
 
 namespace Whistle.Droid.Fragments
 {
@@ -23,45 +21,22 @@ namespace Whistle.Droid.Fragments
 
         public override void OnCreate(Bundle savedInstanceState)
         {
-
             HasOptionsMenu = true;
-            base.OnCreate(savedInstanceState);
-
-            
+            base.OnCreate(savedInstanceState);            
         }
 
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            base.OnCreateView(inflater, container, savedInstanceState);
-            GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndicator) { ViewModel = this.ViewModel };
-
-            // busyFrag.
-            //Adding Busy view
-            ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
-            {
-                if (busy)
-                    busyFrag.Show(FragmentManager, "BusyIndicator");
-                else
-                    busyFrag.Dialog.Hide();
-            };
-
+            base.OnCreateView(inflater, container, savedInstanceState); 
             return this.BindingInflate(_layoutId, null);
         }
-
-        //   override oncreateop
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
             inflater.Inflate(_menuResId, menu);  
-
             base.OnCreateOptionsMenu(menu, inflater);
-
-            //Resource.Drawable.question_mark_white_icon
-
-
         }
-
     }
 
 

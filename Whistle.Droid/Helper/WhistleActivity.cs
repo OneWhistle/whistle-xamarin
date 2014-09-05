@@ -4,12 +4,16 @@ using Android.OS;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
+using Whistle.Droid.Fragments;
+using Whistle.Core.ViewModels;
+using Android.Util;
 namespace Whistle.Droid.Helper
 {
     public abstract class WhistleActivity<TMessage> : MvxActionBarActivity where TMessage : MvxMessage
     {
         IMvxMessenger _messenger;
         MvxSubscriptionToken _subscriptionToken;
+        GenericDialogFragment busyFrag;
 
         protected Android.Support.V4.App.Fragment _content;
 
@@ -18,6 +22,17 @@ namespace Whistle.Droid.Helper
             base.OnViewModelSet();
             _messenger = Mvx.Resolve<IMvxMessenger>();
             _subscriptionToken = _messenger.SubscribeOnMainThread<TMessage>(OnReceive);
+            busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndicator);
+            // busyFrag.
+            //Adding Busy view
+            ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
+            {
+                Log.Info("WhistleActivity", "received busy changed");
+                if (busy)
+                    busyFrag.Show(SupportFragmentManager, "BusyIndicator");
+                else
+                    busyFrag.Dismiss();
+            };
         }
 
         /// Called when [create].
@@ -27,9 +42,10 @@ namespace Whistle.Droid.Helper
         {
             base.OnCreate(bundle);
             var actionbar = this.BindingInflate(Resource.Layout.custom_action_bar, null);
-            Android.Support.V7.App.ActionBar.LayoutParams lp = new Android.Support.V7.App.ActionBar.LayoutParams(Android.Support.V7.App.ActionBar.LayoutParams.MatchParent,Android.Support.V7.App.ActionBar.LayoutParams.MatchParent);
+            Android.Support.V7.App.ActionBar.LayoutParams lp = new Android.Support.V7.App.ActionBar.LayoutParams(Android.Support.V7.App.ActionBar.LayoutParams.MatchParent, Android.Support.V7.App.ActionBar.LayoutParams.MatchParent);
             SupportActionBar.SetDisplayShowCustomEnabled(true);
             SupportActionBar.SetCustomView(actionbar, lp);
+
         }
 
         public override void OnBackPressed()
@@ -46,7 +62,7 @@ namespace Whistle.Droid.Helper
             }
         }
 
-        
+
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
         {
@@ -64,7 +80,7 @@ namespace Whistle.Droid.Helper
         protected override void OnSaveInstanceState(Bundle outState)
         {
             base.OnSaveInstanceState(outState);
-         //   SupportFragmentManager.PutFragment(outState, "_content", _content);
+            //   SupportFragmentManager.PutFragment(outState, "_content", _content);
         }
 
         protected override void OnRestoreInstanceState(Bundle savedInstanceState)

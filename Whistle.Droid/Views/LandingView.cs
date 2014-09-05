@@ -27,7 +27,7 @@ namespace Whistle.Droid.Views
 
 
 
-        protected override void OnReceive(LandingMessage message)
+        protected override async void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
                 SupportActionBar.Show();
@@ -50,9 +50,16 @@ namespace Whistle.Droid.Views
                     break;
 
                 case LandingConstants.RESULT_LOGIN_FAILED:
-                    (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
-                    ((LandingViewModel)ViewModel).IsBusy = false;
+                    (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");                    
                     break;
+                case LandingConstants.RESULT_REGISTER_SUCCESS:
+                    (new GenericDialogFragment(Resource.Layout.Dialog_RegistrationSuccess, Resource.Color.app_green_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "register_success");
+
+                    await System.Threading.Tasks.Task.Delay(1500);
+                    ((LandingViewModel)this.ViewModel).Show();
+                    
+                    break;
+ 
                 // Others are handled by the view model
                 default:
                     break;

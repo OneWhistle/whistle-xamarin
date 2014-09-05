@@ -47,7 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-	<AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
@@ -268,6 +268,9 @@
     </BundleResource>
     <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
     <AndroidResource Include="Resources\Layout\dialog_list.axml" />
+    <AndroidResource Include="Resources\Layout\Dialog_RegistrationSuccess.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">

@@ -52,19 +52,18 @@ namespace Whistle.Core.Helper
                     client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
                     client.DefaultRequestHeaders.CacheControl.NoStore = true;
                     client.Timeout = new TimeSpan(0, 0, 30);
-
-                    // temporary:
-                    //var temp = new { obj = obj };//email = "sarath@whistle.com", password = "batman" };
                     string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
                     var content = new StringContent(jsonData);
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                     string url=API.CreateUrl(apiSection);
                     var result = await client.PostAsync(url, content);
+                    var response = await result.Content.ReadAsStringAsync();
+
                     if (!result.IsSuccessStatusCode)
                     {
                         return new AuthResult();
                     }
-                    var response = await result.Content.ReadAsStringAsync();
+                    
                 }
                 catch (Exception ex)
                 {

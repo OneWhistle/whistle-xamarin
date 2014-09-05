@@ -125,28 +125,30 @@ namespace Whistle.Core.ViewModels
         protected async void onRegister()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction(new Users()
+            var result = await ServiceHandler.PostAction(new RegistrationRequest
             {
-                dob = new DateTime(1987, 03, 18),
-                firstName = "Mohd",
-                lastName = NewUser.FullName,
-                password = NewUser.Password,
-                cnfmPassword = NewUser.Password,
-                phone = NewUser.Mobile,
-                email = NewUser.Mobile
+                user = new Users
+                    {
+                        dob = new DateTime(1987, 03, 18),
+                        //firstName = "Mohd",
+                        name = NewUser.FullName,
+                        password = NewUser.Password,
+                        //cnfmPassword = NewUser.Password,
+                        phone = NewUser.Mobile,
+                        email = NewUser.Email
+                    }
             }, ApiAction.REGISTRATION);
             IsBusy = false;
 
             if (!result.Success)
             {
                 _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
-                NewUser = new UserViewModel();
-                return;
             }
             else
             {
-                this.Show();
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
             }
+            NewUser = new UserViewModel();
         }
     }
 }

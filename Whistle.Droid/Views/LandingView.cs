@@ -24,7 +24,7 @@ namespace Whistle.Droid.Views
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : WhistleActivity<LandingMessage>
     {
-        protected override void OnReceive(LandingMessage message)
+        protected override async void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
                 SupportActionBar.Show();
@@ -48,11 +48,16 @@ namespace Whistle.Droid.Views
                     break;
                 case LandingConstants.RESULT_LOGIN_FAILED:
                     (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
-                    ((LandingViewModel)ViewModel).IsBusy = false;
                     break;
                 case LandingConstants.ACTION_PROFILE_IMAGE:
                     (new GenericDialogFragment(Resource.Layout.MediaChooser) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "media_chooser");
                     break;
+				case LandingConstants.RESULT_REGISTER_SUCCESS:
+                    (new GenericDialogFragment(Resource.Layout.Dialog_RegistrationSuccess, Resource.Color.app_green_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "register_success");
+                    await System.Threading.Tasks.Task.Delay(1500);
+                    ((LandingViewModel)this.ViewModel).Show();
+                    
+                    break;					
                 // Others are handled by the view model
                 default:
                     break;

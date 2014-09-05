@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -9,54 +10,103 @@
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+        <View
+            android:layout_weight="1"
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent" />
+        <View
+            android:background="@color/app_blue_color"
+            android:gravity="right"
+            android:layout_width="4dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="fill_parent" />
         <TextView
-            android:text="test"
-            android:layout_width="fill_parent"
+            android:textColor="@color/app_blue_color"
+            android:text="CURRENT LOCATION"
+            android:layout_weight="7"
+            android:layout_width="0dp"
             android:layout_height="fill_parent" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
+        <View
+            android:layout_weight="1"
+            android:gravity="right"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent" />
+        <View
+            android:background="@color/app_red_modal_color"
+            android:gravity="right"
+            android:layout_width="4dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="fill_parent" />
         <TextView
-            android:text="test"
-            android:layout_width="fill_parent"
+            android:text="DESTINATION"
+            android:layout_weight="7"
+            android:layout_width="0dp"
             android:layout_height="fill_parent" />
     </LinearLayout>
-    <TextView
+    <FrameLayout
+        android:id="@+id/map"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:text="MAP"
-        android:layout_weight="2" />
+        android:layout_weight="3" />
+<!--<com.google.android.gms.maps.MapView
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:clickable="true"
+        android:apiKey="AIzaSyAiIl_VCI6Z7jx8VjaeoVanCCeeJYZN1zY" />-->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="horizontal">
-        <LinearLayout
+        <RelativeLayout
             android:background="@color/app_dark_gray_color"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
-                android:text="PACKAGE"
-                android:layout_width="0dp"
+            android:layout_weight="1">
+            <whistle.droid.views.WhistleTextView
+                android:text="PACKAGES"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+            <ImageButton
+                local:MvxBind="Click NavDisplay, CommandParameter=PACKAGES"
+                android:background="@color/app_dark_gray_color"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-        <LinearLayout
+                android:src="@drawable/options_white_icon"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
+        <RelativeLayout
             android:background="@color/app_gray_color"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
-            <TextView
+            android:layout_weight="1">
+            <whistle.droid.views.WhistleTextView
                 android:text="RIDES"
-                android:layout_width="0dp"
+                android:layout_marginLeft="10dp"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent" />
+            <ImageButton
+                local:MvxBind="Click NavDisplay, CommandParameter=RIDE"
+                android:background="@color/app_gray_color"
+                android:gravity="center_vertical"
+                android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
+                android:src="@drawable/options_white_icon"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentRight="true" />
+        </RelativeLayout>
     </LinearLayout>
     <EditText
         android:layout_width="fill_parent"
@@ -64,11 +114,17 @@
         android:background="@color/white"
         android:layout_weight="2"
         android:hint="JOURNEY MESSAGE"
-        android:inputType="text" />
-    <Button
-        android:text="WHISTLE"
-        android:background="@color/app_green_color"
+        android:inputType="textImeMultiLine"
+        android:gravity="top"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:maxLines="3" />
+    <whistle.droid.views.WhistleButton
+        local:customFont="fonts/ProximaNova-Regular.otf"
         android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="50dp"
+        android:text="WHISTLE"
+        android:gravity="center"
+        android:layout_weight="1"
+        android:background="@color/app_green_color" />
 </LinearLayout>

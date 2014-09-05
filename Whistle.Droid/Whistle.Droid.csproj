@@ -83,6 +83,9 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
+    <Reference Include="GooglePlayServicesFroyoLib">
+      <HintPath>..\Components\googleplayservicesfroyo-12.0.5\lib\android\GooglePlayServicesFroyoLib.dll</HintPath>
+    </Reference>
     <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
       <HintPath>..\packages\Mindscape.Raygun4Net.3.3.0\lib\MonoAndroid2.2\Mindscape.Raygun4Net.Xamarin.Android.dll</HintPath>
     </Reference>
@@ -129,7 +132,9 @@
     <Compile Include="Fragments\EditFragment.cs" />
     <Compile Include="Fragments\FavoriteFragment.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
+    <Compile Include="Fragments\ListDialogFragment.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
+    <Compile Include="Fragments\MapHostFragment.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />
@@ -237,6 +242,11 @@
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
     <AndroidResource Include="Resources\Layout\WrongPassword.axml" />
     <AndroidResource Include="Resources\Layout\BusyIndicator.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
+    <AndroidResource Include="Resources\Layout\dialog_list.axml" />
+    <AndroidResource Include="Resources\Layout\JourneyReceipt.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -559,6 +569,14 @@
     <AndroidResource Include="Resources\drawable\busy.png" />
     <AndroidResource Include="Resources\drawable\id.png" />
     <AndroidResource Include="Resources\drawable\delivery_report.png" />
+    <AndroidResource Include="Resources\menu\menu_help.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\menu_switch.xml" />
+    <AndroidResource Include="Resources\drawable\star_white.png" />
+    <AndroidResource Include="Resources\drawable\star_empty_white.png" />
+    <AndroidResource Include="Resources\drawable\custom_ratingbar_selector.xml" />
+    <AndroidResource Include="Resources\drawable\male_big_grey.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -572,6 +590,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="googleplayservicesfroyo">
+      <Visible>False</Visible>
+      <Version>12.0.5</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
       <Version>20.0.0.3</Version>
       <Visible>False</Visible>

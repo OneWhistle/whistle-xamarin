@@ -36,19 +36,36 @@ namespace Whistle.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             var view = this.BindingInflate(alertHelper.LayoutID, null);
-
-
             return view;
+        }
+
+
+        public override Dialog OnCreateDialog(Bundle savedState)
+        {
+            base.EnsureBindingContextSet(savedState);
+            var view = this.BindingInflate(alertHelper.LayoutID, null);
+            var linearLayout = view.FindViewById<LinearLayout>(Resource.Id.bottomLayout);
+            AddButton(linearLayout, new List<string>() { "Find", "Resend" });
+
+
+            var dialog = new Dialog(Activity);
+            dialog.RequestWindowFeature((int)WindowFeatures.NoTitle);
+            dialog.SetContentView(view);
+            dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+            dialog.Window.SetBackgroundDrawableResource(Resource.Drawable.transparent);
+            return dialog;
         }
 
         View AddButton(LinearLayout _view, IList<string> _buttons)
         {
             //For Two butotn LO wieghtSum = 2; weight="1.2" button:layout_weight="1"
             //For Single Button Button:layout_weight="1.2"
-
+            _view.WeightSum = 2;
             foreach (var button in _buttons)
             {
-
+                var newButton = new WhistleButton(_view.Context);
+                newButton.Text = button;
+                _view.AddView(newButton);
             }
             return _view;
         }

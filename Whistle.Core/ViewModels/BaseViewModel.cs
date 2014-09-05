@@ -33,6 +33,14 @@ namespace Whistle.Core.ViewModels
             }
         }
 
+        private string title;
+        public string Title
+        {
+            get { return title; }
+            set { title = value; RaisePropertyChanged(() => Title); }
+        }
+
+
         public Action<bool> IsBusyChanged { get; set; }
 
 

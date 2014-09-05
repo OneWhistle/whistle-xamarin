@@ -39,6 +39,11 @@ namespace Whistle.Droid
             checkBox.CheckedChange += (sender, args) => checkBox.Checked = !checkBox.Checked;
         }
 
+        public void Include(Android.Gms.Maps.MapView mapview)
+        {
+            mapview.Clickable = mapview.Clickable;
+        }
+
         public void Include(View view)
         {
             view.Click += (s, e) => view.ContentDescription = view.ContentDescription + "";

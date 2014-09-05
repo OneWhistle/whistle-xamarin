@@ -15,7 +15,7 @@ namespace Whistle.Droid.Fragments
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            return inflater.Inflate(Resource.Layout.EditProfile, container, false);
+            return inflater.Inflate(Resource.Layout.Registration, container, false);
         }
     }
 }

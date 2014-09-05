@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto">
+  <!--http://stackoverflow.com/questions/17913084/actionbar-action-items-not-showing-->
+  <item android:id="@+id/menu_item_switch"
+        android:title="switch"
+        android:icon="@drawable/userstatus_available_white_icon"
+        android:visible="true"
+        app:showAsAction="always"/>
+</menu>

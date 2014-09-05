@@ -24,30 +24,28 @@ namespace Whistle.Droid.Views
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : WhistleActivity<LandingMessage>
     {
-
-
-
         protected override void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
                 SupportActionBar.Show();
+            var viewModel = (BaseViewModel)this.ViewModel;
             switch (message.UserAction)
             {
                 case LandingConstants.ACTION_REGISTER:
-                    SupportActionBar.Title = "Create an account";
-                    SwitchScreen(new GenericFragment(Resource.Layout.Registration, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "registration");
+                    viewModel.Title = "CREATE AN ACCOUNT";
+                    SwitchScreen(new GenericFragment(Resource.Layout.JourneyReceipt, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "registration");
                     break;
                 case LandingConstants.ACTION_SIGNIN:
-                    SupportActionBar.Title = "Sign in";
-                    SwitchScreen(new GenericFragment(Resource.Layout.Login, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "signin");
+                    viewModel.Title = "SIGN IN";
+                    SwitchScreen(new GenericFragment(Resource.Layout.Login, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "signin");
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     (new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "forgot_password");
+                    //(new GenericAlertFragment(new AlertHelper() { IconID = Resource.Drawable.delivery_report, Description = "Test", LayoutID = Resource.Layout.AlertDialog })).Show(SupportFragmentManager, "Test");
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
-                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "register_continue");
+                    SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "register_continue");
                     break;
-
                 case LandingConstants.RESULT_LOGIN_FAILED:
                     (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
                     ((LandingViewModel)ViewModel).IsBusy = false;
@@ -72,7 +70,7 @@ namespace Whistle.Droid.Views
         protected override void OnResumeFragments()
         {
             base.OnResumeFragments();
-            SwitchScreen(new GenericFragment(Resource.Layout.Landing, Resource.Drawable.question_mark_white_icon) { ViewModel = this.ViewModel }, "landing");
+            SwitchScreen(new GenericFragment(Resource.Layout.Landing, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "landing");
             SupportActionBar.Hide();
         }
 

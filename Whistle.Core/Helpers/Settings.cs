@@ -32,6 +32,9 @@ namespace Whistle.Core.Helpers
         private const string AccessTokenKey = "access_token";
         private static string AccessTokenDefault = string.Empty;
 
+        private const string UserTypeKey = "user_type";
+        private static int UserTypeDefault = 0;
+
 #endregion
 
         public static string AccessToken
@@ -58,6 +61,20 @@ namespace Whistle.Core.Helpers
             {
                 //if value has changed then save it!
                 if (AppSettings.AddOrUpdateValue(UserNameKey, value))
+                    AppSettings.Save();
+            }
+        }
+
+        public static int UserType
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault(UserTypeKey, UserTypeDefault);
+            }
+            set
+            {
+                //if value has changed then save it!
+                if (AppSettings.AddOrUpdateValue(UserTypeKey, value))
                     AppSettings.Save();
             }
         }

@@ -19,7 +19,8 @@ namespace Whistle.Core.ViewModels
     {
         #region Private fields
         IMvxMessenger _messenger;
-
+        string[] packageList = new[] { "ENVELOPS", "SMALL (UP TO 10 KG)", "MEDIUM (BETWEEN 11 - 50 KG)", "LARGE (BETWEEN 51 - 100 KG)", "EXTRA LARGE (MORE THAN 100 KG)" };
+        string[] rideList = new[] { "BIKE(2 SEATS)", "AUTO(3 SEATS)", "SMALL CAR(4 SEATS)", "LARGE CAR(6 SEATS)", "MINI BUS(12 SEATS)", "BUS(20+ SEATS)", "TRUCK(ONLY PACKAGE)", "TRAIN", "FLIGHT" };
         #endregion
 
         /// <summary>
@@ -36,8 +37,23 @@ namespace Whistle.Core.ViewModels
         }
 
 
+        public string[] PackageList { get { return packageList; } }
+        public string[] RideList { get { return rideList; } }
+
+
         private MvxCommand<string> selectUserType;
         public ICommand SelectUserType { get { return this.selectUserType ?? (this.selectUserType = new MvxCommand<string>(onUserTypeSelected)); } }
+
+        private MvxCommand<string> navDisplay;
+        public ICommand NavDisplay { get { return this.navDisplay ?? (this.navDisplay = new MvxCommand<string>(onNavDisplay)); } }
+
+
+        private void onNavDisplay(string list)
+        {
+            var msg = new HomeMessage(this, HomeConstants.NAV_DISPLAY_LIST);
+            msg.Parameter = list;
+            _messenger.Publish(msg);
+        }
 
         private void onUserTypeSelected(string value)
         {

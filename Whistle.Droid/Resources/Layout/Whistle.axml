@@ -69,17 +69,19 @@
             android:background="@color/app_dark_gray_color"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
             <whistle.droid.views.WhistleTextView
                 android:text="PACKAGES"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent" />
-            <ImageView
+            <ImageButton
+                local:MvxBind="Click NavDisplay, CommandParameter=PACKAGES"
+                android:background="@color/app_dark_gray_color"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:src="@drawable/options_white_icon"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true" />
@@ -88,17 +90,19 @@
             android:background="@color/app_gray_color"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:layout_weight="1">
             <whistle.droid.views.WhistleTextView
                 android:text="RIDES"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent" />
-            <ImageView
+            <ImageButton
+                local:MvxBind="Click NavDisplay, CommandParameter=RIDE"
+                android:background="@color/app_gray_color"
+                android:gravity="center_vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="fill_parent"
                 android:src="@drawable/options_white_icon"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true" />

@@ -23,7 +23,7 @@ namespace Whistle.Droid.Views
     public class MainView : WhistleSlidingFragmentActivity<HomeMessage>
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
-        
+
         /// <summary>
         /// Called when [create].
         /// </summary>
@@ -88,11 +88,18 @@ namespace Whistle.Droid.Views
 
         protected override void OnReceive(HomeMessage message)
         {
-           /*let's see*/
+            /*let's see*/
             switch (message.UserAction)
             {
                 case HomeConstants.NAV_USER_TYPE_SELECTED:
                     _currentDialog.Dismiss();
+                    break;
+                case HomeConstants.NAV_DISPLAY_LIST:
+                    var viewmodel = (Whistle.Core.ViewModels.MainViewModel)this.ViewModel;
+                    var itemSource = message.Parameter == "PACKAGES" ? viewmodel.PackageList : viewmodel.RideList;
+                    var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
+                    (new ListDialogFragment(header) { ViewModel = this.ViewModel, ItemSource = itemSource }).Show(SupportFragmentManager, "select_items");
+                    //_currentDialog.Dismiss();
                     break;
             }
 

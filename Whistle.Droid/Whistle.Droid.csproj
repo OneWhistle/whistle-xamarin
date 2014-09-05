@@ -131,6 +131,7 @@
     <Compile Include="Fragments\EditFragment.cs" />
     <Compile Include="Fragments\FavoriteFragment.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
+    <Compile Include="Fragments\ListDialogFragment.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
     <Compile Include="Fragments\MapHostFragment.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
@@ -240,6 +241,9 @@
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
     <AndroidResource Include="Resources\Layout\WrongPassword.axml" />
     <AndroidResource Include="Resources\Layout\BusyIndecator.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\dialog_list.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>

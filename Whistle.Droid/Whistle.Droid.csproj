@@ -47,7 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-	<AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
@@ -248,6 +248,9 @@
     <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
     <AndroidResource Include="Resources\Layout\dialog_list.axml" />
     <AndroidResource Include="Resources\Layout\JourneyReceipt.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\MediaChooser.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -578,6 +581,9 @@
     <AndroidResource Include="Resources\drawable\star_empty_white.png" />
     <AndroidResource Include="Resources\drawable\custom_ratingbar_selector.xml" />
     <AndroidResource Include="Resources\drawable\male_big_grey.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\gallery_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\camera_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\gallery_white.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

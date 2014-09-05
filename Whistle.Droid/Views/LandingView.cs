@@ -33,7 +33,7 @@ namespace Whistle.Droid.Views
             {
                 case LandingConstants.ACTION_REGISTER:
                     viewModel.Title = "CREATE AN ACCOUNT";
-                    SwitchScreen(new GenericFragment(Resource.Layout.JourneyReceipt, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "registration");
+                    SwitchScreen(new GenericFragment(Resource.Layout.Registration, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "registration");
                     break;
                 case LandingConstants.ACTION_SIGNIN:
                     viewModel.Title = "SIGN IN";
@@ -50,10 +50,26 @@ namespace Whistle.Droid.Views
                     (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
                     ((LandingViewModel)ViewModel).IsBusy = false;
                     break;
+                case LandingConstants.ACTION_PROFILE_IMAGE:
+                    (new GenericDialogFragment(Resource.Layout.MediaChooser) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "media_chooser");
+                    break;
                 // Others are handled by the view model
                 default:
                     break;
             }
+        }
+
+        protected override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
+            var busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndicator) { ViewModel = this.ViewModel };
+            ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
+            {
+                if (busy)
+                    busyFrag.Show(SupportFragmentManager, "BusyIndicator");
+                else
+                    busyFrag.Dialog.Hide();
+            };
         }
 
         /// <summary>

@@ -25,7 +25,6 @@ namespace Whistle.Core.ViewModels
                 return false;
             if (string.IsNullOrEmpty(FullName))
                 return false;
-
             return true;
         }
     }

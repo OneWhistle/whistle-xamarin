@@ -14,6 +14,7 @@ namespace Whistle.Core
         public const string ACTION_TWITTER_LOGIN_VALIDATE = "ACTION_TWITTER_LOGIN_VALIDATE";
         public const string ACTION_GOOGLE_LOGIN_VALIDATE = "ACTION_GOOGLE_LOGIN_VALIDATE";
         public const string ACTION_REGISTER_VALIDATE = "ACTION_REGISTER_VALIDATE";
+        public const string ACTION_PROFILE_IMAGE = "ACTION_PROFILE_IMAGE";
 
         public const string RESULT_LOGIN_FAILED = "RESULT_LOGIN_FAILED";
 
@@ -26,6 +27,7 @@ namespace Whistle.Core
             ACTION_REGISTER_VALIDATE,
             ACTION_REGISTER,
             ACTION_SIGNIN,
+            ACTION_PROFILE_IMAGE,
             ACTION_TWITTER_LOGIN_VALIDATE,
             ACTION_GOOGLE_LOGIN_VALIDATE,
             ACTION_FB_LOGIN_VALIDATE

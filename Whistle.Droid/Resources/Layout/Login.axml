@@ -33,7 +33,7 @@
         android:orientation="horizontal">
         <EditText
             android:id="@+id/editEmail"
-            local:MvxBind="Text UserName"
+            local:MvxBind="Text NewUser.UserName"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:hint="USERNAME@EXAMPLE.COM"
@@ -62,7 +62,7 @@
             android:id="@+id/editPassword"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            local:MvxBind="Text Password"
+            local:MvxBind="Text NewUser.Password"
             android:hint="PASSWORD"
             android:background="@color/app_gray_color"
             android:textColorHint="@color/default_text_color"

@@ -32,30 +32,12 @@ namespace Whistle.Core.ViewModels
 
         #region Properties
 
-        private string userName;
-
-        public string UserName
+        private UserViewModel newUser;
+        public UserViewModel NewUser
         {
-            get { return userName; }
-            set
-            {
-                userName = value;
-                RaisePropertyChanged("UserName");
-            }
+            get { return newUser; }
+            private set { newUser = value; RaisePropertyChanged("NewUser"); }
         }
-
-        private string password;
-
-        public string Password
-        {
-            get { return password; }
-            set
-            {
-                password = value;
-                RaisePropertyChanged("Password");
-            }
-        }
-
         #endregion
 
         /// <summary>
@@ -78,7 +60,7 @@ namespace Whistle.Core.ViewModels
             this.ShowViewModel<MainViewModel>();
         }
 
-        private async void OnUserAction(string action)
+        private void OnUserAction(string action)
         {
             var messenger = Mvx.Resolve<IMvxMessenger>();
             if (!LandingConstants.ActionList.Contains(action))
@@ -86,35 +68,18 @@ namespace Whistle.Core.ViewModels
             switch (action)
             {
                 case LandingConstants.ACTION_LOGIN_VALIDATE:
-                    IsBusy = true;
-                    var result = await ServiceHandler.PostAction<Users>(new Users { email = UserName, password = Password }, ApiAction.LOGIN);
-                    IsBusy = false;
-                    if (!result.Success)
-                    {
-                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
-                        return;
-                    }
-                    else
-                    {
-                       this.Show();
-                    }
+                    onLogin();
                     break;
-
                 case LandingConstants.ACTION_REGISTER_DONE:
                     //testing
-                    await ServiceHandler.PostAction(new Users()
+                    if (!NewUser.IsValid())
                     {
-                        dob = new DateTime(1987, 03, 18),
-                        firstName = "Mohd",
-                        lastName = "RIYAZ77",
-                        password = "IAm7MOM",
-                        cnfmPassword = "IAm7MOM",
-                        phone = "970000000",
-                        email = "rze7@whistle.com"
-                    }, ApiAction.REGISTRATION);
+                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
+                        NewUser = new UserViewModel();
+                        return;
+                    }
+                    onRegister();
                     break;
-
-
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
@@ -130,11 +95,58 @@ namespace Whistle.Core.ViewModels
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
+            this.NewUser = new UserViewModel();
             if (_messenger != null)
                 return;
             _messenger = Mvx.Resolve<IMvxMessenger>();
             _authService = Mvx.Resolve<IAuthenticationService>();
             _regService = Mvx.Resolve<IRegistrationService>();
+        }
+
+
+
+        protected async void onLogin()
+        {
+            IsBusy = true;
+            var result = await ServiceHandler.PostAction<Users>(new Users { email = newUser.UserName, password = newUser.Password }, ApiAction.LOGIN);
+            IsBusy = false;
+            if (!result.Success)
+            {
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
+                NewUser = new UserViewModel();
+                return;
+            }
+            else
+            {
+                this.Show();
+            }
+        }
+
+        protected async void onRegister()
+        {
+            IsBusy = true;
+            var result = await ServiceHandler.PostAction(new Users()
+            {
+                dob = new DateTime(1987, 03, 18),
+                firstName = "Mohd",
+                lastName = NewUser.FullName,
+                password = NewUser.Password,
+                cnfmPassword = NewUser.Password,
+                phone = NewUser.Mobile,
+                email = NewUser.Mobile
+            }, ApiAction.REGISTRATION);
+            IsBusy = false;
+
+            if (!result.Success)
+            {
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
+                NewUser = new UserViewModel();
+                return;
+            }
+            else
+            {
+                this.Show();
+            }
         }
     }
 }

@@ -69,7 +69,7 @@ namespace Whistle.Droid.Fragments
             switch (position)
             {
                 case 0:
-                    newContent = new MapHostFragment(Resource.Layout.Whistle, Resource.Menu.menu_switch);
+                    newContent = new MapHostFragment(mainAct.mapfragment, Resource.Layout.Whistle, Resource.Menu.menu_switch);
                     title = getUserTypeTitle(Settings.UserType);
                     break;
                 case 1:

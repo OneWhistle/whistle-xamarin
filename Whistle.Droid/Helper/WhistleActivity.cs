@@ -3,6 +3,7 @@
 using Android.OS;
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Plugins.Messenger;
+using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 namespace Whistle.Droid.Helper
 {
     public abstract class WhistleActivity<TMessage> : MvxActionBarActivity where TMessage : MvxMessage
@@ -19,6 +20,18 @@ namespace Whistle.Droid.Helper
             _subscriptionToken = _messenger.SubscribeOnMainThread<TMessage>(OnReceive);
         }
 
+        /// Called when [create].
+        /// </summary>
+        /// <param name="bundle">The bundle.</param>
+        protected override void OnCreate(Bundle bundle)
+        {
+            base.OnCreate(bundle);
+            var actionbar = this.BindingInflate(Resource.Layout.custom_action_bar, null);
+            Android.Support.V7.App.ActionBar.LayoutParams lp = new Android.Support.V7.App.ActionBar.LayoutParams(Android.Support.V7.App.ActionBar.LayoutParams.MatchParent,Android.Support.V7.App.ActionBar.LayoutParams.MatchParent);
+            SupportActionBar.SetDisplayShowCustomEnabled(true);
+            SupportActionBar.SetCustomView(actionbar, lp);
+        }
+
         public override void OnBackPressed()
         {
             if (SupportFragmentManager.BackStackEntryCount == 1) // landing fragment
@@ -26,13 +39,14 @@ namespace Whistle.Droid.Helper
                 Finish();
                 return;
             }
-            
             SupportFragmentManager.PopBackStackImmediate();
             if (SupportFragmentManager.BackStackEntryCount == 1) // landing fragment
             {
                 SupportActionBar.Hide();
             }
         }
+
+        
 
         public override bool OnCreateOptionsMenu(Android.Views.IMenu menu)
         {

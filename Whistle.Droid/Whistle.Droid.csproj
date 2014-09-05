@@ -132,6 +132,7 @@
     <Compile Include="Fragments\FavoriteFragment.cs" />
     <Compile Include="Fragments\LandingFragments.cs" />
     <Compile Include="Fragments\LoginFragments.cs" />
+    <Compile Include="Fragments\MapHostFragment.cs" />
     <Compile Include="Fragments\MenuFragments.cs" />
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />
@@ -466,7 +467,7 @@
     <BundleResource Include="Resources\drawable\provider_normal_icon.png" />
     <BundleResource Include="Resources\drawable\question_mark_green_icon.png" />
     <BundleResource Include="Resources\drawable\question_mark_small_green_icon.png" />
-    <BundleResource Include="Resources\drawable\question_mark_white_icon.png" />
+    <AndroidResource Include="Resources\drawable\question_mark_white_icon.png" />
     <BundleResource Include="Resources\drawable\radio_btn_active_icon.png" />
     <BundleResource Include="Resources\drawable\radio_btn_normal_icon.png" />
     <BundleResource Include="Resources\drawable\sad_face_green_icon.png" />
@@ -559,6 +560,13 @@
     <AndroidResource Include="Resources\drawable\logo_features.png" />
     <AndroidResource Include="Resources\drawable-hdpi\logo_features.png" />
     <AndroidResource Include="Resources\drawable\busy.png" />
+    <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
+    <AndroidResource Include="Resources\menu\menu_switch.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\menu\menu_help.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

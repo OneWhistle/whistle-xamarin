@@ -13,26 +13,28 @@ namespace Whistle.Droid.Fragments
     public class GenericFragment : MvxFragment
     {
         readonly int _layoutId;
-        readonly int _menuIconRes;
+        readonly int _menuResId;
 
         public GenericFragment(int layoutId, int menuIconRes)
         {
             _layoutId = layoutId;
-            _menuIconRes = menuIconRes;
+            _menuResId = menuIconRes;
         }
 
         public override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+
             HasOptionsMenu = true;
+            base.OnCreate(savedInstanceState);
+
         }
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
             GenericDialogFragment busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndecator) { ViewModel = this.ViewModel };
-            
-           // busyFrag.
+
+            // busyFrag.
             //Adding Busy view
             ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
             {
@@ -40,23 +42,28 @@ namespace Whistle.Droid.Fragments
                     busyFrag.Show(FragmentManager, "BusyIndicator");
                 else
                     busyFrag.Dialog.Hide();
-            };               
+            };
 
             return this.BindingInflate(_layoutId, null);
         }
 
+        //   override oncreateop
+
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            var item = menu.Add(Resource.String.menu_help);
-            item.SetIcon(_menuIconRes);
-            item.SetShowAsAction(ShowAsAction.Always);
+            inflater.Inflate(_menuResId, menu);  
+
             base.OnCreateOptionsMenu(menu, inflater);
+
+            //Resource.Drawable.question_mark_white_icon
+
+
         }
 
     }
 
 
- 
+
 
     /// <summary>
     /// https://github.com/MvvmCross/MvvmCross-Tutorials/blob/master/Fragments/FragmentSample.UI.Droid/Views/Frags/Dialog/NameDialogFragment.cs
@@ -65,11 +72,12 @@ namespace Whistle.Droid.Fragments
     {
         readonly int _layoutId;
         readonly int _backgroundResourceId;
-     
 
-        public GenericDialogFragment(int layoutId): this(layoutId, Resource.Color.app_gray_modal_color)
+
+        public GenericDialogFragment(int layoutId)
+            : this(layoutId, Resource.Color.app_gray_modal_color)
         {
-           
+
         }
 
         public GenericDialogFragment(int layoutId, int backgroundResourceId)

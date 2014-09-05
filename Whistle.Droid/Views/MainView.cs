@@ -61,6 +61,20 @@ namespace Whistle.Droid.Views
 
         }
 
+        public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
+        {
+            switch (item.ItemId)
+            {
+                case Resource.Id.menu_item_switch:
+                    (_currentDialog = new GenericDialogFragment(Resource.Layout.UserType) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "select_user_type");
+                    break;
+                default:
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
+        }
+
+
 
         public override void SwitchContent(MvxFragment fragment)
         {

@@ -14,9 +14,9 @@ namespace Whistle.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
             _helper = new SlidingActivityHelper(this);
             _helper.OnCreate(savedInstanceState);
+            base.OnCreate(savedInstanceState);
         }
 
         protected override void OnPostCreate(Bundle savedInstanceState)

@@ -73,7 +73,7 @@ namespace Whistle.Droid.Fragments
                     title = getUserTypeTitle(Settings.UserType);
                     break;
                 case 1:
-                    newContent = new GenericFragment(Resource.Layout.EditProfile, Resource.Menu.menu_switch);
+                    newContent = new GenericFragment(Resource.Layout.Registration, Resource.Menu.menu_switch) { ViewModel = mainAct.ViewModel };
                     title = "EDIT PROFILE";
                     break;
                 case 2:

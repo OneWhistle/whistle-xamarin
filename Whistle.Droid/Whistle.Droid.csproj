@@ -47,7 +47,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+	<AndroidLinkMode>SdkOnly</AndroidLinkMode>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
@@ -84,8 +84,7 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
-    <Reference Include="GooglePlayServicesFroyoLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="GooglePlayServicesFroyoLib">
       <HintPath>..\Components\googleplayservicesfroyo-12.0.5\lib\android\GooglePlayServicesFroyoLib.dll</HintPath>
     </Reference>
     <Reference Include="Mindscape.Raygun4Net.Xamarin.Android">
@@ -127,6 +126,7 @@
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
+    <Compile Include="Fragments\GenericAlertFragment.cs" />
     <Compile Include="Fragments\GenericFragment.cs" />
     <Compile Include="Fragments\ContentFragment.cs" />
     <Compile Include="Fragments\ContentMenuFragment.cs" />
@@ -245,30 +245,10 @@
     <AndroidResource Include="Resources\Layout\BusyIndicator.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\Dialog_Identity.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Success.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Failed.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Terms.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_WhistlerAlert.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Happy.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
-    <BundleResource Include="Resources\Layout\Dialog_Delivered.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
     <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
     <AndroidResource Include="Resources\Layout\dialog_list.axml" />
-    <AndroidResource Include="Resources\Layout\Dialog_RegistrationSuccess.axml">
+	<AndroidResource Include="Resources\Layout\Dialog_RegistrationSuccess.axml"/>
+    <AndroidResource Include="Resources\Layout\JourneyReceipt.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -595,6 +575,10 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\menu\menu_switch.xml" />
+    <AndroidResource Include="Resources\drawable\star_white.png" />
+    <AndroidResource Include="Resources\drawable\star_empty_white.png" />
+    <AndroidResource Include="Resources\drawable\custom_ratingbar_selector.xml" />
+    <AndroidResource Include="Resources\drawable\male_big_grey.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

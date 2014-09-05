@@ -24,9 +24,6 @@ namespace Whistle.Droid.Views
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : WhistleActivity<LandingMessage>
     {
-
-
-
         protected override async void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
@@ -44,22 +41,20 @@ namespace Whistle.Droid.Views
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     (new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "forgot_password");
+                    //(new GenericAlertFragment(new AlertHelper() { IconID = Resource.Drawable.delivery_report, Description = "Test", LayoutID = Resource.Layout.AlertDialog })).Show(SupportFragmentManager, "Test");
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                     SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "register_continue");
                     break;
-
                 case LandingConstants.RESULT_LOGIN_FAILED:
-                    (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");                    
+                    (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
                     break;
-                case LandingConstants.RESULT_REGISTER_SUCCESS:
+				case LandingConstants.RESULT_REGISTER_SUCCESS:
                     (new GenericDialogFragment(Resource.Layout.Dialog_RegistrationSuccess, Resource.Color.app_green_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "register_success");
-
                     await System.Threading.Tasks.Task.Delay(1500);
                     ((LandingViewModel)this.ViewModel).Show();
                     
-                    break;
- 
+                    break;					
                 // Others are handled by the view model
                 default:
                     break;

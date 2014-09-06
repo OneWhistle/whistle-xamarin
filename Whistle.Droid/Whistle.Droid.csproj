@@ -241,13 +241,11 @@
     <AndroidResource Include="Resources\Layout\AlertDialog.axml" />
     <AndroidResource Include="Resources\Layout\UserDetails.axml" />
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
-    <AndroidResource Include="Resources\Layout\WrongPassword.axml" />
     <AndroidResource Include="Resources\Layout\BusyIndicator.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
     <AndroidResource Include="Resources\Layout\dialog_list.axml" />
-	<AndroidResource Include="Resources\Layout\Dialog_RegistrationSuccess.axml"/>
     <AndroidResource Include="Resources\Layout\JourneyReceipt.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>

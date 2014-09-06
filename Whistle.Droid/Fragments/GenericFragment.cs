@@ -3,6 +3,7 @@
 using Android.App;
 using Android.OS;
 using Android.Views;
+using Android.Widget;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Fragging.Fragments;
 
@@ -22,7 +23,6 @@ namespace Whistle.Droid.Fragments
         public override void OnCreate(Bundle savedInstanceState)
         {
             HasOptionsMenu = true;
-
             base.OnCreate(savedInstanceState);
         }
 
@@ -31,22 +31,12 @@ namespace Whistle.Droid.Fragments
         {
 
             base.OnCreateView(inflater, container, savedInstanceState);
-            // busyFrag.
-            //Adding Busy view
-            //((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
-            //{
-            //    if (busy)
-            //        busyFrag.Show(FragmentManager, "BusyIndicator");
-            //    else
-            //        busyFrag.Dialog.Hide();
-            //};
-
             return this.BindingInflate(_layoutId, null);
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-            inflater.Inflate(_menuResId, menu);  
+            inflater.Inflate(_menuResId, menu);
             base.OnCreateOptionsMenu(menu, inflater);
         }
     }
@@ -75,15 +65,18 @@ namespace Whistle.Droid.Fragments
             this._backgroundResourceId = backgroundResourceId;
         }
 
+        public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+        {
+            var view = this.BindingInflate(_layoutId, container);
+            return view;
+        }
+
         public override Dialog OnCreateDialog(Bundle savedState)
         {
             base.EnsureBindingContextSet(savedState);
-            var view = this.BindingInflate(_layoutId, null);
-
-            var dialog = new Dialog(Activity);
-            dialog.RequestWindowFeature((int)WindowFeatures.NoTitle);
-            dialog.SetContentView(view);
-            dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
+            var dialog = new Dialog(Activity, Android.Resource.Style.ThemeHoloNoActionBarFullscreen);
+            //dialog.RequestWindowFeature((int)WindowFeatures.NoTitle);
+            //dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
             dialog.Window.SetBackgroundDrawableResource(_backgroundResourceId);
             return dialog;
         }

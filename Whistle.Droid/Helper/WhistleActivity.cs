@@ -22,7 +22,7 @@ namespace Whistle.Droid.Helper
             base.OnViewModelSet();
             _messenger = Mvx.Resolve<IMvxMessenger>();
             _subscriptionToken = _messenger.SubscribeOnMainThread<TMessage>(OnReceive);
-            busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndicator);
+            busyFrag = (new GenericAlertFragment(Resource.Color.app_gray_modal_color)).WithIcon(Resource.Drawable.busy).WithTitle(Resource.String.d_waiting);
             // busyFrag.
             //Adding Busy view
             ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
@@ -31,7 +31,9 @@ namespace Whistle.Droid.Helper
                 if (busy)
                     busyFrag.Show(SupportFragmentManager, "BusyIndicator");
                 else
+                {
                     busyFrag.Dismiss();
+                }
             };
         }
 

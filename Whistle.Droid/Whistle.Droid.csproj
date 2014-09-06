@@ -126,8 +126,8 @@
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
+    <Compile Include="Fragments\ChooserFragment.cs" />
     <Compile Include="Fragments\GenericAlertFragment.cs" />
-    <Compile Include="Fragments\GenericDialogFragment.cs" />
     <Compile Include="Fragments\GenericFragment.cs" />
     <Compile Include="Fragments\ContentFragment.cs" />
     <Compile Include="Fragments\ContentMenuFragment.cs" />
@@ -247,10 +247,6 @@
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\custom_action_bar.axml" />
     <AndroidResource Include="Resources\Layout\dialog_list.axml" />
-<<<<<<< HEAD
-    <AndroidResource Include="Resources\Layout\Dialog_RegistrationSuccess.axml" />
-=======
->>>>>>> 1812d5a83105490e233af7d709c4082a06c5a85a
     <AndroidResource Include="Resources\Layout\JourneyReceipt.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>

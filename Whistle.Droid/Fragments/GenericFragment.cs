@@ -28,32 +28,20 @@ namespace Whistle.Droid.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-<<<<<<< HEAD
-=======
-
->>>>>>> 1812d5a83105490e233af7d709c4082a06c5a85a
             base.OnCreateView(inflater, container, savedInstanceState);
             return this.BindingInflate(_layoutId, null);
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
         {
-<<<<<<< HEAD
             inflater.Inflate(_menuResId, menu);  
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
         public void RegisterControls()
         {
-
-=======
-            inflater.Inflate(_menuResId, menu);
-            base.OnCreateOptionsMenu(menu, inflater);
         }
     }
-
-
-
 
     /// <summary>
     /// https://github.com/MvvmCross/MvvmCross-Tutorials/blob/master/Fragments/FragmentSample.UI.Droid/Views/Frags/Dialog/NameDialogFragment.cs
@@ -90,7 +78,6 @@ namespace Whistle.Droid.Fragments
             //dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
             dialog.Window.SetBackgroundDrawableResource(_backgroundResourceId);
             return dialog;
->>>>>>> 1812d5a83105490e233af7d709c4082a06c5a85a
         }
     }   
 }

@@ -2,7 +2,15 @@
 <resources>
   <string name="Hello">Hello World, Click Me!</string>
   <string name="ApplicationName">Whistle</string>
-
   <string name="menu_help">help</string>
+
+  
+  <!--DIALOGS-->
+  <string name="d_oops">OOP!</string>
+  <string name="d_awesome">AWESOME!</string>
+  <string name="d_waiting">Waiting...</string>
+
+  <string name="d_registration_success">Your account created successfully.\r\nThank you for joining!</string>
+  <string name="d_wrong_password">The e-mail &amp; password do not match.\r\nPlease try again.</string>
 
 </resources>

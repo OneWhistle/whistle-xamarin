@@ -41,41 +41,37 @@ namespace Whistle.Droid.Views
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     (new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "forgot_password");
-                    //(new GenericAlertFragment(new AlertHelper() { IconID = Resource.Drawable.delivery_report, Description = "Test", LayoutID = Resource.Layout.AlertDialog })).Show(SupportFragmentManager, "Test");
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                     SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "register_continue");
                     break;
                 case LandingConstants.RESULT_LOGIN_FAILED:
-                    (new GenericDialogFragment(Resource.Layout.WrongPassword, Resource.Color.app_red_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "wrong_password");
+                    (new GenericAlertFragment(Resource.Color.app_red_modal_color))
+                        .WithIcon(Resource.Drawable.sad_face_white_icon)
+                        .WithTitle(Resource.String.d_oops)
+                        .WithDescription(Resource.String.d_wrong_password)
+                        .Show(SupportFragmentManager, "wrong_password");
                     break;
                 case LandingConstants.ACTION_PROFILE_IMAGE:
                     (new GenericDialogFragment(Resource.Layout.MediaChooser) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "media_chooser");
                     break;
-				case LandingConstants.RESULT_REGISTER_SUCCESS:
-                    (new GenericDialogFragment(Resource.Layout.Dialog_RegistrationSuccess, Resource.Color.app_green_modal_color) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "register_success");
+                case LandingConstants.RESULT_REGISTER_SUCCESS:
+                    (new GenericAlertFragment(Resource.Color.app_green_modal_color))
+                        .WithIcon(Resource.Drawable.happy_face_white_icon)
+                        .WithTitle(Resource.String.d_awesome)
+                        .WithDescription(Resource.String.d_registration_success)
+                        .Show(SupportFragmentManager, "register_success");
+
                     await System.Threading.Tasks.Task.Delay(1500);
                     ((LandingViewModel)this.ViewModel).Show();
-                    
-                    break;					
+
+                    break;
                 // Others are handled by the view model
                 default:
                     break;
             }
         }
 
-        protected override void OnViewModelSet()
-        {
-            base.OnViewModelSet();
-            var busyFrag = new GenericDialogFragment(Resource.Layout.BusyIndicator) { ViewModel = this.ViewModel };
-            ((BaseViewModel)ViewModel).IsBusyChanged = (busy) =>
-            {
-                if (busy)
-                    busyFrag.Show(SupportFragmentManager, "BusyIndicator");
-                else
-                    busyFrag.Dialog.Hide();
-            };
-        }
 
         /// <summary>
         /// Called when [create].

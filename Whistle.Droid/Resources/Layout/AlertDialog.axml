@@ -3,9 +3,6 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginBottom="0dp"
-    android:layout_marginTop="0dp"
-    android:background="#3D474C"
     android:gravity="center"
     android:orientation="vertical"
     android:weightSum="8">
@@ -35,20 +32,18 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="OOPS!"
-            android:textColor="#09AA82"
             android:textSize="24sp" />
         <whistle.droid.views.WhistleTextView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            local:customFont="fonts/ProximaNova-Regular.otf"
+            local:customFont="fonts/ProximaNova-Light.otf"
             android:layout_marginTop="0dp"
             android:gravity="center_horizontal"
             android:text="sadaslkdjlasjdlasjldjasl vsdkjsahfkjsasf safkjsahfkjashf safsakjfhsakjfhsak "
             android:textColor="#FFFFFF"
             android:textSize="18sp"
-            android:visibility="gone"
             android:id="@+id/alertMsg" />
-        <whistle.droid.views.WhistleButton
+    <!--<whistle.droid.views.WhistleButton
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             local:customFont="fonts/ProximaNova-Regular.otf"
@@ -58,7 +53,7 @@
             android:textColor="#FFFFFF"
             android:textSize="20sp"
             android:layout_marginTop="10dp"
-            android:id="@+id/alertButton" />
+            android:id="@+id/alertButton" />-->
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="0dp"
@@ -71,7 +66,7 @@
             android:id="@+id/bottomLayout"
             android:orientation="horizontal"
             android:weightSum="2">
-            <whistle.droid.views.WhistleButton
+        <!--<whistle.droid.views.WhistleButton
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
                 local:customFont="fonts/ProximaNova-Regular.otf"
@@ -91,7 +86,7 @@
                 android:text="RESEND"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
-                android:id="@+id/alertButtonResend" />
+                android:id="@+id/alertButtonResend" />-->
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

@@ -16,16 +16,45 @@ using Whistle.Droid.Views;
 
 namespace Whistle.Droid.Fragments
 {
-    public class GenericAlertFragment : MvxDialogFragment
+    public class GenericAlertFragment : GenericDialogFragment
     {
         private AlertHelper alertHelper;
         private TextView txtTitleView, txtDescription;
         private ImageView imageIcon;
         private WhistleButton alertButton;
 
-        public GenericAlertFragment(AlertHelper _alertHelper)
+        int _iconResId;
+        int _titleResId;
+        int _descriptionResId;
+
+        public bool HasIcon { get; private set; }
+
+        public bool HasTitle { get; private set; }
+
+        public bool HasDescription { get; private set; }
+
+        public GenericAlertFragment(int backgroundResId) : base(Resource.Layout.AlertDialog, backgroundResId) { }
+
+
+        public GenericAlertFragment WithIcon(int iconResId)
         {
-            alertHelper = _alertHelper;
+            HasIcon = true;
+            _iconResId = iconResId;
+            return this;
+        }
+
+        public GenericAlertFragment WithTitle(int textResId)
+        {
+            HasTitle = true;
+            _titleResId = textResId;
+            return this;
+        }
+
+        public GenericAlertFragment WithDescription(int msgResId)
+        {
+            HasDescription = true;
+            _descriptionResId = msgResId;
+            return this;
         }
 
         public override void OnCreate(Bundle savedInstanceState)
@@ -35,26 +64,28 @@ namespace Whistle.Droid.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var view = this.BindingInflate(alertHelper.LayoutID, null);
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
+            var titleView = view.FindViewById<TextView>(Resource.Id.alertTitle);
+            var descView = view.FindViewById<TextView>(Resource.Id.alertMsg);
+            var iconView = view.FindViewById<ImageView>(Resource.Id.alertIcon);
+
+            if (HasIcon)
+                iconView.SetImageResource(_iconResId);
+            else
+                iconView.Visibility = ViewStates.Gone;
+            if (HasTitle)
+                titleView.Text = GetString(_titleResId);
+            else
+                titleView.Visibility = ViewStates.Gone;
+            if (HasDescription)
+                descView.Text = GetString(_descriptionResId);
+            else
+                descView.Visibility = ViewStates.Gone;
+
             return view;
         }
 
 
-        public override Dialog OnCreateDialog(Bundle savedState)
-        {
-            base.EnsureBindingContextSet(savedState);
-            var view = this.BindingInflate(alertHelper.LayoutID, null);
-            var linearLayout = view.FindViewById<LinearLayout>(Resource.Id.bottomLayout);
-            AddButton(linearLayout, new List<string>() { "Find", "Resend" });
-
-
-            var dialog = new Dialog(Activity);
-            dialog.RequestWindowFeature((int)WindowFeatures.NoTitle);
-            dialog.SetContentView(view);
-            dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
-            dialog.Window.SetBackgroundDrawableResource(Resource.Drawable.transparent);
-            return dialog;
-        }
 
         View AddButton(LinearLayout _view, IList<string> _buttons)
         {

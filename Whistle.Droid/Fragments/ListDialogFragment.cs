@@ -1,5 +1,4 @@
 
-using Android.App;
 using Android.OS;
 using Android.Widget;
 using Cirrious.MvvmCross.Binding.Droid.Views;
@@ -18,17 +17,18 @@ namespace Whistle.Droid.Fragments
         {
             _header = header;
         }
-        public override Dialog OnCreateDialog(Bundle savedState)
+
+        public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Bundle savedInstanceState)
         {
-            var dialog = base.OnCreateDialog(savedState);
-            var listview = dialog.FindViewById<MvxListView>(Resource.Id.item_list);
-            var headerTextView = dialog.FindViewById<TextView>(Resource.Id.list_header);
+            var view = base.OnCreateView(inflater, container, savedInstanceState);
+            var listview = view.FindViewById<MvxListView>(Resource.Id.item_list);
+            var headerTextView = view.FindViewById<TextView>(Resource.Id.list_header);
 
             headerTextView.Text = _header;
-           // listview.AddHeaderView(textView);
             listview.ItemsSource = ItemSource;
 
-            return dialog;
+            return view;
         }
+
     }
 }

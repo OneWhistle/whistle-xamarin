@@ -17,7 +17,7 @@ namespace Whistle.Droid
         public SplashScreen()
             : base(Resource.Layout.SplashScreen)
         {
-            RaygunClient.Attach("FtX2mlgWsSYKn4uOA55pJQ==");
+            //RaygunClient.Attach("FtX2mlgWsSYKn4uOA55pJQ==");
         }
     }
 }

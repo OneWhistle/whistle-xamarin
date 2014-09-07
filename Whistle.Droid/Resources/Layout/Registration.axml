@@ -30,10 +30,10 @@
             android:background="#EEF0FF"
             android:gravity="center"
             android:id="@+id/optMale">
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/male_grey_icon" />
+                android:background="@drawable/male_button_state_list" />
         </LinearLayout>
         <View
             android:layout_height="fill_parent"
@@ -47,10 +47,10 @@
             android:background="#EEF0FF"
             android:gravity="center"
             android:id="@+id/optFemale">
-            <ImageView
+            <ImageButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/female_grey_icon" />
+                android:background="@drawable/female_button_state_list" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

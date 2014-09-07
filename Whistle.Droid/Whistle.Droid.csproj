@@ -584,6 +584,8 @@
     <AndroidResource Include="Resources\drawable-hdpi\gallery_green.png" />
     <AndroidResource Include="Resources\drawable-hdpi\camera_green.png" />
     <AndroidResource Include="Resources\drawable-hdpi\gallery_white.png" />
+    <AndroidResource Include="Resources\drawable\male_button_state_list.xml" />
+    <AndroidResource Include="Resources\drawable\female_button_state_list.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

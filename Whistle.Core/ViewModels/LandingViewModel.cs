@@ -40,6 +40,7 @@ namespace Whistle.Core.ViewModels
         }
         #endregion
 
+      
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
@@ -102,9 +103,6 @@ namespace Whistle.Core.ViewModels
             _authService = Mvx.Resolve<IAuthenticationService>();
             _regService = Mvx.Resolve<IRegistrationService>();
         }
-
-
-
         protected async void onLogin()
         {
             IsBusy = true;
@@ -130,10 +128,8 @@ namespace Whistle.Core.ViewModels
                 user = new Users
                     {
                         dob = new DateTime(1987, 03, 18),
-                        //firstName = "Mohd",
                         name = NewUser.FullName,
                         password = NewUser.Password,
-                        //cnfmPassword = NewUser.Password,
                         phone = NewUser.Mobile,
                         email = NewUser.Email
                     }

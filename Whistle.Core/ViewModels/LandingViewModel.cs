@@ -106,7 +106,7 @@ namespace Whistle.Core.ViewModels
         protected async void onLogin()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction<Users>(new Users { email = newUser.UserName, password = newUser.Password }, ApiAction.LOGIN);
+            var result = await ServiceHandler.PostAction<Users>(new Users { Email = newUser.UserName, Password = newUser.Password }, ApiAction.LOGIN);
             IsBusy = false;
             if (!result.Success)
             {
@@ -132,6 +132,14 @@ namespace Whistle.Core.ViewModels
                         password = NewUser.Password,
                         phone = NewUser.Mobile,
                         email = NewUser.Email
+                        DOB = new DateTime(1987, 03, 18),
+                        //firstName = "Mohd",
+                        Name = NewUser.FullName,
+                        UserName = newUser.UserName,
+                        Password = NewUser.Password,
+                        //cnfmPassword = NewUser.Password,
+                        Phone = NewUser.Mobile,
+                        Email = NewUser.Email
                     }
             }, ApiAction.REGISTRATION);
             IsBusy = false;

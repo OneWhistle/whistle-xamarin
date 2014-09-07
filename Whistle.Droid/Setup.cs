@@ -5,6 +5,8 @@ using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Refractored.MvxPlugins.Settings;
 using Refractored.MvxPlugins.Settings.Droid;
+using Whistle.Core.Interfaces;
+using Whistle.Droid.PlatformSpecific;
 
 namespace Whistle.Droid
 {
@@ -22,6 +24,7 @@ namespace Whistle.Droid
         protected override void InitializeLastChance()
         {
             base.InitializeLastChance();
+            Mvx.RegisterSingleton<IHttpClientHelper>(() => new HttpClientHelper());
             Mvx.RegisterSingleton<ISettings>(() => new MvxAndroidSettings());
         }
 		

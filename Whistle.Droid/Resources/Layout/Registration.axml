@@ -121,6 +121,8 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:hint="MOBILE"
+            android:inputType="phone"
+            android:digits="0123456789+"
             android:textColor="#000"
             local:MvxBind="Text NewUser.Mobile"
             android:background="#FFFFFF"
@@ -157,9 +159,9 @@
         android:layout_marginTop="0dp"
         android:background="#FFFFFF"
         android:textColor="#000"
-        android:inputType="text"
         local:MvxBind="Text NewUser.Email"
         android:hint="E-MAIL ADDRESS"
+        android:inputType="textEmailAddress"
         android:textSize="14sp"
         android:paddingLeft="10dp" />
     <LinearLayout

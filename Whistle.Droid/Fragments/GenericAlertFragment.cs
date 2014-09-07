@@ -20,7 +20,7 @@ namespace Whistle.Droid.Fragments
     {
         int _iconResId;
         int _titleResId;
-        int _descriptionResId;
+        Func<string> _descriptionResolve;
 
         public bool HasIcon { get; private set; }
 
@@ -48,7 +48,13 @@ namespace Whistle.Droid.Fragments
         public GenericAlertFragment WithDescription(int msgResId)
         {
             HasDescription = true;
-            _descriptionResId = msgResId;
+            _descriptionResolve = () => GetString(msgResId); // I use a delegate (function) because calling GetString Here will throw IllegalStateException
+            return this;
+        }
+        public GenericAlertFragment WithDescription(string description)
+        {
+            HasDescription = true;
+            _descriptionResolve = ()=> description;
             return this;
         }
 
@@ -73,7 +79,9 @@ namespace Whistle.Droid.Fragments
             else
                 titleView.Visibility = ViewStates.Gone;
             if (HasDescription)
-                descView.Text = GetString(_descriptionResId);
+            {
+                descView.Text = _descriptionResolve(); // The description is resolved when needed.
+            }
             else
                 descView.Visibility = ViewStates.Gone;
 

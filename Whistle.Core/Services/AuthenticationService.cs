@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Whistle.Core.Interfaces;
+using Whistle.Core.Modal;
 
 namespace Whistle.Core.Services
 {
@@ -11,6 +12,7 @@ namespace Whistle.Core.Services
     /// </summary>
     public class AuthResult
     {
+        public ErrorResponse Error {get;set;} 
         public bool Success { get; set; }
         // need some property there..
     }

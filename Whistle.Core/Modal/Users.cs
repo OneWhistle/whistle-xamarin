@@ -25,5 +25,10 @@ namespace Whistle.Core.Modal
 
         [JsonProperty(PropertyName = "phone", NullValueHandling = NullValueHandling.Ignore)]
         public string Phone { get; set; }
+
+        //Yes, We'll use single ahead, based on param
+        public bool IsMale { get; set; }
+        public bool IsFemale { get; set; }
+
     }
 }

@@ -3,16 +3,20 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Whistle.Core.Modal;
 
 namespace Whistle.Core.ViewModels
 {
-    public class UserViewModel
+    public class UserViewModel: Users
     {
-        public string UserName { get; set; }
+        //Can we do this ?
+
+        /*public string UserName { get; set; }
         public string Password { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; }
+        public string Email { get; set; }*/
         public string Mobile { get; set; }
+        
+        public string FullName { get; set; }
 
         public bool IsValid()
         {

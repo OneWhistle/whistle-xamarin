@@ -132,6 +132,7 @@
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
+    <Compile Include="Fragments\ChooserFragment.cs" />
     <Compile Include="Fragments\GenericAlertFragment.cs" />
     <Compile Include="Fragments\GenericFragment.cs" />
     <Compile Include="Fragments\ContentFragment.cs" />

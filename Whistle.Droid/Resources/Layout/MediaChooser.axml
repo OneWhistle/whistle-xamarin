@@ -11,15 +11,15 @@
         android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:src="@drawable/camera_green" />
+        <ImageButton
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/camera_green" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-60dp"
+            android:layout_marginTop="-50dp"
             android:gravity="center"
             android:text="CAMERA"
             android:textColor="#FFFFFF"
@@ -35,15 +35,15 @@
         android:layout_weight="3"
         android:gravity="center"
         android:orientation="vertical">
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="0dp"
-            android:layout_weight="3"
-            android:src="@drawable/gallery_white" />
+        <ImageButton
+            android:id="@+id/galleryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/gallery_white" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-60dp"
+            android:layout_marginTop="-50dp"
             android:gravity="center"
             android:text="GALLERY"
             android:textColor="#000000"

@@ -87,31 +87,5 @@ namespace Whistle.Droid.Fragments
 
             return view;
         }
-
-
-
-        View AddButton(LinearLayout _view, IList<string> _buttons)
-        {
-            //For Two butotn LO wieghtSum = 2; weight="1.2" button:layout_weight="1"
-            //For Single Button Button:layout_weight="1.2"
-            _view.WeightSum = 2;
-            foreach (var button in _buttons)
-            {
-                var newButton = new WhistleButton(_view.Context);
-                newButton.Text = button;
-                _view.AddView(newButton);
-            }
-            return _view;
-        }
-    }
-
-    public class AlertHelper
-    {
-        public int LayoutID { get; set; }
-        public int IconID { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public List<string> AlertButton { get; set; }
-        //Please suggest color info
     }
 }

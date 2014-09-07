@@ -129,12 +129,13 @@ namespace Whistle.Core.ViewModels
             {
                 user = new Users
                     {
-                        dob = new DateTime(1987, 03, 18),
+                        DOB = new DateTime(1987, 03, 18),
                         //firstName = "Mohd",
-                        name = NewUser.FullName,
+                        Name = NewUser.FullName,
+                        UserName = newUser.UserName,
                         Password = NewUser.Password,
                         //cnfmPassword = NewUser.Password,
-                        phone = NewUser.Mobile,
+                        Phone = NewUser.Mobile,
                         Email = NewUser.Email
                     }
             }, ApiAction.REGISTRATION);

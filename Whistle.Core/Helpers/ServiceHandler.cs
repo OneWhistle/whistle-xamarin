@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Whistle.Core.Interfaces;
 using Whistle.Core.Services;
+using Cirrious.CrossCore;
+using Cirrious.CrossCore.Platform;
 
 namespace Whistle.Core.Helper
 {
@@ -18,6 +20,13 @@ namespace Whistle.Core.Helper
     {
         static object lockObj;
         private static IHttpClientHelper httpClientHelper;
+
+        private static IHttpClientHelper HttpClientHelper
+        {
+            get { return httpClientHelper ?? (httpClientHelper = Mvx.GetSingleton<IHttpClientHelper>()); }
+        }
+
+
         static ServiceHandler()
         {
             lockObj = new object();
@@ -25,10 +34,10 @@ namespace Whistle.Core.Helper
 
         private static HttpClient CreateClient()
         {
-            if (httpClientHelper == null)
+            if (HttpClientHelper == null)
                 return new HttpClient();
 
-            return new HttpClient(httpClientHelper.MessageHandler);
+            return new HttpClient(HttpClientHelper.MessageHandler);
         }
 
         /// <summary>
@@ -41,6 +50,7 @@ namespace Whistle.Core.Helper
         /// <returns></returns>
         public static async Task<AuthResult> PostAction<T>(T obj, string apiSection, T value = default(T))
         {
+
             using (var client = CreateClient())
             {
                 try
@@ -52,22 +62,27 @@ namespace Whistle.Core.Helper
                     client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
                     client.DefaultRequestHeaders.CacheControl.NoStore = true;
                     client.Timeout = new TimeSpan(0, 0, 30);
+
                     string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
+
                     var content = new StringContent(jsonData);
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
-                    string url=API.CreateUrl(apiSection);
+                    Uri url = new Uri(API.CreateUrl(apiSection));
+
                     var result = await client.PostAsync(url, content);
                     var response = await result.Content.ReadAsStringAsync();
 
+                    Mvx.Trace(MvxTraceLevel.Diagnostic, "Result: {0} / {1}", result.StatusCode.ToString(), response);
                     if (!result.IsSuccessStatusCode)
                     {
                         return new AuthResult();
                     }
-                    
+
                 }
                 catch (Exception ex)
                 {
-
+                    Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Error, ex.Message);
+                    return new AuthResult();
                 }
             }
 
@@ -77,7 +92,7 @@ namespace Whistle.Core.Helper
 
     #region WebRequest Extention Method
 
-   
+
     public static class WebRequestExtensions
     {
         public static Task<HttpWebResponse> GetResponseAsync(this HttpWebRequest request)

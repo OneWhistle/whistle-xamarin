@@ -42,6 +42,17 @@ namespace Whistle.Core
         {
             this.UserAction = userAction;
         }
+
+        public bool HasPayload { get; private set; }
+        public string Payload { get; private set; }
+
+        internal LandingMessage WithPayload(string payload)
+        {
+            HasPayload = true;
+            this.Payload = payload;
+            return this;
+        }
+
         public string UserAction { get; private set; }
     }
 }

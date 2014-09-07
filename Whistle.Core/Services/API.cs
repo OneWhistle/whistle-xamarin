@@ -8,7 +8,7 @@ namespace Whistle.Core.Services
 
         //For test
         internal const string UATWebUrl= "http://whistle-test.herokuapp.com/api/";
-        //internal const string LiveWebUrl = "";
+        //inter0nal const string LiveWebUrl = "";
     }
 
     internal class ApiSection

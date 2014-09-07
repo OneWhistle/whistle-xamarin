@@ -45,13 +45,18 @@ namespace Whistle.Droid.Views
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                     SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "register_continue");
                     break;
+
                 case LandingConstants.RESULT_LOGIN_FAILED:
-                    (new GenericAlertFragment(Resource.Color.app_red_modal_color))
+                    var dialog = (new GenericAlertFragment(Resource.Color.app_red_modal_color))
                         .WithIcon(Resource.Drawable.sad_face_white_icon)
-                        .WithTitle(Resource.String.d_oops)
-                        .WithDescription(Resource.String.d_wrong_password)
-                        .Show(SupportFragmentManager, "wrong_password");
+                        .WithTitle(Resource.String.d_oops);
+                    if (message.HasPayload)
+                        dialog = dialog.WithDescription(message.Payload);
+                    else
+                        dialog = dialog.WithDescription(Resource.String.d_wrong_password);
+                    dialog.Show(SupportFragmentManager, "wrong_password");
                     break;
+
                 case LandingConstants.ACTION_PROFILE_IMAGE:
                     (new GenericDialogFragment(Resource.Layout.MediaChooser) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "media_chooser");
                     break;

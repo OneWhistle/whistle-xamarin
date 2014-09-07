@@ -13,20 +13,20 @@ using Whistle.Core.Interfaces;
 using Whistle.Core.Services;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
+using ModernHttpClient;
+using Whistle.Core.Helpers;
 
 namespace Whistle.Core.Helper
 {
     public static class ServiceHandler
     {
         static object lockObj;
-        private static IHttpClientHelper httpClientHelper;
+        //private static IHttpClientHelper httpClientHelper;
 
-        private static IHttpClientHelper HttpClientHelper
-        {
-            get { return httpClientHelper ?? (httpClientHelper = Mvx.GetSingleton<IHttpClientHelper>()); }
-        }
-
-
+        //private static IHttpClientHelper HttpClientHelper
+        //{
+        //    get { return httpClientHelper ?? (httpClientHelper = Mvx.GetSingleton<IHttpClientHelper>()); }
+        //}
         static ServiceHandler()
         {
             lockObj = new object();
@@ -34,10 +34,7 @@ namespace Whistle.Core.Helper
 
         private static HttpClient CreateClient()
         {
-            if (HttpClientHelper == null)
-                return new HttpClient();
-
-            return new HttpClient(HttpClientHelper.MessageHandler);
+            return new HttpClient(new NativeMessageHandler());
         }
 
         /// <summary>

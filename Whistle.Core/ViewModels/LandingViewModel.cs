@@ -36,10 +36,40 @@ namespace Whistle.Core.ViewModels
         public UserViewModel NewUser
         {
             get { return newUser; }
-            private set { newUser = value; RaisePropertyChanged("NewUser"); }
+            private set { newUser = value; RaisePropertyChanged("NewUser");
+            //if (IsNewUserChanged != null)
+               // IsNewUserChanged(newUser.IsMale);
+            }
         }
+
+        private bool _maleChange;
+        public bool MaleChange
+        {
+            get { return _maleChange; }
+            private set
+            {
+                _maleChange = value; RaisePropertyChanged(() => MaleChange);
+                if (IsGenderChanged != null)
+                    IsGenderChanged(0, _maleChange);
+            }
+        }
+        private bool _femaleChange;
+        public bool FemaleChange
+        {
+            get { return _femaleChange; }
+            private set
+            {
+                _femaleChange = value; RaisePropertyChanged(() => FemaleChange);
+                if (IsGenderChanged != null)
+                    IsGenderChanged(1, _femaleChange);
+            }
+        }
+
+        public Action<int, bool> IsGenderChanged { get; set; }
+
         #endregion
 
+      
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
@@ -83,6 +113,18 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_MALE_OPTION:  //We'll definitely improve this :)
+                    if (!MaleChange)
+                        MaleChange = true;
+                    else
+                        MaleChange = false;
+                    break;
+                case LandingConstants.ACTION_FEMALE_OPTION:
+                    if (!FemaleChange)
+                        FemaleChange = true;
+                    else
+                        FemaleChange = false;
+                    break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     this.Show();
                     break;
@@ -102,9 +144,6 @@ namespace Whistle.Core.ViewModels
             _authService = Mvx.Resolve<IAuthenticationService>();
             _regService = Mvx.Resolve<IRegistrationService>();
         }
-
-
-
         protected async void onLogin()
         {
             IsBusy = true;
@@ -130,13 +169,12 @@ namespace Whistle.Core.ViewModels
                 user = new Users
                     {
                         DOB = new DateTime(1987, 03, 18),
-                        //firstName = "Mohd",
                         Name = NewUser.FullName,
-                        UserName = newUser.UserName,
                         Password = NewUser.Password,
-                        //cnfmPassword = NewUser.Password,
                         Phone = NewUser.Mobile,
-                        Email = NewUser.Email
+                        Email = NewUser.Email,
+                        UserName = newUser.UserName,
+                        //cnfmPassword = NewUser.Password,
                     }
             }, ApiAction.REGISTRATION);
             IsBusy = false;

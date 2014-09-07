@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Widget;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Fragging.Fragments;
+using Whistle.Core.ViewModels;
 
 namespace Whistle.Droid.Fragments
 {
@@ -29,7 +30,50 @@ namespace Whistle.Droid.Fragments
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
-            return this.BindingInflate(_layoutId, null);
+
+            var view = this.BindingInflate(_layoutId, null);
+
+
+            // Sorryyyyyyyyyyyy!! For Mean Time We'll improve this
+            if (_layoutId == Resource.Layout.Registration)
+            {
+                ((LandingViewModel)ViewModel).IsGenderChanged = (type, change) =>
+                {
+                    var maleImage = view.FindViewById<ImageButton>(Resource.Id.maleButton);
+                    var femaleImage = view.FindViewById<ImageButton>(Resource.Id.femaleButton);
+                    switch (type)
+                    {
+                        case 0:
+                            if (change)
+                            {
+                                System.Console.WriteLine("Yes Male Change");
+                                maleImage.SetBackgroundResource(Resource.Drawable.male_green_icon);
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("No Male Change");
+                                maleImage.SetBackgroundResource(Resource.Drawable.male_grey_icon);
+                            }
+                            break;
+                        case 1:
+                            if (change)
+                            {
+                                System.Console.WriteLine("Yes Female Change");
+                                femaleImage.SetBackgroundResource(Resource.Drawable.female_green_icon);
+                            }
+                            else
+                            {
+                                System.Console.WriteLine("No Female Change");
+                                femaleImage.SetBackgroundResource(Resource.Drawable.female_grey_icon);
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                };
+            }
+
+            return view;
         }
 
         public override void OnCreateOptionsMenu(IMenu menu, MenuInflater inflater)
@@ -38,9 +82,19 @@ namespace Whistle.Droid.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
-        public void RegisterControls()
-        {
-        }
+        //public void RegisterControls(string _screenName)
+        //{
+        //    var currentViewModel=((LandingViewModel)ViewModel);
+        //    switch (_screenName)
+        //    {
+        //        case "registration":
+        //            if (currentViewModel.NewUser.IsMale)
+        //                View.FindViewById<ImageButton>(Resource.Id.maleButton);
+        //            break;
+        //        default:
+        //            break;
+        //    }
+        //}
     }
 
     /// <summary>

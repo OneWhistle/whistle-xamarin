@@ -42,7 +42,7 @@ namespace Whistle.Core.ViewModels
 
 
         public Action<bool> IsBusyChanged { get; set; }
-
+       
 
         /// <summary>
         /// Gets the service.

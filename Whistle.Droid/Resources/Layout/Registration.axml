@@ -11,11 +11,12 @@
         android:layout_weight="1"
         android:gravity="center"
         android:background="#3D3F47">
-        <ImageView
+        <ImageButton
+            android:id="@+id/cameraButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             local:MvxBind="Click UserAction, CommandParameter=ACTION_PROFILE_IMAGE"
-            android:src="@drawable/camera_white_icon" />
+            android:background="@drawable/camera_button_state_list" />
     </LinearLayout>
     <LinearLayout
         android:layout_height="0dp"
@@ -30,10 +31,12 @@
             android:background="#EEF0FF"
             android:gravity="center"
             android:id="@+id/optMale">
-            <ImageView
+            <ImageButton
+                android:id="@+id/maleButton"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_MALE_OPTION"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/male_grey_icon" />
+                android:background="@drawable/male_button_state_list" />
         </LinearLayout>
         <View
             android:layout_height="fill_parent"
@@ -47,10 +50,12 @@
             android:background="#EEF0FF"
             android:gravity="center"
             android:id="@+id/optFemale">
-            <ImageView
+            <ImageButton
+                android:id="@+id/femaleButton"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_FEMALE_OPTION"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/female_grey_icon" />
+                android:background="@drawable/female_button_state_list" />
         </LinearLayout>
     </LinearLayout>
     <LinearLayout

@@ -47,6 +47,10 @@ namespace Whistle.Core.ViewModels
         private MvxCommand<string> navDisplay;
         public ICommand NavDisplay { get { return this.navDisplay ?? (this.navDisplay = new MvxCommand<string>(onNavDisplay)); } }
 
+        private MvxCommand<string> userAction;
+        public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
+
+
 
         private void onNavDisplay(string list)
         {
@@ -60,6 +64,20 @@ namespace Whistle.Core.ViewModels
             /*Update settings here..
             Settings.UserType..*/
             _messenger.Publish(new HomeMessage(this, HomeConstants.NAV_USER_TYPE_SELECTED));
+        }
+
+        private void onUserAction(string value)
+        {
+            switch (value)
+            {
+                case HomeConstants.ACTION_SHOW_WHISTLERS:
+                    /*do some backend call ????.*/
+                    _messenger.Publish(new HomeMessage(this, value));
+                    break;
+                default:
+                    _messenger.Publish(new HomeMessage(this, value));
+                    break;
+            }
         }
 
         protected override void InitFromBundle(IMvxBundle parameters)

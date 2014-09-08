@@ -159,6 +159,7 @@
     <Compile Include="Helper\UIHelper.cs" />
     <Compile Include="Helper\WhistleActivity.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
+    <Compile Include="MvxSelectorBinding.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Setup.cs" />
@@ -250,9 +251,7 @@
       <SubType>AndroidResource</SubType>
     </BundleResource>
     <AndroidResource Include="Resources\Layout\LandingView.axml" />
-    <BundleResource Include="Resources\Layout\Whistlers.axml">
-      <SubType>AndroidResource</SubType>
-    </BundleResource>
+    <AndroidResource Include="Resources\Layout\Whistlers.axml"/>
     <AndroidResource Include="Resources\Layout\AlertDialog.axml" />
     <AndroidResource Include="Resources\Layout\UserDetails.axml" />
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
@@ -267,6 +266,10 @@
     <AndroidResource Include="Resources\Layout\MediaChooser.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\drawable\s_l_consumer.xml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\item_radio_chooser.axml"/>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">

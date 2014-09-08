@@ -16,6 +16,7 @@ namespace Whistle.Droid.Views
     using Cirrious.MvvmCross.Plugins.Messenger;
     using SlidingMenuSharp.App;
     using Whistle.Core;
+    using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
 
     /// <summary>
@@ -26,7 +27,13 @@ namespace Whistle.Droid.Views
     {
         Android.Support.V4.App.DialogFragment _currentDialog; 
         internal SupportMapFragment mapfragment;
+        MainViewModel _viewModel;
 
+        public new MainViewModel ViewModel
+        {
+            get { return this._viewModel ?? (this._viewModel = base.ViewModel as MainViewModel); }
+
+        }
 
         /// <summary>
         /// Called when [create].
@@ -105,6 +112,10 @@ namespace Whistle.Droid.Views
                     var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
                     (new ListDialogFragment(header) { ViewModel = this.ViewModel, ItemSource = itemSource }).Show(SupportFragmentManager, "select_items");
                     //_currentDialog.Dismiss();
+                    break;
+
+                case HomeConstants.ACTION_SHOW_WHISTLERS:
+                    SwitchContent(new GenericFragment(Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
             }
 

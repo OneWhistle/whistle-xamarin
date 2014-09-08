@@ -124,6 +124,7 @@
         android:layout_width="fill_parent"
         android:layout_height="50dp"
         android:text="WHISTLE"
+        local:MvxBind="Click UserAction, CommandParameter=ACTION_SHOW_WHISTLERS"
         android:gravity="center"
         android:layout_weight="1"
         android:background="@color/app_green_color" />

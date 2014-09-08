@@ -29,8 +29,7 @@ namespace Whistle.Core.Modal
         public string Phone { get; set; }
 
         //Yes, We'll use single ahead, based on param
-        public bool IsMale { get; set; }
-        public bool IsFemale { get; set; }
-
+        private bool _isMale;
+        public bool IsMale { get { return _isMale; } set { _isMale = value; OnPropertyChanged("IsMale"); if (IsGenderChanged != null)IsGenderChanged(_isMale); } }
     }
 }

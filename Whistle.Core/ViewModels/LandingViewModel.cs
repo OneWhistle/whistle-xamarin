@@ -39,37 +39,11 @@ namespace Whistle.Core.ViewModels
             private set
             {
                 newUser = value; RaisePropertyChanged("NewUser");
-                //if (IsNewUserChanged != null)
-                // IsNewUserChanged(newUser.IsMale);
             }
         }
-
-        private bool _maleChange;
-        public bool MaleChange
-        {
-            get { return _maleChange; }
-            private set
-            {
-                _maleChange = value; RaisePropertyChanged(() => MaleChange);
-                if (IsGenderChanged != null)
-                    IsGenderChanged(0, _maleChange);
-            }
-        }
-        private bool _femaleChange;
-        public bool FemaleChange
-        {
-            get { return _femaleChange; }
-            private set
-            {
-                _femaleChange = value; RaisePropertyChanged(() => FemaleChange);
-                if (IsGenderChanged != null)
-                    IsGenderChanged(1, _femaleChange);
-            }
-        }
-
-        public Action<int, bool> IsGenderChanged { get; set; }
-
         #endregion
+
+        #region User Action
 
         /// <summary>
         ///  Backing field for my command.
@@ -81,6 +55,9 @@ namespace Whistle.Core.ViewModels
         /// </summary>
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); } }
 
+        #endregion
+
+        #region Show MainViewModel
 
         /// <summary>
         /// Show the view model.
@@ -90,6 +67,10 @@ namespace Whistle.Core.ViewModels
             // if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
             this.ShowViewModel<MainViewModel>();
         }
+
+        #endregion
+
+        #region User Action Implementation
 
         private void OnUserAction(string action)
         {
@@ -112,17 +93,15 @@ namespace Whistle.Core.ViewModels
                     onRegister();
                     break;
                 // NOoooooooo !!!!!
-                case LandingConstants.ACTION_MALE_OPTION:  //We'll definitely improve this :)
-                    if (!MaleChange)
-                        MaleChange = true;
+                case LandingConstants.ACTION_GENDER_OPTION:  //We'll definitely improve this :)
+                    if (!NewUser.IsMale)
+                    {
+                        NewUser.IsMale = true;
+                    }
                     else
-                        MaleChange = false;
-                    break;
-                case LandingConstants.ACTION_FEMALE_OPTION:
-                    if (!FemaleChange)
-                        FemaleChange = true;
-                    else
-                        FemaleChange = false;
+                    {
+                        NewUser.IsMale = false;
+                    }
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
@@ -136,6 +115,10 @@ namespace Whistle.Core.ViewModels
             }
         }
 
+        #endregion
+
+        #region Init Bundle
+
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
@@ -147,6 +130,9 @@ namespace Whistle.Core.ViewModels
             _regService = Mvx.Resolve<IRegistrationService>();
         }
 
+        #endregion
+
+        #region User Log In
 
         protected async void onLogin()
         {
@@ -165,21 +151,26 @@ namespace Whistle.Core.ViewModels
             }
         }
 
+        
+        #endregion
+
+        #region User Registration
+
         protected async void onRegister()
         {
             IsBusy = true;
             var result = await ServiceHandler.PostAction(new RegistrationRequest
             {
                 user = new Users
-                    {
-                        DOB = NewUser.DOB,
-                        Name = NewUser.FullName,
-                        Password = NewUser.Password,
-                        Phone = NewUser.Mobile,
-                        Email = NewUser.Email,
-                        UserName = newUser.UserName,
-                        //cnfmPassword = NewUser.Password,
-                    }
+                {
+                    DOB = NewUser.DOB,
+                    Name = NewUser.FullName,
+                    Password = NewUser.Password,
+                    Phone = NewUser.Mobile,
+                    Email = NewUser.Email,
+                    UserName = newUser.UserName,
+                    //cnfmPassword = NewUser.Password,
+                }
             }, ApiAction.REGISTRATION);
             IsBusy = false;
 
@@ -193,5 +184,7 @@ namespace Whistle.Core.ViewModels
             }
             NewUser = new UserViewModel();
         }
+
+        #endregion
     }
 }

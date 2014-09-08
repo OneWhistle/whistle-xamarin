@@ -17,6 +17,9 @@ namespace Whistle.Core.ViewModels
     using System;
     using Whistle.Core.Services;
     using Whistle.Core.Helper;
+    using Cirrious.MvvmCross.Plugins.PictureChooser;
+    using System.IO;
+    using System.Collections.ObjectModel;
 
     /// <summary>
     /// Define the LandingViewModel type.
@@ -27,6 +30,21 @@ namespace Whistle.Core.ViewModels
         IMvxMessenger _messenger;
         IAuthenticationService _authService;
         IRegistrationService _regService;
+
+        #endregion
+
+        #region Private Picture Properties
+
+        private readonly IMvxPictureChooserTask _pictureChooserTask;
+
+        #endregion
+
+        #region Constructor
+
+        public LandingViewModel(IMvxPictureChooserTask pictureChooserTask)
+        {
+            _pictureChooserTask = pictureChooserTask;
+        }
 
         #endregion
 
@@ -41,6 +59,8 @@ namespace Whistle.Core.ViewModels
                 newUser = value; RaisePropertyChanged("NewUser");
             }
         }
+        
+       
         #endregion
 
         #region User Action
@@ -54,6 +74,35 @@ namespace Whistle.Core.ViewModels
         /// </para>
         /// </summary>
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); } }
+
+        #endregion
+
+        #region Picture Commands
+
+        private void TakePicture()
+        {
+            _pictureChooserTask.TakePicture(400, 95, OnPictureTaking, () => { });
+        }
+
+        private void ChoosePicture()
+        {
+            _pictureChooserTask.ChoosePictureFromLibrary(400, 95, OnPictureTaking, () => { Mvx.Trace("Picture cancelled by user!"); });
+        }
+
+        private byte[] _imageBytes;
+        public byte[] ImageBytes
+        {
+            get { return _imageBytes; }
+            set { _imageBytes = value; RaisePropertyChanged(() => ImageBytes); }
+        }
+
+
+        private void OnPictureTaking(Stream pictureStream)
+        {
+            var memoryStream = new MemoryStream();
+            pictureStream.CopyTo(memoryStream);
+            ImageBytes = memoryStream.ToArray();
+        }
 
         #endregion
 
@@ -109,6 +158,12 @@ namespace Whistle.Core.ViewModels
                     this.Show();
                     break;
                 case LandingConstants.ACTION_DOB_OPTION:
+                case LandingConstants.ACTION_TAKE_PICTURE_CAMERA:
+                    TakePicture();
+                    break;
+                case LandingConstants.ACTION_TAKE_PICTURE_GALLERY:
+                    ChoosePicture();
+                    break;
                 default:
                     _messenger.Publish(new LandingMessage(this, action));
                     break;

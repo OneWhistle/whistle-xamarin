@@ -83,6 +83,13 @@
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.PictureChooser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.PictureChooser.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.PictureChooser.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.PictureChooser.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.PictureChooser.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.PictureChooser.Droid.dll</HintPath>
+    </Reference>
     <Reference Include="GooglePlayServicesLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Components\googleplayservicesgingerbread-19.0.0\lib\android\GooglePlayServicesLib.dll</HintPath>
@@ -134,6 +141,7 @@
     <Compile Include="Activity\SlideFragmentActivity.cs" />
     <Compile Include="Adepters\MenuAdapter.cs" />
     <Compile Include="Bootstrap\MessengerPluginBootstrap.cs" />
+    <Compile Include="Bootstrap\PictureChooserPluginBootstrap.cs" />
     <Compile Include="Bootstrap\SettingsPluginBootstrap.cs" />
     <Compile Include="DebugTrace.cs" />
     <Compile Include="Fragments\AboutFragments.cs" />
@@ -251,7 +259,7 @@
       <SubType>AndroidResource</SubType>
     </BundleResource>
     <AndroidResource Include="Resources\Layout\LandingView.axml" />
-    <AndroidResource Include="Resources\Layout\Whistlers.axml"/>
+    <AndroidResource Include="Resources\Layout\Whistlers.axml" />
     <AndroidResource Include="Resources\Layout\AlertDialog.axml" />
     <AndroidResource Include="Resources\Layout\UserDetails.axml" />
     <BundleResource Include="Resources\Layout\ReportAlert.axml" />
@@ -269,7 +277,10 @@
     <AndroidResource Include="Resources\drawable\s_l_consumer.xml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\Layout\item_radio_chooser.axml"/>
+    <AndroidResource Include="Resources\Layout\item_radio_chooser.axml" />
+    <AndroidResource Include="Resources\Layout\SettingItemLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -314,7 +325,6 @@
     <AndroidResource Include="Resources\drawable-hdpi\tracking_active_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\about_green_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\agree_terms_green_icon.png" />
-    <AndroidResource Include="Resources\drawable-hdpi\auto_green_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\auto_grey_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\back_arrow_white_icon.png" />
     <AndroidResource Include="Resources\drawable-hdpi\bike_green_icon.png" />
@@ -604,6 +614,18 @@
     <AndroidResource Include="Resources\drawable\male_button_state_list.xml" />
     <AndroidResource Include="Resources\drawable\female_button_state_list.xml" />
     <AndroidResource Include="Resources\drawable\camera_button_state_list.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\auto_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\cusstom_train_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_auto_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_bike_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_bus_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_car_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_flight_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_other_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_truck_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\list_row_selector.xml" />
+    <AndroidResource Include="Resources\drawable\list_row_bg.xml" />
+    <AndroidResource Include="Resources\drawable\list_row_bg_hover.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

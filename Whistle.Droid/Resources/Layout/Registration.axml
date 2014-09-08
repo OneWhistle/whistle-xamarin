@@ -106,7 +106,8 @@
             android:background="#FFFFFF"
             local:MvxBind="Text NewUser.Password"
             android:textColor="#000"
-            android:inputType="text"
+            android:inputType="textPassword"
+            android:password="true"
             android:hint="PASSWORD"
             android:textSize="14sp"
             android:paddingLeft="10dp" />
@@ -144,6 +145,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="DOB"
+                android:textSize="14sp"
+                android:textColor="#000"
                 android:background="#EEF0FF"
                 local:MvxBind="Text NewUser.DOB"
                 android:gravity="center_vertical"

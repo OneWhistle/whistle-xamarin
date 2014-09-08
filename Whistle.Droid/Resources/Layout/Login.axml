@@ -64,6 +64,8 @@
             android:layout_height="fill_parent"
             local:MvxBind="Text NewUser.Password"
             android:hint="PASSWORD"
+            android:inputType="textPassword"
+            android:password="true"
             android:background="@color/app_gray_color"
             android:textColorHint="@color/default_text_color"
             android:textColor="@color/default_text_color"

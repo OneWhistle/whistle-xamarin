@@ -79,6 +79,9 @@ namespace Whistle.Droid.Views
                         .AddButton(Resource.String.d_btn_disagree, () => { })
                         .Show(SupportFragmentManager, "show_legal_terms");
                     break;
+                case LandingConstants.ACTION_DOB_OPTION:
+                    (new GenericDialogFragment(this) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "datePicker");
+                    break;
                 // Others are handled by the view model
                 default:
                     break;

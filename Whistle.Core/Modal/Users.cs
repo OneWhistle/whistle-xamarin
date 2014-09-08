@@ -3,7 +3,7 @@ using System;
 
 namespace Whistle.Core.Modal
 {
-    public class Users
+    public class Users : BaseEntity
     {
         //public int  UserID { get; set; }
 
@@ -20,8 +20,10 @@ namespace Whistle.Core.Modal
         public string Password { get; set; }
         //[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         //public string cnfmPassword { get; set; }
+        private string _dob="DOB";
+
         [JsonProperty(PropertyName="dob", NullValueHandling = NullValueHandling.Ignore)]
-        public DateTime? DOB { get; set; }
+        public string DOB { get { return _dob; } set { _dob = value; OnPropertyChanged("DOB"); } }
 
         [JsonProperty(PropertyName = "phone", NullValueHandling = NullValueHandling.Ignore)]
         public string Phone { get; set; }

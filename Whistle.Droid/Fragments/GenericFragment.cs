@@ -1,16 +1,18 @@
 
 
 using Android.App;
+using Android.Content;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
 using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Droid.Fragging.Fragments;
+using System;
 using Whistle.Core.ViewModels;
 
 namespace Whistle.Droid.Fragments
 {
-    public class GenericFragment : MvxFragment
+    public class GenericFragment : MvxFragment, DatePickerDialog.IOnDateSetListener
     {
         readonly int _layoutId;
         readonly int _menuResId;
@@ -27,6 +29,8 @@ namespace Whistle.Droid.Fragments
             base.OnCreate(savedInstanceState);
         }
 
+        //test
+        private TextView dobTextView;
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -37,6 +41,13 @@ namespace Whistle.Droid.Fragments
             // Sorryyyyyyyyyyyy!! For Mean Time We'll improve this
             if (_layoutId == Resource.Layout.Registration)
             {
+
+                //dobTextView.Click += delegate
+                //{
+                //    var dialog = new DatePickerDialogFragment(Activity, Convert.ToDateTime(dobTextView.Text), this);
+                //    dialog.Show(SupportFragmentManager "date");
+                //};
+
                 ((LandingViewModel)ViewModel).IsGenderChanged = (type, change) =>
                 {
                     var maleImage = view.FindViewById<ImageButton>(Resource.Id.maleButton);
@@ -82,29 +93,21 @@ namespace Whistle.Droid.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
-        //public void RegisterControls(string _screenName)
-        //{
-        //    var currentViewModel=((LandingViewModel)ViewModel);
-        //    switch (_screenName)
-        //    {
-        //        case "registration":
-        //            if (currentViewModel.NewUser.IsMale)
-        //                View.FindViewById<ImageButton>(Resource.Id.maleButton);
-        //            break;
-        //        default:
-        //            break;
-        //    }
-        //}
+        public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+        {
+            dobTextView.Text = new DateTime(year, monthOfYear + 1, dayOfMonth).ToString(); ;
+        }
     }
 
     /// <summary>
     /// https://github.com/MvvmCross/MvvmCross-Tutorials/blob/master/Fragments/FragmentSample.UI.Droid/Views/Frags/Dialog/NameDialogFragment.cs
     /// </summary>
-    public class GenericDialogFragment : MvxDialogFragment
+    public class GenericDialogFragment : MvxDialogFragment,DatePickerDialog.IOnDateSetListener
     {
         readonly int _layoutId;
         readonly int _backgroundResourceId;
-
+        private readonly Context _context;
+        private readonly bool _isDatePicker;
 
         public GenericDialogFragment(int layoutId)
             : this(layoutId, Resource.Color.app_gray_modal_color)
@@ -112,26 +115,56 @@ namespace Whistle.Droid.Fragments
 
         }
 
+        //Date picker
+        public GenericDialogFragment(Context context)
+        {
+            _context = context;
+            _isDatePicker = true;
+        }
+
+
         public GenericDialogFragment(int layoutId, int backgroundResourceId)
         {
             this._layoutId = layoutId;
             this._backgroundResourceId = backgroundResourceId;
         }
-
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-            var view = this.BindingInflate(_layoutId, container);
-            return view;
+            if (_isDatePicker)
+                return base.OnCreateView(inflater, container, savedInstanceState);
+            else
+            {
+                var view = this.BindingInflate(_layoutId, container);
+                return view;
+            }
         }
 
         public override Dialog OnCreateDialog(Bundle savedState)
         {
             base.EnsureBindingContextSet(savedState);
-            var dialog = new Dialog(Activity, Android.Resource.Style.ThemeHoloNoActionBarFullscreen);
-            //dialog.RequestWindowFeature((int)WindowFeatures.NoTitle);
-            //dialog.Window.SetLayout(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.MatchParent);
-            dialog.Window.SetBackgroundDrawableResource(_backgroundResourceId);
-            return dialog;
+            DateTime _date = DateTime.Now;
+
+            if (!_isDatePicker)
+            {
+              var  dialog = new Dialog(Activity, Android.Resource.Style.ThemeHoloNoActionBarFullscreen);
+                dialog.Window.SetBackgroundDrawableResource(_backgroundResourceId);
+                return dialog;
+            }
+            else
+            {
+               var DateDialog = new DatePickerDialog(_context, this, _date.Year, _date.Month - 1, _date.Day);
+               return DateDialog;
+            }
+           
+        }
+
+        public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+        {
+            var user = ((LandingViewModel)ViewModel).NewUser;
+            if (user != null)
+            {
+                user.DOB = new DateTime(year, monthOfYear + 1, dayOfMonth).ToString("dd-MM-yyyy");
+            }
         }
     }   
 }

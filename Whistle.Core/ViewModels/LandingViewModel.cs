@@ -129,6 +129,7 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
                     this.Show();
                     break;
+                case LandingConstants.ACTION_DOB_OPTION:
                 default:
                     _messenger.Publish(new LandingMessage(this, action));
                     break;
@@ -171,7 +172,7 @@ namespace Whistle.Core.ViewModels
             {
                 user = new Users
                     {
-                        DOB = new DateTime(1987, 03, 18),
+                        DOB = NewUser.DOB,
                         Name = NewUser.FullName,
                         Password = NewUser.Password,
                         Phone = NewUser.Mobile,

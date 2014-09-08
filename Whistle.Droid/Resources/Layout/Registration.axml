@@ -140,9 +140,10 @@
             android:layout_weight="1"
             android:background="#EEF0FF">
             <TextView
+                android:id="@+id/dobTextView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="DOB"
+                local:MvxBind="Text NewUser.DOB"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp" />
             <ImageView
@@ -150,6 +151,7 @@
                 android:layout_height="match_parent"
                 android:src="@drawable/date_green_icon"
                 android:layout_marginRight="10dp"
+                local:MvxBind="Click UserAction, CommandParameter =ACTION_DOB_OPTION"
                 android:layout_alignParentRight="true" />
         </RelativeLayout>
     </LinearLayout>

@@ -13,6 +13,7 @@ namespace Whistle.Droid.Views
     using Android.OS;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
     using Cirrious.MvvmCross.Plugins.Messenger;
+    using System;
     using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
     using Whistle.Droid.Helper;
@@ -69,8 +70,11 @@ namespace Whistle.Droid.Views
 
                     await System.Threading.Tasks.Task.Delay(1500);
                     ((LandingViewModel)this.ViewModel).Show();
-
                     break;
+                case LandingConstants.ACTION_DOB_OPTION:
+                    (new GenericDialogFragment(this) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "datePicker");
+                    break;
+
                 // Others are handled by the view model
                 default:
                     break;

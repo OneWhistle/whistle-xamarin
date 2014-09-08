@@ -17,6 +17,7 @@ namespace Whistle.Core
         public const string ACTION_PROFILE_IMAGE = "ACTION_PROFILE_IMAGE";
         public const string ACTION_MALE_OPTION = "ACTION_MALE_OPTION";
         public const string ACTION_FEMALE_OPTION = "ACTION_FEMALE_OPTION";
+        public const string ACTION_DOB_OPTION = "ACTION_DOB_OPTION";
 
 
         public const string RESULT_LOGIN_FAILED = "RESULT_LOGIN_FAILED";
@@ -32,6 +33,7 @@ namespace Whistle.Core
             ACTION_REGISTER,
             ACTION_SIGNIN,
             ACTION_FEMALE_OPTION,
+            ACTION_DOB_OPTION,
             ACTION_MALE_OPTION,
             ACTION_PROFILE_IMAGE,
             ACTION_TWITTER_LOGIN_VALIDATE,

@@ -45,6 +45,7 @@
     <Compile Include="HomeMessage.cs" />
     <Compile Include="Interfaces\IHttpClientHelper.cs" />
     <Compile Include="LandingMessage.cs" />
+    <Compile Include="Modal\BaseEntity.cs" />
     <Compile Include="Modal\Constants.cs" />
     <Compile Include="Modal\ErrorResponse.cs" />
     <Compile Include="Modal\Menus.cs" />

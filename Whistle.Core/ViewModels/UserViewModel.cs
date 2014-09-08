@@ -32,4 +32,5 @@ namespace Whistle.Core.ViewModels
             return true;
         }
     }
+    
 }

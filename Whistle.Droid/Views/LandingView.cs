@@ -69,7 +69,15 @@ namespace Whistle.Droid.Views
 
                     await System.Threading.Tasks.Task.Delay(1500);
                     ((LandingViewModel)this.ViewModel).Show();
-
+                    break;
+                case LandingConstants.ACTION_REGISTER_VALIDATE:
+                    (new GenericAlertFragment(Resource.Color.app_gray_modal_color))
+                        .WithIcon(Resource.Drawable.agree_terms_green_icon)
+                        .WithTitle(Resource.String.d_legal)
+                        .WithDescription(Resource.String.d_legal_term_desc)
+                        .AddButton(Resource.String.d_btn_agree, () => { ((LandingViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_REGISTER_DONE); })
+                        .AddButton(Resource.String.d_btn_disagree, () => { })
+                        .Show(SupportFragmentManager, "show_legal_terms");
                     break;
                 // Others are handled by the view model
                 default:

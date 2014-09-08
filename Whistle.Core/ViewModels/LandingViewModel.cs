@@ -36,9 +36,11 @@ namespace Whistle.Core.ViewModels
         public UserViewModel NewUser
         {
             get { return newUser; }
-            private set { newUser = value; RaisePropertyChanged("NewUser");
-            //if (IsNewUserChanged != null)
-               // IsNewUserChanged(newUser.IsMale);
+            private set
+            {
+                newUser = value; RaisePropertyChanged("NewUser");
+                //if (IsNewUserChanged != null)
+                // IsNewUserChanged(newUser.IsMale);
             }
         }
 
@@ -69,7 +71,6 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
-      
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
@@ -110,9 +111,7 @@ namespace Whistle.Core.ViewModels
                     }
                     onRegister();
                     break;
-                case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
-                case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
-                case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
+                // NOoooooooo !!!!!
                 case LandingConstants.ACTION_MALE_OPTION:  //We'll definitely improve this :)
                     if (!MaleChange)
                         MaleChange = true;
@@ -125,7 +124,9 @@ namespace Whistle.Core.ViewModels
                     else
                         FemaleChange = false;
                     break;
-                case LandingConstants.ACTION_REGISTER_VALIDATE:
+                case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
+                case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
                     this.Show();
                     break;
                 default:
@@ -144,6 +145,8 @@ namespace Whistle.Core.ViewModels
             _authService = Mvx.Resolve<IAuthenticationService>();
             _regService = Mvx.Resolve<IRegistrationService>();
         }
+
+
         protected async void onLogin()
         {
             IsBusy = true;

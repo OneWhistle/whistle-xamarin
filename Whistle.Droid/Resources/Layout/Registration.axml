@@ -175,7 +175,7 @@
         android:layout_weight="1"
         android:layout_alignParentBottom="true">
         <whistle.droid.views.WhistleButton
-            local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_DONE"
+            local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_VALIDATE"
             local:customFont="fonts/ProximaNova-Regular.otf"
             android:gravity="center"
             android:layout_width="0dp"

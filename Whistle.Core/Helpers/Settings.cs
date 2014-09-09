@@ -23,7 +23,10 @@ namespace Whistle.Core.Helpers
             }
         }
 
-#region Setting Constants
+        #region Setting Constants
+
+        private const string ShowWhistlersListMapKey = "show_whistler_list_map";
+        private static bool ShowWhistlersListMapDefault = true;
 
         private const string UserNameKey = "user_name";
         private static string UserNameDefault = string.Empty;
@@ -35,14 +38,22 @@ namespace Whistle.Core.Helpers
         private const string UserTypeKey = "user_type";
         private static int UserTypeDefault = 0;
 
-#endregion
+        #endregion
+
+        public static bool ShowWhistlersListMap
+        {
+            get { return AppSettings.GetValueOrDefault(ShowWhistlersListMapKey, ShowWhistlersListMapDefault); }
+            set
+            {
+                if (AppSettings.AddOrUpdateValue(ShowWhistlersListMapKey, value))
+                    AppSettings.Save();
+            }
+        }
+
 
         public static string AccessToken
         {
-            get
-            {
-                return AppSettings.GetValueOrDefault(AccessTokenKey, AccessTokenDefault);
-            }
+            get { return AppSettings.GetValueOrDefault(AccessTokenKey, AccessTokenDefault); }
             set
             {
                 //if value has changed then save it!

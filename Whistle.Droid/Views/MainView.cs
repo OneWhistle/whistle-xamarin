@@ -26,7 +26,7 @@ namespace Whistle.Droid.Views
     public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, Android.Locations.ILocationListener
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
-        internal SupportMapFragment mapfragment;
+        internal MapView _mapView;
         MainViewModel _viewModel;
         LocationManager _locationManager;
         string _locationProvider;
@@ -52,8 +52,13 @@ namespace Whistle.Droid.Views
             bool isNewInstance = true;
 
             _locationManager = (LocationManager)GetSystemService(Android.Content.Context.LocationService);
-
-            mapfragment = SupportMapFragment.NewInstance();
+            Criteria criteria = new Criteria { Accuracy = Android.Locations.Accuracy.Fine };
+            _locationProvider = _locationManager.GetBestProvider(criteria, false);
+            
+            
+            _mapView = new MapView(this);
+            _mapView.OnCreate(savedInstanceState);
+            MapsInitializer.Initialize(this);
 
             if (null != savedInstanceState) // check WhistleActivity
             {
@@ -80,13 +85,6 @@ namespace Whistle.Droid.Views
             {
                 (_currentDialog = new GenericDialogFragment(Resource.Layout.UserType) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "select_user_type");
             }
-
-            // Getting the name of the best provider
-            var location = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider); //<5>
-            if (location != null)
-            {
-                this.OnLocationChanged(location); //<6>
-            }
         }
 
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
@@ -105,13 +103,24 @@ namespace Whistle.Droid.Views
         protected override void OnResume()
         {
             base.OnResume();
-            _locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 1000, 10, this);
+            _mapView.OnResume();
+            var location = _locationManager.GetLastKnownLocation(_locationProvider);
+            if (location != null)
+                OnLocationChanged(location);
+            _locationManager.RequestLocationUpdates(_locationProvider, 1000, 10, this);
         }
 
         protected override void OnPause()
         {
             base.OnPause();
+            _mapView.OnPause();
             _locationManager.RemoveUpdates(this);
+        }
+
+        protected override void OnSaveInstanceState(Bundle outState)
+        {
+            base.OnSaveInstanceState(outState);
+            _mapView.OnSaveInstanceState(outState);
         }
 
         public override void SwitchContent(MvxFragment fragment)
@@ -142,7 +151,7 @@ namespace Whistle.Droid.Views
 
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
                     if (Settings.ShowWhistlersListMap)
-                        SwitchContent(new MapHostFragment(mapfragment, Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                        SwitchContent(new MapHostFragment(_mapView, Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     else
                         SwitchContent(new GenericFragment(Resource.Layout.Whistlers_list, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
 
@@ -152,16 +161,16 @@ namespace Whistle.Droid.Views
         }
 
         public void OnLocationChanged(Android.Locations.Location p0)
-        {
-            if (mapfragment.Map != null)
+        {       
+            if (_mapView.Map != null)
             {
                 Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Diagnostic, "Updated location");
                 LatLng latLng = new LatLng(p0.Latitude, p0.Longitude);
-                CameraUpdate zoom = CameraUpdateFactory.ZoomTo(13);
+                CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
 
-                // Showing the current location in Google Map
-                mapfragment.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latLng));
-                mapfragment.Map.AnimateCamera(zoom);
+                 //Showing the current location in Google Map
+                _mapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latLng));
+                _mapView.Map.AnimateCamera(zoom);
 
             }
 

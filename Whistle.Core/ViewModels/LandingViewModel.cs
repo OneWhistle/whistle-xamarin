@@ -66,6 +66,15 @@ namespace Whistle.Core.ViewModels
         #endregion
 
         #region User Action
+        /// <summary>
+        ///  Backing field for my command.
+        /// </summary>
+        private MvxCommand<bool> updateGender;
+        /// <summary>
+        /// Gets user action command.
+        /// </para>
+        /// </summary>
+        public ICommand UpdateGender { get { return this.updateGender ?? (this.updateGender = new MvxCommand<bool>(OnUpdateGender)); } }
 
         /// <summary>
         ///  Backing field for my command.
@@ -115,6 +124,15 @@ namespace Whistle.Core.ViewModels
 
         #region User Action Implementation
 
+
+        private void OnUpdateGender(bool arg)
+        {
+            this.NewUser.IsMale = arg;
+        }
+
+
+
+
         private void OnUserAction(string action)
         {
             var messenger = Mvx.Resolve<IMvxMessenger>();
@@ -134,17 +152,6 @@ namespace Whistle.Core.ViewModels
                         return;
                     }
                     onRegister();
-                    break;
-                // NOoooooooo !!!!!
-                case LandingConstants.ACTION_GENDER_OPTION:  //We'll definitely improve this :)
-                    if (!NewUser.IsMale)
-                    {
-                        NewUser.IsMale = true;
-                    }
-                    else
-                    {
-                        NewUser.IsMale = false;
-                    }
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:

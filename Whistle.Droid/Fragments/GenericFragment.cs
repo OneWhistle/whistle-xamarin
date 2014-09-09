@@ -12,7 +12,7 @@ using Whistle.Core.ViewModels;
 
 namespace Whistle.Droid.Fragments
 {
-    public class GenericFragment : MvxFragment, DatePickerDialog.IOnDateSetListener
+    public class GenericFragment : MvxFragment
     {
         readonly int _layoutId;
         readonly int _menuResId;
@@ -29,8 +29,6 @@ namespace Whistle.Droid.Fragments
             base.OnCreate(savedInstanceState);
         }
 
-        //test
-        private TextView dobTextView;
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
@@ -41,12 +39,6 @@ namespace Whistle.Droid.Fragments
             // Sorryyyyyyyyyyyy!! For Mean Time We'll improve this
             if (_layoutId == Resource.Layout.Registration)
             {
-
-                //dobTextView.Click += delegate
-                //{
-                //    var dialog = new DatePickerDialogFragment(Activity, Convert.ToDateTime(dobTextView.Text), this);
-                //    dialog.Show(SupportFragmentManager "date");
-                //};
 
                 ((LandingViewModel)ViewModel).IsGenderChanged = (type, change) =>
                 {
@@ -93,10 +85,6 @@ namespace Whistle.Droid.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
-        public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-        {
-            dobTextView.Text = new DateTime(year, monthOfYear + 1, dayOfMonth).ToString(); ;
-        }
     }
 
     /// <summary>

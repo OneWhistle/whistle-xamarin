@@ -74,6 +74,10 @@ namespace Whistle.Core.ViewModels
                     /*do some backend call ????.*/
                     _messenger.Publish(new HomeMessage(this, value));
                     break;
+                case HomeConstants.NAV_WHISTLE_DISPLAY:
+                    Settings.ShowWhistlersListMap = !Settings.ShowWhistlersListMap;
+                    _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));
+                    break;
                 default:
                     _messenger.Publish(new HomeMessage(this, value));
                     break;

@@ -49,17 +49,16 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent" />
     </LinearLayout>
+<!--<FrameLayout
+        android:id="@+id/map"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" />-->
     <FrameLayout
         android:id="@+id/map"
         android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="3" />
-<!--<com.google.android.gms.maps.MapView
-        android:layout_width="fill_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:clickable="true"
-        android:apiKey="AIzaSyAiIl_VCI6Z7jx8VjaeoVanCCeeJYZN1zY" />-->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dp"

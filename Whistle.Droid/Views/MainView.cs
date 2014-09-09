@@ -9,13 +9,13 @@ namespace Whistle.Droid.Views
     using Android.Content.PM;
     using Android.Gms.Location;
     using Android.Gms.Maps;
+    using Android.Gms.Maps.Model;
+    using Android.Locations;
     using Android.OS;
     using Cirrious.CrossCore;
-    using Cirrious.MvvmCross.Droid.Fragging;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
-    using Cirrious.MvvmCross.Plugins.Messenger;
-    using SlidingMenuSharp.App;
     using Whistle.Core;
+    using Whistle.Core.Helpers;
     using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
 
@@ -23,11 +23,13 @@ namespace Whistle.Droid.Views
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, ILocationListener
+    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, Android.Locations.ILocationListener
     {
-        Android.Support.V4.App.DialogFragment _currentDialog; 
+        Android.Support.V4.App.DialogFragment _currentDialog;
         internal SupportMapFragment mapfragment;
         MainViewModel _viewModel;
+        LocationManager _locationManager;
+        string _locationProvider;
 
         public new MainViewModel ViewModel
         {
@@ -43,6 +45,9 @@ namespace Whistle.Droid.Views
         {
             base.OnCreate(savedInstanceState);
             bool isNewInstance = true;
+
+            _locationManager = (LocationManager)GetSystemService(Android.Content.Context.LocationService);
+
             mapfragment = SupportMapFragment.NewInstance();
 
             if (null != savedInstanceState) // check WhistleActivity
@@ -71,6 +76,12 @@ namespace Whistle.Droid.Views
                 (_currentDialog = new GenericDialogFragment(Resource.Layout.UserType) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "select_user_type");
             }
 
+            // Getting the name of the best provider
+            var location = _locationManager.GetLastKnownLocation(LocationManager.GpsProvider); //<5>
+            if (location != null)
+            {
+                this.OnLocationChanged(location); //<6>
+            }
         }
 
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
@@ -86,7 +97,17 @@ namespace Whistle.Droid.Views
             return base.OnOptionsItemSelected(item);
         }
 
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _locationManager.RequestLocationUpdates(LocationManager.GpsProvider, 1000, 10, this);
+        }
 
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _locationManager.RemoveUpdates(this);
+        }
 
         public override void SwitchContent(MvxFragment fragment)
         {
@@ -106,6 +127,7 @@ namespace Whistle.Droid.Views
                 case HomeConstants.NAV_USER_TYPE_SELECTED:
                     _currentDialog.Dismiss();
                     break;
+
                 case HomeConstants.NAV_DISPLAY_LIST:
                     var viewmodel = (Whistle.Core.ViewModels.MainViewModel)this.ViewModel;
                     var itemSource = message.Parameter == "PACKAGES" ? viewmodel.PackageList : viewmodel.RideList;
@@ -115,7 +137,11 @@ namespace Whistle.Droid.Views
                     break;
 
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
-                    SwitchContent(new GenericFragment(Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                    if (Settings.ShowWhistlersListMap)
+                        SwitchContent(new MapHostFragment(mapfragment, Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                    else
+                        SwitchContent(new GenericFragment(Resource.Layout.Whistlers_list, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+
                     break;
             }
 
@@ -123,7 +149,34 @@ namespace Whistle.Droid.Views
 
         public void OnLocationChanged(Android.Locations.Location p0)
         {
-            throw new System.NotImplementedException();
+            if (mapfragment.Map != null)
+            {
+                Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Diagnostic, "Updated location");
+                LatLng latLng = new LatLng(p0.Latitude, p0.Longitude);
+                CameraUpdate zoom = CameraUpdateFactory.ZoomTo(13);
+
+                // Showing the current location in Google Map
+                mapfragment.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latLng));
+                mapfragment.Map.AnimateCamera(zoom);
+
+            }
+
+        }
+
+
+        public void OnProviderDisabled(string provider)
+        {
+            //  throw new System.NotImplementedException();
+        }
+
+        public void OnProviderEnabled(string provider)
+        {
+            //    throw new System.NotImplementedException();
+        }
+
+        public void OnStatusChanged(string provider, Availability status, Bundle extras)
+        {
+            //   throw new System.NotImplementedException();
         }
     }
 }

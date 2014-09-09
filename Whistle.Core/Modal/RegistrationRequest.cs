@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace Whistle.Core.Modal
 {
+
     public class RegistrationRequest
     {
-        public Users user { get; set; }
+        public User User { get; set; }
+    }
+
+    public class RegistrationResponse
+    {
+        public User NewUser { get; set; }
     }
 }

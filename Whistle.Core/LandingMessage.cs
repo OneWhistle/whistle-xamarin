@@ -23,6 +23,7 @@ namespace Whistle.Core
 
         public const string RESULT_LOGIN_FAILED = "RESULT_LOGIN_FAILED";
         public const string RESULT_REGISTER_SUCCESS = "RESULT_REGISTER_SUCCESS";
+        public const string RESULT_REGISTER_VALIDATION_FAILED = "RESULT_REGISTER_VALIDATION_FAILED";
 
         internal static readonly string[] ActionList = new[]
         {

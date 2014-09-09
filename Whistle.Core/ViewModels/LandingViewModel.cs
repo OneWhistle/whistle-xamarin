@@ -20,6 +20,8 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.Plugins.PictureChooser;
     using System.IO;
     using System.Collections.ObjectModel;
+    using Whistle.Core.Helpers;
+    using Newtonsoft.Json;
 
     /// <summary>
     /// Define the LandingViewModel type.
@@ -50,8 +52,8 @@ namespace Whistle.Core.ViewModels
 
         #region Properties
 
-        private UserViewModel newUser;
-        public UserViewModel NewUser
+        private User newUser;
+        public User NewUser
         {
             get { return newUser; }
             private set
@@ -59,8 +61,8 @@ namespace Whistle.Core.ViewModels
                 newUser = value; RaisePropertyChanged("NewUser");
             }
         }
-        
-       
+
+
         #endregion
 
         #region User Action
@@ -108,14 +110,6 @@ namespace Whistle.Core.ViewModels
 
         #region Show MainViewModel
 
-        /// <summary>
-        /// Show the view model.
-        /// </summary>
-        public void Show()
-        {
-            // if (!string.IsNullOrEmpty(UserName) && !string.IsNullOrEmpty(Password))
-            this.ShowViewModel<MainViewModel>();
-        }
 
         #endregion
 
@@ -135,8 +129,8 @@ namespace Whistle.Core.ViewModels
                     //testing
                     if (!NewUser.IsValid())
                     {
-                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
-                        NewUser = new UserViewModel();
+                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                        NewUser = new User();
                         return;
                     }
                     onRegister();
@@ -155,14 +149,20 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
-                    this.Show();
-                    break;
-                case LandingConstants.ACTION_DOB_OPTION:
+                    this.ShowViewModel<MainViewModel>(new MvxBundle());
+                    break;                
                 case LandingConstants.ACTION_TAKE_PICTURE_CAMERA:
                     TakePicture();
                     break;
                 case LandingConstants.ACTION_TAKE_PICTURE_GALLERY:
                     ChoosePicture();
+                    break;
+                case LandingConstants.ACTION_REGISTER_CONTINUE:
+                case LandingConstants.ACTION_REGISTER_VALIDATE:
+                    if (!NewUser.IsValid())
+                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                    else
+                        _messenger.Publish(new LandingMessage(this, action));
                     break;
                 default:
                     _messenger.Publish(new LandingMessage(this, action));
@@ -177,7 +177,7 @@ namespace Whistle.Core.ViewModels
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
-            this.NewUser = new UserViewModel();
+            this.NewUser = new User();
             if (_messenger != null)
                 return;
             _messenger = Mvx.Resolve<IMvxMessenger>();
@@ -192,21 +192,23 @@ namespace Whistle.Core.ViewModels
         protected async void onLogin()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction<Users>(new Users { Email = newUser.UserName, Password = newUser.Password }, ApiAction.LOGIN);
+            var result = await ServiceHandler.PostAction<User, User>(new User { Email = newUser.UserName, Password = newUser.Password }, ApiAction.LOGIN);
             IsBusy = false;
-            if (!result.Success)
+            if (result.HasError)
             {
                 _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
-                NewUser = new UserViewModel();
+                NewUser = new User();
                 return;
             }
             else
             {
-                this.Show();
+                var bundle = new MvxBundle();
+                bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result));
+                this.ShowViewModel<MainViewModel>(bundle);
             }
         }
 
-        
+
         #endregion
 
         #region User Registration
@@ -214,30 +216,23 @@ namespace Whistle.Core.ViewModels
         protected async void onRegister()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction(new RegistrationRequest
-            {
-                user = new Users
-                {
-                    DOB = NewUser.DOB,
-                    Name = NewUser.FullName,
-                    Password = NewUser.Password,
-                    Phone = NewUser.Mobile,
-                    Email = NewUser.Email,
-                    UserName = newUser.UserName,
-                    //cnfmPassword = NewUser.Password,
-                }
-            }, ApiAction.REGISTRATION);
+            var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = newUser }, ApiAction.REGISTRATION);
             IsBusy = false;
 
-            if (!result.Success)
+            if (result.HasError)
             {
                 _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
             }
             else
             {
                 _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
+                await System.Threading.Tasks.Task.Delay(1500);
+
+                var bundle = new MvxBundle();
+                bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
+                this.ShowViewModel<MainViewModel>();
             }
-            NewUser = new UserViewModel();
+            NewUser = new User();
         }
 
         #endregion

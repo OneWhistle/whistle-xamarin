@@ -36,7 +36,7 @@
             local:MvxBind="Text NewUser.UserName"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
-            android:hint="USERNAME@EXAMPLE.COM"
+            android:hint="USERNAME"
             android:layout_weight="1"
             android:background="@color/app_gray_color"
             android:textColor="@color/default_text_color"

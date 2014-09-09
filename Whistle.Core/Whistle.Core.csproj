@@ -51,6 +51,7 @@
     <Compile Include="Modal\ErrorResponse.cs" />
     <Compile Include="Modal\Menus.cs" />
     <Compile Include="Modal\RegistrationRequest.cs" />
+    <Compile Include="Modal\ServiceResult.cs" />
     <Compile Include="Modal\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\API.cs" />

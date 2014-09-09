@@ -15,6 +15,7 @@ using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using ModernHttpClient;
 using Whistle.Core.Helpers;
+using Whistle.Core.Modal;
 
 namespace Whistle.Core.Helper
 {
@@ -45,9 +46,9 @@ namespace Whistle.Core.Helper
         /// <param name="apiSection">Its related to service or thier action</param>
         /// <param name="value">default value for T</param>
         /// <returns></returns>
-        public static async Task<AuthResult> PostAction<T>(T obj, string apiSection, T value = default(T))
+        public static async Task<ServiceResult<TResponse>> PostAction<TRequest, TResponse>(TRequest obj, string apiSection) where TResponse : class
         {
-
+            TResponse output = null;
             using (var client = CreateClient())
             {
                 try
@@ -72,80 +73,19 @@ namespace Whistle.Core.Helper
                     Mvx.Trace(MvxTraceLevel.Diagnostic, "Result: {0} / {1}", result.StatusCode.ToString(), response);
                     if (!result.IsSuccessStatusCode)
                     {
-                        return new AuthResult();
+                        var err = JsonConvert.DeserializeObject<ErrorResponse>(response);
+                        return new ServiceResult<TResponse>(err);
                     }
-
+                    output = JsonConvert.DeserializeObject<TResponse>(response);
                 }
                 catch (Exception ex)
                 {
                     Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Error, ex.Message);
-                    return new AuthResult();
+                    return new ServiceResult<TResponse>(new ErrorResponse { Msg = ex.Message });
                 }
             }
 
-            return new AuthResult { Success = true };
+            return new ServiceResult<TResponse>(output);
         }
     }
-
-    #region WebRequest Extention Method
-
-
-    public static class WebRequestExtensions
-    {
-        public static Task<HttpWebResponse> GetResponseAsync(this HttpWebRequest request)
-        {
-            var tcs = new TaskCompletionSource<HttpWebResponse>();
-
-            try
-            {
-                request.BeginGetResponse(iar =>
-                {
-                    try
-                    {
-                        var response = (HttpWebResponse)request.EndGetResponse(iar);
-                        tcs.SetResult(response);
-                    }
-                    catch (Exception exc)
-                    {
-                        tcs.SetException(exc);
-                    }
-                }, null);
-            }
-            catch (Exception exc)
-            {
-                tcs.SetException(exc);
-            }
-
-            return tcs.Task;
-        }
-
-        public static Task<Stream> GetRequestStreamAsync(this HttpWebRequest request)
-        {
-            var tcs = new TaskCompletionSource<Stream>();
-
-            try
-            {
-                request.BeginGetRequestStream(iar =>
-              {
-                  try
-                  {
-                      var response = request.EndGetRequestStream(iar);
-                      tcs.SetResult(response);
-                  }
-                  catch (Exception exc)
-                  {
-                      tcs.SetException(exc);
-                  }
-              }, null);
-            }
-            catch (Exception exc)
-            {
-                tcs.SetException(exc);
-            }
-
-            return tcs.Task;
-        }
-    }
-
-    #endregion
 }

@@ -99,6 +99,12 @@ namespace Whistle.Core.ViewModels
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
+            if (parameters.Data.ContainsKey(Settings.AccessTokenKey))
+            {
+                Settings.AccessToken = parameters.Data[Settings.AccessTokenKey];
+                // etc...
+            }
+
             if (_messenger != null)
                 return;
             _messenger = Mvx.Resolve<IMvxMessenger>();

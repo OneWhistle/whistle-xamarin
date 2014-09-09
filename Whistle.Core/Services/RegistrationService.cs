@@ -12,7 +12,7 @@ namespace Whistle.Core.Services
     {
         void PartialRegister(/*missing params*/);
         void FinishRegister(/*missing params*/);
-        Task<AuthResult> Registration(Users user);
+        Task<AuthResult> Registration(User user);
         void Done();
     }
 
@@ -44,7 +44,7 @@ namespace Whistle.Core.Services
             return new HttpClient(httpClientHelper.MessageHandler);
         }
 
-        public async Task<AuthResult> Registration(Users user)
+        public async Task<AuthResult> Registration(User user)
         {
             using (var client = CreateClient())
             {

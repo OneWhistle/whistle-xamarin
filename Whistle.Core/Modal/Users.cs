@@ -3,7 +3,7 @@ using System;
 
 namespace Whistle.Core.Modal
 {
-    public class Users : BaseEntity
+    public class User : BaseEntity
     {
         //public int  UserID { get; set; }
 
@@ -18,15 +18,17 @@ namespace Whistle.Core.Modal
 
         [JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
         public string Password { get; set; }
-        //[JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
-        //public string cnfmPassword { get; set; }
-        private string _dob="DOB";
+
+        private string _dob;
 
         [JsonProperty(PropertyName="dob", NullValueHandling = NullValueHandling.Ignore)]
         public string DOB { get { return _dob; } set { _dob = value; OnPropertyChanged("DOB"); } }
 
         [JsonProperty(PropertyName = "phone", NullValueHandling = NullValueHandling.Ignore)]
         public string Phone { get; set; }
+
+
+        public string AccessToken { get; set; }
 
         //Yes, We'll use single ahead, based on param
         private bool _isMale;

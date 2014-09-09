@@ -7,28 +7,25 @@ using Whistle.Core.Modal;
 
 namespace Whistle.Core.ViewModels
 {
-    public class UserViewModel: Users
+    public static class UserExtensions
     {
-        //Can we do this ?
 
-        /*public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }*/
-        public string Mobile { get; set; }
-        
-        public string FullName { get; set; }
-
-        public bool IsValid()
+        public static bool IsValid(this User user)
         {
             /*It should be better that that..*/
-            if (string.IsNullOrEmpty(Password))
+            if (string.IsNullOrEmpty(user.Password))
                 return false;
-            if (string.IsNullOrEmpty(Email))
+            //if (string.IsNullOrEmpty(user.Email))
+            //    return false;
+            if (string.IsNullOrEmpty(user.Name))
                 return false;
-            if (string.IsNullOrEmpty(UserName))
+            if (string.IsNullOrEmpty(user.UserName))
                 return false;
-            if (string.IsNullOrEmpty(FullName))
+            if (string.IsNullOrEmpty(user.DOB))
                 return false;
+            if (string.IsNullOrEmpty(user.Phone))
+                return false;
+
             return true;
         }
     }

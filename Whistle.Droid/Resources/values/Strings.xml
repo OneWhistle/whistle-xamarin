@@ -12,7 +12,8 @@
   <string name="d_legal">LEGAL TERMS...</string>
   <!--DIALOGS CONTENT-->
   <string name="d_registration_success">Your account created successfully.\r\nThank you for joining!</string>
-  <string name="d_wrong_password">The e-mail &amp; password do not match.\r\nPlease try again.</string>
+  <string name="d_wrong_password">The username &amp; password do not match.\r\nPlease try again.</string>
+  <string name="d_invalid_registration">Invalid or missing input dected. Please fill all required forms</string>
   <string name="d_legal_term_desc">Please do read our terms &amp; privacy carefully before accepting.</string>
   <!--DIALOGS BUTTONS-->
   <string name="d_btn_agree">I AGREE</string>

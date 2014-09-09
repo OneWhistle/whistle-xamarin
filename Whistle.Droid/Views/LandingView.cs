@@ -24,9 +24,9 @@ namespace Whistle.Droid.Views
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : WhistleActivity<LandingMessage>
     {
-        
 
-        protected override async void OnReceive(LandingMessage message)
+
+        protected override void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)
                 SupportActionBar.Show();
@@ -47,7 +47,13 @@ namespace Whistle.Droid.Views
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                     SwitchScreen(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "register_continue");
                     break;
-
+                case LandingConstants.RESULT_REGISTER_VALIDATION_FAILED:
+                    (new GenericAlertFragment(Resource.Color.app_red_modal_color)
+                        .WithIcon(Resource.Drawable.sad_face_white_icon)
+                        .WithTitle(Resource.String.d_oops))
+                        .WithDescription(Resource.String.d_invalid_registration)
+                        .Show(SupportFragmentManager, "invalid_registration_input");
+                    break;
                 case LandingConstants.RESULT_LOGIN_FAILED:
                     var dialog = (new GenericAlertFragment(Resource.Color.app_red_modal_color))
                         .WithIcon(Resource.Drawable.sad_face_white_icon)
@@ -68,9 +74,6 @@ namespace Whistle.Droid.Views
                         .WithTitle(Resource.String.d_awesome)
                         .WithDescription(Resource.String.d_registration_success)
                         .Show(SupportFragmentManager, "register_success");
-
-                    await System.Threading.Tasks.Task.Delay(1500);
-                    ((LandingViewModel)this.ViewModel).Show();
                     break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     (new GenericAlertFragment(Resource.Color.app_gray_modal_color))

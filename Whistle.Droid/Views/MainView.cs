@@ -36,7 +36,12 @@ namespace Whistle.Droid.Views
             get { return this._viewModel ?? (this._viewModel = base.ViewModel as MainViewModel); }
 
         }
-
+        protected override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
+            var _icons = new int[] { Resource.Drawable.notification_green_icon, Resource.Drawable.user_account_green_icon, Resource.Drawable.preferences_green_icon, Resource.Drawable.checked_lock_green_icon, Resource.Drawable.question_mark_green_icon };
+            ViewModel.USettings = DataProvider.SettingItems(_icons);
+        }
         /// <summary>
         /// Called when [create].
         /// </summary>
@@ -133,7 +138,6 @@ namespace Whistle.Droid.Views
                     var itemSource = message.Parameter == "PACKAGES" ? viewmodel.PackageList : viewmodel.RideList;
                     var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
                     (new ListDialogFragment(header) { ViewModel = this.ViewModel, ItemSource = itemSource }).Show(SupportFragmentManager, "select_items");
-                    //_currentDialog.Dismiss();
                     break;
 
                 case HomeConstants.ACTION_SHOW_WHISTLERS:

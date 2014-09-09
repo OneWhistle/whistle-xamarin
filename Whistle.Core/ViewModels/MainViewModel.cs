@@ -11,6 +11,8 @@ namespace Whistle.Core.ViewModels
     using Cirrious.CrossCore;
     using Whistle.Core.Helpers;
     using System;
+    using System.Collections.ObjectModel;
+    using Whistle.Core.Modal;
 
     /// <summary>
     /// Define the MainViewModel type.
@@ -36,6 +38,16 @@ namespace Whistle.Core.ViewModels
             get { return this._userName; }
         }
 
+
+        private ObservableCollection<USettings> _uSetting;
+        public ObservableCollection<USettings> USettings
+        {
+            get { return _uSetting; }
+            set
+            {
+                _uSetting = value; RaisePropertyChanged(() => USettings);
+            }
+        }
 
         public string[] PackageList { get { return packageList; } }
         public string[] RideList { get { return rideList; } }

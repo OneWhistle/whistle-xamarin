@@ -12,7 +12,7 @@ using Whistle.Core.ViewModels;
 
 namespace Whistle.Droid.Fragments
 {
-    public class GenericFragment : MvxFragment
+    public class GenericFragment : MvxFragment, DatePickerDialog.IOnDateSetListener
     {
         readonly int _layoutId;
         readonly int _menuResId;
@@ -29,53 +29,35 @@ namespace Whistle.Droid.Fragments
             base.OnCreate(savedInstanceState);
         }
 
+        //test
+        private TextView dobTextView;
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = this.BindingInflate(_layoutId, null);
-
-
+            
             // Sorryyyyyyyyyyyy!! For Mean Time We'll improve this
             if (_layoutId == Resource.Layout.Registration)
             {
 
-                ((LandingViewModel)ViewModel).IsGenderChanged = (type, change) =>
+                ((LandingViewModel)ViewModel).NewUser.IsGenderChanged = (change) =>
                 {
                     var maleImage = view.FindViewById<ImageButton>(Resource.Id.maleButton);
                     var femaleImage = view.FindViewById<ImageButton>(Resource.Id.femaleButton);
-                    switch (type)
+
+                    if (change)
                     {
-                        case 0:
-                            if (change)
-                            {
-                                System.Console.WriteLine("Yes Male Change");
-                                maleImage.SetBackgroundResource(Resource.Drawable.male_green_icon);
-                            }
-                            else
-                            {
-                                System.Console.WriteLine("No Male Change");
-                                maleImage.SetBackgroundResource(Resource.Drawable.male_grey_icon);
-                            }
-                            break;
-                        case 1:
-                            if (change)
-                            {
-                                System.Console.WriteLine("Yes Female Change");
-                                femaleImage.SetBackgroundResource(Resource.Drawable.female_green_icon);
-                            }
-                            else
-                            {
-                                System.Console.WriteLine("No Female Change");
-                                femaleImage.SetBackgroundResource(Resource.Drawable.female_grey_icon);
-                            }
-                            break;
-                        default:
-                            break;
+                        maleImage.SetBackgroundResource(Resource.Drawable.male_green_icon);
+                        femaleImage.SetBackgroundResource(Resource.Drawable.female_grey_icon);
+                    }
+                    else
+                    {
+                        maleImage.SetBackgroundResource(Resource.Drawable.male_grey_icon);
+                        femaleImage.SetBackgroundResource(Resource.Drawable.female_green_icon);
                     }
                 };
             }
-
             return view;
         }
 
@@ -85,6 +67,10 @@ namespace Whistle.Droid.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
+        public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
+        {
+            dobTextView.Text = new DateTime(year, monthOfYear + 1, dayOfMonth).ToString(); ;
+        }
     }
 
     /// <summary>

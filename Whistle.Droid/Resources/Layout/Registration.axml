@@ -33,7 +33,7 @@
             android:id="@+id/optMale">
             <ImageButton
                 android:id="@+id/maleButton"
-                local:MvxBind="Click UserAction, CommandParameter=ACTION_MALE_OPTION"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_GENDER_OPTION"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/male_button_state_list" />
@@ -52,7 +52,7 @@
             android:id="@+id/optFemale">
             <ImageButton
                 android:id="@+id/femaleButton"
-                local:MvxBind="Click UserAction, CommandParameter=ACTION_FEMALE_OPTION"
+                local:MvxBind="Click UserAction, CommandParameter=ACTION_GENDER_OPTION"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/female_button_state_list" />

@@ -14,4 +14,11 @@
   <color name="app_red_modal_color">#CCff6666</color>
   <color name="app_green_modal_color">#CC66cc99</color>
   <color name="default_text_color">#fff</color>
+
+  <!--Setting Item Layout Color-->
+  <color name="list_divider">#d9d9d9</color>
+  <color name="list_row_start_color">#ffffff</color>
+  <color name="list_row_end_color">#ffffff</color>
+  <color name="list_row_hover_start_color">#ebeef0</color>
+  <color name="list_row_hover_end_color">#ebeef0</color>
 </resources>

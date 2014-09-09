@@ -3,52 +3,52 @@
     xmlns:local="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#FFFFFF"
+    android:orientation="vertical"
     android:weightSum="8">
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="0dp"
-        android:inputType="text"
-        android:hint="ADDRESS"
-        android:textColor="#000"
+        android:layout_weight="1"
         android:background="#FFFFFF"
+        android:hint="ADDRESS"
+        android:inputType="text"
         android:paddingLeft="10dp"
-        android:layout_weight="1" />
+        android:textColor="#000" />
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="#9A9CA6" />
     <LinearLayout
-        android:layout_height="0dp"
         android:layout_width="fill_parent"
+        android:layout_height="0dp"
         android:layout_weight="1"
-        android:weightSum="2"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:weightSum="2">
         <LinearLayout
-            android:layout_height="fill_parent"
             android:layout_width="0dp"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
             android:orientation="horizontal">
             <RelativeLayout
-                android:layout_height="match_parent"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:gravity="center_vertical">
                 <EditText
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:hint="CITY"
-                    android:textColor="#000"
                     android:background="#FFFFFF"
+                    android:gravity="center_vertical"
+                    android:hint="CITY"
                     android:paddingLeft="10dp"
-                    android:gravity="center_vertical" />
+                    android:textColor="#000" />
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:src="@drawable/options_grey_icon"
+                    android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:layout_alignParentRight="true" />
+                    android:src="@drawable/options_grey_icon" />
             </RelativeLayout>
         </LinearLayout>
         <View
@@ -56,39 +56,39 @@
             android:layout_height="fill_parent"
             android:background="#9A9CA6" />
         <EditText
-            android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1"
             android:background="#FFFFFF"
-            android:paddingLeft="10dp"
-            android:hint="ZIPCODE"
-            android:textColor="#000"
             android:gravity="center_vertical"
-            android:layout_marginLeft="10dp" />
+            android:hint="ZIPCODE"
+            android:paddingLeft="10dp"
+            android:textColor="#000" />
     </LinearLayout>
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="#9A9CA6" />
     <RelativeLayout
+        android:layout_width="fill_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#EEF0FF"
-        android:layout_width="fill_parent">
+        android:background="#EEF0FF">
         <EditText
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="#EEF0FF"
+            android:hint="COUNTRY"
             android:paddingLeft="10dp"
-            android:textColor="#000"
-            android:hint="COUNTRY" />
+            android:textColor="#000" />
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/options_green_icon"
-            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
-            android:layout_alignParentRight="true" />
+            android:layout_marginRight="10dp"
+            android:src="@drawable/options_green_icon" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -104,8 +104,8 @@
             android:layout_marginLeft="10dp"
             android:layout_weight="1.9"
             android:gravity="center_vertical"
-            local:customFont="fonts/ProximaNova-Light.otf"
-            android:text="ADD YOUR IDENTIFICATION" />
+            android:text="ADD YOUR IDENTIFICATION"
+            local:customFont="fonts/ProximaNova-Light.otf" />
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -120,8 +120,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="CHOOSE YOUR RIDE"
-            local:customFont="fonts/ProximaNova-Bold.otf"
-            android:textColor="#000000" />
+            android:textColor="#000000"
+            local:customFont="fonts/ProximaNova-Bold.otf" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -143,16 +143,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/bike_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_bike_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="BIKE"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -166,16 +173,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/auto_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_auto_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="AUTO"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -189,16 +203,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/car_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_car_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="CAR"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -212,16 +233,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/bus_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_bus_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="BUS"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -248,16 +276,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/truck_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_truck_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="TRUCK"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -271,16 +306,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/train_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/cusstom_train_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="TRAIN"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -294,16 +336,23 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--
+                 <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/flight_grey_icon" />
+            -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_flight_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="FLIGHT"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -317,16 +366,21 @@
             android:background="#FFFFFF"
             android:gravity="center"
             android:orientation="vertical">
-            <ImageView
+        <!--             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/others_grey_icon" />
+                android:src="@drawable/others_grey_icon" /> -->
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@drawable/custom_other_checkbox" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
                 android:text="OTHERS"
-                android:textColor="#000000"
-                android:layout_marginTop="2dp" />
+                android:textColor="#000000" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="0dp"
@@ -347,11 +401,11 @@
         android:gravity="center"
         android:orientation="vertical">
         <whistle.droid.views.WhistleButton
-            local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_VALIDATE"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="START WHISTLING"
-            local:customFont="fonts/ProximaNova-Light.otf"
-            android:textSize="20sp" />
+            android:textSize="20sp"
+            local:MvxBind="Click UserAction, CommandParameter=ACTION_REGISTER_VALIDATE"
+            local:customFont="fonts/ProximaNova-Light.otf" />
     </LinearLayout>
 </LinearLayout>

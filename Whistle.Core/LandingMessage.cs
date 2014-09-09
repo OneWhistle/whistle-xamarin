@@ -15,9 +15,10 @@ namespace Whistle.Core
         public const string ACTION_GOOGLE_LOGIN_VALIDATE = "ACTION_GOOGLE_LOGIN_VALIDATE";
         public const string ACTION_REGISTER_VALIDATE = "ACTION_REGISTER_VALIDATE";
         public const string ACTION_PROFILE_IMAGE = "ACTION_PROFILE_IMAGE";
-        public const string ACTION_MALE_OPTION = "ACTION_MALE_OPTION";
-        public const string ACTION_FEMALE_OPTION = "ACTION_FEMALE_OPTION";
+        public const string ACTION_GENDER_OPTION = "ACTION_GENDER_OPTION";
         public const string ACTION_DOB_OPTION = "ACTION_DOB_OPTION";
+        public const string ACTION_TAKE_PICTURE_CAMERA = "ACTION_TAKE_PICTURE_CAMERA";
+        public const string ACTION_TAKE_PICTURE_GALLERY = "ACTION_TAKE_PICTURE_GALLERY";
 
 
         public const string RESULT_LOGIN_FAILED = "RESULT_LOGIN_FAILED";
@@ -32,9 +33,10 @@ namespace Whistle.Core
             ACTION_REGISTER_VALIDATE,
             ACTION_REGISTER,
             ACTION_SIGNIN,
-            ACTION_FEMALE_OPTION,
+            ACTION_TAKE_PICTURE_GALLERY,
+            ACTION_TAKE_PICTURE_CAMERA,
             ACTION_DOB_OPTION,
-            ACTION_MALE_OPTION,
+            ACTION_GENDER_OPTION,
             ACTION_PROFILE_IMAGE,
             ACTION_TWITTER_LOGIN_VALIDATE,
             ACTION_GOOGLE_LOGIN_VALIDATE,

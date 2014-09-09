@@ -12,5 +12,8 @@ namespace Whistle.Core.Modal
         public string Title { get; set; }
         public int MenuIcon { get; set; }
     }
-
+    public class USettings : Menus
+    {
+        public string Description { get; set; }
+    }
 }

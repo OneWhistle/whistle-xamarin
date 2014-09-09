@@ -24,6 +24,8 @@ namespace Whistle.Droid.Views
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : WhistleActivity<LandingMessage>
     {
+        
+
         protected override async void OnReceive(LandingMessage message)
         {
             if (!SupportActionBar.IsShowing)

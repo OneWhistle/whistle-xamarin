@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    android:background="@drawable/list_row_selector">
+    <ImageView
+        android:id="@+id/imgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="8dp"
+        android:src="@drawable/ic_launcher" />
+    <whistle.droid.views.WhistleTextView
+        android:id="@+id/txtTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/thumbnail"
+        local:customFont="fonts/ProximaNova-Regular.otf"
+        android:layout_toRightOf="@+id/imgView"
+        local:MvxBind="Text Title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:text="NOTIFICATION"
+        android:textColor="@color/app_dark_gray_color" />
+    <whistle.droid.views.WhistleTextView
+        android:id="@+id/txtDescription"
+        android:textSize="14sp"
+        android:layout_width="fill_parent"
+        local:customFont="fonts/ProximaNova-Regular.otf"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtTitle"
+        local:MvxBind="Text Description"
+        android:layout_toRightOf="@+id/imgView"
+        android:layout_marginTop="2dp"
+        android:text="Turn on/off"
+        android:textColor="@color/app_dark_gray_color" />
+</RelativeLayout>

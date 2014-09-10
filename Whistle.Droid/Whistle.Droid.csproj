@@ -624,6 +624,12 @@
     <AndroidResource Include="Resources\drawable\list_row_selector.xml" />
     <AndroidResource Include="Resources\drawable\list_row_bg.xml" />
     <AndroidResource Include="Resources\drawable\list_row_bg_hover.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\account_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\help_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\notifications_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\preferences_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\privacy_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\profile_green.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

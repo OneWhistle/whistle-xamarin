@@ -25,7 +25,8 @@
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/imgView"
             android:text="NOTIFICATIONS"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
         <TextView
             android:id="@+id/rating"
             android:layout_width="fill_parent"
@@ -34,7 +35,8 @@
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/imgView"
             android:textSize="12sp"
-            android:text="TURN ON/OFF JINGLE VIBRATE  MORE" />
+            android:text="TURN ON/OFF JINGLE VIBRATE  MORE"
+            android:textColor="@color/app_gray_color" />
     </RelativeLayout>
     <RelativeLayout
         android:id="@+id/xx"
@@ -65,7 +67,8 @@
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/imgView1"
             android:text="ACCOUNT"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
         <TextView
             android:id="@+id/rating1"
             android:layout_width="fill_parent"
@@ -74,7 +77,8 @@
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/imgView1"
             android:textSize="12sp"
-            android:text="MANAGE YOUR WHISTLE ACCOUNT" />
+            android:text="MANAGE YOUR WHISTLE ACCOUNT"
+            android:textColor="@color/app_gray_color" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -105,7 +109,8 @@
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/imgView2"
             android:text="PREFERENCES"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
         <TextView
             android:id="@+id/rating1"
             android:layout_width="fill_parent"
@@ -114,7 +119,8 @@
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/imgView2"
             android:textSize="12sp"
-            android:text="SET RADIOUS LOCATION FARE  MORE" />
+            android:text="SET RADIOUS LOCATION FARE  MORE"
+            android:textColor="@color/app_gray_color" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -145,7 +151,8 @@
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/imgView3"
             android:text="PRIVACY"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
         <TextView
             android:id="@+id/rating1"
             android:layout_width="fill_parent"
@@ -154,7 +161,8 @@
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/imgView3"
             android:textSize="12sp"
-            android:text="CONTROL BLOCK LIST,STATUS  MORE" />
+            android:text="CONTROL BLOCK LIST,STATUS  MORE"
+            android:textColor="@color/app_gray_color" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -185,7 +193,8 @@
             android:layout_marginTop="0dp"
             android:layout_toRightOf="@+id/imgView4"
             android:text="HELP SUPPORT"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
         <TextView
             android:id="@+id/rating1"
             android:layout_width="fill_parent"
@@ -194,7 +203,8 @@
             android:layout_marginTop="2dp"
             android:layout_toRightOf="@+id/imgView4"
             android:textSize="12sp"
-            android:text="FAQ'S,LAGAN,CONTACT US  MORE" />
+            android:text="FAQ'S,LAGAN,CONTACT US  MORE"
+            android:textColor="@color/app_gray_color" />
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="fill_parent"

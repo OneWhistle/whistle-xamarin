@@ -279,6 +279,9 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\Whistlers_list.axml" />
+    <AndroidResource Include="Resources\Layout\FavoritesItemLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -630,6 +633,16 @@
     <AndroidResource Include="Resources\drawable-hdpi\preferences_green.png" />
     <AndroidResource Include="Resources\drawable-hdpi\privacy_green.png" />
     <AndroidResource Include="Resources\drawable-hdpi\profile_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\like_counter.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\journey_active.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\call_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete_black.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\delete_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\message_black.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\message_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\video_black.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\video_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\call_black.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

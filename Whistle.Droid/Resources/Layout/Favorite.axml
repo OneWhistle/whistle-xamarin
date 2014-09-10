@@ -1,22 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:minWidth="25px">
-    <ImageView
-        android:src="@drawable/whistle_logo_green"
-        android:layout_width="wrap_content"
+    <Mvx.MvxListView
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/imageView1"
-        android:layout_gravity="center_vertical"
-        android:layout_centerInParent="true" />
-    <TextView
-        android:text="Favorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/imageView1"
-        android:id="@+id/textView1"
-        android:layout_centerInParent="true"
-        android:textSize="20sp" />
+        local:MvxBind="ItemsSource Favorites"
+        local:MvxItemTemplate="@layout/favoritesitemlayout"
+        android:background="#9A9CA6"
+        android:dividerHeight="2px" />
 </RelativeLayout>

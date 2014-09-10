@@ -130,9 +130,6 @@ namespace Whistle.Core.ViewModels
             this.NewUser.IsMale = arg;
         }
 
-
-
-
         private void OnUserAction(string action)
         {
             var messenger = Mvx.Resolve<IMvxMessenger>();
@@ -165,6 +162,10 @@ namespace Whistle.Core.ViewModels
                     ChoosePicture();
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
+                case LandingConstants.ACTION_REGISTER:
+                    IsUpadetMode = false;
+                    _messenger.Publish(new LandingMessage(this, action));
+                    break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     if (!NewUser.IsValid())
                         _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));

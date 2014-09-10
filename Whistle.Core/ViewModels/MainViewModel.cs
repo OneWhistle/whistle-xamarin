@@ -38,20 +38,23 @@ namespace Whistle.Core.ViewModels
             get { return this._userName; }
         }
 
+        #region Properties
 
-        private ObservableCollection<USettings> _uSetting;
-        public ObservableCollection<USettings> USettings
+        private ObservableCollection<string> favorites = new ObservableCollection<string>() { "test", "test", "test", "test" };
+        public ObservableCollection<string> Favorites
         {
-            get { return _uSetting; }
+            get { return favorites; }
             set
             {
-                _uSetting = value; RaisePropertyChanged(() => USettings);
+                favorites = value; RaisePropertyChanged(() => Favorites);
             }
         }
 
+
+        #endregion
+
         public string[] PackageList { get { return packageList; } }
         public string[] RideList { get { return rideList; } }
-
 
         private MvxCommand<string> selectUserType;
         public ICommand SelectUserType { get { return this.selectUserType ?? (this.selectUserType = new MvxCommand<string>(onUserTypeSelected)); } }
@@ -62,8 +65,6 @@ namespace Whistle.Core.ViewModels
         private MvxCommand<string> userAction;
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
 
-
-
         private void onNavDisplay(string list)
         {
             var msg = new HomeMessage(this, HomeConstants.NAV_DISPLAY_LIST);
@@ -71,14 +72,29 @@ namespace Whistle.Core.ViewModels
             _messenger.Publish(msg);
         }
 
-       
-
         private void onUserTypeSelected(string value)
         {
             /*Update settings here..
             Settings.UserType..*/
             _messenger.Publish(new HomeMessage(this, HomeConstants.NAV_USER_TYPE_SELECTED));
         }
+
+
+        #region Properties
+
+        //TEMP testing
+        private User newUser = new User { Email = "rzee.m7@gmail.com", IsMale = true, UserName = "rzee", Name = "M RIYAZ", Password = "IAm7MOM" };
+        public User NewUser
+        {
+            get { return newUser; }
+            private set
+            {
+                newUser = value; RaisePropertyChanged("NewUser");
+            }
+        }
+
+
+        #endregion
 
         private void onUserAction(string value)
         {

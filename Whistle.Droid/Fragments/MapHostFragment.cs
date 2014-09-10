@@ -21,14 +21,8 @@ namespace Whistle.Droid.Fragments
 
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
         {
-
             var view = base.OnCreateView(inflater, container, savedInstanceState);
             _mapHost = view.FindViewById<LinearLayout>(Resource.Id.map);
-            _mapView.Map.UiSettings.MyLocationButtonEnabled = true;
-            _mapView.Map.UiSettings.ZoomControlsEnabled = true;
-            _mapView.Map.UiSettings.CompassEnabled = true;
-
-
             _mapHost.AddView(_mapView);
             return view;
         }

@@ -30,8 +30,6 @@ namespace Whistle.Core.ViewModels
     {
         #region Private fields
         IMvxMessenger _messenger;
-        IAuthenticationService _authService;
-        IRegistrationService _regService;
 
         #endregion
 
@@ -130,7 +128,7 @@ namespace Whistle.Core.ViewModels
             this.NewUser.IsMale = arg;
         }
 
-
+        
 
 
         private void OnUserAction(string action)
@@ -188,8 +186,6 @@ namespace Whistle.Core.ViewModels
             if (_messenger != null)
                 return;
             _messenger = Mvx.Resolve<IMvxMessenger>();
-            _authService = Mvx.Resolve<IAuthenticationService>();
-            _regService = Mvx.Resolve<IRegistrationService>();
         }
 
         #endregion

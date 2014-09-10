@@ -22,6 +22,5 @@ namespace Whistle.Core.Modal
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-        public Action<bool> IsGenderChanged { get; set; }
     }
 }

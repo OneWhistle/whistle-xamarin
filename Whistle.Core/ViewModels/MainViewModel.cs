@@ -5,22 +5,25 @@
 // --------------------------------------------------------------------------------------------------------------------
 namespace Whistle.Core.ViewModels
 {
-    using System.Windows.Input;
-    using Cirrious.MvvmCross.ViewModels;
-    using Cirrious.MvvmCross.Plugins.Messenger;
     using Cirrious.CrossCore;
-    using Whistle.Core.Helpers;
-    using System;
+    using Cirrious.CrossCore.Platform;
+    using Cirrious.MvvmCross.Plugins.Location;
+    using Cirrious.MvvmCross.Plugins.Messenger;
+    using Cirrious.MvvmCross.ViewModels;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using Whistle.Core.Helpers;
     using Whistle.Core.Modal;
 
     /// <summary>
     /// Define the MainViewModel type.
     /// </summary>
-    public class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel 
     {
         #region Private fields
-        IMvxMessenger _messenger;
+        readonly IMvxMessenger _messenger;
+        //readonly IMvxLocationWatcher _locationWatcher;
+
         string[] packageList = new[] { "ENVELOPS", "SMALL (UP TO 10 KG)", "MEDIUM (BETWEEN 11 - 50 KG)", "LARGE (BETWEEN 51 - 100 KG)", "EXTRA LARGE (MORE THAN 100 KG)" };
         string[] rideList = new[] { "BIKE(2 SEATS)", "AUTO(3 SEATS)", "SMALL CAR(4 SEATS)", "LARGE CAR(6 SEATS)", "MINI BUS(12 SEATS)", "BUS(20+ SEATS)", "TRUCK(ONLY PACKAGE)", "TRAIN", "FLIGHT" };
         #endregion
@@ -62,6 +65,15 @@ namespace Whistle.Core.ViewModels
         private MvxCommand<string> userAction;
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
 
+
+        public WhistleEditViewModel WhistleEditViewModel { get; private set; }
+
+        public MainViewModel(IMvxMessenger messenger )
+            //IMvxLocationWatcher locationWatcher)
+        {
+            _messenger = messenger;
+            WhistleEditViewModel = new WhistleEditViewModel();
+        }
 
 
         private void onNavDisplay(string list)
@@ -105,11 +117,7 @@ namespace Whistle.Core.ViewModels
             {
                 Settings.AccessToken = parameters.Data[Settings.AccessTokenKey];
                 // etc...
-            }
-
-            if (_messenger != null)
-                return;
-            _messenger = Mvx.Resolve<IMvxMessenger>();
+            }       
         }
     }
 }

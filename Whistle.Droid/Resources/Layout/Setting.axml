@@ -1,14 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:local="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:minWidth="25px"
-    android:minHeight="25px">
-    <Mvx.MvxListView
+    android:background="@drawable/list_row_selector"
+    android:padding="8dp">
+    <RelativeLayout
+        android:id="@+id/aa"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="ItemsSource USettings;"
-        local:MvxItemTemplate="@layout/settingitemlayout" />
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/imgView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/notifications_green"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/imgView"
+            android:text="NOTIFICATIONS"
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
+        <TextView
+            android:id="@+id/rating"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/imgView"
+            android:textSize="12sp"
+            android:text="TURN ON/OFF JINGLE VIBRATE  MORE"
+            android:textColor="@color/app_gray_color" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/xx"
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/aa"
+        android:background="#EFEFF5"
+        android:layout_marginTop="5dp" />
+    <RelativeLayout
+        android:id="@+id/aa1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/xx"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/imgView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/account_green"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/title1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/imgView1"
+            android:text="ACCOUNT"
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
+        <TextView
+            android:id="@+id/rating1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title1"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/imgView1"
+            android:textSize="12sp"
+            android:text="MANAGE YOUR WHISTLE ACCOUNT"
+            android:textColor="@color/app_gray_color" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/aa1"
+        android:background="#EFEFF5"
+        android:layout_marginTop="5dp"
+        android:id="@+id/kk1" />
+    <RelativeLayout
+        android:id="@+id/aa2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kk1"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/imgView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/preferences_green"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/title2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/imgView2"
+            android:text="PREFERENCES"
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
+        <TextView
+            android:id="@+id/rating1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title2"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/imgView2"
+            android:textSize="12sp"
+            android:text="SET RADIOUS LOCATION FARE  MORE"
+            android:textColor="@color/app_gray_color" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/aa2"
+        android:background="#EFEFF5"
+        android:layout_marginTop="5dp"
+        android:id="@+id/kk2" />
+    <RelativeLayout
+        android:id="@+id/aa3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kk2"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/imgView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/privacy_green"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/title3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/imgView3"
+            android:text="PRIVACY"
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
+        <TextView
+            android:id="@+id/rating1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title3"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/imgView3"
+            android:textSize="12sp"
+            android:text="CONTROL BLOCK LIST,STATUS  MORE"
+            android:textColor="@color/app_gray_color" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/aa3"
+        android:background="#EFEFF5"
+        android:layout_marginTop="5dp"
+        android:id="@+id/kk3" />
+    <RelativeLayout
+        android:id="@+id/aa4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/kk3"
+        android:padding="8dp">
+        <ImageView
+            android:id="@+id/imgView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginRight="8dp"
+            android:src="@drawable/help_green"
+            android:layout_centerVertical="true" />
+        <TextView
+            android:id="@+id/title4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/thumbnail"
+            android:layout_marginTop="0dp"
+            android:layout_toRightOf="@+id/imgView4"
+            android:text="HELP SUPPORT"
+            android:textStyle="bold"
+            android:textColor="@color/app_dark_gray_color" />
+        <TextView
+            android:id="@+id/rating1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/title4"
+            android:layout_marginTop="2dp"
+            android:layout_toRightOf="@+id/imgView4"
+            android:textSize="12sp"
+            android:text="FAQ'S,LAGAN,CONTACT US  MORE"
+            android:textColor="@color/app_gray_color" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/aa4"
+        android:background="#EFEFF5"
+        android:layout_marginTop="5dp" />
 </RelativeLayout>

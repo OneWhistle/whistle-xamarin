@@ -40,9 +40,18 @@ namespace Whistle.Core.ViewModels
             set { title = value; RaisePropertyChanged(() => Title); }
         }
 
-
         public Action<bool> IsBusyChanged { get; set; }
-       
+
+        //
+        private bool isUpadetMode = false;
+        public bool IsUpadetMode
+        {
+            get { return isBusy; }
+            set
+            {
+                isUpadetMode = value; RaisePropertyChanged(() => IsUpadetMode);
+            }
+        }
 
         /// <summary>
         /// Gets the service.

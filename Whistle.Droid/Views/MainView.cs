@@ -46,7 +46,6 @@ namespace Whistle.Droid.Views
             base.OnViewModelSet();
             _locationHelper = new LocationHelper<MainView>(this);
             var _icons = new int[] { Resource.Drawable.notification_green_icon, Resource.Drawable.user_account_green_icon, Resource.Drawable.preferences_green_icon, Resource.Drawable.checked_lock_green_icon, Resource.Drawable.question_mark_green_icon };
-            ViewModel.USettings = DataProvider.SettingItems(_icons);
         }
         /// <summary>
         /// Called when [create].

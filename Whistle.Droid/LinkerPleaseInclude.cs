@@ -19,10 +19,7 @@ namespace Whistle.Droid
             //Need to see
             //injector = new Whistle.Core.ViewModels.LandingViewModel();
         }
-        public void Include(Whistle.Core.ViewModels.MainViewModel injector)
-        {
-            injector = new Whistle.Core.ViewModels.MainViewModel();
-        }
+       
 
         public void Include(Button button)
         {

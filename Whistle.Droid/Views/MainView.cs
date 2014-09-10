@@ -18,18 +18,24 @@ namespace Whistle.Droid.Views
     using Whistle.Core.Helpers;
     using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
+    using Cirrious.MvvmCross.Binding.BindingContext;
+    using System;
 
     /// <summary>
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, Android.Locations.ILocationListener
+    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, GoogleMap.IOnMapLongClickListener
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
         internal MapView _mapView;
         MainViewModel _viewModel;
         LocationManager _locationManager;
         string _locationProvider;
+        Geocoder _geocoder;
+
+        Marker _sourceLocationMarker;
+        Marker _destinationLocationMarker;
 
         public new MainViewModel ViewModel
         {
@@ -53,9 +59,13 @@ namespace Whistle.Droid.Views
             _locationManager = (LocationManager)GetSystemService(Android.Content.Context.LocationService);
             Criteria criteria = new Criteria { Accuracy = Android.Locations.Accuracy.Fine };
             _locationProvider = _locationManager.GetBestProvider(criteria, false);
-            
-            
-            _mapView = new MapView(this);
+
+
+            _mapView = new MapView(this, new GoogleMapOptions().InvokeZOrderOnTop(true))
+                {
+                    //http://stackoverflow.com/questions/2990191/zoom-controls-not-showing-when-using-a-mapview-with-fill-parent
+                    Clickable = true
+                };
             _mapView.OnCreate(savedInstanceState);
             MapsInitializer.Initialize(this);
 
@@ -77,13 +87,16 @@ namespace Whistle.Droid.Views
                 .Replace(Resource.Id.MenuFrame, new ContentMenuFragment { ViewModel = this.ViewModel })
                 .Commit();
 
-            SlidingMenu.TouchModeAbove = SlidingMenuSharp.TouchMode.Fullscreen;
+
+            SlidingMenu.TouchModeAbove = SlidingMenuSharp.TouchMode.Margin;
             SlidingMenu.BehindOffset = 60;
             SlidingMenu.ShadowWidth = 20;
             if (isNewInstance)
             {
                 (_currentDialog = new GenericDialogFragment(Resource.Layout.UserType) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "select_user_type");
             }
+            //var set = this.CreateBindingSet<MainView, MainViewModel>();
+            //set.Bind(this).For(m=>m._sourceLocation).To(vm => vm.WhistleEditViewModel.SourceLocation).Apply();
         }
 
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
@@ -102,18 +115,32 @@ namespace Whistle.Droid.Views
         protected override void OnResume()
         {
             base.OnResume();
+            _mapView.Clickable = true;
             _mapView.OnResume();
+            _mapView.Map.UiSettings.MyLocationButtonEnabled = true;
+            _mapView.Map.UiSettings.ZoomControlsEnabled = true;
+            _mapView.Map.UiSettings.CompassEnabled = true;
+
+            _mapView.Map.SetOnMapLongClickListener(this);
+            _geocoder = new Geocoder(this);
+
             var location = _locationManager.GetLastKnownLocation(_locationProvider);
+
             if (location != null)
-                OnLocationChanged(location);
-            _locationManager.RequestLocationUpdates(_locationProvider, 1000, 10, this);
+            {
+                var latng = new LatLng(location.Latitude, location.Longitude);
+                // OnLocationChanged(location);
+                updateMarker(latng);
+                CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
+                _mapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));
+                _mapView.Map.AnimateCamera(zoom);
+            }
         }
 
         protected override void OnPause()
         {
             base.OnPause();
             _mapView.OnPause();
-            _locationManager.RemoveUpdates(this);
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -140,12 +167,18 @@ namespace Whistle.Droid.Views
                 case HomeConstants.NAV_USER_TYPE_SELECTED:
                     _currentDialog.Dismiss();
                     break;
-
                 case HomeConstants.NAV_DISPLAY_LIST:
                     var viewmodel = (Whistle.Core.ViewModels.MainViewModel)this.ViewModel;
                     var itemSource = message.Parameter == "PACKAGES" ? viewmodel.PackageList : viewmodel.RideList;
                     var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
                     (new ListDialogFragment(header) { ViewModel = this.ViewModel, ItemSource = itemSource }).Show(SupportFragmentManager, "select_items");
+                    break;
+                case HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED:
+                    (new GenericAlertFragment(Resource.Color.app_red_modal_color))
+                        .WithIcon(Resource.Drawable.sad_face_white_icon)
+                        .WithTitle(Resource.String.d_oops)
+                        .WithDescription(Resource.String.d_whistle_creation_failed)
+                        .Show(SupportFragmentManager, "whistle_creation_failed");                    
                     break;
 
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
@@ -153,42 +186,56 @@ namespace Whistle.Droid.Views
                         SwitchContent(new MapHostFragment(_mapView, Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     else
                         SwitchContent(new GenericFragment(Resource.Layout.Whistlers_list, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
-
                     break;
             }
 
         }
 
-        public void OnLocationChanged(Android.Locations.Location p0)
-        {       
-            if (_mapView.Map != null)
+        private async void updateMarker(LatLng p0)
+        {
+            if (ViewModel.WhistleEditViewModel.SourceLocationMode && _sourceLocationMarker == null)
             {
-                Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Diagnostic, "Updated location");
-                LatLng latLng = new LatLng(p0.Latitude, p0.Longitude);
-                CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
+                _sourceLocationMarker = _mapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));
+            }
 
-                 //Showing the current location in Google Map
-                _mapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latLng));
-                _mapView.Map.AnimateCamera(zoom);
+            if (!ViewModel.WhistleEditViewModel.SourceLocationMode && _destinationLocationMarker == null)
+            {
+                _destinationLocationMarker = _mapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_red_icon)));
+            }
 
+            var marker = ViewModel.WhistleEditViewModel.SourceLocationMode ? _sourceLocationMarker : _destinationLocationMarker;
+
+            marker.Position = p0;
+            var addresses = await _geocoder.GetFromLocationAsync(p0.Latitude, p0.Longitude, 1);
+            if (addresses.Count > 0)
+            {
+                if (ViewModel.WhistleEditViewModel.SourceLocationMode)
+                    this.ViewModel.WhistleEditViewModel.SourceLocation = addresses[0].GetAddressLine(0);
+                else
+                    this.ViewModel.WhistleEditViewModel.DestinationLocation = addresses[0].GetAddressLine(0);
             }
 
         }
 
-
-        public void OnProviderDisabled(string provider)
+        public void OnMapLongClick(LatLng point)
         {
-            //  throw new System.NotImplementedException();
-        }
-
-        public void OnProviderEnabled(string provider)
-        {
-            //    throw new System.NotImplementedException();
-        }
-
-        public void OnStatusChanged(string provider, Availability status, Bundle extras)
-        {
-            //   throw new System.NotImplementedException();
+            Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Diagnostic, "OnMapLongClick");
+            updateMarker(point);
+            //if (ViewModel.WhistleEditViewModel.SourceLocationMode) // 
+            //{
+            //    _sourceLocationMarker.SetPosition(point);
+            //    //_sourceLocationMarker.Notify();
+            //    var addresses = await _geocoder.GetFromLocationAsync(point.Latitude, point.Longitude, 1);
+            //    if (addresses.Count > 0)
+            //    {
+            //        this.ViewModel.WhistleEditViewModel.SourceLocation = addresses[0].GetAddressLine(0);
+            //    }
+            //}
+            //else
+            //{
+            //    _destinationLocationMarker.SetPosition(point);
+            //}
+            // this._mapView.Map.AddMarker(new MarkerOptions().SetPosition(point));
         }
     }
 }

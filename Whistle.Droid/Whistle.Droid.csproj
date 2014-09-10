@@ -80,6 +80,12 @@
     <Reference Include="Cirrious.MvvmCross.Localization">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Localization.dll</HintPath>
     </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Location">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Location.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Location.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Plugins.Location.Droid">
+      <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Location.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Location.Droid.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.MvvmCross.Plugins.Messenger">
       <HintPath>..\packages\MvvmCross.HotTuna.Plugin.Messenger.3.1.1\lib\MonoAndroid\Cirrious.MvvmCross.Plugins.Messenger.dll</HintPath>
     </Reference>
@@ -613,7 +619,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\camera_green.png" />
     <AndroidResource Include="Resources\drawable-hdpi\gallery_white.png" />
     <AndroidResource Include="Resources\drawable\male_button_state_list.xml" />
-    <AndroidResource Include="Resources\drawable\female_button_state_list.xml" />
+    <AndroidResource Include="Resources\drawable\female_button_state_list.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <AndroidResource Include="Resources\drawable\camera_button_state_list.xml" />
     <AndroidResource Include="Resources\drawable-hdpi\auto_green_icon.png" />
     <AndroidResource Include="Resources\drawable\cusstom_train_checkbox.xml" />

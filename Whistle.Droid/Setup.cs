@@ -26,6 +26,7 @@ namespace Whistle.Droid
         {
             base.InitializeLastChance();
             Mvx.RegisterSingleton<ISettings>(() => new MvxAndroidSettings());
+           // Mvx.RegisterSingleton<IMvxLocationWatcher>(() => new PlayServicesLocationWatcher());
         }
 
         protected override IMvxTrace CreateDebugTrace()
@@ -43,6 +44,9 @@ namespace Whistle.Droid
         public override void LoadPlugins(Cirrious.CrossCore.Plugins.IMvxPluginManager pluginManager)
         {
             pluginManager.EnsurePluginLoaded<Cirrious.MvvmCross.Plugins.Messenger.PluginLoader>();
+            pluginManager.EnsurePluginLoaded<Cirrious.MvvmCross.Plugins.Location.PluginLoader>();
+            pluginManager.EnsurePluginLoaded<Cirrious.MvvmCross.Plugins.PictureChooser.PluginLoader>();
+
             base.LoadPlugins(pluginManager);
         }
     }

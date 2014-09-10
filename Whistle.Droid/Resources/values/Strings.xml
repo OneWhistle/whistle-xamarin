@@ -4,7 +4,7 @@
   <string name="ApplicationName">Whistle</string>
   <string name="menu_help">help</string>
 
-  
+
   <!--DIALOGS TITLES-->
   <string name="d_oops">OOPS!</string>
   <string name="d_awesome">AWESOME!</string>
@@ -15,6 +15,8 @@
   <string name="d_wrong_password">The username &amp; password do not match.\r\nPlease try again.</string>
   <string name="d_invalid_registration">Invalid or missing input dected. Please fill all required forms</string>
   <string name="d_legal_term_desc">Please do read our terms &amp; privacy carefully before accepting.</string>
+  <string name="d_whistle_creation_failed">Please fill required field.</string>
+
   <!--DIALOGS BUTTONS-->
   <string name="d_btn_agree">I AGREE</string>
   <string name="d_btn_disagree">I DISAGREE</string>

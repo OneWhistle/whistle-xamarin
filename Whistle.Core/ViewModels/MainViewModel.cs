@@ -18,7 +18,7 @@ namespace Whistle.Core.ViewModels
     /// <summary>
     /// Define the MainViewModel type.
     /// </summary>
-    public class MainViewModel : BaseViewModel 
+    public class MainViewModel : BaseViewModel
     {
         #region Private fields
         readonly IMvxMessenger _messenger;
@@ -68,8 +68,8 @@ namespace Whistle.Core.ViewModels
 
         public WhistleEditViewModel WhistleEditViewModel { get; private set; }
 
-        public MainViewModel(IMvxMessenger messenger )
-            //IMvxLocationWatcher locationWatcher)
+        public MainViewModel(IMvxMessenger messenger)
+        //IMvxLocationWatcher locationWatcher)
         {
             _messenger = messenger;
             WhistleEditViewModel = new WhistleEditViewModel();
@@ -83,7 +83,7 @@ namespace Whistle.Core.ViewModels
             _messenger.Publish(msg);
         }
 
-       
+
 
         private void onUserTypeSelected(string value)
         {
@@ -98,7 +98,10 @@ namespace Whistle.Core.ViewModels
             {
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
                     /*do some backend call ????.*/
-                    _messenger.Publish(new HomeMessage(this, value));
+                    if (WhistleEditViewModel.IsValid())
+                        _messenger.Publish(new HomeMessage(this, value));
+                    else
+                        _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
                     break;
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
                     Settings.ShowWhistlersListMap = !Settings.ShowWhistlersListMap;
@@ -117,7 +120,7 @@ namespace Whistle.Core.ViewModels
             {
                 Settings.AccessToken = parameters.Data[Settings.AccessTokenKey];
                 // etc...
-            }       
+            }
         }
     }
 }

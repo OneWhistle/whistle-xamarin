@@ -8,6 +8,8 @@ namespace Whistle.Core
         public const string NAV_DISPLAY_LIST = "{F498EEBA-976B-4646-855F-321C260FD424}";
         public const string NAV_WHISTLE_DISPLAY = "NAV_WHISTLE_DISPLAY";
         public const string ACTION_SHOW_WHISTLERS = "ACTION_SHOW_WHISTLERS";
+
+        public const string RESULT_WHISTLE_VALIDATION_FAILED = "{8D805840-E932-4978-A564-581C821D4E05}";
     }
 
     public class HomeMessage : MvxMessage

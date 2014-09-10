@@ -4,13 +4,16 @@ using System.Windows.Input;
 using Whistle.Core.Modal;
 namespace Whistle.Core.ViewModels
 {
-    public class WhistleEditViewModel: BaseEntity
+    public class WhistleEditViewModel : BaseEntity
     {
         public bool SourceLocationMode { get; set; }
         public bool DestinationLocationMode { get; set; }
 
+
+        public string JourneyMessage { get; set; }
+
         private string _sourceLocation;
-        public string SourceLocation 
+        public string SourceLocation
         {
             get { return _sourceLocation; }
             set { _sourceLocation = value; OnPropertyChanged("SourceLocation"); }
@@ -51,5 +54,11 @@ namespace Whistle.Core.ViewModels
             OnPropertyChanged("DestinationLocationMode");
         }
 
+        public bool IsValid()
+        {
+            if (string.IsNullOrEmpty(JourneyMessage))
+                return false;
+            return true;
+        }
     }
 }

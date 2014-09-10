@@ -20,7 +20,7 @@
                 android:layout_weight="1"
                 android:checked="true"
                 android:layout_width="0dp"
-                local:MvxBind="Checked SourceLocationMode"
+                local:MvxBind="Checked WhistleEditViewModel.SourceLocationMode"
                 android:layout_height="fill_parent" />
             <View
                 android:background="@color/app_blue_color"
@@ -56,7 +56,7 @@
                 android:enabled="false"
                 android:layout_weight="1"
                 android:layout_width="0dp"
-                local:MvxBind="Checked DestinationLocationMode"
+                local:MvxBind="Checked WhistleEditViewModel.DestinationLocationMode"
                 android:layout_height="fill_parent" />
             <View
                 android:background="@color/app_red_modal_color"
@@ -148,6 +148,7 @@
         android:layout_height="0dp"
         android:background="@color/white"
         android:layout_weight="1.5"
+        local:MvxBind="Text WhistleEditViewModel.JourneyMessage"
         android:hint="JOURNEY MESSAGE"
         android:textColor="#000"
         android:inputType="textImeMultiLine"

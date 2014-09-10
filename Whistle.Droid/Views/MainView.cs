@@ -33,8 +33,6 @@ namespace Whistle.Droid.Views
         LocationManager _locationManager;
         string _locationProvider;
         Geocoder _geocoder;
-        string _sourceLocation;
-        string _destinationLocation;
 
         Marker _sourceLocationMarker;
         Marker _destinationLocationMarker;
@@ -64,7 +62,11 @@ namespace Whistle.Droid.Views
             _locationProvider = _locationManager.GetBestProvider(criteria, false);
 
 
-            _mapView = new MapView(this, new GoogleMapOptions().InvokeZOrderOnTop(true));
+            _mapView = new MapView(this, new GoogleMapOptions().InvokeZOrderOnTop(true))
+                {
+                    //http://stackoverflow.com/questions/2990191/zoom-controls-not-showing-when-using-a-mapview-with-fill-parent
+                    Clickable = true
+                };
             _mapView.OnCreate(savedInstanceState);
             MapsInitializer.Initialize(this);
 
@@ -94,11 +96,8 @@ namespace Whistle.Droid.Views
             {
                 (_currentDialog = new GenericDialogFragment(Resource.Layout.UserType) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "select_user_type");
             }
-
-
             //var set = this.CreateBindingSet<MainView, MainViewModel>();
             //set.Bind(this).For(m=>m._sourceLocation).To(vm => vm.WhistleEditViewModel.SourceLocation).Apply();
-
         }
 
         public override bool OnOptionsItemSelected(Android.Views.IMenuItem item)
@@ -117,6 +116,7 @@ namespace Whistle.Droid.Views
         protected override void OnResume()
         {
             base.OnResume();
+            _mapView.Clickable = true;
             _mapView.OnResume();
             _mapView.Map.UiSettings.MyLocationButtonEnabled = true;
             _mapView.Map.UiSettings.ZoomControlsEnabled = true;
@@ -173,6 +173,13 @@ namespace Whistle.Droid.Views
                     var itemSource = message.Parameter == "PACKAGES" ? viewmodel.PackageList : viewmodel.RideList;
                     var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
                     (new ListDialogFragment(header) { ViewModel = this.ViewModel, ItemSource = itemSource }).Show(SupportFragmentManager, "select_items");
+                    break;
+                case HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED:
+                    (new GenericAlertFragment(Resource.Color.app_red_modal_color))
+                        .WithIcon(Resource.Drawable.sad_face_white_icon)
+                        .WithTitle(Resource.String.d_oops)
+                        .WithDescription(Resource.String.d_whistle_creation_failed)
+                        .Show(SupportFragmentManager, "whistle_creation_failed");                    
                     break;
 
                 case HomeConstants.ACTION_SHOW_WHISTLERS:

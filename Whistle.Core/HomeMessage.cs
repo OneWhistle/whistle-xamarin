@@ -10,6 +10,7 @@ namespace Whistle.Core
         public const string ACTION_SHOW_WHISTLERS = "ACTION_SHOW_WHISTLERS";
 
         public const string RESULT_WHISTLE_VALIDATION_FAILED = "{8D805840-E932-4978-A564-581C821D4E05}";
+        public const string RESULT_WHISTLE_CREATION_FAILED = "{{64BF466A-37E1-4E96-8378-5C00A95C0EB2}}";
     }
 
     public class HomeMessage : MvxMessage
@@ -27,5 +28,16 @@ namespace Whistle.Core
         public string UserAction { get; private set; }
 
         public string Parameter { get; internal set; }
+
+        public bool HasPayload { get; private set; }
+        public string Payload { get; private set; }
+
+
+        internal HomeMessage WithPayload(string payload)
+        {
+            HasPayload = true;
+            this.Payload = payload;
+            return this;
+        }
     }
 }

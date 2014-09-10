@@ -141,19 +141,26 @@ namespace Whistle.Droid.Views
                     _currentDialog.Dismiss();
                     break;
                 case HomeConstants.NAV_DISPLAY_LIST:
-                    var viewmodel = (Whistle.Core.ViewModels.MainViewModel)this.ViewModel;
-                    var itemSource = message.Parameter == "PACKAGES" ? viewmodel.PackageList : viewmodel.RideList;
+                    var itemSource = message.Parameter == "PACKAGES" ? ViewModel.PackageList : ViewModel.RideList;
                     var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
-                    (new ListDialogFragment(header) { ViewModel = this.ViewModel, ItemSource = itemSource }).Show(SupportFragmentManager, "select_items");
+                    (new ListDialogFragment(header) { ItemSource = itemSource})
+                        .ApplyBindingTo(vm=> vm.WhistleEditViewModel.SelectedItem)
+                        .Show(SupportFragmentManager, "select_items");
                     break;
                 case HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED:
                     (new GenericAlertFragment(Resource.Color.app_red_modal_color))
                         .WithIcon(Resource.Drawable.sad_face_white_icon)
                         .WithTitle(Resource.String.d_oops)
                         .WithDescription(Resource.String.d_whistle_creation_failed)
+                        .Show(SupportFragmentManager, "whistle_validation_failed");
+                    break;
+                case HomeConstants.RESULT_WHISTLE_CREATION_FAILED:
+                    (new GenericAlertFragment(Resource.Color.app_red_modal_color))
+                        .WithIcon(Resource.Drawable.sad_face_white_icon)
+                        .WithTitle(Resource.String.d_oops)
+                        .WithDescription(Resource.String.d_unexptected_error, message.Payload)
                         .Show(SupportFragmentManager, "whistle_creation_failed");
                     break;
-
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
                     if (Settings.ShowWhistlersListMap)
                         SwitchContent(new MapHostFragment(MapView, Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });

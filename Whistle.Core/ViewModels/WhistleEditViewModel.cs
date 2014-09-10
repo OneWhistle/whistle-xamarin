@@ -32,6 +32,12 @@ namespace Whistle.Core.ViewModels
         private MvxCommand setSourceSelection;
         public ICommand SetSourceSelection { get { return this.setSourceSelection ?? (this.setSourceSelection = new MvxCommand(onSetSourceSelection)); } }
 
+        public object SelectedItem
+        {
+            get;
+            set;
+        }
+
 
         public WhistleEditViewModel()
         {
@@ -53,6 +59,8 @@ namespace Whistle.Core.ViewModels
             OnPropertyChanged("SourceLocationMode");
             OnPropertyChanged("DestinationLocationMode");
         }
+
+
 
         public bool IsValid()
         {

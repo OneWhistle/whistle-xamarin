@@ -61,6 +61,12 @@ namespace Whistle.Droid.Fragments
             _descriptionResolve = () => GetString(msgResId); // I use a delegate (function) because calling GetString Here will throw IllegalStateException
             return this;
         }
+        public GenericAlertFragment WithDescription(int msgResId, params string [] obj)
+        {
+            HasDescription = true;
+            _descriptionResolve = () => string.Format(GetString(msgResId), obj); // I use a delegate (function) because calling GetString Here will throw IllegalStateException
+            return this;
+        }
         /// <summary>
         /// Alternatively add a description directly with text.
         /// Prefer to use <see cref="WithDescription"/>

@@ -451,8 +451,8 @@
     <BundleResource Include="Resources\drawable\favorites_green_icon.png" />
     <BundleResource Include="Resources\drawable\favorites_grey_icon.png" />
     <BundleResource Include="Resources\drawable\favorites_white_icon.png" />
-    <BundleResource Include="Resources\drawable\female_green_icon.png" />
-    <BundleResource Include="Resources\drawable\female_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable\female_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\female_grey_icon.png" />
     <BundleResource Include="Resources\drawable\female_lightgrey_icon.png" />
     <BundleResource Include="Resources\drawable\female_white_icon.png" />
     <BundleResource Include="Resources\drawable\flag_green_big_icon.png" />
@@ -473,8 +473,8 @@
     <BundleResource Include="Resources\drawable\key_lock_green_icon.png" />
     <BundleResource Include="Resources\drawable\listview_white_icon.png" />
     <BundleResource Include="Resources\drawable\main_menu_bg_img.png" />
-    <BundleResource Include="Resources\drawable\male_green_icon.png" />
-    <BundleResource Include="Resources\drawable\male_grey_icon.png" />
+    <AndroidResource Include="Resources\drawable\male_green_icon.png" />
+    <AndroidResource Include="Resources\drawable\male_grey_icon.png" />
     <BundleResource Include="Resources\drawable\male_lightgrey_icon.png" />
     <BundleResource Include="Resources\drawable\male_white_icon.png" />
     <BundleResource Include="Resources\drawable\mappin_green_icon.png" />

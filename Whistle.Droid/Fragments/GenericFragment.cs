@@ -36,28 +36,6 @@ namespace Whistle.Droid.Fragments
             base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = this.BindingInflate(_layoutId, null);
-            
-            // Sorryyyyyyyyyyyy!! For Mean Time We'll improve this
-            if (_layoutId == Resource.Layout.Registration)
-            {
-
-                ((LandingViewModel)ViewModel).NewUser.IsGenderChanged = (change) =>
-                {
-                    var maleImage = view.FindViewById<ImageButton>(Resource.Id.maleButton);
-                    var femaleImage = view.FindViewById<ImageButton>(Resource.Id.femaleButton);
-
-                    if (change)
-                    {
-                        maleImage.SetBackgroundResource(Resource.Drawable.male_green_icon);
-                        femaleImage.SetBackgroundResource(Resource.Drawable.female_grey_icon);
-                    }
-                    else
-                    {
-                        maleImage.SetBackgroundResource(Resource.Drawable.male_grey_icon);
-                        femaleImage.SetBackgroundResource(Resource.Drawable.female_green_icon);
-                    }
-                };
-            }
             return view;
         }
 

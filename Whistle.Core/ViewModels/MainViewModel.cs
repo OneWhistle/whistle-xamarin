@@ -71,6 +71,8 @@ namespace Whistle.Core.ViewModels
             _messenger.Publish(msg);
         }
 
+       
+
         private void onUserTypeSelected(string value)
         {
             /*Update settings here..

@@ -31,7 +31,6 @@ namespace Whistle.Core.Modal
         public string AccessToken { get; set; }
 
         //Yes, We'll use single ahead, based on param
-        private bool _isMale;
-        public bool IsMale { get { return _isMale; } set { _isMale = value; OnPropertyChanged("IsMale"); if (IsGenderChanged != null)IsGenderChanged(_isMale); } }
+        public bool? IsMale { get; set; }
     }
 }

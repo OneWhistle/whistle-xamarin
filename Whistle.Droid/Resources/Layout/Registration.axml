@@ -18,46 +18,42 @@
             local:MvxBind="Click UserAction, CommandParameter=ACTION_PROFILE_IMAGE"
             android:background="@drawable/camera_button_state_list" />
     </LinearLayout>
-    <LinearLayout
+    <RadioGroup
+        android:layout_height="0dp"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
+        android:background="#EEF0FF"
+        android:orientation="horizontal">
+    <!--<LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:weightSum="2"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
+        android:orientation="horizontal">-->
+        <RadioButton
+            local:MvxBind="Click UpdateGender, CommandParameter=true"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:background="#EEF0FF"
             android:gravity="center"
-            android:id="@+id/optMale">
-            <ImageButton
-                android:id="@+id/maleButton"
-                local:MvxBind="Click UserAction, CommandParameter=ACTION_GENDER_OPTION"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/male_button_state_list" />
-        </LinearLayout>
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/notToBeUsed1"
+            android:button="@drawable/male_button_state_list" />
         <View
             android:layout_height="fill_parent"
             android:layout_width="1px"
             android:background="#9A9CA6"
             android:gravity="center" />
-        <LinearLayout
-            android:layout_height="fill_parent"
-            android:layout_width="0dp"
+        <RadioButton
+            local:MvxBind="Click UpdateGender, CommandParameter=false"
+            android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:background="#EEF0FF"
+            android:layout_height="wrap_content"
             android:gravity="center"
-            android:id="@+id/optFemale">
-            <ImageButton
-                android:id="@+id/femaleButton"
-                local:MvxBind="Click UserAction, CommandParameter=ACTION_GENDER_OPTION"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/female_button_state_list" />
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_gravity="center"
+            android:id="@+id/notToBeUsed2"
+            android:button="@drawable/female_button_state_list" />
+    </RadioGroup>
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"

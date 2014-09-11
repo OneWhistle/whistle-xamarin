@@ -94,8 +94,13 @@ namespace Whistle.Droid.Fragments
                     title = "HOW WHISTLE WORKS";
                     break;
                 case 6:
-                    Intent intent = new Intent(View.Context, typeof(Whistle.Droid.Views.LandingView));
-                    StartActivity(intent);
+                    (new GenericAlertFragment(Resource.Color.app_gray_modal_color))
+                        .WithIcon(Resource.Drawable.signout_green_big_icon)
+                        .WithTitle(Resource.String.d_sign_out)
+                        .WithDescription(Resource.String.d_sign_out_msg)
+                        .AddButton(Resource.String.d_btn_sign_out, () =>mainAct.ViewModel.SignOut())
+                        .AddButton(Resource.String.d_btn_cancel, () => { })
+                        .Show(Activity.SupportFragmentManager, "sign_out");
                     return;
             }
             var viewmodel = (BaseViewModel)mainAct.ViewModel;

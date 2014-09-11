@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Runtime.Serialization.Json;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Whistle.Core.Interfaces;
-using Whistle.Core.Services;
-using Cirrious.CrossCore;
+﻿using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
 using ModernHttpClient;
+using Newtonsoft.Json;
+using System;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using Whistle.Core.Helpers;
 using Whistle.Core.Modal;
+using Whistle.Core.Services;
 
 namespace Whistle.Core.Helper
 {

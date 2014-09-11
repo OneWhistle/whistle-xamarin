@@ -10,6 +10,7 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.Plugins.Location;
     using Cirrious.MvvmCross.Plugins.Messenger;
     using Cirrious.MvvmCross.ViewModels;
+    using Newtonsoft.Json;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
     using Whistle.Core.Helper;
@@ -138,7 +139,10 @@ namespace Whistle.Core.ViewModels
         protected async void onCreateWhistle()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(new CreateWhistleRequest(), ApiAction.CREATE_WHISTLE);
+            var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(
+               
+                new CreateWhistleRequest { Whistle = WhistleEditViewModel.GetNewWhistle() }, 
+                ApiAction.CREATE_WHISTLE);
             IsBusy = false;
             if (result.HasError)
             {
@@ -155,8 +159,17 @@ namespace Whistle.Core.ViewModels
             if (parameters.Data.ContainsKey(Settings.AccessTokenKey))
             {
                 var userJson = parameters.Data[Settings.AccessTokenKey];
+                var user = JsonConvert.DeserializeObject<User>(userJson);
+                Settings.AccessToken = user.AccessToken;
                 // etc...
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "InitFromBundle MainViewModel with access token {0}", user.AccessToken);
             }
+        }
+
+        public void SignOut()
+        {
+            Settings.AccessToken = string.Empty;
+            this.ShowViewModel<LandingViewModel>();
         }
     }
 }

@@ -27,8 +27,6 @@ namespace Whistle.Droid.Fragments
             _mapView.Map.UiSettings.MyLocationButtonEnabled = true;
             _mapView.Map.UiSettings.ZoomControlsEnabled = true;
             _mapView.Map.UiSettings.CompassEnabled = true;
-
-
             _mapHost.AddView(_mapView);
             return view;
         }

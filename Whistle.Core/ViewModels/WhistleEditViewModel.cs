@@ -60,6 +60,18 @@ namespace Whistle.Core.ViewModels
             OnPropertyChanged("DestinationLocationMode");
         }
 
+        public Whistle.Core.Modal.Whistle GetNewWhistle()
+        {
+            return new Modal.Whistle
+            {
+                Type = "taxi",
+                Public = true,
+                Provider = false,
+                Size = new[] { 4 },
+                Comment = JourneyMessage
+            };
+        }
+
 
 
         public bool IsValid()

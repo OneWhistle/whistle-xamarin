@@ -22,6 +22,7 @@ namespace Whistle.Core.ViewModels
     using System.Collections.ObjectModel;
     using Whistle.Core.Helpers;
     using Newtonsoft.Json;
+    using Cirrious.CrossCore.Platform;
 
     /// <summary>
     /// Define the LandingViewModel type.
@@ -229,12 +230,12 @@ namespace Whistle.Core.ViewModels
             }
             else
             {
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
                 _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
                 await System.Threading.Tasks.Task.Delay(1500);
-
                 var bundle = new MvxBundle();
                 bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
-                this.ShowViewModel<MainViewModel>();
+                this.ShowViewModel<MainViewModel>(bundle);
             }
             NewUser = new User();
         }

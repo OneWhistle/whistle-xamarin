@@ -192,14 +192,14 @@ namespace Whistle.Droid.Views
             var marker = ViewModel.WhistleEditViewModel.SourceLocationMode ? _sourceLocationMarker : _destinationLocationMarker;
 
             marker.Position = p0;
-            var addresses = await _geocoder.GetFromLocationAsync(p0.Latitude, p0.Longitude, 1);
-            if (addresses.Count > 0)
-            {
-                if (ViewModel.WhistleEditViewModel.SourceLocationMode)
-                    this.ViewModel.WhistleEditViewModel.SourceLocation = addresses[0].GetAddressLine(0);
-                else
-                    this.ViewModel.WhistleEditViewModel.DestinationLocation = addresses[0].GetAddressLine(0);
-            }
+            //var addresses = await _geocoder.GetFromLocationAsync(p0.Latitude, p0.Longitude, 1);
+            //if (addresses.Count > 0)
+            //{
+            //    if (ViewModel.WhistleEditViewModel.SourceLocationMode)
+            //        this.ViewModel.WhistleEditViewModel.SourceLocation = addresses[0].GetAddressLine(0);
+            //    else
+            //        this.ViewModel.WhistleEditViewModel.DestinationLocation = addresses[0].GetAddressLine(0);
+            //}
 
         }
     }

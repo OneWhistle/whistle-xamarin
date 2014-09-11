@@ -7,10 +7,8 @@ namespace Whistle.Droid.Views
 {
     using Android.App;
     using Android.Content.PM;
-    using Android.Gms.Location;
     using Android.Gms.Maps;
     using Android.Gms.Maps.Model;
-    using Android.Locations;
     using Android.OS;
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
@@ -18,24 +16,20 @@ namespace Whistle.Droid.Views
     using Whistle.Core.Helpers;
     using Whistle.Core.ViewModels;
     using Whistle.Droid.Fragments;
-    using Cirrious.MvvmCross.Binding.BindingContext;
-    using System;
     using Whistle.Droid.Helper;
 
     /// <summary>
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, ILocationClient, GoogleMap.IOnMapLongClickListener
+    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, GoogleMap.IOnMapLongClickListener
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
 
         MainViewModel _viewModel;
-        Geocoder _geocoder;
         LocationHelper<MainView> _locationHelper;
+        ListItemHelper _listItemHelper;
 
-        Marker _sourceLocationMarker;
-        Marker _destinationLocationMarker;
 
         public new MainViewModel ViewModel { get { return this._viewModel ?? (this._viewModel = base.ViewModel as MainViewModel); } }
 
@@ -45,6 +39,7 @@ namespace Whistle.Droid.Views
         {
             base.OnViewModelSet();
             _locationHelper = new LocationHelper<MainView>(this);
+            _listItemHelper = new ListItemHelper(this);
             var _icons = new int[] { Resource.Drawable.notification_green_icon, Resource.Drawable.user_account_green_icon, Resource.Drawable.preferences_green_icon, Resource.Drawable.checked_lock_green_icon, Resource.Drawable.question_mark_green_icon };
         }
         /// <summary>
@@ -57,8 +52,6 @@ namespace Whistle.Droid.Views
 
             base.OnCreate(savedInstanceState);
             _locationHelper.OnCreate(savedInstanceState);
-            
-            _geocoder = new Geocoder(this);
 
             if (null != savedInstanceState) // check WhistleActivity
             {
@@ -107,6 +100,7 @@ namespace Whistle.Droid.Views
         {
             base.OnResume();
             _locationHelper.OnResume();
+            _listItemHelper.OnResume();
             MapView.Map.SetOnMapLongClickListener(this);
         }
 
@@ -141,11 +135,7 @@ namespace Whistle.Droid.Views
                     _currentDialog.Dismiss();
                     break;
                 case HomeConstants.NAV_DISPLAY_LIST:
-                    var itemSource = message.Parameter == "PACKAGES" ? ViewModel.PackageList : ViewModel.RideList;
-                    var header = message.Parameter == "PACKAGES" ? "CHOOSE A PACKAGE" : "CHOOSE A RIDE";
-                    (new ListDialogFragment(header) { ItemSource = itemSource})
-                        .ApplyBindingTo(vm=> vm.WhistleEditViewModel.SelectedItem)
-                        .Show(SupportFragmentManager, "select_items");
+                    _listItemHelper.ShowList(message.Parameter);
                     break;
                 case HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED:
                     (new GenericAlertFragment(Resource.Color.app_red_modal_color))
@@ -174,33 +164,9 @@ namespace Whistle.Droid.Views
         public void OnMapLongClick(LatLng point)
         {
             Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Diagnostic, "OnMapLongClick");
-            UpdateMarkers(point);
+            _locationHelper.UpdateMarkers(point);
         }
 
-        public async void UpdateMarkers(LatLng p0)
-        {
-            if (ViewModel.WhistleEditViewModel.SourceLocationMode && _sourceLocationMarker == null)
-            {
-                _sourceLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));
-            }
 
-            if (!ViewModel.WhistleEditViewModel.SourceLocationMode && _destinationLocationMarker == null)
-            {
-                _destinationLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_red_icon)));
-            }
-
-            var marker = ViewModel.WhistleEditViewModel.SourceLocationMode ? _sourceLocationMarker : _destinationLocationMarker;
-
-            marker.Position = p0;
-            //var addresses = await _geocoder.GetFromLocationAsync(p0.Latitude, p0.Longitude, 1);
-            //if (addresses.Count > 0)
-            //{
-            //    if (ViewModel.WhistleEditViewModel.SourceLocationMode)
-            //        this.ViewModel.WhistleEditViewModel.SourceLocation = addresses[0].GetAddressLine(0);
-            //    else
-            //        this.ViewModel.WhistleEditViewModel.DestinationLocation = addresses[0].GetAddressLine(0);
-            //}
-
-        }
     }
 }

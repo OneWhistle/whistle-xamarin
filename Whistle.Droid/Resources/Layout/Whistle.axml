@@ -132,8 +132,10 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <whistle.droid.views.WhistleTextView
-                android:text="RIDES"
+            <EditText
+                android:enabled="false"
+                android:hint="RIDES"
+                local:MvxBind="Text WhistleEditViewModel.SelectedRideItem.DisplayName"
                 android:layout_marginLeft="10dp"
                 android:gravity="center_vertical"
                 android:layout_width="wrap_content"

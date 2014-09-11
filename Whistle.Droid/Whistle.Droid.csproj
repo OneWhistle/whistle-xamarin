@@ -168,6 +168,7 @@
     <Compile Include="Fragments\SignOutFragment.cs" />
     <Compile Include="Fragments\WhistleFragment.cs" />
     <Compile Include="Fragments\WhistleWorkFragment.cs" />
+    <Compile Include="Helper\ListItemHelper.cs" />
     <Compile Include="Helper\LocationHelper.cs" />
     <Compile Include="Helper\MvxActionBarActivity.cs" />
     <Compile Include="Helper\MvxActionBarEventSourceActivity.cs" />
@@ -287,6 +288,9 @@
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\Whistlers_list.axml" />
     <AndroidResource Include="Resources\Layout\FavoritesItemLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\item_listitem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -514,8 +518,8 @@
     <BundleResource Include="Resources\drawable\question_mark_green_icon.png" />
     <BundleResource Include="Resources\drawable\question_mark_small_green_icon.png" />
     <BundleResource Include="Resources\drawable\question_mark_white_icon.png" />
-    <BundleResource Include="Resources\drawable\radio_btn_active_icon.png" />
-    <BundleResource Include="Resources\drawable\radio_btn_normal_icon.png" />
+    <AndroidResource Include="Resources\drawable\radio_btn_active_icon.png" />
+    <AndroidResource Include="Resources\drawable\radio_btn_normal_icon.png" />
     <BundleResource Include="Resources\drawable\sad_face_green_icon.png" />
     <BundleResource Include="Resources\drawable\sad_face_white_icon.png" />
     <BundleResource Include="Resources\drawable\search_lightgrey_icon.png" />
@@ -652,6 +656,9 @@
     <AndroidResource Include="Resources\drawable-hdpi\video_black.png" />
     <AndroidResource Include="Resources\drawable-hdpi\video_green.png" />
     <AndroidResource Include="Resources\drawable-hdpi\call_black.png" />
+    <AndroidResource Include="Resources\drawable\item_selection_state.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

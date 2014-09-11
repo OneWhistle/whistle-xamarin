@@ -1,9 +1,43 @@
 ﻿
 using Cirrious.MvvmCross.ViewModels;
+using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using Whistle.Core.Modal;
 namespace Whistle.Core.ViewModels
 {
+
+    public class ListItem : BaseEntity
+    {
+        private bool isSelected;
+        public bool IsSelected
+        {
+            get { return isSelected; }
+            set
+            {
+                isSelected = value;
+                OnPropertyChanged("IsSelected");
+                if (ParentSelectionChanged != null)
+                    ParentSelectionChanged(this);
+            }
+        }
+
+        internal void UnSelect()
+        {
+            this.isSelected = false;
+            OnPropertyChanged("IsSelected");
+        }
+
+        public Action<ListItem> ParentSelectionChanged;
+
+        public string DisplayName { get; set; }
+
+        public override string ToString()
+        {
+            return DisplayName;
+        }
+    }
+
     public class WhistleEditViewModel : BaseEntity
     {
         public bool SourceLocationMode { get; set; }
@@ -19,6 +53,27 @@ namespace Whistle.Core.ViewModels
             set { _sourceLocation = value; OnPropertyChanged("SourceLocation"); }
         }
 
+        private object selectedPackageItem;
+        public object SelectedPackageItem
+        {
+            get { return selectedPackageItem; }
+            set { selectedPackageItem = value; OnPropertyChanged("SelectedPackageItem"); }
+        }
+
+        private ListItem selectedRideItem;
+        public ListItem SelectedRideItem
+        {
+            get { return selectedRideItem; }
+            set
+            {
+                selectedRideItem = value;
+                OnPropertyChanged("SelectedRideItem");
+            }
+        }
+
+        private IList<ListItem> _selectedPackageList = new List<ListItem>();
+
+
         private string _destinationLocation;
         public string DestinationLocation
         {
@@ -32,10 +87,19 @@ namespace Whistle.Core.ViewModels
         private MvxCommand setSourceSelection;
         public ICommand SetSourceSelection { get { return this.setSourceSelection ?? (this.setSourceSelection = new MvxCommand(onSetSourceSelection)); } }
 
-        public object SelectedItem
+        public void OnRideSelectionChanged(ListItem item)
         {
-            get;
-            set;
+            if (this.SelectedRideItem != null)
+                this.SelectedRideItem.UnSelect();
+            this.SelectedRideItem = item;
+        }
+
+        public void OnPackageSelectionchanged(ListItem item)
+        {
+            if (item.IsSelected == false)
+                _selectedPackageList.Remove(item);
+            else
+                _selectedPackageList.Add(item);
         }
 
 
@@ -76,6 +140,7 @@ namespace Whistle.Core.ViewModels
 
         public bool IsValid()
         {
+
             if (string.IsNullOrEmpty(JourneyMessage))
                 return false;
             return true;

@@ -13,6 +13,5 @@
         android:id="@+id/item_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        local:MvxBind="ItemsSource Recipes"
-        android:dividerHeight="10dp" />
+        local:MvxBind="ItemsSource Recipes" />
 </LinearLayout>

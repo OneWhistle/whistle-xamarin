@@ -196,11 +196,11 @@ namespace Whistle.Core.ViewModels
         protected async void onLogin()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction<User, User>(new User { Email = newUser.UserName, Password = newUser.Password }, ApiAction.LOGIN);
+            var result = await ServiceHandler.PostAction<User, User>( NewUser , ApiAction.LOGIN);
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
                 NewUser = new User();
                 return;
             }
@@ -225,7 +225,7 @@ namespace Whistle.Core.ViewModels
 
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_LOGIN_FAILED));
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
             }
             else
             {

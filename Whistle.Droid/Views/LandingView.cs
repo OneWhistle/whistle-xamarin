@@ -54,6 +54,13 @@ namespace Whistle.Droid.Views
                         .WithDescription(Resource.String.d_invalid_registration)
                         .Show(SupportFragmentManager, "invalid_registration_input");
                     break;
+                case LandingConstants.RESULT_BACKEND_ERROR:
+                    (new GenericAlertFragment(Resource.Color.app_red_modal_color))
+                        .WithIcon(Resource.Drawable.sad_face_white_icon)
+                        .WithTitle(Resource.String.d_oops)
+                        .WithDescription(Resource.String.d_unexptected_error, message.Payload)
+                        .Show(SupportFragmentManager, "back_end_error");
+                    break;
                 case LandingConstants.RESULT_LOGIN_FAILED:
                     var dialog = (new GenericAlertFragment(Resource.Color.app_red_modal_color))
                         .WithIcon(Resource.Drawable.sad_face_white_icon)
@@ -64,7 +71,6 @@ namespace Whistle.Droid.Views
                         dialog = dialog.WithDescription(Resource.String.d_wrong_password);
                     dialog.Show(SupportFragmentManager, "wrong_password");
                     break;
-
                 case LandingConstants.ACTION_PROFILE_IMAGE:
                     (new GenericDialogFragment(Resource.Layout.MediaChooser) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "media_chooser");
                     break;

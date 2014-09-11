@@ -16,6 +16,7 @@
   <string name="d_invalid_registration">Invalid or missing input dected. Please fill all required forms</string>
   <string name="d_legal_term_desc">Please do read our terms &amp; privacy carefully before accepting.</string>
   <string name="d_whistle_creation_failed">Please fill required field.</string>
+  <string name="d_unexptected_error">Unexpected error occurred : {0}</string>
 
   <!--DIALOGS BUTTONS-->
   <string name="d_btn_agree">I AGREE</string>

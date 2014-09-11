@@ -12,8 +12,10 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.ViewModels;
     using System.Collections.ObjectModel;
     using System.Windows.Input;
+    using Whistle.Core.Helper;
     using Whistle.Core.Helpers;
     using Whistle.Core.Modal;
+    using Whistle.Core.Services;
 
     /// <summary>
     /// Define the MainViewModel type.
@@ -117,8 +119,10 @@ namespace Whistle.Core.ViewModels
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
                     /*do some backend call ????.*/
                     if (WhistleEditViewModel.IsValid())
-                        _messenger.Publish(new HomeMessage(this, value));
-                    else
+                    {
+                        onCreateWhistle();
+                    }
+                    else                    
                         _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
                     break;
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
@@ -131,12 +135,26 @@ namespace Whistle.Core.ViewModels
             }
         }
 
+        protected async void onCreateWhistle()
+        {
+            IsBusy = true;
+            var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(new CreateWhistleRequest(), ApiAction.CREATE_WHISTLE);
+            IsBusy = false;
+            if (result.HasError)
+            {
+                _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.Msg));
+                return;
+            }
+
+            _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));
+        }
+
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
             if (parameters.Data.ContainsKey(Settings.AccessTokenKey))
             {
-                Settings.AccessToken = parameters.Data[Settings.AccessTokenKey];
+                var userJson = parameters.Data[Settings.AccessTokenKey];
                 // etc...
             }
         }

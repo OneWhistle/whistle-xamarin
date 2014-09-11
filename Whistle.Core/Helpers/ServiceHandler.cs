@@ -61,6 +61,10 @@ namespace Whistle.Core.Helper
                     client.DefaultRequestHeaders.CacheControl.NoStore = true;
                     client.Timeout = new TimeSpan(0, 0, 30);
 
+                    var at = Settings.AccessToken;
+                    if (!string.IsNullOrEmpty(at))
+                        client.DefaultRequestHeaders.Add("Authorization", at);
+
                     string jsonData = Newtonsoft.Json.JsonConvert.SerializeObject(obj);
 
                     var content = new StringContent(jsonData);

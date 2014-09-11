@@ -21,6 +21,7 @@ namespace Whistle.Core.Services
     {// too many thing...
         internal const string LOGIN = "user/login";
         internal const string REGISTRATION = "user";
+        internal const string CREATE_WHISTLE = "whistle";
         //So on...
     }
 

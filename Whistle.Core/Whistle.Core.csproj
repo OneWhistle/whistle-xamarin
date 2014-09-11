@@ -48,11 +48,14 @@
     <Compile Include="LandingMessage.cs" />
     <Compile Include="Modal\BaseEntity.cs" />
     <Compile Include="Modal\Constants.cs" />
+    <Compile Include="Modal\CreateWhistleResponse.cs" />
+    <Compile Include="Modal\CreateWhistleRequest.cs" />
     <Compile Include="Modal\ErrorResponse.cs" />
     <Compile Include="Modal\Menus.cs" />
     <Compile Include="Modal\RegistrationRequest.cs" />
     <Compile Include="Modal\ServiceResult.cs" />
     <Compile Include="Modal\Users.cs" />
+    <Compile Include="Modal\Whistle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\API.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

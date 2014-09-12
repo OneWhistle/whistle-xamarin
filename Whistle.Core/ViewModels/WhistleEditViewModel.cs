@@ -4,11 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Whistle.Core.Modal;
+using System.Linq;
 namespace Whistle.Core.ViewModels
 {
 
     public class ListItem : BaseEntity
     {
+        public int Position { get; set; }
+
         private bool isSelected;
         public bool IsSelected
         {
@@ -40,8 +43,24 @@ namespace Whistle.Core.ViewModels
 
     public class WhistleEditViewModel : BaseEntity
     {
+        string[] rideTypes = new[]
+            {
+                "BIKE",
+                "AUTO",
+                "SMALL_CAR",
+                "LARGE_CAR",
+                "MINI_BUS",
+                "BUS",
+                "TRUCK",
+                "TRAIN",
+                "FLIGHT"
+            };
+
         public bool SourceLocationMode { get; set; }
         public bool DestinationLocationMode { get; set; }
+
+        public Tuple<double, double> SourcePoint { get; set; }
+        public Tuple<double, double> DestinationPoint { get; set; }
 
 
         public string JourneyMessage { get; set; }
@@ -71,7 +90,7 @@ namespace Whistle.Core.ViewModels
             }
         }
 
-        private IList<ListItem> _selectedPackageList = new List<ListItem>();
+        readonly IList<ListItem> _selectedPackageList = new List<ListItem>();
 
 
         private string _destinationLocation;
@@ -126,24 +145,37 @@ namespace Whistle.Core.ViewModels
 
         public Whistle.Core.Modal.Whistle GetNewWhistle()
         {
-            return new Modal.Whistle
+            var whistle = new Modal.Whistle
             {
-                Type = "taxi",
+                Type = rideTypes[selectedRideItem.Position],
                 Public = true,
-                Provider = false,
-                Size = new[] { 4 },
+                LeavingLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(SourcePoint.Item1, SourcePoint.Item2)),
+                DestinationLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(DestinationPoint.Item1, DestinationPoint.Item2)),
+                Size = _selectedPackageList.Select(c => c.Position).ToArray(),
                 Comment = JourneyMessage
             };
+            return whistle;
         }
 
 
 
         public bool IsValid()
         {
-
+            if (SourcePoint == null || DestinationPoint == null)
+                return false;
+            if (_selectedPackageList.Count == 0 && SelectedRideItem == null)
+                return false;
             if (string.IsNullOrEmpty(JourneyMessage))
                 return false;
             return true;
+        }
+
+        public void UpdatePosition(double p1, double p2)
+        {
+            if (SourceLocationMode)
+                SourcePoint = new Tuple<double, double>(p1, p2);
+            else
+                DestinationPoint = new Tuple<double, double>(p1, p2);
         }
     }
 }

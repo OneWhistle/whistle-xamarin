@@ -182,7 +182,7 @@ namespace Whistle.Core.ViewModels
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
                 NewUser = new User();
                 return;
             }
@@ -194,6 +194,34 @@ namespace Whistle.Core.ViewModels
             }
         }
 
+
+        #endregion
+
+        #region User Registration
+
+        //Moved to BaseViewModel
+
+        //protected async void onRegister()
+        //{
+        //    IsBusy = true;
+        //    var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = NewUser }, ApiAction.REGISTRATION);
+        //    IsBusy = false;
+
+        //    if (result.HasError)
+        //    {
+        //        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
+        //    }
+        //    else
+        //    {
+        //        Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
+        //        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
+        //        await System.Threading.Tasks.Task.Delay(1500);
+        //        var bundle = new MvxBundle();
+        //        bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
+        //        this.ShowViewModel<MainViewModel>(bundle);
+        //    }
+        //    NewUser = new User();
+        //}
 
         #endregion
     }

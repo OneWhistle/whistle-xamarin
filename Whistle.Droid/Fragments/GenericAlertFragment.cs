@@ -126,8 +126,9 @@ namespace Whistle.Droid.Fragments
                 
                 btnView.Click += (a, b) =>
                     {
-                        btn.Value(); // run the button action.
                         this.Dismiss();
+                        btn.Value(); // run the button action.
+                        
                     };
                 buttonPlaceHolder.AddView(btnView,layoutParam);
             }

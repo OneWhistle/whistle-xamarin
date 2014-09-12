@@ -10,8 +10,10 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.Plugins.Location;
     using Cirrious.MvvmCross.Plugins.Messenger;
     using Cirrious.MvvmCross.ViewModels;
+    using GeoJSON.Net.Geometry;
     using Newtonsoft.Json;
     using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using Whistle.Core.Helper;
     using Whistle.Core.Helpers;
@@ -23,6 +25,11 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
+        #region Private fields
+        readonly IMvxMessenger _messenger;
+        //readonly IMvxLocationWatcher _locationWatcher;
+        #endregion
+
         /// <summary>
         /// Backing field for my property.
         /// </summary>
@@ -50,8 +57,8 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
-        private MvxCommand<string> selectUserType;
-        public ICommand SelectUserType { get { return this.selectUserType ?? (this.selectUserType = new MvxCommand<string>(onUserTypeSelected)); } }
+        private MvxCommand selectUserType;
+        public ICommand SelectUserType { get { return this.selectUserType ?? (this.selectUserType = new MvxCommand(onUserTypeSelected)); } }
 
         private MvxCommand<string> navDisplay;
         public ICommand NavDisplay { get { return this.navDisplay ?? (this.navDisplay = new MvxCommand<string>(onNavDisplay)); } }
@@ -60,6 +67,8 @@ namespace Whistle.Core.ViewModels
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
 
 
+        public ContextSwitchViewModel ContextSwitchViewModel { get; private set; }
+
         public WhistleEditViewModel WhistleEditViewModel { get; private set; }
 
         public MainViewModel(IMvxMessenger messenger)
@@ -67,6 +76,7 @@ namespace Whistle.Core.ViewModels
         {
             _messenger = messenger;
             WhistleEditViewModel = new WhistleEditViewModel();
+            ContextSwitchViewModel = new ContextSwitchViewModel();
         }
 
 
@@ -77,15 +87,59 @@ namespace Whistle.Core.ViewModels
             _messenger.Publish(msg);
         }
 
-        private void onUserTypeSelected(string value)
+        private void onUserTypeSelected()
         {
+            var msg = new HomeMessage(this, HomeConstants.NAV_USER_TYPE_SELECTED);
+            if (ContextSwitchViewModel.IsConsumerChecked)
+            {
+                if (Settings.UserType != 0)
+                {
+                    msg.WithPayload("notimportant");
+                    Settings.UserType = 0;
+                }
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "onUserTypeSelected CONSUMER");
+            }
+            if (ContextSwitchViewModel.IsProviderChecked)
+            {
+                if (Settings.UserType != 1)
+                {
+                    msg.WithPayload("notimportant");
+                    Settings.UserType = 1;
+                } Mvx.Trace(MvxTraceLevel.Diagnostic, "onUserTypeSelected PROVIDER");
+            }
+            if (ContextSwitchViewModel.IsTrackingChecked)
+            {
+                if (Settings.UserType != 2)
+                {
+                    msg.WithPayload("notimportant");
+                    Settings.UserType = 2;
+                }
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "onUserTypeSelected TRACKING");
+            }
             /*Update settings here..
             Settings.UserType..*/
-            _messenger.Publish(new HomeMessage(this, HomeConstants.NAV_USER_TYPE_SELECTED));
+            _messenger.Publish(msg);
         }
 
 
         
+
+        public void UpdateUserLocation(double lat, double lg)
+        {
+            var location = new CustomLocation(new GeoJSON.Net.Geometry.GeographicPosition(lat, lg)); 
+            Task.Factory.StartNew(() =>
+                {
+                    innerUpdateUserLocation(location);
+                });
+        }
+
+        private async void innerUpdateUserLocation(CustomLocation location)
+        {
+            var result = await ServiceHandler.PostAction<dynamic, User>(new { user = new User { Location = location } }, ApiAction.UPDATE_PROFILE, "PUT");
+
+            if (result.HasError)
+                return;
+        }
 
         private void onUserAction(string value)
         {
@@ -97,7 +151,7 @@ namespace Whistle.Core.ViewModels
                     {
                         onCreateWhistle();
                     }
-                    else                    
+                    else
                         _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
                     break;
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
@@ -129,15 +183,15 @@ namespace Whistle.Core.ViewModels
         protected async void onCreateWhistle()
         {
             IsBusy = true;
+            var whistle = WhistleEditViewModel.GetNewWhistle();
+            whistle.Provider = ContextSwitchViewModel.IsProviderChecked;
             var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(
-               
-                new CreateWhistleRequest { Whistle = WhistleEditViewModel.GetNewWhistle() }, 
+                new CreateWhistleRequest { Whistle = whistle },
                 ApiAction.CREATE_WHISTLE);
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.Msg));
-                return;
+                _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
             }
 
             _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));

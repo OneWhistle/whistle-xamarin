@@ -70,7 +70,7 @@ namespace Whistle.Core.ViewModels
         //Add Update
         #region User Registration
 
-        protected async void onRegister(string _method="POST")
+        protected async void onRegister(string _method = "POST")
         {
             IsBusy = true;
             var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = newUser }, ApiAction.REGISTRATION, _method);
@@ -78,12 +78,12 @@ namespace Whistle.Core.ViewModels
 
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
             }
             else
             {
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_SUCCESS));
                 await System.Threading.Tasks.Task.Delay(1500);
                 var bundle = new MvxBundle();
                 bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));

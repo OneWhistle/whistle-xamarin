@@ -1,9 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using GeoJSON.Net.Geometry;
+using Newtonsoft.Json;
+using System;
 
 namespace Whistle.Core.Modal
 {
     public class Whistle
     {
+        [JsonProperty(PropertyName = "leavingLocation")]
+        public Point LeavingLocation { get; set; }
+        [JsonProperty(PropertyName = "destinationLocation")]
+        public Point DestinationLocation { get; set; }
+
         [JsonProperty(PropertyName = "type")]
         public string @Type { get; set; }
         [JsonProperty(PropertyName = "comment")]

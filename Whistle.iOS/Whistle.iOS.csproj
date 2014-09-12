@@ -85,6 +85,7 @@
     <Compile Include="Views\FirstView.cs" />
     <Compile Include="Views\LandingView.cs" />
     <Compile Include="Views\MainView.cs" />
+    <None Include="app.config" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />

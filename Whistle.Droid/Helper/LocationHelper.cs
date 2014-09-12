@@ -4,6 +4,7 @@ using Android.Locations;
 using Android.OS;
 using Cirrious.CrossCore;
 using Cirrious.CrossCore.Platform;
+using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Droid.Fragging;
 using Cirrious.MvvmCross.Droid.Views;
 using System;
@@ -64,7 +65,7 @@ namespace Whistle.Droid.Helper
             if (location != null)
             {
                 var latng = new LatLng(location.Latitude, location.Longitude);
-                //OnLocationChanged(location);
+                OnLocationChanged(location);
                 UpdateMarkers(latng);
                 CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
                 MapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));
@@ -86,7 +87,7 @@ namespace Whistle.Droid.Helper
         {
             if (ViewModel.WhistleEditViewModel.SourceLocationMode && _sourceLocationMarker == null)
             {
-                _sourceLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));
+                _sourceLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));                
             }
 
             if (!ViewModel.WhistleEditViewModel.SourceLocationMode && _destinationLocationMarker == null)
@@ -94,6 +95,7 @@ namespace Whistle.Droid.Helper
                 _destinationLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_red_icon)));
             }
 
+            ViewModel.WhistleEditViewModel.UpdatePosition(p0.Latitude, p0.Longitude);
             var marker = ViewModel.WhistleEditViewModel.SourceLocationMode ? _sourceLocationMarker : _destinationLocationMarker;
 
             marker.Position = p0;
@@ -123,8 +125,9 @@ namespace Whistle.Droid.Helper
         }
 
         public void OnLocationChanged(Location location)
-        {
+        {           
             Mvx.Trace(MvxTraceLevel.Diagnostic, "OnLocationChanged");
+            ViewModel.UpdateUserLocation(location.Latitude, location.Longitude);
         }
 
         public void OnProviderDisabled(string provider)

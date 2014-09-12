@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using Whistle.Core.Helpers;
 
 namespace Whistle.Core.Modal
 {
@@ -29,6 +30,9 @@ namespace Whistle.Core.Modal
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string AccessToken { get; set; }
+
+        [JsonProperty(PropertyName = "location", NullValueHandling = NullValueHandling.Ignore)]
+        public CustomLocation Location { get; set; }
 
         [JsonProperty(PropertyName = "gender", NullValueHandling = NullValueHandling.Ignore)]
         public string Gender { get; set; }

@@ -26,10 +26,7 @@ namespace Whistle.Core.ViewModels
         #region Private fields
         readonly IMvxMessenger _messenger;
         //readonly IMvxLocationWatcher _locationWatcher;
-
-        string[] packageList = new[] { "ENVELOPS", "SMALL (UP TO 10 KG)", "MEDIUM (BETWEEN 11 - 50 KG)", "LARGE (BETWEEN 51 - 100 KG)", "EXTRA LARGE (MORE THAN 100 KG)" };
-        string[] rideList = new[] { "BIKE(2 SEATS)", "AUTO(3 SEATS)", "SMALL CAR(4 SEATS)", "LARGE CAR(6 SEATS)", "MINI BUS(12 SEATS)", "BUS(20+ SEATS)", "TRUCK(ONLY PACKAGE)", "TRAIN", "FLIGHT" };
-        #endregion
+         #endregion
 
         /// <summary>
         /// Backing field for my property.
@@ -56,11 +53,7 @@ namespace Whistle.Core.ViewModels
             }
         }
 
-
         #endregion
-
-        public string[] PackageList { get { return packageList; } }
-        public string[] RideList { get { return rideList; } }
 
         private MvxCommand<string> selectUserType;
         public ICommand SelectUserType { get { return this.selectUserType ?? (this.selectUserType = new MvxCommand<string>(onUserTypeSelected)); } }

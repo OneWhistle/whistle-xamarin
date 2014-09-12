@@ -2,11 +2,13 @@
 using Android.OS;
 using Android.Widget;
 using Cirrious.MvvmCross.Binding.BindingContext;
+using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Cirrious.MvvmCross.Binding.Droid.Views;
 using System;
 using System.Collections;
 using System.Linq.Expressions;
 using Whistle.Core.ViewModels;
+using Whistle.Droid.Views;
 
 namespace Whistle.Droid.Fragments
 {
@@ -14,7 +16,8 @@ namespace Whistle.Droid.Fragments
     {
         readonly string _header;
 
-        private Expression<Func<MainViewModel, object>> _bindingTo;
+        private Expression<Func<MainViewModel, object>> _bindingItemTo;
+        private Expression<Func<MainViewModel, object>> _bindingItemClickTo;
 
         private MvxListView InnerListView;
 
@@ -26,11 +29,18 @@ namespace Whistle.Droid.Fragments
             _header = header;
         }
 
-        public ListDialogFragment ApplyBindingTo(Expression<Func<MainViewModel, object>> propertyTo)
+        public ListDialogFragment ApplyBindingItemTo(Expression<Func<MainViewModel, object>> propertyTo)
         {
-            _bindingTo = propertyTo;
+            _bindingItemTo = propertyTo;
             return this;
         }
+
+        public ListDialogFragment ApplyBindingItemClickTo(Expression<Func<MainViewModel, object>> propertyTo)
+        {
+            _bindingItemClickTo = propertyTo;
+            return this;
+        }
+
 
         public override Android.Views.View OnCreateView(Android.Views.LayoutInflater inflater, Android.Views.ViewGroup container, Bundle savedInstanceState)
         {
@@ -38,16 +48,16 @@ namespace Whistle.Droid.Fragments
             InnerListView = view.FindViewById<MvxListView>(Resource.Id.item_list);
             var headerTextView = view.FindViewById<TextView>(Resource.Id.list_header);
 
-            
-            if (_bindingTo != null)
+            if (_bindingItemTo != null)
             {
-                // apply selected item  binding.
-                this.CreateBindingSet<ListDialogFragment, MainViewModel>().Bind(InnerListView).For(p => p.SelectedItem).To(_bindingTo).Apply();
+                this.CreateBindingSet<ListDialogFragment, MainViewModel>().Bind(InnerListView).For(m => m.SelectedItem).To(_bindingItemTo).Apply();
             }
+            if (_bindingItemClickTo != null)
+                this.CreateBindingSet<ListDialogFragment, MainViewModel>().Bind(InnerListView).For(m => m.ItemClick).To(_bindingItemClickTo).Apply();
 
             headerTextView.Text = _header;
             InnerListView.ItemsSource = ItemSource;
-            
+
             return view;
         }
 

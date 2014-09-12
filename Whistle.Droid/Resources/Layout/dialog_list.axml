@@ -12,6 +12,6 @@
     <MvxListView
         android:id="@+id/item_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        local:MvxBind="ItemsSource Recipes" />
+        local:MvxItemTemplate="@layout/item_listitem"
+        android:layout_height="wrap_content" />
 </LinearLayout>

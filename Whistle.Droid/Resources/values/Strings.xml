@@ -11,6 +11,8 @@
   <string name="d_waiting">Waiting...</string>
   <string name="d_legal">LEGAL TERMS...</string>
   <string name="d_sign_out">SIGN OUT!</string>
+  <string name="d_choose_packages">CHOOSE A PACKAGE</string>
+  <string name="d_choose_rides">CHOOSE A RIDE</string>
   <!--DIALOGS CONTENT-->
   <string name="d_registration_success">Your account created successfully.\r\nThank you for joining!</string>
   <string name="d_wrong_password">The username &amp; password do not match.\r\nPlease try again.</string>
@@ -25,5 +27,34 @@
   <string name="d_btn_disagree">I DISAGREE</string>
   <string name="d_btn_sign_out">SIGN OUT</string>
   <string name="d_btn_cancel">CANCEL</string>
+
+<!--//string[] packageList = new[] { "ENVELOPS", "SMALL (UP TO 10 KG)", "MEDIUM (BETWEEN 11 - 50 KG)", "LARGE (BETWEEN 51 - 100 KG)", "EXTRA LARGE (MORE THAN 100 KG)" };
+
+//string[] rideList = new[] { "BIKE(2 SEATS)", "AUTO(3 SEATS)", "SMALL CAR(4 SEATS)", "LARGE CAR(6 SEATS)", "MINI BUS(12 SEATS)", 
+"BUS(20+ SEATS)", "TRUCK(ONLY PACKAGE)", "TRAIN", "FLIGHT" };
+-->
+  
+  <string-array name="lst_ride">
+    <item>BIKE(2 SEATS)</item>
+    <item>AUTO(3 SEATS)</item>
+    <item>SMALL CAR(4 SEATS)</item>
+    <item>LARGE CAR(6 SEATS)</item>
+    <item>MINI BUS(12 SEATS)</item>
+    <item>BUS(20+ SEATS)</item>
+    <item>TRUCK(ONLY PACKAGE)</item>
+    <item>TRAIN</item>
+    <item>FLIGHT</item>
+  </string-array>
+
+  <string-array name="lst_package">
+    <item>ENVELOPS</item>
+    <item>SMALL (UP TO 10 KG)</item>
+    <item>MEDIUM (BETWEEN 11 - 50 KG)</item>
+    <item>LARGE CAR(6 SEATS)</item>
+    <item>LARGE (BETWEEN 51 - 100 KG)</item>
+    <item>EXTRA LARGE (MORE THAN 100 KG)</item>
+
+  </string-array>
+
 </resources>
 

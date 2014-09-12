@@ -44,7 +44,7 @@ namespace Whistle.Droid.Helper
             position = 0;
             foreach (var p in listPackage)
             {
-                var itm = new ListItem { DisplayName = p , Position= position};
+                var itm = new ListItem { DisplayName = p, Position = position };
                 itm.ParentSelectionChanged = editVM.WhistleEditViewModel.OnPackageSelectionchanged;
                 Packages.Add(itm);
                 position++;
@@ -57,13 +57,13 @@ namespace Whistle.Droid.Helper
             {
                 case "PACKAGES":
                     (new ListDialogFragment(_activity.GetString(Resource.String.d_choose_packages)) { ItemSource = Packages })
-    .ApplyBindingItemTo(vm => vm.WhistleEditViewModel.SelectedPackageItem)
-    .Show(_activity.SupportFragmentManager, "select_packages");
+                        //.ApplyBindingItemTo(vm => vm.WhistleEditViewModel.SelectedPackageItem)
+                        .Show(_activity.SupportFragmentManager, "select_packages");
                     break;
                 case "RIDE":
-                    (new ListDialogFragment(_activity.GetString(Resource.String.d_choose_rides)) { ItemSource = Rides, ViewModel = _activity.ViewModel })
-    .ApplyBindingItemTo(vm => vm.WhistleEditViewModel.SelectedRideItem)
-    .Show(_activity.SupportFragmentManager, "select_rides");
+                    (new ListDialogFragment(_activity.GetString(Resource.String.d_choose_rides)) { ItemSource = Rides })
+                        //.ApplyBindingItemTo(vm => vm.WhistleEditViewModel.SelectedRideItem)   
+                        .Show(_activity.SupportFragmentManager, "select_rides");
                     break;
                 default:
 

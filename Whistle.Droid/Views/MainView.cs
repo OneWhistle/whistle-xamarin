@@ -187,7 +187,7 @@ namespace Whistle.Droid.Views
         public void OnMapLongClick(LatLng point)
         {
             Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Diagnostic, "OnMapLongClick");
-            _locationHelper.UpdateMarkers(point);
+            _locationHelper.UpdateMarkers(point, false);
         }
 
 

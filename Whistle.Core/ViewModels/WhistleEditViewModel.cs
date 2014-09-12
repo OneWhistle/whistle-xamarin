@@ -55,12 +55,11 @@ namespace Whistle.Core.ViewModels
                 "TRAIN",
                 "FLIGHT"
             };
+        //public bool SourceLocationMode { get; set; }
+        //public bool DestinationLocationMode { get; set; }
 
-        public bool SourceLocationMode { get; set; }
-        public bool DestinationLocationMode { get; set; }
-
-        public Tuple<double, double> SourcePoint { get; set; }
-        public Tuple<double, double> DestinationPoint { get; set; }
+        public CustomLocation SourcePoint { get; set; }
+        public CustomLocation DestinationPoint { get; set; }
 
 
         public string JourneyMessage { get; set; }
@@ -72,12 +71,6 @@ namespace Whistle.Core.ViewModels
             set { _sourceLocation = value; OnPropertyChanged("SourceLocation"); }
         }
 
-        private object selectedPackageItem;
-        public object SelectedPackageItem
-        {
-            get { return selectedPackageItem; }
-            set { selectedPackageItem = value; OnPropertyChanged("SelectedPackageItem"); }
-        }
 
         private ListItem selectedRideItem;
         public ListItem SelectedRideItem
@@ -92,6 +85,16 @@ namespace Whistle.Core.ViewModels
 
         readonly IList<ListItem> _selectedPackageList = new List<ListItem>();
 
+        public string SelectedPackageText
+        {
+            get
+            {
+                if (_selectedPackageList.Count == 0) return null;
+                return _selectedPackageList[0].DisplayName;
+            }
+        }
+
+
 
         private string _destinationLocation;
         public string DestinationLocation
@@ -100,11 +103,11 @@ namespace Whistle.Core.ViewModels
             set { _destinationLocation = value; OnPropertyChanged("DestinationLocation"); }
         }
 
-        private MvxCommand setDestinationSelection;
-        public ICommand SetDestinationSelection { get { return this.setDestinationSelection ?? (this.setDestinationSelection = new MvxCommand(onSetDestinationSelection)); } }
+        //private MvxCommand setDestinationSelection;
+        //public ICommand SetDestinationSelection { get { return this.setDestinationSelection ?? (this.setDestinationSelection = new MvxCommand(onSetDestinationSelection)); } }
 
-        private MvxCommand setSourceSelection;
-        public ICommand SetSourceSelection { get { return this.setSourceSelection ?? (this.setSourceSelection = new MvxCommand(onSetSourceSelection)); } }
+        //private MvxCommand setSourceSelection;
+        //public ICommand SetSourceSelection { get { return this.setSourceSelection ?? (this.setSourceSelection = new MvxCommand(onSetSourceSelection)); } }
 
         public void OnRideSelectionChanged(ListItem item)
         {
@@ -119,29 +122,30 @@ namespace Whistle.Core.ViewModels
                 _selectedPackageList.Remove(item);
             else
                 _selectedPackageList.Add(item);
+            this.OnPropertyChanged("SelectedPackageText");
         }
 
 
         public WhistleEditViewModel()
         {
-            SourceLocationMode = true;
+            //SourceLocationMode = false;
         }
 
-        private void onSetDestinationSelection()
-        {
-            SourceLocationMode = false;
-            DestinationLocationMode = true;
-            OnPropertyChanged("SourceLocationMode");
-            OnPropertyChanged("DestinationLocationMode");
-        }
+        //private void onSetDestinationSelection()
+        //{
+        //    SourceLocationMode = false;
+        //    DestinationLocationMode = true;
+        //    OnPropertyChanged("SourceLocationMode");
+        //    OnPropertyChanged("DestinationLocationMode");
+        //}
 
-        private void onSetSourceSelection()
-        {
-            SourceLocationMode = true;
-            DestinationLocationMode = false;
-            OnPropertyChanged("SourceLocationMode");
-            OnPropertyChanged("DestinationLocationMode");
-        }
+        //private void onSetSourceSelection()
+        //{
+        //    SourceLocationMode = true;
+        //    DestinationLocationMode = false;
+        //    OnPropertyChanged("SourceLocationMode");
+        //    OnPropertyChanged("DestinationLocationMode");
+        //}
 
         public Whistle.Core.Modal.Whistle GetNewWhistle()
         {
@@ -149,8 +153,8 @@ namespace Whistle.Core.ViewModels
             {
                 Type = rideTypes[selectedRideItem.Position],
                 Public = true,
-                LeavingLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(SourcePoint.Item1, SourcePoint.Item2)),
-                DestinationLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(DestinationPoint.Item1, DestinationPoint.Item2)),
+                //LeavingLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(SourcePoint.Item1, SourcePoint.Item2)),
+                DestinationLocation = DestinationPoint,
                 Size = _selectedPackageList.Select(c => c.Position).ToArray(),
                 Comment = JourneyMessage
             };
@@ -170,12 +174,12 @@ namespace Whistle.Core.ViewModels
             return true;
         }
 
-        public void UpdatePosition(double p1, double p2)
+        public void UpdatePosition(double p1, double p2, bool source = true)
         {
-            if (SourceLocationMode)
-                SourcePoint = new Tuple<double, double>(p1, p2);
+            if (source)
+                SourcePoint = new CustomLocation(p1, p2);
             else
-                DestinationPoint = new Tuple<double, double>(p1, p2);
+                DestinationPoint = new CustomLocation(p1, p2);
         }
     }
 }

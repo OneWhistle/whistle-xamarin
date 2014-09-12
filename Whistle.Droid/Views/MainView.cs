@@ -22,7 +22,7 @@ namespace Whistle.Droid.Views
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<HomeMessage>, GoogleMap.IOnMapLongClickListener
+    public class MainView : WhistleSlidingFragmentActivity<MessageHandler>, GoogleMap.IOnMapLongClickListener
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
 
@@ -126,7 +126,7 @@ namespace Whistle.Droid.Views
             SlidingMenu.ShowContent();
         }
 
-        protected override void OnReceive(HomeMessage message)
+        protected override void OnReceive(MessageHandler message)
         {
             /*let's see*/
             switch (message.UserAction)
@@ -163,8 +163,8 @@ namespace Whistle.Droid.Views
                     (new GenericAlertFragment(Resource.Color.app_green_modal_color))
                         .WithIcon(Resource.Drawable.happy_face_white_icon)
                         .WithTitle(Resource.String.d_awesome)
-                        .WithDescription(Resource.String.d_registration_success)
-                        .Show(SupportFragmentManager, "register_success");
+                        .WithDescription(Resource.String.d_profile_update_success)
+                        .Show(SupportFragmentManager, "profile_update_success");
                     break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     ((MainViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_REGISTER_DONE);

@@ -23,9 +23,6 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public abstract class BaseViewModel : MvxViewModel
     {
-        public BaseViewModel()
-        {
-        }
 
         #region Private fields
         public IMvxMessenger _messenger;
@@ -100,7 +97,7 @@ namespace Whistle.Core.ViewModels
         private bool isUpadetMode = false;
         public bool IsUpadetMode
         {
-            get { return isBusy; }
+            get { return isUpadetMode; }
             set
             {
                 isUpadetMode = value; RaisePropertyChanged(() => IsUpadetMode);
@@ -138,6 +135,15 @@ namespace Whistle.Core.ViewModels
             backingStore = value;
 
             this.RaisePropertyChanged(property);
+        }
+
+        protected override void InitFromBundle(IMvxBundle parameters)
+        {
+            base.InitFromBundle(parameters);
+            this.NewUser = new User();
+            if (_messenger != null)
+                return;
+            _messenger = Mvx.Resolve<IMvxMessenger>();
         }
     }
 }

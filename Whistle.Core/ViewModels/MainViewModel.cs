@@ -25,10 +25,7 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
-        #region Private fields
-        readonly IMvxMessenger _messenger;
-        //readonly IMvxLocationWatcher _locationWatcher;
-        #endregion
+        
 
         /// <summary>
         /// Backing field for my property.
@@ -85,14 +82,14 @@ namespace Whistle.Core.ViewModels
 
         private void onNavDisplay(string list)
         {
-            var msg = new HomeMessage(this, HomeConstants.NAV_DISPLAY_LIST);
+            var msg = new MessageHandler(this, HomeConstants.NAV_DISPLAY_LIST);
             msg.Parameter = list;
             _messenger.Publish(msg);
         }
 
         private void onUserTypeSelected()
         {
-            var msg = new HomeMessage(this, HomeConstants.NAV_USER_TYPE_SELECTED);
+            var msg = new MessageHandler(this, HomeConstants.NAV_USER_TYPE_SELECTED);
             if (ContextSwitchViewModel.IsConsumerChecked)
             {
                 if (Settings.UserType != 0)
@@ -155,17 +152,17 @@ namespace Whistle.Core.ViewModels
                         onCreateWhistle();
                     }
                     else
-                        _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
+                        _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
                     break;
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
                     Settings.ShowWhistlersListMap = !Settings.ShowWhistlersListMap;
-                    _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));
+                    _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
                     break;
                 case LandingConstants.ACTION_REGISTER_DONE:
                     //testing
                     if (!NewUser.IsValid())
                     {
-                        _messenger.Publish(new HomeMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
                         NewUser = new User();
                         return;
                     }
@@ -173,12 +170,12 @@ namespace Whistle.Core.ViewModels
                     break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     if (!NewUser.IsValid())
-                        _messenger.Publish(new HomeMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
                     else
-                        _messenger.Publish(new HomeMessage(this, value));
+                        _messenger.Publish(new MessageHandler(this, value));
                     break;
                 default:
-                    _messenger.Publish(new HomeMessage(this, value));
+                    _messenger.Publish(new MessageHandler(this, value));
                     break;
             }
         }

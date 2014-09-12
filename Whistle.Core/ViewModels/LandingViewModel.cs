@@ -167,7 +167,7 @@ namespace Whistle.Core.ViewModels
             this.NewUser = new User();
             if (_messenger != null)
                 return;
-            _messenger = Mvx.Resolve<IMvxMessenger>();
+            //_messenger = Mvx.Resolve<IMvxMessenger>();
         }
 
         #endregion
@@ -193,7 +193,6 @@ namespace Whistle.Core.ViewModels
                 this.ShowViewModel<MainViewModel>(bundle);
             }
         }
-
 
         #endregion
 

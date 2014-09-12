@@ -32,18 +32,22 @@ namespace Whistle.Droid.Helper
             var listRide = _activity.Resources.GetStringArray(Resource.Array.lst_ride);
             var listPackage = _activity.Resources.GetStringArray(Resource.Array.lst_package);
 
+            int position = 0;
+
             foreach (var r in listRide)
             {
-                var itm = new ListItem { DisplayName = r };
+                var itm = new ListItem { DisplayName = r, Position = position };
                 itm.ParentSelectionChanged = editVM.WhistleEditViewModel.OnRideSelectionChanged;
                 Rides.Add(itm);
+                position++;
             }
-
+            position = 0;
             foreach (var p in listPackage)
             {
-                var itm = new ListItem { DisplayName = p };
+                var itm = new ListItem { DisplayName = p , Position= position};
                 itm.ParentSelectionChanged = editVM.WhistleEditViewModel.OnPackageSelectionchanged;
                 Packages.Add(itm);
+                position++;
             }
         }
 

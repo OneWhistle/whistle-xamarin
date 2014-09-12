@@ -20,6 +20,7 @@ namespace Whistle.Core.Services
     internal class ApiAction
     {// too many thing...
         internal const string LOGIN = "user/login";
+        internal const string UPDATE_PROFILE = "user";
         internal const string REGISTRATION = "user";
         internal const string CREATE_WHISTLE = "whistle";
         //So on...

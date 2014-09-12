@@ -10,8 +10,10 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.Plugins.Location;
     using Cirrious.MvvmCross.Plugins.Messenger;
     using Cirrious.MvvmCross.ViewModels;
+    using GeoJSON.Net.Geometry;
     using Newtonsoft.Json;
     using System.Collections.ObjectModel;
+    using System.Threading.Tasks;
     using System.Windows.Input;
     using Whistle.Core.Helper;
     using Whistle.Core.Helpers;
@@ -26,7 +28,7 @@ namespace Whistle.Core.ViewModels
         #region Private fields
         readonly IMvxMessenger _messenger;
         //readonly IMvxLocationWatcher _locationWatcher;
-         #endregion
+        #endregion
 
         /// <summary>
         /// Backing field for my property.
@@ -65,7 +67,7 @@ namespace Whistle.Core.ViewModels
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
 
 
-        public ContextSwitchViewModel ContextSwitchViewModel { get; private set; } 
+        public ContextSwitchViewModel ContextSwitchViewModel { get; private set; }
 
         public WhistleEditViewModel WhistleEditViewModel { get; private set; }
 
@@ -136,6 +138,23 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
+        public void UpdateUserLocation(double lat, double lg)
+        {
+            var location = new CustomLocation(new GeoJSON.Net.Geometry.GeographicPosition(lat, lg)); 
+            Task.Factory.StartNew(() =>
+                {
+                    innerUpdateUserLocation(location);
+                });
+        }
+
+        private async void innerUpdateUserLocation(CustomLocation location)
+        {
+            var result = await ServiceHandler.PostAction<dynamic, User>(new { user = new User { Location = location } }, ApiAction.UPDATE_PROFILE, "PUT");
+
+            if (result.HasError)
+                return;
+        }
+
         private void onUserAction(string value)
         {
             switch (value)
@@ -146,7 +165,7 @@ namespace Whistle.Core.ViewModels
                     {
                         onCreateWhistle();
                     }
-                    else                    
+                    else
                         _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
                     break;
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
@@ -162,15 +181,15 @@ namespace Whistle.Core.ViewModels
         protected async void onCreateWhistle()
         {
             IsBusy = true;
+            var whistle = WhistleEditViewModel.GetNewWhistle();
+            whistle.Provider = ContextSwitchViewModel.IsProviderChecked;
             var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(
-               
-                new CreateWhistleRequest { Whistle = WhistleEditViewModel.GetNewWhistle() }, 
+                new CreateWhistleRequest { Whistle = whistle },
                 ApiAction.CREATE_WHISTLE);
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.Msg));
-                return;
+                _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
             }
 
             _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));

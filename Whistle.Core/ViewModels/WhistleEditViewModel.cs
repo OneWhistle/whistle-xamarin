@@ -4,11 +4,14 @@ using System;
 using System.Collections.Generic;
 using System.Windows.Input;
 using Whistle.Core.Modal;
+using System.Linq;
 namespace Whistle.Core.ViewModels
 {
 
     public class ListItem : BaseEntity
     {
+        public int Position { get; set; }
+
         private bool isSelected;
         public bool IsSelected
         {
@@ -40,6 +43,19 @@ namespace Whistle.Core.ViewModels
 
     public class WhistleEditViewModel : BaseEntity
     {
+        string[] rideTypes = new[]
+            {
+                "BIKE",
+                "AUTO",
+                "SMALL_CAR",
+                "LARGE_CAR",
+                "MINI_BUS",
+                "BUS",
+                "TRUCK",
+                "TRAIN",
+                "FLIGHT"
+            };
+
         public bool SourceLocationMode { get; set; }
         public bool DestinationLocationMode { get; set; }
 
@@ -129,14 +145,16 @@ namespace Whistle.Core.ViewModels
 
         public Whistle.Core.Modal.Whistle GetNewWhistle()
         {
-            return new Modal.Whistle
+            var whistle = new Modal.Whistle
             {
-                Type = "taxi",
+                Type = rideTypes[selectedRideItem.Position],
                 Public = true,
-                Provider = false,
-                Size = new[] { 4 },
+                LeavingLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(SourcePoint.Item1, SourcePoint.Item2)),
+                DestinationLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(DestinationPoint.Item1, DestinationPoint.Item2)),
+                Size = _selectedPackageList.Select(c => c.Position).ToArray(),
                 Comment = JourneyMessage
             };
+            return whistle;
         }
 
 

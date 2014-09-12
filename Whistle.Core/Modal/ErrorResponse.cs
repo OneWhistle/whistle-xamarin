@@ -10,5 +10,13 @@ namespace Whistle.Core.Modal
     {
         public string Code { get; set; }
         public string Msg { get; set; }
+        public string Message { get; set; }
+
+        public string GetErrorMessage()
+        {
+            if (string.IsNullOrEmpty(Message))
+                return Msg;
+            return Message;
+        }
     }
 }

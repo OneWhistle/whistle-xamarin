@@ -201,7 +201,7 @@ namespace Whistle.Core.ViewModels
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
                 NewUser = new User();
                 return;
             }
@@ -226,7 +226,7 @@ namespace Whistle.Core.ViewModels
 
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
+                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
             }
             else
             {

@@ -177,7 +177,7 @@ namespace Whistle.Droid.Views
                     break;
                 case 2:
                     ViewModel.Title = GetString(Resource.String.t_tracking);
-                    SwitchContent(new GenericFragment(Resource.Layout.About, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                    SwitchContent(new GenericFragment(Resource.Layout.Favorite, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
                 default:
                     break;

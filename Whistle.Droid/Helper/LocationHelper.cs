@@ -65,7 +65,7 @@ namespace Whistle.Droid.Helper
             if (location != null)
             {
                 var latng = new LatLng(location.Latitude, location.Longitude);
-                //OnLocationChanged(location);
+                OnLocationChanged(location);
                 UpdateMarkers(latng);
                 CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
                 MapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));
@@ -125,8 +125,9 @@ namespace Whistle.Droid.Helper
         }
 
         public void OnLocationChanged(Location location)
-        {
+        {           
             Mvx.Trace(MvxTraceLevel.Diagnostic, "OnLocationChanged");
+            ViewModel.UpdateUserLocation(location.Latitude, location.Longitude);
         }
 
         public void OnProviderDisabled(string provider)

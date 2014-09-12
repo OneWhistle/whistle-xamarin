@@ -39,7 +39,7 @@ namespace Whistle.Core.Helper
         /// <param name="apiSection">Its related to service or thier action</param>
         /// <param name="value">default value for T</param>
         /// <returns></returns>
-        public static async Task<ServiceResult<TResponse>> PostAction<TRequest, TResponse>(TRequest obj, string apiSection) where TResponse : class
+        public static async Task<ServiceResult<TResponse>> PostAction<TRequest, TResponse>(TRequest obj, string apiSection, string method = "POST") where TResponse : class
         {
             TResponse output = null;
             using (var client = CreateClient())
@@ -64,7 +64,12 @@ namespace Whistle.Core.Helper
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                     Uri url = new Uri(API.CreateUrl(apiSection));
 
-                    var result = await client.PostAsync(url, content);
+                    HttpResponseMessage result = null;
+
+                    if (method == "POST")
+                        result = await client.PostAsync(url, content);
+                    if (method == "PUT")
+                        result = await client.PutAsync(url, content);
                     var response = await result.Content.ReadAsStringAsync();
 
                     Mvx.Trace(MvxTraceLevel.Diagnostic, "request : {0}\r\nResult: {1} / {2}", jsonData, result.StatusCode.ToString(), response);

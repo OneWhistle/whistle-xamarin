@@ -20,8 +20,7 @@ namespace Whistle.Droid.Helper
         protected override void OnViewModelSet()
         {
             base.OnViewModelSet();
-            _messenger = Mvx.Resolve<IMvxMessenger>();
-            _subscriptionToken = _messenger.SubscribeOnMainThread<TMessage>(OnReceive);
+            _messenger = Mvx.Resolve<IMvxMessenger>();            
             busyFrag = (new GenericAlertFragment(Resource.Color.app_gray_modal_color)).WithIcon(Resource.Drawable.busy).WithTitle(Resource.String.d_waiting);
             // busyFrag.
             //Adding Busy view
@@ -35,6 +34,12 @@ namespace Whistle.Droid.Helper
                     busyFrag.Dismiss();
                 }
             };
+        }
+
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _subscriptionToken = _messenger.SubscribeOnMainThread<TMessage>(OnReceive);
         }
 
         /// Called when [create].

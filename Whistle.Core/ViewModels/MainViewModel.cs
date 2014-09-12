@@ -191,7 +191,7 @@ namespace Whistle.Core.ViewModels
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
+                _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
 
                 //THE following code will be removed.
                 result = new ServiceResult<CreateWhistleResponse>(new CreateWhistleResponse
@@ -205,7 +205,7 @@ namespace Whistle.Core.ViewModels
             }
 
             this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.MatchingWhisltes);
-            _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));
+            _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
         }
 
         protected override void InitFromBundle(IMvxBundle parameters)

@@ -15,7 +15,7 @@ namespace Whistle.Core
         public const string RESULT_WHISTLE_CREATION_FAILED = "{{64BF466A-37E1-4E96-8378-5C00A95C0EB2}}";
     }
 
-    public class HomeMessage : MvxMessage
+  /*  public class HomeMessage : MvxMessage
     {
         //* It looks the same with landmessage
         // so i will create a base abstract class with the following
@@ -41,5 +41,5 @@ namespace Whistle.Core
             this.Payload = payload;
             return this;
         }
-    }
+    }*/
 }

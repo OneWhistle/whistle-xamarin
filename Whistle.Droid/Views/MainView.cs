@@ -133,6 +133,8 @@ namespace Whistle.Droid.Views
             {
                 case HomeConstants.NAV_USER_TYPE_SELECTED:
                     _currentDialog.Dismiss();
+                    if (message.HasPayload)
+                        OnSelectContext();
                     break;
                 case HomeConstants.NAV_DISPLAY_LIST:
                     _listItemHelper.ShowList(message.Parameter);
@@ -159,6 +161,27 @@ namespace Whistle.Droid.Views
                     break;
             }
 
+        }
+
+        private void OnSelectContext()
+        {
+            switch (Settings.UserType)
+            {
+                case 0:
+                    ViewModel.Title = "CONSUMER";
+                    SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch));
+                    break;
+                case 1:
+                    ViewModel.Title = "PROVIDER";
+                    SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch));
+                    break;
+                case 2:
+                    ViewModel.Title = "TRACKING";
+                    SwitchContent(new GenericFragment(Resource.Layout.About, Resource.Menu.menu_switch));
+                    break;
+                default:
+                    break;
+            }
         }
 
         public void OnMapLongClick(LatLng point)

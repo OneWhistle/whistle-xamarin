@@ -43,6 +43,9 @@ namespace Whistle.Core.ViewModels
         public bool SourceLocationMode { get; set; }
         public bool DestinationLocationMode { get; set; }
 
+        public Tuple<double, double> SourcePoint { get; set; }
+        public Tuple<double, double> DestinationPoint { get; set; }
+
 
         public string JourneyMessage { get; set; }
 
@@ -71,7 +74,7 @@ namespace Whistle.Core.ViewModels
             }
         }
 
-        private IList<ListItem> _selectedPackageList = new List<ListItem>();
+        readonly IList<ListItem> _selectedPackageList = new List<ListItem>();
 
 
         private string _destinationLocation;
@@ -140,10 +143,21 @@ namespace Whistle.Core.ViewModels
 
         public bool IsValid()
         {
-
+            if (SourcePoint == null || DestinationPoint == null)
+                return false;
+            if (_selectedPackageList.Count == 0 && SelectedRideItem == null)
+                return false;
             if (string.IsNullOrEmpty(JourneyMessage))
                 return false;
             return true;
+        }
+
+        public void UpdatePosition(double p1, double p2)
+        {
+            if (SourceLocationMode)
+                SourcePoint = new Tuple<double, double>(p1, p2);
+            else
+                DestinationPoint = new Tuple<double, double>(p1, p2);
         }
     }
 }

@@ -315,7 +315,7 @@
     <AndroidResource Include="Resources\values\SplashStyle.xml" />
     <AndroidResource Include="Resources\values\MvxBindingAttributes.xml" />
     <AndroidResource Include="Resources\drawable\Splash.PNG" />
-    <BundleResource Include="Resources\drawable\Whistle.PNG" />
+    <AndroidResource Include="Resources\drawable\Whistle.PNG" />
     <AndroidResource Include="Resources\drawable-hdpi\Whistle.PNG" />
     <AndroidResource Include="Resources\drawable\whistle_logo_green.png" />
     <AndroidResource Include="Resources\anim\add_to_basket_in.xml" />
@@ -636,7 +636,10 @@
     <AndroidResource Include="Resources\drawable\custom_car_checkbox.xml" />
     <AndroidResource Include="Resources\drawable\custom_flight_checkbox.xml" />
     <AndroidResource Include="Resources\drawable\custom_other_checkbox.xml" />
-    <AndroidResource Include="Resources\drawable\custom_truck_checkbox.xml" />
+    <AndroidResource Include="Resources\drawable\custom_truck_checkbox.xml" />	
+    <AndroidResource Include="Resources\drawable\consumer_state_list.xml" />
+    <AndroidResource Include="Resources\drawable\provider_state_list.xml" />
+    <AndroidResource Include="Resources\drawable\tracking_state_list.xml" />	
     <AndroidResource Include="Resources\drawable\list_row_selector.xml" />
     <AndroidResource Include="Resources\drawable\list_row_bg.xml" />
     <AndroidResource Include="Resources\drawable\list_row_bg_hover.xml" />

@@ -46,7 +46,7 @@ namespace Whistle.Core
             ACTION_FB_LOGIN_VALIDATE
         };
     }
-
+/*
     public class LandingMessage : MvxMessage
     {
         public LandingMessage(object sender, string userAction)
@@ -66,5 +66,5 @@ namespace Whistle.Core
         }
 
         public string UserAction { get; private set; }
-    }
+    }*/
 }

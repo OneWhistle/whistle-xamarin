@@ -22,11 +22,11 @@ namespace Whistle.Droid.Views
     /// Defines the LandingView type.
     /// </summary>
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
-    public class LandingView : WhistleActivity<LandingMessage>
+    public class LandingView : WhistleActivity<MessageHandler>
     {
 
 
-        protected override void OnReceive(LandingMessage message)
+        protected override void OnReceive(MessageHandler message)
         {
             if (!SupportActionBar.IsShowing)
                 SupportActionBar.Show();

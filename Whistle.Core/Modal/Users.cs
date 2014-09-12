@@ -20,10 +20,10 @@ namespace Whistle.Core.Modal
         [JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
         public string Password { get; set; }
 
-        private string _dob;
+        private DateTime? _dob;
 
         [JsonProperty(PropertyName = "dob", NullValueHandling = NullValueHandling.Ignore)]
-        public string DOB { get { return _dob; } set { _dob = value; OnPropertyChanged("DOB"); } }
+        public DateTime? DOB { get { return _dob; } set { _dob = value; DOBStr = _dob.Value.ToString("d"); OnPropertyChanged(""); OnPropertyChanged("DOB"); } }
 
         [JsonProperty(PropertyName = "phone", NullValueHandling = NullValueHandling.Ignore)]
         public string Phone { get; set; }
@@ -37,6 +37,12 @@ namespace Whistle.Core.Modal
         [JsonProperty(PropertyName = "gender", NullValueHandling = NullValueHandling.Ignore)]
         public string Gender { get; set; }
         //Yes, We'll use single ahead, based on param
+
+        public string DOBStr
+        {
+            get;
+            set;
+        }
 
         private bool? isMale;
         [JsonIgnore]

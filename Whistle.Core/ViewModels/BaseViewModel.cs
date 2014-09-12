@@ -51,7 +51,7 @@ namespace Whistle.Core.ViewModels
         #region Properties
 
         //TEMP testing
-        private User newUser;//new User { Email = "rzee.m7@gmail.com", IsMale = true, UserName = "rzee", Name = "M RIYAZ", Password = "IAm7MOM" };
+        private User newUser;
         public User NewUser
         {
             get { return newUser; }
@@ -65,9 +65,9 @@ namespace Whistle.Core.ViewModels
         #endregion
 
         //Add Update
-        #region User Registration
+        #region User CREATION / UPDATE
 
-        protected async void onRegister(string _method = "POST")
+        protected async void onUserUpdate(string _method = "POST")
         {
             IsBusy = true;
             var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = newUser }, ApiAction.REGISTRATION, _method);
@@ -81,28 +81,17 @@ namespace Whistle.Core.ViewModels
             {
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
                 _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_SUCCESS));
-                await System.Threading.Tasks.Task.Delay(1500);
-                var bundle = new MvxBundle();
-                bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
-                this.ShowViewModel<MainViewModel>(bundle);
+                this.afterUserUpdate(result.Result.NewUser);
             }
-            NewUser = new User();
         }
+
+        protected abstract void afterUserUpdate(User value);
 
         #endregion
 
         public Action<bool> IsBusyChanged { get; set; }
 
-        //
-        private bool isUpadetMode = false;
-        public bool IsUpadetMode
-        {
-            get { return isUpadetMode; }
-            set
-            {
-                isUpadetMode = value; RaisePropertyChanged(() => IsUpadetMode);
-            }
-        }
+        public virtual bool IsUserCreationMode { get { return false; } }
 
         /// <summary>
         /// Gets the service.

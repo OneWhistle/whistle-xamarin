@@ -31,7 +31,7 @@
         android:weightSum="2"
         android:orientation="horizontal">-->
         <RadioButton
-            local:MvxBind="Checked NewUser.IsMale, Click UpdateGender, CommandParameter=true"
+            local:MvxBind="Checked NewUser.IsMale"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
@@ -45,7 +45,6 @@
             android:background="#9A9CA6"
             android:gravity="center" />
         <RadioButton
-            local:MvxBind="Checked NewUser.IsMale, Click UpdateGender, CommandParameter=false"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -83,7 +82,7 @@
             android:layout_weight="1"
             android:layout_marginTop="0dp"
             android:inputType="text"
-            local:MvxBind="Text NewUser.UserName"
+            local:MvxBind="Text NewUser.UserName; Enabled IsUserCreationMode"
             android:textColor="#000"
             android:hint="USERNAME"
             android:textSize="14sp"
@@ -126,7 +125,7 @@
             android:inputType="phone"
             android:digits="0123456789+"
             android:textColor="#000"
-            local:MvxBind="Text NewUser.Phone"
+            local:MvxBind="Text NewUser.Phone; Enabled IsUserCreationMode"
             android:background="#FFFFFF"
             android:textSize="14sp"
             android:gravity="center_vertical"
@@ -144,7 +143,7 @@
                 android:textSize="14sp"
                 android:textColor="#000"
                 android:background="#EEF0FF"
-                local:MvxBind="Text NewUser.DOB"
+                local:MvxBind="Text NewUser.DOBStr"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp" />
             <ImageButton

@@ -4,25 +4,22 @@
 // </summary>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System.Linq.Expressions;
 using Whistle.Core.Modal;
 
 namespace Whistle.Core.ViewModels
 {
-    using System.Windows.Input;
-    using Cirrious.MvvmCross.ViewModels;
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.Plugins.Messenger;
-    using System.Linq;
-    using System;
-    using Whistle.Core.Services;
-    using Whistle.Core.Helper;
     using Cirrious.MvvmCross.Plugins.PictureChooser;
-    using System.IO;
-    using System.Collections.ObjectModel;
-    using Whistle.Core.Helpers;
+    using Cirrious.MvvmCross.ViewModels;
     using Newtonsoft.Json;
-    using Cirrious.CrossCore.Platform;
+    using System;
+    using System.IO;
+    using System.Linq;
+    using System.Windows.Input;
+    using Whistle.Core.Helper;
+    using Whistle.Core.Helpers;
+    using Whistle.Core.Services;
 
     /// <summary>
     /// Define the LandingViewModel type.
@@ -35,6 +32,8 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
+        public override bool IsUserCreationMode { get { return true; } }
+
         #region Constructor
 
         public LandingViewModel(IMvxPictureChooserTask pictureChooserTask)
@@ -45,16 +44,6 @@ namespace Whistle.Core.ViewModels
         #endregion
 
         #region User Action
-        /// <summary>
-        ///  Backing field for my command.
-        /// </summary>
-        private MvxCommand<bool> updateGender;
-        /// <summary>
-        /// Gets user action command.
-        /// </para>
-        /// </summary>
-        public ICommand UpdateGender { get { return this.updateGender ?? (this.updateGender = new MvxCommand<bool>(OnUpdateGender)); } }
-
         /// <summary>
         ///  Backing field for my command.
         /// </summary>
@@ -96,22 +85,10 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
-        #region Show MainViewModel
-
-
-        #endregion
-
         #region User Action Implementation
-
-
-        private void OnUpdateGender(bool arg)
-        {
-            this.NewUser.IsMale = arg;
-        }
 
         private void OnUserAction(string action)
         {
-            var messenger = Mvx.Resolve<IMvxMessenger>();
             if (!LandingConstants.ActionList.Contains(action))
                 throw new InvalidOperationException();
             switch (action)
@@ -123,36 +100,35 @@ namespace Whistle.Core.ViewModels
                     //testing
                     if (!NewUser.IsValid())
                     {
-                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
                         NewUser = new User();
                         return;
                     }
-                    onRegister();
+                    onUserUpdate();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
                     this.ShowViewModel<MainViewModel>(new MvxBundle());
-                    break;                
+                    break;
                 case LandingConstants.ACTION_TAKE_PICTURE_CAMERA:
                     TakePicture();
                     break;
                 case LandingConstants.ACTION_TAKE_PICTURE_GALLERY:
                     ChoosePicture();
                     break;
-                case LandingConstants.ACTION_REGISTER_CONTINUE:
                 case LandingConstants.ACTION_REGISTER:
-                    IsUpadetMode = false;
-                    _messenger.Publish(new LandingMessage(this, action));
+                    _messenger.Publish(new MessageHandler(this, action));
                     break;
+                case LandingConstants.ACTION_REGISTER_CONTINUE:
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     if (!NewUser.IsValid())
-                        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
                     else
-                        _messenger.Publish(new LandingMessage(this, action));
+                        _messenger.Publish(new MessageHandler(this, action));
                     break;
                 default:
-                    _messenger.Publish(new LandingMessage(this, action));
+                    _messenger.Publish(new MessageHandler(this, action));
                     break;
             }
         }
@@ -165,9 +141,6 @@ namespace Whistle.Core.ViewModels
         {
             base.InitFromBundle(parameters);
             this.NewUser = new User();
-            if (_messenger != null)
-                return;
-            //_messenger = Mvx.Resolve<IMvxMessenger>();
         }
 
         #endregion
@@ -177,12 +150,12 @@ namespace Whistle.Core.ViewModels
         protected async void onLogin()
         {
             IsBusy = true;
-            var result = await ServiceHandler.PostAction<User, User>( NewUser , ApiAction.LOGIN);
-            
+            var result = await ServiceHandler.PostAction<User, User>(NewUser, ApiAction.LOGIN);
+
             IsBusy = false;
             if (result.HasError)
             {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
                 NewUser = new User();
                 return;
             }
@@ -196,32 +169,14 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
-        #region User Registration
 
-        //Moved to BaseViewModel
-
-        //protected async void onRegister()
-        //{
-        //    IsBusy = true;
-        //    var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = NewUser }, ApiAction.REGISTRATION);
-        //    IsBusy = false;
-
-        //    if (result.HasError)
-        //    {
-        //        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
-        //    }
-        //    else
-        //    {
-        //        Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
-        //        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
-        //        await System.Threading.Tasks.Task.Delay(1500);
-        //        var bundle = new MvxBundle();
-        //        bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
-        //        this.ShowViewModel<MainViewModel>(bundle);
-        //    }
-        //    NewUser = new User();
-        //}
-
-        #endregion
+        protected async override void afterUserUpdate(User user)
+        {
+            await System.Threading.Tasks.Task.Delay(1500);
+            var bundle = new MvxBundle();
+            bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(user));
+            this.ShowViewModel<MainViewModel>(bundle);
+            this.NewUser = new User();
+        }
     }
 }

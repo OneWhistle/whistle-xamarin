@@ -166,7 +166,7 @@ namespace Whistle.Core.ViewModels
                         NewUser = new User();
                         return;
                     }
-                    onRegister("PUT");
+                    onUserUpdate("PUT");
                     break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     if (!NewUser.IsValid())
@@ -225,6 +225,11 @@ namespace Whistle.Core.ViewModels
         {
             Settings.AccessToken = string.Empty;
             this.ShowViewModel<LandingViewModel>();
+        }
+
+        protected override void afterUserUpdate(User value)
+        {
+           
         }
     }
 }

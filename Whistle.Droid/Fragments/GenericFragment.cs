@@ -111,7 +111,7 @@ namespace Whistle.Droid.Fragments
             var user = ((LandingViewModel)ViewModel).NewUser;
             if (user != null)
             {
-                user.DOB = string.Format("{0:ddd MMM dd yyyy hh:mm:ss \"GMT\"K} ({1})", new DateTime(year, monthOfYear + 1, dayOfMonth).ToLocalTime(), TimeZoneInfo.Local.StandardName);
+                user.DOB = new DateTime(year, monthOfYear, dayOfMonth);  //string.Format("{0:ddd MMM dd yyyy hh:mm:ss \"GMT\"K} ({1})", new DateTime(year, monthOfYear + 1, dayOfMonth).ToLocalTime(), TimeZoneInfo.Local.StandardName);
             }
         }
     }   

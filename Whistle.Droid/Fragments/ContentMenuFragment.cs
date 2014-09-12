@@ -72,7 +72,6 @@ namespace Whistle.Droid.Fragments
                     mainAct.OnSelectContext();
                     return;
                 case 1:
-                    mainAct.ViewModel.IsUpadetMode = true; // User in update mode
                     newContent = new GenericFragment(Resource.Layout.Registration, Resource.Menu.menu_switch) { ViewModel = mainAct.ViewModel };
                     title = "EDIT PROFILE";
                     break;

@@ -8,6 +8,6 @@
         android:layout_height="fill_parent"
         android:button="@null"
         local:MvxBind="Text ; Checked IsSelected"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:drawableRight="@drawable/item_selection_state" />
 </LinearLayout>

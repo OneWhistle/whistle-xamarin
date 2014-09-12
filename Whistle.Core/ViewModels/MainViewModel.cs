@@ -159,10 +159,10 @@ namespace Whistle.Core.ViewModels
             if (parameters.Data.ContainsKey(Settings.AccessTokenKey))
             {
                 var userJson = parameters.Data[Settings.AccessTokenKey];
-                var user = JsonConvert.DeserializeObject<User>(userJson);
-                Settings.AccessToken = user.AccessToken;
+                NewUser = JsonConvert.DeserializeObject<User>(userJson);
+                Settings.AccessToken = NewUser.AccessToken;
                 // etc...
-                Mvx.Trace(MvxTraceLevel.Diagnostic, "InitFromBundle MainViewModel with access token {0}", user.AccessToken);
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "InitFromBundle MainViewModel with access token {0}", NewUser.AccessToken);
             }
         }
 

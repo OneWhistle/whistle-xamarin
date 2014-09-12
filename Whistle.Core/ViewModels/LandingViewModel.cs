@@ -198,6 +198,7 @@ namespace Whistle.Core.ViewModels
         {
             IsBusy = true;
             var result = await ServiceHandler.PostAction<User, User>( NewUser , ApiAction.LOGIN);
+            
             IsBusy = false;
             if (result.HasError)
             {

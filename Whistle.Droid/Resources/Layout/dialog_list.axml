@@ -13,5 +13,7 @@
         android:id="@+id/item_list"
         android:layout_width="match_parent"
         local:MvxItemTemplate="@layout/item_listitem"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dp"
         android:layout_height="wrap_content" />
 </LinearLayout>

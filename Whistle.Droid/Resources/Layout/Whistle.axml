@@ -43,13 +43,12 @@
                     android:text="CURRENT LOCATION"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    local:MvxBind="Text WhistleEditViewModel.SourceLocation"
                     android:textSize="10sp" />
             <!--local:MvxBind="Text WhistleEditViewModel.SourceLocation; Click WhistleEditViewModel.SetSourceSelection"-->
-                <TextView
+                <EditText
                     android:background="@android:color/transparent"
-                    android:enabled="false"
                     android:textColor="@color/black"
+                    local:MvxBind="Text WhistleEditViewModel.SourceLocation"
                     android:hint="FAILED TO RESOLVE LOCATION"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
@@ -123,7 +122,7 @@
             <EditText
                 android:hint="PACKAGES"
                 android:enabled="false"
-                local:MvxBind="Text WhistleEditViewModel.SelectedPackageList[0].DisplayName"
+                local:MvxBind="Text WhistleEditViewModel.SelectedPackageText"
                 android:background="@color/app_dark_gray_color"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="10dp"

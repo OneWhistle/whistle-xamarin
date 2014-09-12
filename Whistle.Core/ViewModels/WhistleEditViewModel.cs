@@ -169,8 +169,8 @@ namespace Whistle.Core.ViewModels
                 return false;
             if (_selectedPackageList.Count == 0 && SelectedRideItem == null)
                 return false;
-            if (string.IsNullOrEmpty(JourneyMessage))
-                return false;
+            //if (string.IsNullOrEmpty(JourneyMessage))
+            //    return false;
             return true;
         }
 

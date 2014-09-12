@@ -95,7 +95,7 @@ namespace Whistle.Droid.Helper
                 _destinationLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_red_icon)));
             }
 
-            ViewModel.WhistleEditViewModel.UpdatePosition(p0.Latitude, p0.Longitude);
+            ViewModel.WhistleEditViewModel.UpdatePosition(p0.Latitude, p0.Longitude, source);
             var marker = source ? _sourceLocationMarker : _destinationLocationMarker;
             marker.Position = p0;
             UpdateLocationString(p0, source);

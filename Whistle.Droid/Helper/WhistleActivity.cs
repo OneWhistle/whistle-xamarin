@@ -73,10 +73,16 @@ namespace Whistle.Droid.Helper
 
         protected abstract void OnReceive(TMessage message);
 
+        protected override void OnPause()
+        {
+            base.OnPause();
+            _messenger.Unsubscribe<TMessage>(_subscriptionToken);
+        }
+
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            _messenger.Unsubscribe<TMessage>(_subscriptionToken);
+            
         }
 
         protected override void OnSaveInstanceState(Bundle outState)

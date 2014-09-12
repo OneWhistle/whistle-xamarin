@@ -67,7 +67,7 @@ namespace Whistle.Core.Helper
                     var result = await client.PostAsync(url, content);
                     var response = await result.Content.ReadAsStringAsync();
 
-                    Mvx.Trace(MvxTraceLevel.Diagnostic, "Result: {0} / {1}", result.StatusCode.ToString(), response);
+                    Mvx.Trace(MvxTraceLevel.Diagnostic, "request : {0}\r\nResult: {1} / {2}", jsonData, result.StatusCode.ToString(), response);
                     if (!result.IsSuccessStatusCode)
                     {
                         var err = JsonConvert.DeserializeObject<ErrorResponse>(response);
@@ -77,7 +77,7 @@ namespace Whistle.Core.Helper
                 }
                 catch (Exception ex)
                 {
-                    Mvx.Trace(Cirrious.CrossCore.Platform.MvxTraceLevel.Error, ex.Message);
+                    Mvx.Trace(MvxTraceLevel.Error, ex.Message);
                     return new ServiceResult<TResponse>(new ErrorResponse { Msg = ex.Message });
                 }
             }

@@ -163,21 +163,21 @@ namespace Whistle.Droid.Views
 
         }
 
-        private void OnSelectContext()
+        public void OnSelectContext()
         {
             switch (Settings.UserType)
             {
                 case 0:
-                    ViewModel.Title = "CONSUMER";
-                    SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch));
+                    ViewModel.Title = GetString(Resource.String.t_consumer);
+                    SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
                 case 1:
-                    ViewModel.Title = "PROVIDER";
-                    SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch));
+                    ViewModel.Title = GetString(Resource.String.t_provider);
+                    SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
                 case 2:
-                    ViewModel.Title = "TRACKING";
-                    SwitchContent(new GenericFragment(Resource.Layout.About, Resource.Menu.menu_switch));
+                    ViewModel.Title = GetString(Resource.String.t_tracking);
+                    SwitchContent(new GenericFragment(Resource.Layout.About, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
                 default:
                     break;

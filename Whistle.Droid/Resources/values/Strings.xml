@@ -4,6 +4,11 @@
   <string name="ApplicationName">Whistle</string>
   <string name="menu_help">help</string>
 
+  <!--ACTION BAR TITLES-->
+  <string name="t_consumer">CONSUMER</string>
+  <string name="t_provider">PROVIDER</string>
+  <string name="t_tracking">TRACKING</string>
+
 
   <!--DIALOGS TITLES-->
   <string name="d_oops">OOPS!</string>
@@ -28,12 +33,12 @@
   <string name="d_btn_sign_out">SIGN OUT</string>
   <string name="d_btn_cancel">CANCEL</string>
 
-<!--//string[] packageList = new[] { "ENVELOPS", "SMALL (UP TO 10 KG)", "MEDIUM (BETWEEN 11 - 50 KG)", "LARGE (BETWEEN 51 - 100 KG)", "EXTRA LARGE (MORE THAN 100 KG)" };
+  <!--//string[] packageList = new[] { "ENVELOPS", "SMALL (UP TO 10 KG)", "MEDIUM (BETWEEN 11 - 50 KG)", "LARGE (BETWEEN 51 - 100 KG)", "EXTRA LARGE (MORE THAN 100 KG)" };
 
 //string[] rideList = new[] { "BIKE(2 SEATS)", "AUTO(3 SEATS)", "SMALL CAR(4 SEATS)", "LARGE CAR(6 SEATS)", "MINI BUS(12 SEATS)", 
 "BUS(20+ SEATS)", "TRUCK(ONLY PACKAGE)", "TRAIN", "FLIGHT" };
 -->
-  
+
   <string-array name="lst_ride">
     <item>BIKE(2 SEATS)</item>
     <item>AUTO(3 SEATS)</item>

@@ -48,7 +48,7 @@ namespace Whistle.Droid.Fragments
         private string getUserTypeTitle(int userType)
         {
             // this code will go in the core project...
-            switch(userType)
+            switch (userType)
             {
                 case 0:
                     return "CONSUMER";
@@ -62,16 +62,15 @@ namespace Whistle.Droid.Fragments
 
         private void selectOption(int position)
         {
-            var mainAct =  (this.Activity as Whistle.Droid.Views.MainView);
-           // var viewModel =.ViewModel; // we can do better...
+            var mainAct = (this.Activity as Whistle.Droid.Views.MainView);
+            // var viewModel =.ViewModel; // we can do better...
             string title = string.Empty;
             MvxFragment newContent = null;
             switch (position)
             {
                 case 0:
-                    newContent = new MapHostFragment(mainAct.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch);
-                    title = getUserTypeTitle(Settings.UserType);
-                    break;
+                    mainAct.OnSelectContext();
+                    return;
                 case 1:
                     mainAct.ViewModel.IsUpadetMode = true; // User in update mode
                     newContent = new GenericFragment(Resource.Layout.Registration, Resource.Menu.menu_switch) { ViewModel = mainAct.ViewModel };
@@ -98,7 +97,7 @@ namespace Whistle.Droid.Fragments
                         .WithIcon(Resource.Drawable.signout_green_big_icon)
                         .WithTitle(Resource.String.d_sign_out)
                         .WithDescription(Resource.String.d_sign_out_msg)
-                        .AddButton(Resource.String.d_btn_sign_out, () =>mainAct.ViewModel.SignOut())
+                        .AddButton(Resource.String.d_btn_sign_out, () => { mainAct.SupportFragmentManager.ExecutePendingTransactions(); mainAct.ViewModel.SignOut(); })
                         .AddButton(Resource.String.d_btn_cancel, () => { })
                         .Show(Activity.SupportFragmentManager, "sign_out");
                     return;
@@ -110,11 +109,11 @@ namespace Whistle.Droid.Fragments
                 mainAct.SwitchContent(newContent);
         }
 
-     
+
         public void OnListItemClick(object sender, AdapterView.ItemClickEventArgs args)
         {
             selectOption(args.Position);
         }
-   
+
     }
 }

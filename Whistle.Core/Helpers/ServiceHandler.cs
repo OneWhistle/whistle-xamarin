@@ -39,7 +39,7 @@ namespace Whistle.Core.Helper
         /// <param name="apiSection">Its related to service or thier action</param>
         /// <param name="value">default value for T</param>
         /// <returns></returns>
-        public static async Task<ServiceResult<TResponse>> PostAction<TRequest, TResponse>(TRequest obj, string apiSection) where TResponse : class
+        public static async Task<ServiceResult<TResponse>> PostAction<TRequest, TResponse>(TRequest obj, string apiSection, string method = "POST") where TResponse : class
         {
             TResponse output = null;
             using (var client = CreateClient())
@@ -48,7 +48,6 @@ namespace Whistle.Core.Helper
                 {
                     if (client.DefaultRequestHeaders.CacheControl == null)
                         client.DefaultRequestHeaders.CacheControl = new CacheControlHeaderValue();
-
                     client.DefaultRequestHeaders.CacheControl.NoCache = true;
                     client.DefaultRequestHeaders.IfModifiedSince = DateTime.UtcNow;
                     client.DefaultRequestHeaders.CacheControl.NoStore = true;
@@ -64,7 +63,14 @@ namespace Whistle.Core.Helper
                     content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
                     Uri url = new Uri(API.CreateUrl(apiSection));
 
-                    var result = await client.PostAsync(url, content);
+
+                    //We'll improve this ahead
+                    HttpResponseMessage result = null;
+
+                    if (method == "POST")
+                        result = await client.PostAsync(url, content);
+                    if (method == "PUT")//Update Profile
+                        result = await client.PutAsync(url, content);
                     var response = await result.Content.ReadAsStringAsync();
 
                     Mvx.Trace(MvxTraceLevel.Diagnostic, "Result: {0} / {1}", result.StatusCode.ToString(), response);

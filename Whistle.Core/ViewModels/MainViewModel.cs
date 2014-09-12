@@ -23,11 +23,6 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
-        #region Private fields
-        readonly IMvxMessenger _messenger;
-        //readonly IMvxLocationWatcher _locationWatcher;
-         #endregion
-
         /// <summary>
         /// Backing field for my property.
         /// </summary>
@@ -90,21 +85,7 @@ namespace Whistle.Core.ViewModels
         }
 
 
-        #region Properties
-
-        //TEMP testing
-        private User newUser = new User { Email = "rzee.m7@gmail.com", IsMale = true, UserName = "rzee", Name = "M RIYAZ", Password = "IAm7MOM" };
-        public User NewUser
-        {
-            get { return newUser; }
-            private set
-            {
-                newUser = value; RaisePropertyChanged("NewUser");
-            }
-        }
-
-
-        #endregion
+        
 
         private void onUserAction(string value)
         {
@@ -122,6 +103,22 @@ namespace Whistle.Core.ViewModels
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
                     Settings.ShowWhistlersListMap = !Settings.ShowWhistlersListMap;
                     _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));
+                    break;
+                case LandingConstants.ACTION_REGISTER_DONE:
+                    //testing
+                    if (!NewUser.IsValid())
+                    {
+                        _messenger.Publish(new HomeMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                        NewUser = new User();
+                        return;
+                    }
+                    onRegister("PUT");
+                    break;
+                case LandingConstants.ACTION_REGISTER_VALIDATE:
+                    if (!NewUser.IsValid())
+                        _messenger.Publish(new HomeMessage(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                    else
+                        _messenger.Publish(new HomeMessage(this, value));
                     break;
                 default:
                     _messenger.Publish(new HomeMessage(this, value));

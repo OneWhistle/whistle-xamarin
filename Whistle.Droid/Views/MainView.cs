@@ -157,6 +157,16 @@ namespace Whistle.Droid.Views
                     else
                         SwitchContent(new GenericFragment(Resource.Layout.Whistlers_list, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
+                case LandingConstants.RESULT_REGISTER_SUCCESS:
+                    (new GenericAlertFragment(Resource.Color.app_green_modal_color))
+                        .WithIcon(Resource.Drawable.happy_face_white_icon)
+                        .WithTitle(Resource.String.d_awesome)
+                        .WithDescription(Resource.String.d_registration_success)
+                        .Show(SupportFragmentManager, "register_success");
+                    break;
+                case LandingConstants.ACTION_REGISTER_VALIDATE:
+                    ((MainViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_REGISTER_DONE);
+                    break;
             }
 
         }

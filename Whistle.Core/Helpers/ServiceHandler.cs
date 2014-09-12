@@ -83,7 +83,7 @@ namespace Whistle.Core.Helper
                 }
                 catch (Exception ex)
                 {
-                    Mvx.Trace(MvxTraceLevel.Error, ex.Message);
+                    Mvx.Trace(MvxTraceLevel.Error, "{0}", ex.Message);
                     return new ServiceResult<TResponse>(new ErrorResponse { Msg = ex.Message });
                 }
             }

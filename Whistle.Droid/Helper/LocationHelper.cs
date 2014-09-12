@@ -45,7 +45,6 @@ namespace Whistle.Droid.Helper
             _geocoder = new Geocoder(_activity);
             MapView = new MapView(_activity, new GoogleMapOptions().InvokeZOrderOnTop(true).InvokeZoomControlsEnabled(true))
             {
-
                 //http://stackoverflow.com/questions/2990191/zoom-controls-not-showing-when-using-a-mapview-with-fill-parent
                 // Clickable = true
             };
@@ -55,6 +54,7 @@ namespace Whistle.Droid.Helper
 
         public void OnResume()
         {
+            Mvx.Trace(MvxTraceLevel.Diagnostic, "OnResume location helper");
             MapView.Map.UiSettings.MyLocationButtonEnabled = true;
             MapView.Map.UiSettings.ZoomControlsEnabled = true;
             MapView.Map.UiSettings.CompassEnabled = true;
@@ -66,14 +66,14 @@ namespace Whistle.Droid.Helper
             {
                 var latng = new LatLng(location.Latitude, location.Longitude);
                 OnLocationChanged(location);
-                UpdateMarkers(latng);
+                UpdateMarkers(latng, true);
                 CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
                 MapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));
                 MapView.Map.AnimateCamera(zoom);
                 return;
             }
 
-            _locationManager.RequestSingleUpdate(_locationProvider, this, Looper.MainLooper);
+           // _locationManager.RequestLocationUpdates(5000, 20, _criteria, this, Looper.MainLooper);
         }
 
         public void OnPause()
@@ -83,28 +83,32 @@ namespace Whistle.Droid.Helper
         }
 
 
-        public async void UpdateMarkers(LatLng p0)
+        public void UpdateMarkers(LatLng p0, bool source)
         {
-            if (ViewModel.WhistleEditViewModel.SourceLocationMode && _sourceLocationMarker == null)
+            if (source && _sourceLocationMarker == null)
             {
                 _sourceLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));                
             }
 
-            if (!ViewModel.WhistleEditViewModel.SourceLocationMode && _destinationLocationMarker == null)
+            if (!source && _destinationLocationMarker == null)
             {
                 _destinationLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_red_icon)));
             }
 
             ViewModel.WhistleEditViewModel.UpdatePosition(p0.Latitude, p0.Longitude);
-            var marker = ViewModel.WhistleEditViewModel.SourceLocationMode ? _sourceLocationMarker : _destinationLocationMarker;
-
+            var marker = source ? _sourceLocationMarker : _destinationLocationMarker;
             marker.Position = p0;
+            UpdateLocationString(p0, source);
+        }
+
+        public async void UpdateLocationString(LatLng p0, bool source)
+        {
             try
             {
                 var addresses = await _geocoder.GetFromLocationAsync(p0.Latitude, p0.Longitude, 1);
                 if (addresses.Count > 0)
                 {
-                    if (ViewModel.WhistleEditViewModel.SourceLocationMode)
+                    if (source)
                         this.ViewModel.WhistleEditViewModel.SourceLocation = addresses[0].GetAddressLine(0);
                     else
                         this.ViewModel.WhistleEditViewModel.DestinationLocation = addresses[0].GetAddressLine(0);
@@ -114,7 +118,6 @@ namespace Whistle.Droid.Helper
             {
                 Mvx.Trace(MvxTraceLevel.Diagnostic, ex.Message);
             }
-
         }
 
 

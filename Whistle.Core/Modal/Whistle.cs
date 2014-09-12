@@ -6,10 +6,10 @@ namespace Whistle.Core.Modal
 {
     public class Whistle
     {
-        [JsonProperty(PropertyName = "leavingLocation")]
-        public Point LeavingLocation { get; set; }
+        //[JsonProperty(PropertyName = "leavingLocation")]
+        //public Point LeavingLocation { get; set; }
         [JsonProperty(PropertyName = "destinationLocation")]
-        public Point DestinationLocation { get; set; }
+        public CustomLocation DestinationLocation { get; set; }
 
         [JsonProperty(PropertyName = "type")]
         public string @Type { get; set; }

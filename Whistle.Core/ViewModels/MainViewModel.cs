@@ -71,12 +71,15 @@ namespace Whistle.Core.ViewModels
 
         public WhistleEditViewModel WhistleEditViewModel { get; private set; }
 
+        public WhistleResultViewModel WhistleResultViewModel { get; private set; }
+
         public MainViewModel(IMvxMessenger messenger)
         //IMvxLocationWatcher locationWatcher)
         {
             _messenger = messenger;
             WhistleEditViewModel = new WhistleEditViewModel();
             ContextSwitchViewModel = new ContextSwitchViewModel();
+            WhistleResultViewModel = new WhistleResultViewModel(new Whistle[] { });
         }
 
 
@@ -126,7 +129,7 @@ namespace Whistle.Core.ViewModels
 
         public void UpdateUserLocation(double lat, double lg)
         {
-            var location = new CustomLocation(new GeoJSON.Net.Geometry.GeographicPosition(lat, lg)); 
+            var location = new CustomLocation(lat, lg);
             Task.Factory.StartNew(() =>
                 {
                     innerUpdateUserLocation(location);
@@ -192,8 +195,19 @@ namespace Whistle.Core.ViewModels
             if (result.HasError)
             {
                 _messenger.Publish(new HomeMessage(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
+
+                //THE following code will be removed.
+                result = new ServiceResult<CreateWhistleResponse>(new CreateWhistleResponse
+                {
+                    MatchingWhisltes = new Whistle[]
+                {
+                    new Whistle(),
+                    new Whistle(),
+                }
+                });
             }
 
+            this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.MatchingWhisltes);
             _messenger.Publish(new HomeMessage(this, HomeConstants.ACTION_SHOW_WHISTLERS));
         }
 

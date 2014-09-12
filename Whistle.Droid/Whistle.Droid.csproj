@@ -293,6 +293,9 @@
     <AndroidResource Include="Resources\Layout\item_listitem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <BundleResource Include="Resources\Layout\shared_item_detail.axml">
+      <SubType>AndroidResource</SubType>
+    </BundleResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">
@@ -636,10 +639,10 @@
     <AndroidResource Include="Resources\drawable\custom_car_checkbox.xml" />
     <AndroidResource Include="Resources\drawable\custom_flight_checkbox.xml" />
     <AndroidResource Include="Resources\drawable\custom_other_checkbox.xml" />
-    <AndroidResource Include="Resources\drawable\custom_truck_checkbox.xml" />	
+    <AndroidResource Include="Resources\drawable\custom_truck_checkbox.xml" />
     <AndroidResource Include="Resources\drawable\consumer_state_list.xml" />
     <AndroidResource Include="Resources\drawable\provider_state_list.xml" />
-    <AndroidResource Include="Resources\drawable\tracking_state_list.xml" />	
+    <AndroidResource Include="Resources\drawable\tracking_state_list.xml" />
     <AndroidResource Include="Resources\drawable\list_row_selector.xml" />
     <AndroidResource Include="Resources\drawable\list_row_bg.xml" />
     <AndroidResource Include="Resources\drawable\list_row_bg_hover.xml" />
@@ -681,15 +684,15 @@
     </XamarinComponentReference>
     <XamarinComponentReference Include="modernhttpclient">
       <Visible>False</Visible>
-      <Version>2.0.1</Version>
+      <Version>2.1.0</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv4-18">
-      <Version>20.0.0.3</Version>
       <Visible>False</Visible>
+      <Version>20.0.0.4</Version>
     </XamarinComponentReference>
     <XamarinComponentReference Include="xamandroidsupportv7appcompat">
-      <Version>19.1.0</Version>
       <Visible>False</Visible>
+      <Version>20.0.0</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>

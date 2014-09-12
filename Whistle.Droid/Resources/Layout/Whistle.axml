@@ -10,19 +10,23 @@
         android:layout_height="0dp"
         android:layout_weight="2"
         android:weightSum="2">
+    <!--local:MvxBind="Click WhistleEditViewModel.SetSourceSelection"-->
         <LinearLayout
-            local:MvxBind="Click WhistleEditViewModel.SetSourceSelection"
             android:background="@color/app_light_gray_color"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-            <RadioButton
+            <View
+                android:layout_weight="1"
+                android:layout_height="fill_parent"
+                android:layout_width="0dp" />
+        <!--<RadioButton
                 android:enabled="false"
                 android:layout_weight="1"
                 android:checked="true"
                 android:layout_width="0dp"
                 local:MvxBind="Checked WhistleEditViewModel.SourceLocationMode"
-                android:layout_height="fill_parent" />
+                android:layout_height="fill_parent" />-->
             <View
                 android:background="@color/app_blue_color"
                 android:gravity="right"
@@ -39,29 +43,33 @@
                     android:text="CURRENT LOCATION"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    local:MvxBind="Text WhistleEditViewModel.SourceLocation"
                     android:textSize="10sp" />
-                <EditText
+            <!--local:MvxBind="Text WhistleEditViewModel.SourceLocation; Click WhistleEditViewModel.SetSourceSelection"-->
+                <TextView
                     android:background="@android:color/transparent"
+                    android:enabled="false"
                     android:textColor="@color/black"
-                    local:MvxBind="Text WhistleEditViewModel.SourceLocation; Click WhistleEditViewModel.SetSourceSelection"
-                    android:hint="SET CURRENT LOCATION"
+                    android:hint="FAILED TO RESOLVE LOCATION"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:focusable="true"
-                    android:clickable="true" />
+                    android:layout_height="wrap_content" />
             </LinearLayout>
         </LinearLayout>
+    <!--local:MvxBind="Click WhistleEditViewModel.SetDestinationSelection"-->
         <LinearLayout
-            local:MvxBind="Click WhistleEditViewModel.SetDestinationSelection"
             android:layout_width="fill_parent"
             android:layout_height="0dp"
             android:layout_weight="1">
-            <RadioButton
-                android:enabled="false"
+            <View
                 android:layout_weight="1"
-                android:layout_width="0dp"
-                local:MvxBind="Checked WhistleEditViewModel.DestinationLocationMode"
-                android:layout_height="fill_parent" />
+                android:layout_height="fill_parent"
+                android:layout_width="0dp" />
+        <!--<RadioButton
+          android:enabled="false"
+          android:layout_weight="1"
+          android:layout_width="0dp"
+          local:MvxBind="Checked WhistleEditViewModel.DestinationLocationMode"
+          android:layout_height="fill_parent" />-->
             <View
                 android:background="@color/app_red_modal_color"
                 android:gravity="right"
@@ -79,10 +87,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="10sp" />
+            <!--; Click WhistleEditViewModel.SetDestinationSelection-->
                 <EditText
                     android:background="@android:color/transparent"
                     android:textColor="@color/black"
-                    local:MvxBind="Text WhistleEditViewModel.DestinationLocation; Click WhistleEditViewModel.SetDestinationSelection"
+                    local:MvxBind="Text WhistleEditViewModel.DestinationLocation"
                     android:hint="SET DESTINATION LOCATION"
                     android:focusable="true"
                     android:clickable="true"
@@ -111,8 +120,11 @@
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1">
-            <whistle.droid.views.WhistleTextView
-                android:text="PACKAGES"
+            <EditText
+                android:hint="PACKAGES"
+                android:enabled="false"
+                local:MvxBind="Text WhistleEditViewModel.SelectedPackageList[0].DisplayName"
+                android:background="@color/app_dark_gray_color"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"

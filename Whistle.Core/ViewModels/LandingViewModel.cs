@@ -29,11 +29,6 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class LandingViewModel : BaseViewModel
     {
-        #region Private fields
-        IMvxMessenger _messenger;
-
-        #endregion
-
         #region Private Picture Properties
 
         private readonly IMvxPictureChooserTask _pictureChooserTask;
@@ -46,21 +41,6 @@ namespace Whistle.Core.ViewModels
         {
             _pictureChooserTask = pictureChooserTask;
         }
-
-        #endregion
-
-        #region Properties
-
-        private User newUser;
-        public User NewUser
-        {
-            get { return newUser; }
-            private set
-            {
-                newUser = value; RaisePropertyChanged("NewUser");
-            }
-        }
-
 
         #endregion
 
@@ -187,7 +167,7 @@ namespace Whistle.Core.ViewModels
             this.NewUser = new User();
             if (_messenger != null)
                 return;
-            _messenger = Mvx.Resolve<IMvxMessenger>();
+            //_messenger = Mvx.Resolve<IMvxMessenger>();
         }
 
         #endregion
@@ -198,6 +178,7 @@ namespace Whistle.Core.ViewModels
         {
             IsBusy = true;
             var result = await ServiceHandler.PostAction<User, User>( NewUser , ApiAction.LOGIN);
+            
             IsBusy = false;
             if (result.HasError)
             {
@@ -213,32 +194,33 @@ namespace Whistle.Core.ViewModels
             }
         }
 
-
         #endregion
 
         #region User Registration
 
-        protected async void onRegister()
-        {
-            IsBusy = true;
-            var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = newUser }, ApiAction.REGISTRATION);
-            IsBusy = false;
+        //Moved to BaseViewModel
 
-            if (result.HasError)
-            {
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
-            }
-            else
-            {
-                Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
-                _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
-                await System.Threading.Tasks.Task.Delay(1500);
-                var bundle = new MvxBundle();
-                bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
-                this.ShowViewModel<MainViewModel>(bundle);
-            }
-            NewUser = new User();
-        }
+        //protected async void onRegister()
+        //{
+        //    IsBusy = true;
+        //    var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = NewUser }, ApiAction.REGISTRATION);
+        //    IsBusy = false;
+
+        //    if (result.HasError)
+        //    {
+        //        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
+        //    }
+        //    else
+        //    {
+        //        Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
+        //        _messenger.Publish(new LandingMessage(this, LandingConstants.RESULT_REGISTER_SUCCESS));
+        //        await System.Threading.Tasks.Task.Delay(1500);
+        //        var bundle = new MvxBundle();
+        //        bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
+        //        this.ShowViewModel<MainViewModel>(bundle);
+        //    }
+        //    NewUser = new User();
+        //}
 
         #endregion
     }

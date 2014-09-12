@@ -12,7 +12,7 @@ using Whistle.Core.ViewModels;
 
 namespace Whistle.Droid.Fragments
 {
-    public class GenericFragment : MvxFragment, DatePickerDialog.IOnDateSetListener
+    public class GenericFragment : MvxFragment
     {
         readonly int _layoutId;
         readonly int _menuResId;
@@ -45,10 +45,6 @@ namespace Whistle.Droid.Fragments
             base.OnCreateOptionsMenu(menu, inflater);
         }
 
-        public void OnDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth)
-        {
-            dobTextView.Text = new DateTime(year, monthOfYear + 1, dayOfMonth).ToString(); ;
-        }
     }
 
     /// <summary>
@@ -115,7 +111,7 @@ namespace Whistle.Droid.Fragments
             var user = ((LandingViewModel)ViewModel).NewUser;
             if (user != null)
             {
-                user.DOB = new DateTime(year, monthOfYear + 1, dayOfMonth).ToString("dd-MM-yyyy");
+                user.DOB = string.Format("{0:ddd MMM dd yyyy hh:mm:ss \"GMT\"K} ({1})", new DateTime(year, monthOfYear + 1, dayOfMonth).ToLocalTime(), TimeZoneInfo.Local.StandardName);
             }
         }
     }   

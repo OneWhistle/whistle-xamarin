@@ -11,15 +11,23 @@ namespace Whistle.Core.ViewModels
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.ViewModels;
     using Whistle.Core.Services;
+    using Whistle.Core.Helper;
+    using Whistle.Core.Modal;
+    using Cirrious.CrossCore.Platform;
+    using Cirrious.MvvmCross.Plugins.Messenger;
+    using Whistle.Core.Helpers;
+    using Newtonsoft.Json;
 
     /// <summary>
     ///    Defines the BaseViewModel type.
     /// </summary>
     public abstract class BaseViewModel : MvxViewModel
     {
-        public BaseViewModel()
-        {
-        }
+
+        #region Private fields
+        public IMvxMessenger _messenger;
+        //readonly IMvxLocationWatcher _locationWatcher;
+        #endregion
 
         private bool isBusy = false;
         public bool IsBusy
@@ -40,13 +48,56 @@ namespace Whistle.Core.ViewModels
             set { title = value; RaisePropertyChanged(() => Title); }
         }
 
+        #region Properties
+
+        //TEMP testing
+        private User newUser;//new User { Email = "rzee.m7@gmail.com", IsMale = true, UserName = "rzee", Name = "M RIYAZ", Password = "IAm7MOM" };
+        public User NewUser
+        {
+            get { return newUser; }
+            set
+            {
+                newUser = value; RaisePropertyChanged("NewUser");
+            }
+        }
+
+
+        #endregion
+
+        //Add Update
+        #region User Registration
+
+        protected async void onRegister(string _method = "POST")
+        {
+            IsBusy = true;
+            var result = await ServiceHandler.PostAction<RegistrationRequest, RegistrationResponse>(new RegistrationRequest { User = newUser }, ApiAction.REGISTRATION, _method);
+            IsBusy = false;
+
+            if (result.HasError)
+            {
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
+            }
+            else
+            {
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_SUCCESS));
+                await System.Threading.Tasks.Task.Delay(1500);
+                var bundle = new MvxBundle();
+                bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result.NewUser));
+                this.ShowViewModel<MainViewModel>(bundle);
+            }
+            NewUser = new User();
+        }
+
+        #endregion
+
         public Action<bool> IsBusyChanged { get; set; }
 
         //
         private bool isUpadetMode = false;
         public bool IsUpadetMode
         {
-            get { return isBusy; }
+            get { return isUpadetMode; }
             set
             {
                 isUpadetMode = value; RaisePropertyChanged(() => IsUpadetMode);
@@ -84,6 +135,15 @@ namespace Whistle.Core.ViewModels
             backingStore = value;
 
             this.RaisePropertyChanged(property);
+        }
+
+        protected override void InitFromBundle(IMvxBundle parameters)
+        {
+            base.InitFromBundle(parameters);
+            this.NewUser = new User();
+            if (_messenger != null)
+                return;
+            _messenger = Mvx.Resolve<IMvxMessenger>();
         }
     }
 }

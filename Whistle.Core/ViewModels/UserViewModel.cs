@@ -21,13 +21,14 @@ namespace Whistle.Core.ViewModels
                 return false;
             if (string.IsNullOrEmpty(user.UserName))
                 return false;
-            if (string.IsNullOrEmpty(user.DOB))
-                return false;
+            //if (string.IsNullOrEmpty(user.DOB))
+            //    return false;
             if (string.IsNullOrEmpty(user.Phone))
                 return false;
 
             return true;
         }
+
     }
     
 }

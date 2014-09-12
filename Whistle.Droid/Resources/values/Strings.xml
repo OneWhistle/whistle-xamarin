@@ -20,6 +20,7 @@
   <string name="d_choose_rides">CHOOSE A RIDE</string>
   <!--DIALOGS CONTENT-->
   <string name="d_registration_success">Your account created successfully.\r\nThank you for joining!</string>
+  <string name="d_profile_update_success">Your account update successfully.</string>
   <string name="d_wrong_password">The username &amp; password do not match.\r\nPlease try again.</string>
   <string name="d_invalid_registration">Invalid or missing input dected. Please fill all required forms</string>
   <string name="d_legal_term_desc">Please do read our terms &amp; privacy carefully before accepting.</string>

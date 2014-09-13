@@ -167,7 +167,7 @@ namespace Whistle.Core.ViewModels
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
                     /*do some backend call ????.*/
                     if (WhistleEditViewModel.IsValid())
-                    {
+                    {                        
                         onCreateWhistle();
                     }
                     else
@@ -212,7 +212,8 @@ namespace Whistle.Core.ViewModels
             var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(
                 new CreateWhistleRequest { Whistle = whistle },
                 ApiAction.CREATE_WHISTLE);
-            IsBusy = false;
+            IsBusy = false;            
+
             if (result.HasError)
             {
                 _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
@@ -231,6 +232,7 @@ namespace Whistle.Core.ViewModels
                 });
             }
 
+            SelectedWhistleItem = null;
             this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.MatchingWhisltes);
             _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
         }

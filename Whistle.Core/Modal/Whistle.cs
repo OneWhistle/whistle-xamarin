@@ -21,5 +21,8 @@ namespace Whistle.Core.Modal
         public bool Provider { get; set; }
         [JsonProperty(PropertyName = "size")]
         public int[] Size { get; set; }
+
+        [JsonProperty(PropertyName = "user")]
+        public User User { get; set; }
     }
 }

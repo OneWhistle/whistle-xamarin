@@ -22,7 +22,7 @@ namespace Whistle.Droid.Views
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<MessageHandler>, GoogleMap.IOnMapLongClickListener
+    public class MainView : WhistleSlidingFragmentActivity<MessageHandler>, GoogleMap.IOnMapLongClickListener, GoogleMap.IOnMarkerClickListener
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
 
@@ -102,6 +102,8 @@ namespace Whistle.Droid.Views
             _locationHelper.OnResume();
             _listItemHelper.OnResume();
             MapView.Map.SetOnMapLongClickListener(this);
+            MapView.Map.SetOnMarkerClickListener(this);
+            
         }
 
         protected override void OnPause()
@@ -153,7 +155,13 @@ namespace Whistle.Droid.Views
                         .WithDescription(Resource.String.d_unexptected_error, message.Payload)
                         .Show(SupportFragmentManager, "whistle_creation_failed");
                     break;
+                case HomeConstants.NAV_CONTACT_WHISTLER:
+                    ViewModel.Title = GetString(Resource.String.t_whistler);
+                        SwitchContent(new GenericFragment(Resource.Layout.UserDetails, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                    break;
+
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
+                    _locationHelper.ShowWhistlers();
                     if (Settings.ShowWhistlersListMap)
                         SwitchContent(new MapHostFragment(MapView, Resource.Layout.Whistlers, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     else
@@ -179,10 +187,12 @@ namespace Whistle.Droid.Views
             {
                 case 0:
                     ViewModel.Title = GetString(Resource.String.t_consumer);
+                    _locationHelper.ClearWhistlers();
                     SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
                 case 1:
                     ViewModel.Title = GetString(Resource.String.t_provider);
+                    _locationHelper.ClearWhistlers();
                     SwitchContent(new MapHostFragment(this.MapView, Resource.Layout.Whistle, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
                 case 2:
@@ -201,5 +211,10 @@ namespace Whistle.Droid.Views
         }
 
 
+
+        public bool OnMarkerClick(Marker marker)
+        {
+            return _locationHelper.OnMarkerClick(marker);
+        }
     }
 }

@@ -13,6 +13,12 @@
             android:id="@+id/map"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
+        <Mvx.MvxFrameControl
+            android:layout_width="fill_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            local:MvxBind="DataContext SelectedWhistleItem"
+            local:MvxTemplate="@layout/shared_item_detail" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -33,6 +39,7 @@
             android:layout_width="0dp"
             android:gravity="center"
             android:layout_height="fill_parent"
+            local:MvxBind="Click ContactWhistler"
             android:src="@drawable/whistle_white_icon"
             android:background="@color/app_dark_gray_color"
             android:layout_weight="1" />
@@ -41,6 +48,7 @@
             android:gravity="center"
             android:layout_height="fill_parent"
             android:src="@drawable/expand_white_icon"
+            local:MvxBind="Click UserAction, CommandParameter=NAV_CLEAR_SELECTED_WHISTLER"
             android:layout_weight="1"
             android:background="@color/app_dark_gray_color" />
     </LinearLayout>

@@ -25,7 +25,7 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
-        
+
 
         /// <summary>
         /// Backing field for my property.
@@ -64,11 +64,19 @@ namespace Whistle.Core.ViewModels
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
 
 
+        public MvxCommand contactWhistler;
+        public ICommand ContactWhistler { get { return this.contactWhistler ?? (this.contactWhistler = new MvxCommand(onContactWhistler)); } }
+
+
+        public WhistleItemViewModel SelectedWhistleItem { get; private set; }
+
         public ContextSwitchViewModel ContextSwitchViewModel { get; private set; }
 
         public WhistleEditViewModel WhistleEditViewModel { get; private set; }
 
         public WhistleResultViewModel WhistleResultViewModel { get; private set; }
+
+        public ContactWhistlerViewModel ContactWhistlerViewModel { get; private set; }
 
         public MainViewModel(IMvxMessenger messenger)
         //IMvxLocationWatcher locationWatcher)
@@ -77,8 +85,22 @@ namespace Whistle.Core.ViewModels
             WhistleEditViewModel = new WhistleEditViewModel();
             ContextSwitchViewModel = new ContextSwitchViewModel();
             WhistleResultViewModel = new WhistleResultViewModel(new Whistle[] { });
+
         }
 
+
+        //private bool canContactWhistler()
+        //{
+        //    return SelectedWhistleItem != null;
+        //}
+
+        private void onContactWhistler()
+        {
+            if (SelectedWhistleItem == null)
+                return;
+            this.ContactWhistlerViewModel = new ContactWhistlerViewModel();
+            _messenger.Publish(new MessageHandler(this, HomeConstants.NAV_CONTACT_WHISTLER));
+        }
 
         private void onNavDisplay(string list)
         {
@@ -120,9 +142,6 @@ namespace Whistle.Core.ViewModels
             Settings.UserType..*/
             _messenger.Publish(msg);
         }
-
-
-        
 
         public void UpdateUserLocation(double lat, double lg)
         {
@@ -174,6 +193,11 @@ namespace Whistle.Core.ViewModels
                     else
                         _messenger.Publish(new MessageHandler(this, value));
                     break;
+
+                case HomeConstants.NAV_CLEAR_SELECTED_WHISTLER:
+                    SelectedWhistleItem = null;
+                    RaisePropertyChanged(() => SelectedWhistleItem);
+                    break;
                 default:
                     _messenger.Publish(new MessageHandler(this, value));
                     break;
@@ -194,12 +218,15 @@ namespace Whistle.Core.ViewModels
                 _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
 
                 //THE following code will be removed.
+                var lat = WhistleEditViewModel.SourcePoint.Coordinates[0].Value;
+                var lng = WhistleEditViewModel.SourcePoint.Coordinates[1].Value;
+
                 result = new ServiceResult<CreateWhistleResponse>(new CreateWhistleResponse
                 {
                     MatchingWhisltes = new Whistle[]
                 {
-                    new Whistle(),
-                    new Whistle(),
+                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new double?[]{lat+0.001,lng-0.001}}}},
+                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new double?[]{lat-0.001,lng+0.001}}}},
                 }
                 });
             }
@@ -229,7 +256,14 @@ namespace Whistle.Core.ViewModels
 
         protected override void afterUserUpdate(User value)
         {
-           
+
         }
+
+        public void ShowWhistler()
+        {
+            SelectedWhistleItem = new WhistleItemViewModel();
+            RaisePropertyChanged(() => SelectedWhistleItem);
+        }
+
     }
 }

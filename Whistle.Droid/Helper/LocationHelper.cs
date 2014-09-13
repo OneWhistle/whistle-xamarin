@@ -8,7 +8,9 @@ using Cirrious.MvvmCross.Binding.BindingContext;
 using Cirrious.MvvmCross.Droid.Fragging;
 using Cirrious.MvvmCross.Droid.Views;
 using System;
+using System.Collections.Generic;
 using Whistle.Core.ViewModels;
+using System.Linq;
 
 namespace Whistle.Droid.Helper
 {
@@ -22,6 +24,7 @@ namespace Whistle.Droid.Helper
         Marker _sourceLocationMarker;
         Marker _destinationLocationMarker;
         Geocoder _geocoder;
+        readonly List<Marker> _markerList = new List<Marker>();
 
         string _locationProvider;
 
@@ -31,8 +34,8 @@ namespace Whistle.Droid.Helper
 
         public LocationHelper(TActivity activity)
         {
-            _criteria = new Criteria { Accuracy = Android.Locations.Accuracy.Coarse };
-            _criteria.PowerRequirement = Power.Low; // Chose your desired power consumption level.
+            _criteria = new Criteria();
+            // _criteria.PowerRequirement = Power.; // Chose your desired power consumption level.
             _criteria.Accuracy = Accuracy.Fine; // Choose your accuracy requirement.
             _activity = activity;
         }
@@ -60,20 +63,18 @@ namespace Whistle.Droid.Helper
             MapView.Map.UiSettings.CompassEnabled = true;
             MapView.OnResume();
 
+            
+
             var location = _locationManager.GetLastKnownLocation(_locationProvider);
 
             if (location != null)
             {
                 var latng = new LatLng(location.Latitude, location.Longitude);
                 OnLocationChanged(location);
-                UpdateMarkers(latng, true);
-                CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
-                MapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));
-                MapView.Map.AnimateCamera(zoom);
                 return;
             }
 
-           // _locationManager.RequestLocationUpdates(5000, 20, _criteria, this, Looper.MainLooper);
+            _locationManager.RequestLocationUpdates(5000, 20, _criteria, this, Looper.MainLooper);
         }
 
         public void OnPause()
@@ -87,7 +88,7 @@ namespace Whistle.Droid.Helper
         {
             if (source && _sourceLocationMarker == null)
             {
-                _sourceLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));                
+                _sourceLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_blue_icon)));
             }
 
             if (!source && _destinationLocationMarker == null)
@@ -99,6 +100,29 @@ namespace Whistle.Droid.Helper
             var marker = source ? _sourceLocationMarker : _destinationLocationMarker;
             marker.Position = p0;
             UpdateLocationString(p0, source);
+        }
+
+
+        public void ShowWhistlers()
+        {
+            if (_markerList.Count > 0)
+                return;
+            foreach (var item in ViewModel.WhistleResultViewModel.WhistleList)
+            {
+                var p0 = new LatLng(item.User.Location.Coordinates[0].Value, item.User.Location.Coordinates[1].Value);
+
+                var marker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_grey_icon)));
+                _markerList.Add(marker);
+            }
+        }
+
+        public void ClearWhistlers()
+        {
+            foreach (var marker in _markerList)
+            {
+                marker.Remove();
+            }
+            _markerList.Clear();
         }
 
         public async void UpdateLocationString(LatLng p0, bool source)
@@ -128,9 +152,14 @@ namespace Whistle.Droid.Helper
         }
 
         public void OnLocationChanged(Location location)
-        {           
+        {
             Mvx.Trace(MvxTraceLevel.Diagnostic, "OnLocationChanged");
             ViewModel.UpdateUserLocation(location.Latitude, location.Longitude);
+            var latng = new LatLng(location.Latitude, location.Longitude);
+            UpdateMarkers(latng, true);
+            CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
+            MapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));
+            MapView.Map.AnimateCamera(zoom);
         }
 
         public void OnProviderDisabled(string provider)
@@ -152,6 +181,16 @@ namespace Whistle.Droid.Helper
 
         public void Dispose()
         {
+        }
+
+        public bool OnMarkerClick(Marker marker)
+        {
+            if (_markerList.Select(c=>c.Id).Any(id=> id == marker.Id))
+            {
+                ViewModel.ShowWhistler();
+                return true;
+            }
+            return false;
         }
     }
 }

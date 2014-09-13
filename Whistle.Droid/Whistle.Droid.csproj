@@ -293,9 +293,9 @@
     <AndroidResource Include="Resources\Layout\item_listitem.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\shared_item_detail.axml">
+    <AndroidResource Include="Resources\Layout\shared_item_detail.axml">
       <SubType>AndroidResource</SubType>
-    </BundleResource>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Menu.axml">

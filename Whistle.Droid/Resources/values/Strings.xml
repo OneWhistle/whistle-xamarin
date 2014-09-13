@@ -8,7 +8,7 @@
   <string name="t_consumer">CONSUMER</string>
   <string name="t_provider">PROVIDER</string>
   <string name="t_tracking">TRACKING</string>
-
+  <string name="t_whistler">WHISTLER</string>
 
   <!--DIALOGS TITLES-->
   <string name="d_oops">OOPS!</string>
@@ -16,6 +16,7 @@
   <string name="d_waiting">Waiting...</string>
   <string name="d_legal">LEGAL TERMS...</string>
   <string name="d_sign_out">SIGN OUT!</string>
+  
   <string name="d_choose_packages">CHOOSE A PACKAGE</string>
   <string name="d_choose_rides">CHOOSE A RIDE</string>
   <!--DIALOGS CONTENT-->

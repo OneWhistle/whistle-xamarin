@@ -104,6 +104,7 @@ namespace Whistle.Core.ViewModels
                         NewUser = new User();
                         return;
                     }
+                    NewUser.Location = new CustomLocation(); // to avoid location update fails.
                     onUserUpdate();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:

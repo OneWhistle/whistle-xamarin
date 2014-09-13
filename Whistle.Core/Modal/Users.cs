@@ -38,6 +38,7 @@ namespace Whistle.Core.Modal
         public string Gender { get; set; }
         //Yes, We'll use single ahead, based on param
 
+        [JsonIgnore]
         public string DOBStr
         {
             get;
@@ -51,5 +52,6 @@ namespace Whistle.Core.Modal
             get { return isMale; }
             set { isMale = value; Gender = isMale.Value ? "male" : "female"; }
         }
+
     }
 }

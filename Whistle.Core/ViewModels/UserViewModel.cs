@@ -1,34 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Whistle.Core.Modal;
+﻿using Whistle.Core.Modal;
+using Whistle.Core.Services;
 
 namespace Whistle.Core.ViewModels
 {
     public static class UserExtensions
     {
 
-        public static bool IsValid(this User user)
+        public static string[] IsValid(this User user, IPhoneService phone)
         {
             /*It should be better that that..*/
             if (string.IsNullOrEmpty(user.Password))
-                return false;
+                return new[] { "missing password" };
             //if (string.IsNullOrEmpty(user.Email))
             //    return false;
             if (string.IsNullOrEmpty(user.Name))
-                return false;
+                return new[] { "missing full name" };
             if (string.IsNullOrEmpty(user.UserName))
-                return false;
-            //if (string.IsNullOrEmpty(user.DOB))
-            //    return false;
-            if (string.IsNullOrEmpty(user.Phone))
-                return false;
+                return new[] { "missing username" };
+            if (null == user.DOB)
+                return new[] { "missing day of birth" };
 
-            return true;
+            if (!phone.IsGlobalPhoneNumber(user.Phone))
+                return new[] { "invalid phone number.\r\nPlease provide in international format (e.g: +1889123456)" };
+
+            return new string[] { };
         }
 
     }
-    
+
 }

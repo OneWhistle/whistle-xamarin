@@ -7,6 +7,8 @@ using Cirrious.MvvmCross.Droid.Platform;
 using Cirrious.MvvmCross.ViewModels;
 using Refractored.MvxPlugins.Settings;
 using Refractored.MvxPlugins.Settings.Droid;
+using Whistle.Core.Services;
+using Whistle.Droid.PlateformSpecific;
 
 namespace Whistle.Droid
 {
@@ -26,7 +28,7 @@ namespace Whistle.Droid
         {
             base.InitializeLastChance();
             Mvx.RegisterSingleton<ISettings>(() => new MvxAndroidSettings());
-           // Mvx.RegisterSingleton<IMvxLocationWatcher>(() => new PlayServicesLocationWatcher());
+            Mvx.RegisterSingleton<IPhoneService>(() => new PhoneService());
         }
 
         protected override IMvxTrace CreateDebugTrace()

@@ -14,6 +14,7 @@
         local:customFont="fonts/ProximaNova-Bold.otf"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="#00CD98"
+         android:capitalize="characters"
         android:padding="4dp" />
 <!--Text Format('HELLO! {0}', UserName)-->
     <View

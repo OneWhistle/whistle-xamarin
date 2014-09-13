@@ -163,15 +163,19 @@ namespace Whistle.Core.ViewModels
 
 
 
-        public bool IsValid()
+        public string [] IsValid()
         {
-            if (SourcePoint == null || DestinationPoint == null)
-                return false;
-            if (_selectedPackageList.Count == 0 && SelectedRideItem == null)
-                return false;
+
+            if (SourcePoint == null )
+                return new []{"missing current location"};
+            if (DestinationPoint == null)
+                return new []{"missing destination location"};
+
+            if (_selectedPackageList.Count == 0 || SelectedRideItem == null)
+                return new[] { "missing either package or ride type" };
             //if (string.IsNullOrEmpty(JourneyMessage))
             //    return false;
-            return true;
+            return new string[] { };
         }
 
         public void UpdatePosition(double p1, double p2, bool source = true)

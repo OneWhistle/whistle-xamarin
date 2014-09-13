@@ -16,7 +16,7 @@ namespace Whistle.Droid.Helper
 {
 
 
-    public class LocationHelper<TActivity> : ILocationListener where TActivity : MvxActionBarActivity
+    public class LocationHelper<TActivity>  where TActivity : MvxActionBarActivity, ILocationListener
     {
         readonly Criteria _criteria;
         readonly TActivity _activity;
@@ -63,24 +63,24 @@ namespace Whistle.Droid.Helper
             MapView.Map.UiSettings.CompassEnabled = true;
             MapView.OnResume();
 
-            
+
+            _locationManager.RequestLocationUpdates(_locationProvider, 15000, 20, _activity, Looper.MainLooper);
 
             var location = _locationManager.GetLastKnownLocation(_locationProvider);
 
-            if (location != null)
+            if (location != null) 
             {
                 var latng = new LatLng(location.Latitude, location.Longitude);
                 OnLocationChanged(location);
                 return;
             }
 
-            _locationManager.RequestLocationUpdates(5000, 20, _criteria, this, Looper.MainLooper);
         }
 
         public void OnPause()
         {
             MapView.OnPause();
-            _locationManager.RemoveUpdates(this);
+            _locationManager.RemoveUpdates(_activity);
         }
 
 
@@ -109,7 +109,7 @@ namespace Whistle.Droid.Helper
                 return;
             foreach (var item in ViewModel.WhistleResultViewModel.WhistleList)
             {
-                var p0 = new LatLng(item.User.Location.Coordinates[0].Value, item.User.Location.Coordinates[1].Value);
+                var p0 = new LatLng(item.User.Location.Coordinates[0], item.User.Location.Coordinates[1]);
 
                 var marker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_grey_icon)));
                 _markerList.Add(marker);

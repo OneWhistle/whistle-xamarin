@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using Whistle.Core.Helpers;
+using Whistle.Core.Services;
 
 namespace Whistle.Core.Modal
 {
@@ -52,6 +53,5 @@ namespace Whistle.Core.Modal
             get { return isMale; }
             set { isMale = value; Gender = isMale.Value ? "male" : "female"; }
         }
-
     }
 }

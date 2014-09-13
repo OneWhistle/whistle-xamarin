@@ -75,7 +75,7 @@ namespace Whistle.Core.ViewModels
 
             if (result.HasError)
             {
-                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.Msg));
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
             }
             else
             {
@@ -129,7 +129,6 @@ namespace Whistle.Core.ViewModels
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
-            this.NewUser = new User();
             if (_messenger != null)
                 return;
             _messenger = Mvx.Resolve<IMvxMessenger>();

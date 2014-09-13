@@ -51,7 +51,7 @@ namespace Whistle.Droid.Views
                     (new GenericAlertFragment(Resource.Color.app_red_modal_color)
                         .WithIcon(Resource.Drawable.sad_face_white_icon)
                         .WithTitle(Resource.String.d_oops))
-                        .WithDescription(Resource.String.d_invalid_registration)
+                        .WithDescription(Resource.String.d_invalid_registration_format, message.Payload)
                         .Show(SupportFragmentManager, "invalid_registration_input");
                     break;
                 case LandingConstants.RESULT_BACKEND_ERROR:

@@ -49,7 +49,7 @@
                     android:background="@android:color/transparent"
                     android:textColor="@color/black"
                     local:MvxBind="Text WhistleEditViewModel.SourceLocation"
-                    android:hint="FAILED TO RESOLVE LOCATION"
+                    android:hint="WAITING FOR LOCATION"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </LinearLayout>

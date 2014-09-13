@@ -9,6 +9,7 @@ namespace Whistle.Droid.Views
     using Android.Content.PM;
     using Android.Gms.Maps;
     using Android.Gms.Maps.Model;
+    using Android.Locations;
     using Android.OS;
     using Cirrious.CrossCore;
     using Cirrious.MvvmCross.Droid.Fragging.Fragments;
@@ -22,7 +23,7 @@ namespace Whistle.Droid.Views
     /// Defines the MainView type.
     /// </summary>
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/MainViewTheme")]
-    public class MainView : WhistleSlidingFragmentActivity<MessageHandler>, GoogleMap.IOnMapLongClickListener, GoogleMap.IOnMarkerClickListener
+    public class MainView : WhistleSlidingFragmentActivity<MessageHandler>, GoogleMap.IOnMapLongClickListener, GoogleMap.IOnMarkerClickListener, ILocationListener
     {
         Android.Support.V4.App.DialogFragment _currentDialog;
 
@@ -110,6 +111,7 @@ namespace Whistle.Droid.Views
         {
             base.OnPause();
             _locationHelper.OnPause();
+            
         }
 
         protected override void OnSaveInstanceState(Bundle outState)
@@ -145,7 +147,7 @@ namespace Whistle.Droid.Views
                     (new GenericAlertFragment(Resource.Color.app_red_modal_color))
                         .WithIcon(Resource.Drawable.sad_face_white_icon)
                         .WithTitle(Resource.String.d_oops)
-                        .WithDescription(Resource.String.d_whistle_creation_failed)
+                        .WithDescription(Resource.String.d_whistle_creation_failed, message.Payload)
                         .Show(SupportFragmentManager, "whistle_validation_failed");
                     break;
                 case HomeConstants.RESULT_WHISTLE_CREATION_FAILED:
@@ -215,6 +217,26 @@ namespace Whistle.Droid.Views
         public bool OnMarkerClick(Marker marker)
         {
             return _locationHelper.OnMarkerClick(marker);
+        }
+
+        public void OnLocationChanged(Location location)
+        {
+            _locationHelper.OnLocationChanged(location);
+        }
+
+        public void OnProviderDisabled(string provider)
+        {
+            _locationHelper.OnProviderDisabled(provider);
+        }
+
+        public void OnProviderEnabled(string provider)
+        {
+            _locationHelper.OnProviderEnabled(provider);
+        }
+
+        public void OnStatusChanged(string provider, Availability status, Bundle extras)
+        {
+            _locationHelper.OnStatusChanged(provider, status, extras);
         }
     }
 }

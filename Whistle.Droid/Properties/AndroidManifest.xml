@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="whistle.droid" android:versionCode="1" android:versionName="1.0.4.8" android:installLocation="auto">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="whistle.droid" android:versionCode="1" android:versionName="1.0.4.9" android:installLocation="auto">
   <uses-sdk android:minSdkVersion="10" android:targetSdkVersion="19" />
 
 
@@ -18,7 +18,7 @@
   <!-- These are optional, but recommended. They will allow Maps to use the My Location provider. -->
   <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
   <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-
+  <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
   <uses-library android:name="com.google.android.maps" android:required="true" />
 
   <permission
@@ -27,9 +27,6 @@
   <uses-permission android:name="whistle.droid.permission.MAPS_RECEIVE"/>
 
   <application android:label="Whistle" android:icon="@drawable/whistle_logo_green">
-    <!-- Put your Google Maps V2 API Key here. -->
-    <!--<meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyC4pgUo1HA1EzBEjiPvxJ9Og8UijW1x1DQ" />-->
-
     <!--DEBUG KEY FOR ANDREI-->
     <meta-data android:name="com.google.android.maps.v2.API_KEY" android:value="AIzaSyAiIl_VCI6Z7jx8VjaeoVanCCeeJYZN1zY" />
     <!--RELEASE KEY-->

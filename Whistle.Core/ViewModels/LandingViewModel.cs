@@ -26,6 +26,8 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class LandingViewModel : BaseViewModel
     {
+        private IPhoneService phoneService;
+
         #region Private Picture Properties
 
         private readonly IMvxPictureChooserTask _pictureChooserTask;
@@ -98,13 +100,14 @@ namespace Whistle.Core.ViewModels
                     break;
                 case LandingConstants.ACTION_REGISTER_DONE:
                     //testing
-                    if (!NewUser.IsValid())
+                    var errors = NewUser.IsValid(phoneService);
+                    if (errors.Length > 0)
                     {
-                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
-                        NewUser = new User();
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED).WithPayload(errors[0]));
+                        this.NewUser = getNewUser();
                         return;
                     }
-                    NewUser.Location = new CustomLocation(); // to avoid location update fails.
+                    NewUser.Location = new CustomLocation(10,10); // to avoid location update fails.
                     onUserUpdate();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
@@ -123,8 +126,9 @@ namespace Whistle.Core.ViewModels
                     break;
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
-                    if (!NewUser.IsValid())
-                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
+                    var validationErr = NewUser.IsValid(phoneService);
+                    if ( validationErr.Length > 0)
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED).WithPayload(validationErr[0]));
                     else
                         _messenger.Publish(new MessageHandler(this, action));
                     break;
@@ -141,7 +145,8 @@ namespace Whistle.Core.ViewModels
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
-            this.NewUser = new User();
+            phoneService = Mvx.Resolve<IPhoneService>();
+            this.NewUser = getNewUser();
         }
 
         #endregion
@@ -157,7 +162,7 @@ namespace Whistle.Core.ViewModels
             if (result.HasError)
             {
                 _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
-                NewUser = new User();
+                this.NewUser = getNewUser();
                 return;
             }
             else
@@ -177,7 +182,14 @@ namespace Whistle.Core.ViewModels
             var bundle = new MvxBundle();
             bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(user));
             this.ShowViewModel<MainViewModel>(bundle);
-            this.NewUser = new User();
+            this.NewUser = getNewUser();
+        }
+
+        private User getNewUser()
+        {
+            var result = new User();
+            result.Phone = phoneService.GetPhoneNumber();
+            return result;
         }
     }
 }

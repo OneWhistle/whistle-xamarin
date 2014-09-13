@@ -24,8 +24,11 @@
   <string name="d_profile_update_success">Your account update successfully.</string>
   <string name="d_wrong_password">The username &amp; password do not match.\r\nPlease try again.</string>
   <string name="d_invalid_registration">Invalid or missing input dected. Please fill all required forms</string>
+  <string name="d_invalid_registration_format">Invalid input : {0}.</string>
+
+
   <string name="d_legal_term_desc">Please do read our terms &amp; privacy carefully before accepting.</string>
-  <string name="d_whistle_creation_failed">Please fill missing fields.</string>
+  <string name="d_whistle_creation_failed">Invalid input : {0}.</string>
   <string name="d_sign_out_msg">Are you sure you want to proceed ?</string>
   <string name="d_unexptected_error">Unexpected error occurred : {0}</string>
 

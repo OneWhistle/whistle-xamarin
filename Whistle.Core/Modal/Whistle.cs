@@ -8,7 +8,8 @@ namespace Whistle.Core.Modal
     {
         //[JsonProperty(PropertyName = "leavingLocation")]
         //public Point LeavingLocation { get; set; }
-        [JsonProperty(PropertyName = "destinationLocation")]
+        [JsonIgnore]
+            //(PropertyName = "destinationLocation")]
         public CustomLocation DestinationLocation { get; set; }
 
         [JsonProperty(PropertyName = "type")]
@@ -22,7 +23,7 @@ namespace Whistle.Core.Modal
         [JsonProperty(PropertyName = "size")]
         public int[] Size { get; set; }
 
-        [JsonProperty(PropertyName = "user")]
+        [JsonProperty(PropertyName = "user", NullValueHandling=NullValueHandling.Ignore)]
         public User User { get; set; }
     }
 }

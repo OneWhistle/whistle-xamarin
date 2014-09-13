@@ -25,19 +25,14 @@ namespace Whistle.Core.ViewModels
     /// </summary>
     public class MainViewModel : BaseViewModel
     {
-
-
-        /// <summary>
-        /// Backing field for my property.
-        /// </summary>
-        private string _userName = "GEORGE";
+        private IPhoneService phoneService;
 
         /// <summary>
         /// Gets or sets my property.
         /// </summary>
         public string UserName
         {
-            get { return this._userName; }
+            get { return this.NewUser.UserName; }
         }
 
         #region Properties
@@ -166,12 +161,15 @@ namespace Whistle.Core.ViewModels
             {
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
                     /*do some backend call ????.*/
-                    if (WhistleEditViewModel.IsValid())
-                    {                        
-                        onCreateWhistle();
+                    {
+                        var err = WhistleEditViewModel.IsValid();
+                        if (err.Length == 0)
+                        {
+                            onCreateWhistle();
+                        }
+                        else
+                            _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED).WithPayload(err[0]));
                     }
-                    else
-                        _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_VALIDATION_FAILED));
                     break;
                 case HomeConstants.NAV_WHISTLE_DISPLAY:
                     Settings.ShowWhistlersListMap = !Settings.ShowWhistlersListMap;
@@ -179,19 +177,24 @@ namespace Whistle.Core.ViewModels
                     break;
                 case LandingConstants.ACTION_REGISTER_DONE:
                     //testing
-                    if (!NewUser.IsValid())
                     {
-                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
-                        NewUser = new User();
-                        return;
+                        var err = NewUser.IsValid(phoneService);
+                        if (err.Length > 0)
+                        {
+                            _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED).WithPayload(err[0]));
+                            return;
+                        }
+                        onUserUpdate("PUT");
                     }
-                    onUserUpdate("PUT");
                     break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
-                    if (!NewUser.IsValid())
-                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED));
-                    else
-                        _messenger.Publish(new MessageHandler(this, value));
+                    {
+                        var err = NewUser.IsValid(phoneService);
+                        if (err.Length > 0)
+                            _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED).WithPayload(err[0]));
+                        else
+                            _messenger.Publish(new MessageHandler(this, value));
+                    }
                     break;
 
                 case HomeConstants.NAV_CLEAR_SELECTED_WHISTLER:
@@ -212,22 +215,22 @@ namespace Whistle.Core.ViewModels
             var result = await ServiceHandler.PostAction<CreateWhistleRequest, CreateWhistleResponse>(
                 new CreateWhistleRequest { Whistle = whistle },
                 ApiAction.CREATE_WHISTLE);
-            IsBusy = false;            
+            IsBusy = false;
 
             if (result.HasError)
             {
                 _messenger.Publish(new MessageHandler(this, HomeConstants.RESULT_WHISTLE_CREATION_FAILED).WithPayload(result.Error.GetErrorMessage()));
 
                 //THE following code will be removed.
-                var lat = WhistleEditViewModel.SourcePoint.Coordinates[0].Value;
-                var lng = WhistleEditViewModel.SourcePoint.Coordinates[1].Value;
+                var lat = WhistleEditViewModel.SourcePoint.Coordinates[0];
+                var lng = WhistleEditViewModel.SourcePoint.Coordinates[1];
 
                 result = new ServiceResult<CreateWhistleResponse>(new CreateWhistleResponse
                 {
                     MatchingWhisltes = new Whistle[]
                 {
-                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new double?[]{lat+0.001,lng-0.001}}}},
-                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new double?[]{lat-0.001,lng+0.001}}}},
+                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new []{lat+0.002,lng-0.001}}}},
+                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},
                 }
                 });
             }
@@ -248,6 +251,7 @@ namespace Whistle.Core.ViewModels
                 // etc...
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "InitFromBundle MainViewModel with access token {0}", NewUser.AccessToken);
             }
+            phoneService = Mvx.Resolve<IPhoneService>();
         }
 
         public void SignOut()

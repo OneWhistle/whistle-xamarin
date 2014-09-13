@@ -60,6 +60,7 @@
     <Compile Include="Modal\Whistle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\API.cs" />
+    <Compile Include="Interfaces\IPhoneService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\ContactWhistlerViewModel.cs" />
     <Compile Include="ViewModels\ContextSwitchViewModel.cs" />

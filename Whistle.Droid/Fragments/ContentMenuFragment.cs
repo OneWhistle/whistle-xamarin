@@ -108,11 +108,9 @@ namespace Whistle.Droid.Fragments
                 mainAct.SwitchContent(newContent);
         }
 
-
         public void OnListItemClick(object sender, AdapterView.ItemClickEventArgs args)
         {
             selectOption(args.Position);
         }
-
     }
 }

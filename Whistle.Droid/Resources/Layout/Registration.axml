@@ -10,7 +10,7 @@
         android:layout_width="fill_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:background="#3D3F47">
+        android:background="@drawable/profile_photo_img">
         <ImageButton
             android:id="@+id/cameraButton"
             android:layout_width="wrap_content"
@@ -45,6 +45,7 @@
             android:background="#9A9CA6"
             android:gravity="center" />
         <RadioButton
+            local:MvxBind="Checked NewUser.IsFemale"
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"

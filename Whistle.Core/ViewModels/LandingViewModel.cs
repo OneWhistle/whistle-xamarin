@@ -175,7 +175,6 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
-
         protected async override void afterUserUpdate(User user)
         {
             await System.Threading.Tasks.Task.Delay(1500);

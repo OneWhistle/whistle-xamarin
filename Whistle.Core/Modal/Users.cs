@@ -35,8 +35,9 @@ namespace Whistle.Core.Modal
         [JsonProperty(PropertyName = "location", NullValueHandling = NullValueHandling.Ignore)]
         public CustomLocation Location { get; set; }
 
+        string _gender;
         [JsonProperty(PropertyName = "gender", NullValueHandling = NullValueHandling.Ignore)]
-        public string Gender { get; set; }
+        public string Gender { get { return _gender; } set { _gender = value; isMale = _gender == "male" ? true : false; } }
         //Yes, We'll use single ahead, based on param
 
         [JsonIgnore]
@@ -51,7 +52,10 @@ namespace Whistle.Core.Modal
         public bool? IsMale
         {
             get { return isMale; }
-            set { isMale = value; Gender = isMale.Value ? "male" : "female"; }
+            set { isMale = value; Gender = isMale.Value ? "male" : "female"; OnPropertyChanged("IsMale"); OnPropertyChanged("IsFemale"); }
         }
+
+        [JsonIgnore]
+        public bool? IsFemale { get { return IsMale.Value ? false : true; } }
     }
 }

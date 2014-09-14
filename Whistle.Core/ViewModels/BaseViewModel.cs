@@ -76,16 +76,22 @@ namespace Whistle.Core.ViewModels
             if (result.HasError)
             {
                 _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
+                onUserUpdateFail();
             }
             else
             {
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
                 _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_SUCCESS));
-                this.afterUserUpdate(result.Result.NewUser);
+                this.afterUserUpdate();
             }
         }
 
-        protected abstract void afterUserUpdate(User value);
+        protected virtual void onUserUpdateFail()
+        {
+
+        }
+
+        protected abstract void afterUserUpdate();
 
         #endregion
 

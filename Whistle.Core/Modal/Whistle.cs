@@ -23,7 +23,7 @@ namespace Whistle.Core.Modal
         [JsonProperty(PropertyName = "size")]
         public int[] Size { get; set; }
 
-        [JsonProperty(PropertyName = "user", NullValueHandling=NullValueHandling.Ignore)]
-        public User User { get; set; }
+        [JsonProperty(NullValueHandling= NullValueHandling.Ignore)]
+        public MatchingWhistle[] MatchingWhisltes { get; set; }
     }
 }

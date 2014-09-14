@@ -56,6 +56,9 @@
     </MonoDroidExtraArgs>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Analytics">
+      <HintPath>..\Components\Analytics-1.0.0\lib\android\Analytics.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\MonoAndroid\Cirrious.CrossCore.dll</HintPath>
     </Reference>
@@ -110,6 +113,10 @@
     <Reference Include="Mono.Android" />
     <Reference Include="Mono.Android.Export" />
     <Reference Include="mscorlib" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Components\Analytics-1.0.0\lib\android\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OkHttp">
       <HintPath>..\Components\modernhttpclient-2.0.1\lib\android\OkHttp.dll</HintPath>
     </Reference>
@@ -121,6 +128,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO" />
     <Reference Include="System.Net">
       <HintPath>..\packages\MvvmCross.PortableSupport.3.1.1\lib\MonoAndroid\System.Net.dll</HintPath>
     </Reference>
@@ -166,6 +174,7 @@
     <Compile Include="Fragments\RegistrationFragment.cs" />
     <Compile Include="Fragments\SettingFragments.cs" />
     <Compile Include="Fragments\SignOutFragment.cs" />
+    <Compile Include="Fragments\TrackingFragment.cs" />
     <Compile Include="Fragments\WhistleFragment.cs" />
     <Compile Include="Fragments\WhistleWorkFragment.cs" />
     <Compile Include="Helper\ListItemHelper.cs" />
@@ -295,6 +304,15 @@
       <SubType>AndroidResource</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\Layout\shared_item_detail.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\tracking.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\tab_consumer.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\Layout\tab_provider.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -679,6 +697,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="Analytics">
+      <Visible>False</Visible>
+      <Version>1.0.0</Version>
+      <InstallationInProgress>True</InstallationInProgress>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="googleplayservicesgingerbread">
       <Visible>False</Visible>
       <Version>19.0.0</Version>

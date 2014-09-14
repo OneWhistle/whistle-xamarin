@@ -53,10 +53,12 @@
     <Compile Include="Modal\CreateWhistleRequest.cs" />
     <Compile Include="Modal\ErrorResponse.cs" />
     <Compile Include="Modal\CustomLocation.cs" />
+    <Compile Include="Modal\MatchingWhistle.cs" />
     <Compile Include="Modal\Menus.cs" />
     <Compile Include="Modal\RegistrationRequest.cs" />
     <Compile Include="Modal\ServiceResult.cs" />
     <Compile Include="Modal\Users.cs" />
+    <Compile Include="Modal\UserWhistle.cs" />
     <Compile Include="Modal\Whistle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\API.cs" />
@@ -66,12 +68,17 @@
     <Compile Include="ViewModels\ContextSwitchViewModel.cs" />
     <Compile Include="ViewModels\LandingViewModel.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
+    <Compile Include="ViewModels\TrackingViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="ViewModels\WhistleEditViewModel.cs" />
     <Compile Include="ViewModels\WhistleItemViewModel.cs" />
     <Compile Include="ViewModels\WhistleResultViewModel.cs" />
+    <Compile Include="WhistleTrace.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Analytics">
+      <HintPath>..\Lib\Analytics.dll</HintPath>
+    </Reference>
     <Reference Include="Cirrious.CrossCore">
       <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.1.1\lib\portable-win+net45+sl50+wp8+MonoAndroid+MonoTouch\Cirrious.CrossCore.dll</HintPath>
     </Reference>

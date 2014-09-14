@@ -7,6 +7,7 @@ using Cirrious.MvvmCross.Binding.Droid.BindingContext;
 using Whistle.Droid.Fragments;
 using Whistle.Core.ViewModels;
 using Android.Util;
+using Android.Gms.Analytics;
 namespace Whistle.Droid.Helper
 {
     public abstract class WhistleActivity<TMessage> : MvxActionBarActivity where TMessage : MvxMessage
@@ -35,6 +36,7 @@ namespace Whistle.Droid.Helper
                 }
             };
         }
+
 
         protected override void OnResume()
         {

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/black">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" />
+        <FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+            <LinearLayout
+                android:tag="teset"
+                android:layout_width="fill_parent"
+                android:id="@+id/consumer"
+                android:layout_height="fill_parent">
+                <Mvx.MvxListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="ItemsSource TrackingViewModel.ConsumerWhistleCollection"
+                    local:MvxItemTemplate="@layout/favoritesitemlayout"
+                    android:background="#9A9CA6"
+                    android:dividerHeight="2px" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:id="@+id/provider"
+                android:layout_height="fill_parent">
+                <Mvx.MvxListView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    local:MvxBind="ItemsSource TrackingViewModel.ProviderWhistleCollection"
+                    local:MvxItemTemplate="@layout/favoritesitemlayout"
+                    android:background="#9A9CA6"
+                    android:dividerHeight="2px" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</TabHost>

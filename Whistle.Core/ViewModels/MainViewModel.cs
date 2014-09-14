@@ -73,13 +73,15 @@ namespace Whistle.Core.ViewModels
 
         public ContactWhistlerViewModel ContactWhistlerViewModel { get; private set; }
 
+        public TrackingViewModel TrackingViewModel { get; private set; }
+
         public MainViewModel(IMvxMessenger messenger)
         //IMvxLocationWatcher locationWatcher)
         {
             _messenger = messenger;
             WhistleEditViewModel = new WhistleEditViewModel();
             ContextSwitchViewModel = new ContextSwitchViewModel();
-            WhistleResultViewModel = new WhistleResultViewModel(new Whistle[] { });
+            WhistleResultViewModel = new WhistleResultViewModel(new MatchingWhistle[] { });
 
         }
 
@@ -227,16 +229,20 @@ namespace Whistle.Core.ViewModels
 
                 result = new ServiceResult<CreateWhistleResponse>(new CreateWhistleResponse
                 {
-                    MatchingWhisltes = new Whistle[]
-                {
-                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new []{lat+0.002,lng-0.001}}}},
-                    new Whistle { User = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},
-                }
+                    NewWhistle = new Whistle
+                    {
+                        MatchingWhisltes = new[]                    
+                        {                                    
+                          new MatchingWhistle{ Dist = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat+0.002,lng-0.001}}}},                   
+                           new MatchingWhistle{ Dist = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},                    
+                        }
+                    }
                 });
+
             }
 
             SelectedWhistleItem = null;
-            this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.MatchingWhisltes);
+            this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.NewWhistle.MatchingWhisltes);
             _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
         }
 
@@ -247,10 +253,13 @@ namespace Whistle.Core.ViewModels
             {
                 var userJson = parameters.Data[Settings.AccessTokenKey];
                 NewUser = JsonConvert.DeserializeObject<User>(userJson);
+                var userWhistles = JsonConvert.DeserializeObject<UserWhistle>(userJson);
                 Settings.AccessToken = NewUser.AccessToken;
                 // etc...
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "InitFromBundle MainViewModel with access token {0}", NewUser.AccessToken);
+                this.TrackingViewModel = new ViewModels.TrackingViewModel(userWhistles.Whistles);
             }
+
             phoneService = Mvx.Resolve<IPhoneService>();
         }
 
@@ -260,7 +269,7 @@ namespace Whistle.Core.ViewModels
             this.ShowViewModel<LandingViewModel>();
         }
 
-        protected override void afterUserUpdate(User value)
+        protected override void afterUserUpdate()
         {
 
         }

@@ -1,4 +1,5 @@
 using Cirrious.CrossCore.IoC;
+using Segment;
 using Whistle.Core.ViewModels;
 
 namespace Whistle.Core
@@ -7,6 +8,7 @@ namespace Whistle.Core
     {
         public override void Initialize()
         {
+            Analytics.Initialize("nrxalgi1m1");
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()

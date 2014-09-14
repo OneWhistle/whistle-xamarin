@@ -175,12 +175,17 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
+        protected override void onUserUpdateFail()
+        {
+            base.onUserUpdateFail();
+            this.NewUser = getNewUser();
+        }
 
-        protected async override void afterUserUpdate(User user)
+        protected async override void afterUserUpdate()
         {
             await System.Threading.Tasks.Task.Delay(1500);
             var bundle = new MvxBundle();
-            bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(user));
+            bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(NewUser));
             this.ShowViewModel<MainViewModel>(bundle);
             this.NewUser = getNewUser();
         }
@@ -188,7 +193,7 @@ namespace Whistle.Core.ViewModels
         private User getNewUser()
         {
             var result = new User();
-            result.Phone = phoneService.GetPhoneNumber();
+     //       result.Phone = phoneService.GetPhoneNumber();
             return result;
         }
     }

@@ -50,7 +50,6 @@ namespace Whistle.Core.Helpers
             }
         }
 
-
         public static string AccessToken
         {
             get { return AppSettings.GetValueOrDefault(AccessTokenKey, AccessTokenDefault); }

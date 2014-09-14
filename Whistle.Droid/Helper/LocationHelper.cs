@@ -109,7 +109,7 @@ namespace Whistle.Droid.Helper
                 return;
             foreach (var item in ViewModel.WhistleResultViewModel.WhistleList)
             {
-                var p0 = new LatLng(item.User.Location.Coordinates[0], item.User.Location.Coordinates[1]);
+                var p0 = new LatLng(item.Obj.Location.Coordinates[0], item.Obj.Location.Coordinates[1]);
 
                 var marker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_grey_icon)));
                 _markerList.Add(marker);

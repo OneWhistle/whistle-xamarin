@@ -4,6 +4,10 @@
   <string name="ApplicationName">Whistle</string>
   <string name="menu_help">help</string>
 
+  <!--tab header-->
+  <string name="tab_consumer">CONSUMER</string>
+  <string name="tab_provider">PROVIDER</string>
+  
   <!--ACTION BAR TITLES-->
   <string name="t_consumer">CONSUMER</string>
   <string name="t_provider">PROVIDER</string>

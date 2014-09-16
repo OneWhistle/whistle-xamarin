@@ -93,6 +93,19 @@ namespace Whistle.Droid.Views
                 case LandingConstants.ACTION_DOB_OPTION:
                     (new GenericDialogFragment(this) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "datePicker");
                     break;
+                case LandingConstants.ACTION_ENTER_CODE:
+                    (new GenericDialogFragment(Resource.Layout.EnterCode) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "enter_code");
+                    break;
+                case LandingConstants.ACTION_GENERATE_PASSWORD:
+                    (new GenericDialogFragment(Resource.Layout.ResetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "reset_password");
+                    break;
+                case LandingConstants.RESULT_RESET_PASSWORD_SUCCESS:
+                    (new GenericAlertFragment(Resource.Color.app_green_modal_color))
+                        .WithIcon(Resource.Drawable.happy_face_white_icon)
+                        .WithTitle(Resource.String.d_awesome)
+                        .WithDescription(Resource.String.d_password_reset_success)
+                        .Show(SupportFragmentManager, "resetpassword_success");
+                    break;
                 // Others are handled by the view model
                 default:
                     break;

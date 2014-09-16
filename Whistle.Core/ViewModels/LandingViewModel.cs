@@ -9,6 +9,7 @@ using Whistle.Core.Modal;
 namespace Whistle.Core.ViewModels
 {
     using Cirrious.CrossCore;
+    using Cirrious.CrossCore.Platform;
     using Cirrious.MvvmCross.Plugins.Messenger;
     using Cirrious.MvvmCross.Plugins.PictureChooser;
     using Cirrious.MvvmCross.ViewModels;
@@ -36,6 +37,14 @@ namespace Whistle.Core.ViewModels
         #endregion
 
         public override bool IsUserCreationMode { get { return true; } }
+        private string _resetPasswordPhone;
+        public string ResetPasswordPhone { get { return _resetPasswordPhone; } set { _resetPasswordPhone = value; RaisePropertyChanged(() => ResetPasswordPhone); } }
+
+        private PasswordResponse _passwordResetResponse;
+        public PasswordResponse PasswordResetResponse { get { return _passwordResetResponse; } set { _passwordResetResponse = value; RaisePropertyChanged(() => PasswordResetResponse); } }
+
+        private PasswordReset _passwordReset;
+        public PasswordReset PasswordResets { get { return _passwordReset; } set { _passwordReset = value; RaisePropertyChanged(() => PasswordResets); } }
 
         #region Constructor
 
@@ -108,7 +117,7 @@ namespace Whistle.Core.ViewModels
                         this.NewUser = getNewUser();
                         return;
                     }
-                    NewUser.Location = new CustomLocation(10,10); // to avoid location update fails.
+                    NewUser.Location = new CustomLocation(10, 10); // to avoid location update fails.
                     onUserUpdate();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
@@ -133,17 +142,75 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_REGISTER_CONTINUE:
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     var validationErr = NewUser.IsValid(phoneService);
-                    if ( validationErr.Length > 0)
+                    if (validationErr.Length > 0)
                         _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED).WithPayload(validationErr[0]));
                     else
                         _messenger.Publish(new MessageHandler(this, action));
                     break;
+                case LandingConstants.ACTION_GET_PASSWORD_RESET_KEY:
+                    GetPasswordResetKey();
+                    break;
+                case LandingConstants.ACTION_RESET_PASSWORD:
+                     var pErrors = PasswordResets.IsPassowrdMatched();
+                     if (pErrors.Length > 0)
+                    {
+                        _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_VALIDATION_FAILED).WithPayload(pErrors[0]));
+                        this.PasswordResets = new PasswordReset();
+                        return;
+                    }
+                    ResetPassowrd();
+                    break; 
                 default:
                     _messenger.Publish(new MessageHandler(this, action));
                     break;
             }
         }
 
+        #endregion
+
+        #region Password Reset Key Grabber
+
+        protected async void GetPasswordResetKey()
+        {
+            IsBusy = true;
+            var result = await ServiceHandler.PostAction<PasswordResetRequest, PasswordResponse>(new PasswordResetRequest { Phone=ResetPasswordPhone }, ApiAction.PASSWORD_RESET_REQUSET);
+            IsBusy = false;
+            if (result.HasError)
+            {
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
+                this.NewUser = getNewUser();
+                return;
+            }
+            else
+            {
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "GetPasswordKey Success");
+                PasswordResetResponse = result.Result;
+                _messenger.Publish(new MessageHandler(this, LandingConstants.ACTION_ENTER_CODE));
+            }
+        }
+
+
+        protected async void ResetPassowrd()
+        {
+            IsBusy = true;
+            PasswordResets.PasswordKey = PasswordResetResponse.Key; // We'll handle smartly
+            PasswordResets.Phone = ResetPasswordPhone;
+            var result = await ServiceHandler.PostAction<PasswordReset, PasswordResetResponse>(PasswordResets, ApiAction.PASSWORD_RESET);
+            IsBusy = false;
+            if (result.HasError)
+            {
+                _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_BACKEND_ERROR).WithPayload(result.Error.GetErrorMessage()));
+                this.PasswordResets = new PasswordReset();
+                return;
+            }
+            else
+            {
+                Mvx.Trace(MvxTraceLevel.Diagnostic, "ResetPassword Success");
+                
+                _messenger.Publish(new MessageHandler(this, LandingConstants.ACTION_SIGNIN));
+               // _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_RESET_PASSWORD_SUCCESS));
+            }
+        }
         #endregion
 
         #region Init Bundle
@@ -153,6 +220,7 @@ namespace Whistle.Core.ViewModels
             base.InitFromBundle(parameters);
             phoneService = Mvx.Resolve<IPhoneService>();
             this.NewUser = getNewUser();
+            PasswordResets = new PasswordReset();
         }
 
         #endregion

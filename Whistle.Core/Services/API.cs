@@ -23,6 +23,8 @@ namespace Whistle.Core.Services
         internal const string UPDATE_PROFILE = "user";
         internal const string REGISTRATION = "user";
         internal const string CREATE_WHISTLE = "whistle";
+        internal const string PASSWORD_RESET = "user/passwordReset";
+        internal const string PASSWORD_RESET_REQUSET = "user/passwordResetReq";
         //So on...
     }
 

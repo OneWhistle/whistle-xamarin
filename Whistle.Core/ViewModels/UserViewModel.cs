@@ -25,7 +25,16 @@ namespace Whistle.Core.ViewModels
 
             return new string[] { };
         }
+        public static string[] IsPassowrdMatched(this PasswordReset passowrdReset)
+        {
+            /*It should be better that that..*/
+            if (string.IsNullOrEmpty(passowrdReset.Password) || string.IsNullOrEmpty(passowrdReset.ConfPassword))
+                return new[] { "missing password" };
+            if (string.Compare(passowrdReset.Password,passowrdReset.ConfPassword)>0)
+                return new[] { "password not matched" };
 
+            return new string[] { };
+        }
     }
 
 }

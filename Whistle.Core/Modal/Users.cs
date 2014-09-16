@@ -58,4 +58,43 @@ namespace Whistle.Core.Modal
         [JsonIgnore]
         public bool? IsFemale { get { return IsMale.Value ? false : true; } }
     }
+
+    public class PasswordResponse
+    {
+        [JsonProperty(PropertyName = "key", NullValueHandling = NullValueHandling.Ignore)]
+        public string Key { get; set; }
+
+        [JsonProperty(PropertyName = "message", NullValueHandling = NullValueHandling.Ignore)]
+        public string Message { get; set; }
+
+        [JsonIgnore]
+        public bool Disable { get; set; }
+    }
+
+    public class PasswordReset
+    {
+        [JsonProperty(PropertyName = "password", NullValueHandling = NullValueHandling.Ignore)]
+        public string Password { get; set; }
+
+        [JsonProperty(PropertyName = "passwordResetKey", NullValueHandling = NullValueHandling.Ignore)]
+        public string PasswordKey { get; set; }
+
+        [JsonProperty(PropertyName = "phone", NullValueHandling = NullValueHandling.Ignore)]
+        public string Phone { get; set; }
+
+        [JsonIgnore]
+        public string ConfPassword { get; set; }
+    }
+
+    public class PasswordResetRequest
+    {
+        [JsonProperty(PropertyName = "phone", NullValueHandling = NullValueHandling.Ignore)]
+        public string Phone { get; set; }
+    }
+
+    public class PasswordResetResponse
+    {
+        [JsonProperty(PropertyName = "ok", NullValueHandling = NullValueHandling.Ignore)]
+        public bool IsChanged { get; set; }
+    }
 }

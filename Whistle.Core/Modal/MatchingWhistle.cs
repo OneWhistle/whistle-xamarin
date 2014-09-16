@@ -10,7 +10,7 @@ namespace Whistle.Core.Modal
     public class MatchingWhistle
     {
         [JsonProperty(PropertyName = "dis")]
-        public int Dis { get; set; }
+        public double Dis { get; set; }
         [JsonProperty(PropertyName = "obj")]
         public User Obj { get; set; }
     }

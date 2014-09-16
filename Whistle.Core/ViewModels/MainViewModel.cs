@@ -231,18 +231,19 @@ namespace Whistle.Core.ViewModels
                 {
                     NewWhistle = new Whistle
                     {
-                        MatchingWhisltes = new[]                    
+                       
+                    },
+                    MatchingWhisltes = new[]                    
                         {                                    
                           new MatchingWhistle{ Dis = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat+0.002,lng-0.001}}}},                   
                            new MatchingWhistle{ Dis = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},                    
                         }
-                    }
                 }, "will_mock_asap");
 
             }
 
             SelectedWhistleItem = null;
-            this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.NewWhistle.MatchingWhisltes);
+            this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(result.Result.MatchingWhisltes);
             _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
         }
 

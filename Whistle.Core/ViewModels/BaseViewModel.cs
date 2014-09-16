@@ -82,7 +82,7 @@ namespace Whistle.Core.ViewModels
             {
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "onRegister Success");
                 _messenger.Publish(new MessageHandler(this, LandingConstants.RESULT_REGISTER_SUCCESS));
-                this.afterUserUpdate();
+                this.afterUserUpdate(result.RawJsonResponse);
             }
         }
 
@@ -91,7 +91,7 @@ namespace Whistle.Core.ViewModels
 
         }
 
-        protected abstract void afterUserUpdate();
+        protected abstract void afterUserUpdate(string rawJson);
 
         #endregion
 

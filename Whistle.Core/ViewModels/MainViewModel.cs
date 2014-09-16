@@ -233,8 +233,8 @@ namespace Whistle.Core.ViewModels
                     {
                         MatchingWhisltes = new[]                    
                         {                                    
-                          new MatchingWhistle{ Dist = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat+0.002,lng-0.001}}}},                   
-                           new MatchingWhistle{ Dist = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},                    
+                          new MatchingWhistle{ Dis = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat+0.002,lng-0.001}}}},                   
+                           new MatchingWhistle{ Dis = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},                    
                         }
                     }
                 }, "will_mock_asap");
@@ -270,7 +270,7 @@ namespace Whistle.Core.ViewModels
             this.ShowViewModel<LandingViewModel>();
         }
 
-        protected override void afterUserUpdate()
+        protected override void afterUserUpdate(string json)
         {
 
         }
@@ -280,6 +280,5 @@ namespace Whistle.Core.ViewModels
             SelectedWhistleItem = new WhistleItemViewModel(new Whistle());// change by whistlerItem
             RaisePropertyChanged(() => SelectedWhistleItem);
         }
-
     }
 }

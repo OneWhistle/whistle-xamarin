@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,8 +9,9 @@ namespace Whistle.Core.Modal
 {
     public class MatchingWhistle
     {
-        public int Dist { get; set; }
-
+        [JsonProperty(PropertyName = "dis")]
+        public int Dis { get; set; }
+        [JsonProperty(PropertyName = "obj")]
         public User Obj { get; set; }
     }
 }

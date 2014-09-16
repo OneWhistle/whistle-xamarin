@@ -17,7 +17,7 @@ namespace Whistle.Droid.PlateformSpecific
         {
             if (string.IsNullOrEmpty(input) || input.Length < 6)
                 return false;
-            return  PhoneNumberUtils.IsGlobalPhoneNumber(input);
+            return input.StartsWith("+") && PhoneNumberUtils.IsGlobalPhoneNumber(input);
         }
 
      

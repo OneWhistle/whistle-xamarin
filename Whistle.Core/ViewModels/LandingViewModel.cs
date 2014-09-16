@@ -13,6 +13,7 @@ namespace Whistle.Core.ViewModels
     using Cirrious.MvvmCross.Plugins.PictureChooser;
     using Cirrious.MvvmCross.ViewModels;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.IO;
     using System.Linq;
@@ -186,11 +187,14 @@ namespace Whistle.Core.ViewModels
             this.NewUser = getNewUser();
         }
 
-        protected async override void afterUserUpdate()
+        protected async override void afterUserUpdate(string rawJson)
         {
             await System.Threading.Tasks.Task.Delay(1500);
+            var jso = JObject.Parse(rawJson);
+            var user = jso["newUser"].ToString() ;
+
             var bundle = new MvxBundle();
-            bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(NewUser));
+            bundle.Data.Add(Settings.AccessTokenKey, user);
             this.ShowViewModel<MainViewModel>(bundle);
             this.NewUser = getNewUser();
         }

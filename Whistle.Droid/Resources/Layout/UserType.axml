@@ -52,11 +52,14 @@
             local:MvxBind="Checked ContextSwitchViewModel.IsTrackingChecked;Click SelectUserType" />
     </RadioGroup>
     <TextView
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="-50dp"
         android:layout_below="@id/radio_group"
         android:background="@drawable/circle_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#f00"
-        android:text="00" />
+        local:MvxBind="Text TrackingViewModel.Count"
+        android:hint="00"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

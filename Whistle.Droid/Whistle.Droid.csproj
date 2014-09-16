@@ -694,6 +694,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\circle_background.xml" />
+    <AndroidResource Include="Resources\drawable\selector_edittext.xml" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

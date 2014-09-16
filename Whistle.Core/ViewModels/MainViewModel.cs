@@ -49,6 +49,9 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
+        private MvxCommand<WhistleItemViewModel> displayWhistleItem;
+        public ICommand DisplayWhistleItem { get { return this.displayWhistleItem ?? (this.displayWhistleItem = new MvxCommand<WhistleItemViewModel>(onDisplayWhistleItem)); } }
+
         private MvxCommand selectUserType;
         public ICommand SelectUserType { get { return this.selectUserType ?? (this.selectUserType = new MvxCommand(onUserTypeSelected)); } }
 
@@ -57,7 +60,6 @@ namespace Whistle.Core.ViewModels
 
         private MvxCommand<string> userAction;
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(onUserAction)); } }
-
 
         public MvxCommand contactWhistler;
         public ICommand ContactWhistler { get { return this.contactWhistler ?? (this.contactWhistler = new MvxCommand(onContactWhistler)); } }
@@ -90,6 +92,17 @@ namespace Whistle.Core.ViewModels
         //{
         //    return SelectedWhistleItem != null;
         //}
+
+        private void onDisplayWhistleItem(WhistleItemViewModel whistleItem)
+        {
+            //this.WhistleEditViewModel = new WhistleEditViewModel
+            //{
+
+            //};
+
+            this.WhistleResultViewModel = new ViewModels.WhistleResultViewModel(whistleItem.Whistle.MatchingWhisltes);
+            _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
+        }
 
         private void onContactWhistler()
         {

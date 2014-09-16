@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:weightSum="8">
+    android:weightSum="9">
     <LinearLayout
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:gravity="center"
         android:background="@drawable/profile_photo_img">
         <ImageButton
@@ -22,7 +22,7 @@
         android:layout_height="0dp"
         android:layout_width="fill_parent"
         android:layout_weight="1"
-        android:background="#EEF0FF"
+        android:background="@color/app_light_gray_color"
         android:orientation="horizontal">
     <!--<LinearLayout
         android:layout_height="0dp"
@@ -34,8 +34,9 @@
             local:MvxBind="Checked NewUser.IsMale"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:gravity="center"
-            android:layout_gravity="center"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_gravity="center_vertical"
             android:layout_height="wrap_content"
             android:id="@+id/notToBeUsed1"
             android:button="@drawable/male_button_state_list" />
@@ -49,8 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_gravity="center"
+            android:layout_marginLeft="20dp"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical"
             android:id="@+id/notToBeUsed2"
             android:button="@drawable/female_button_state_list" />
     </RadioGroup>
@@ -82,12 +84,12 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="0dp"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             local:MvxBind="Text NewUser.UserName; Enabled IsUserCreationMode"
             android:textColor="#000"
             android:hint="USERNAME"
             android:textSize="14sp"
-            android:background="#FFFFFF"
+            android:background="@drawable/selector_edittext"
             android:paddingLeft="10dp" />
         <View
             android:layout_width="fill_parent"
@@ -99,10 +101,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="0dp"
-            android:background="#FFFFFF"
-            local:MvxBind="Text NewUser.Password"
+            android:background="@drawable/selector_edittext"
+            local:MvxBind="Text NewUser.Password; Enabled IsUserCreationMode"
             android:textColor="#000"
-            android:inputType="textPassword"
+            android:inputType="textVisiblePassword"
             android:password="true"
             android:hint="PASSWORD"
             android:textSize="14sp"
@@ -127,10 +129,14 @@
             android:digits="0123456789+"
             android:textColor="#000"
             local:MvxBind="Text NewUser.Phone; Enabled IsUserCreationMode"
-            android:background="#FFFFFF"
+            android:background="@drawable/selector_edittext"
             android:textSize="14sp"
             android:gravity="center_vertical"
             android:paddingLeft="10dp" />
+        <View
+            android:layout_width="1px"
+            android:layout_height="fill_parent"
+            android:background="#9A9CA6" />
         <RelativeLayout
             android:layout_height="fill_parent"
             android:layout_width="0dp"
@@ -143,7 +149,7 @@
                 android:hint="DOB"
                 android:textSize="14sp"
                 android:textColor="#000"
-                android:background="#EEF0FF"
+                android:background="@color/app_light_gray_color"
                 local:MvxBind="Text NewUser.DOBStr"
                 android:gravity="center_vertical"
                 android:paddingLeft="10dp" />

@@ -105,7 +105,7 @@ namespace Whistle.Droid.Helper
 
         public void ShowWhistlers()
         {
-            if (_markerList.Count > 0)
+            if (_markerList.Count > 0 || ViewModel.WhistleResultViewModel.WhistleList == null)
                 return;
             foreach (var item in ViewModel.WhistleResultViewModel.WhistleList)
             {

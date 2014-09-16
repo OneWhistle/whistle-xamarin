@@ -25,7 +25,7 @@
                 <Mvx.MvxListView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    local:MvxBind="ItemsSource TrackingViewModel.ConsumerWhistleCollection"
+                    local:MvxBind="ItemsSource TrackingViewModel.ConsumerWhistleCollection; ItemClick DisplayWhistleItem"
                     local:MvxItemTemplate="@layout/item_whistle"
                     android:background="#9A9CA6"
                     android:dividerHeight="2px" />
@@ -37,7 +37,7 @@
                 <Mvx.MvxListView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    local:MvxBind="ItemsSource TrackingViewModel.ProviderWhistleCollection"
+                    local:MvxBind="ItemsSource TrackingViewModel.ProviderWhistleCollection; ItemClick DisplayWhistleItem"
                     local:MvxItemTemplate="@layout/item_whistle"
                     android:background="#9A9CA6"
                     android:dividerHeight="2px" />

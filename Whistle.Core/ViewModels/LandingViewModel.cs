@@ -122,7 +122,12 @@ namespace Whistle.Core.ViewModels
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_GOOGLE_LOGIN_VALIDATE:
-                    this.ShowViewModel<MainViewModel>(new MvxBundle());
+
+                    var bundle = new MvxBundle();
+#if DEBUG
+                    bundle.Data.Add(Settings.AccessTokenKey, @"{""__v"":9,""_id"":""5414b8b3f8e1d50b0016b0c1"",""accessToken"":""887393c64ca993c34efc5c095d64f6b6"",""dob"":""2014-08-13T00:00:00.000Z"",""email"":"""",""lastLogin"":""2014-09-15T06:12:08.773Z"",""name"":""andrei talantsy"",""password"":""talanta"",""phone"":""+33669081609"",""username"":""talanta3"",""Whistles"":[{""_id"":""5414bd88f8e1d50b0016b0c8"",""provider"":false,""public"":true,""comment"":""test"",""type"":""MINI_BUS"",""size"":[2,3],""connections"":[]},{""_id"":""5414be6ff8e1d50b0016b0c9"",""provider"":false,""public"":true,""comment"":""test"",""type"":""MINI_BUS"",""size"":[2,3],""connections"":[]},{""_id"":""5414c9e9e083c40b0089e327"",""provider"":false,""public"":true,""comment"":null,""type"":""MINI_BUS"",""size"":[3,4],""connections"":[]},{""_id"":""5414ca2fe083c40b0089e328"",""provider"":true,""public"":true,""comment"":null,""type"":""MINI_BUS"",""size"":[3,4],""connections"":[]},{""_id"":""5415884621fa1f0b0038d6f3"",""provider"":false,""public"":true,""comment"":null,""type"":""LARGE_CAR"",""size"":[3],""connections"":[]},{""_id"":""5415936d21fa1f0b0038d6f5"",""provider"":true,""public"":true,""comment"":null,""type"":""LARGE_CAR"",""size"":[3],""connections"":[]},{""_id"":""541596ae21fa1f0b0038d6f7"",""provider"":true,""public"":true,""comment"":null,""type"":""LARGE_CAR"",""size"":[3],""connections"":[]},{""_id"":""5415990921fa1f0b0038d6f9"",""provider"":true,""public"":true,""comment"":null,""type"":""LARGE_CAR"",""size"":[3],""connections"":[]},{""_id"":""54159a7921fa1f0b0038d6fb"",""provider"":false,""public"":true,""comment"":null,""type"":""LARGE_CAR"",""size"":[3],""connections"":[]}],""location"":{""type"":""Point"",""coordinates"":[65.9667,-18.5333]}}	");
+#endif
+                    this.ShowViewModel<MainViewModel>(bundle);
                     break;
                 case LandingConstants.ACTION_TAKE_PICTURE_CAMERA:
                     TakePicture();
@@ -236,18 +241,24 @@ namespace Whistle.Core.ViewModels
             else
             {
                 var bundle = new MvxBundle();
-                bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(result.Result));
+                bundle.Data.Add(Settings.AccessTokenKey, result.RawJsonResponse);
                 this.ShowViewModel<MainViewModel>(bundle);
             }
         }
 
         #endregion
 
-        protected async override void afterUserUpdate(User user)
+        protected override void onUserUpdateFail()
+        {
+            base.onUserUpdateFail();
+            this.NewUser = getNewUser();
+        }
+
+        protected async override void afterUserUpdate()
         {
             await System.Threading.Tasks.Task.Delay(1500);
             var bundle = new MvxBundle();
-            bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(user));
+            bundle.Data.Add(Settings.AccessTokenKey, JsonConvert.SerializeObject(NewUser));
             this.ShowViewModel<MainViewModel>(bundle);
             this.NewUser = getNewUser();
         }
@@ -255,7 +266,7 @@ namespace Whistle.Core.ViewModels
         private User getNewUser()
         {
             var result = new User();
-            result.Phone = phoneService.GetPhoneNumber();
+     //       result.Phone = phoneService.GetPhoneNumber();
             return result;
         }
     }

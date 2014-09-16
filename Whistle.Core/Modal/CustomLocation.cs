@@ -13,10 +13,12 @@ namespace Whistle.Core.Modal
             : this(0, 0)
         {
         }
-        public CustomLocation(double lat, double lg)
+        //beware of the order (longitude , latitude)
+        // https://github.com/ramaprasanna/whistle/issues/20
+        public CustomLocation(double longitude, double latitude)
         {
             this.Type = "point";
-            this.Coordinates = new double[] { lat, lg };
+            this.Coordinates = new double[] { longitude, latitude };
         }
     }
 }

@@ -87,7 +87,16 @@
                     android:layout_height="wrap_content"
                     android:textSize="10sp" />
             <!--; Click WhistleEditViewModel.SetDestinationSelection-->
-                <EditText
+                <MvxAutoCompleteTextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="SET DESTINATION LOCATION"
+                    android:textColor="@color/black"
+                    local:MvxItemTemplate="@layout/item_whistle"
+                    local:MvxBind="PartialText WhistleEditViewModel.DestinationHint; ItemsSource WhistleEditViewModel.DestinationSuggestion; Text WhistleEditViewModel.DestinationLocation;" />
+            <!--"{'Text':{'Path':'EnteredText','Mode':'TwoWay'},'ItemsSource':{'Path':'AutoCompleteSuggestions'},
+              'PartialText':{'Path':'CurrentTextHint'},'SelectedObject':{'Path':'CurrentBook'}}"-->
+            <!--<EditText 
                     android:background="@android:color/transparent"
                     android:textColor="@color/black"
                     local:MvxBind="Text WhistleEditViewModel.DestinationLocation"
@@ -95,7 +104,7 @@
                     android:focusable="true"
                     android:clickable="true"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content" />-->
             </LinearLayout>
         </LinearLayout>
     </RadioGroup>
@@ -122,7 +131,7 @@
             <EditText
                 android:hint="PACKAGES"
                 android:enabled="false"
-                local:MvxBind="Text WhistleEditViewModel.SelectedPackageText"
+                local:MvxBind="Text PackageList(WhistleEditViewModel.SelectedPackageList)"
                 android:background="@color/app_dark_gray_color"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="10dp"

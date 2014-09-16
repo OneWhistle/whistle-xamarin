@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using Whistle.Core.Modal;
 
 namespace Whistle.Core.ViewModels
 {
     public class WhistleResultViewModel
     {
-        public IList<Whistle.Core.Modal.Whistle> WhistleList { get; private set; }
+        public IList<Whistle.Core.Modal.MatchingWhistle> WhistleList { get; private set; }
 
 
-        public WhistleResultViewModel(IList<Whistle.Core.Modal.Whistle> result)
+        public WhistleResultViewModel(IList<MatchingWhistle> result)
         {
             this.WhistleList = result;
         }

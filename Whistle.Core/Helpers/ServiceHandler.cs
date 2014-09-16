@@ -42,6 +42,7 @@ namespace Whistle.Core.Helper
         public static async Task<ServiceResult<TResponse>> PostAction<TRequest, TResponse>(TRequest obj, string apiSection, string method = "POST") where TResponse : class
         {
             TResponse output = null;
+            string response = string.Empty;
             using (var client = CreateClient())
             {
                 try
@@ -71,24 +72,24 @@ namespace Whistle.Core.Helper
                         result = await client.PostAsync(url, content);
                     if (method == "PUT")//Update Profile
                         result = await client.PutAsync(url, content);
-                    var response = await result.Content.ReadAsStringAsync();
+                    response = await result.Content.ReadAsStringAsync();
 
                     Mvx.Trace(MvxTraceLevel.Diagnostic, "request : {0}\r\nResult: {1} / {2}", jsonData, result.StatusCode.ToString(), response);
                     if (!result.IsSuccessStatusCode)
                     {
                         var err = JsonConvert.DeserializeObject<ErrorResponse>(response);
-                        return new ServiceResult<TResponse>(err);
+                        return new ServiceResult<TResponse>(err, response);
                     }
                     output = JsonConvert.DeserializeObject<TResponse>(response);
                 }
                 catch (Exception ex)
                 {
                     Mvx.Trace(MvxTraceLevel.Error, "{0}", ex.Message);
-                    return new ServiceResult<TResponse>(new ErrorResponse { Msg = ex.Message });
+                    return new ServiceResult<TResponse>(new ErrorResponse { Msg = ex.Message }, response);
                 }
             }
 
-            return new ServiceResult<TResponse>(output);
+            return new ServiceResult<TResponse>(output, response);
         }
     }
 }

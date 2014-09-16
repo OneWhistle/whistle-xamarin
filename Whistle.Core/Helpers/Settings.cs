@@ -32,7 +32,7 @@ namespace Whistle.Core.Helpers
         private static string UserNameDefault = string.Empty;
 
 
-        internal const string AccessTokenKey = "access_token";
+        public const string AccessTokenKey = "access_token";
         private static string AccessTokenDefault = string.Empty;
 
         private const string UserTypeKey = "user_type";
@@ -49,7 +49,6 @@ namespace Whistle.Core.Helpers
                     AppSettings.Save();
             }
         }
-
 
         public static string AccessToken
         {

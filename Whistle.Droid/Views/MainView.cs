@@ -38,6 +38,7 @@ namespace Whistle.Droid.Views
 
         protected override void OnViewModelSet()
         {
+            
             base.OnViewModelSet();
             _locationHelper = new LocationHelper<MainView>(this);
             _listItemHelper = new ListItemHelper(this);
@@ -199,7 +200,7 @@ namespace Whistle.Droid.Views
                     break;
                 case 2:
                     ViewModel.Title = GetString(Resource.String.t_tracking);
-                    SwitchContent(new GenericFragment(Resource.Layout.Favorite, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                    SwitchContent(new TrackingFragment() { ViewModel = this.ViewModel });
                     break;
                 default:
                     break;

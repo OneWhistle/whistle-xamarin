@@ -258,15 +258,15 @@
     <AndroidResource Include="Resources\Layout\ForgetPassword.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
-    <BundleResource Include="Resources\Layout\ResetPassword.axml">
+    <AndroidResource Include="Resources\Layout\ResetPassword.axml">
       <SubType>AndroidResource</SubType>
-    </BundleResource>
+    </AndroidResource>
     <BundleResource Include="Resources\Layout\ChangePassword.axml">
       <SubType>AndroidResource</SubType>
     </BundleResource>
-    <BundleResource Include="Resources\Layout\EnterCode.axml">
+    <AndroidResource Include="Resources\Layout\EnterCode.axml">
       <SubType>AndroidResource</SubType>
-    </BundleResource>
+    </AndroidResource>
     <AndroidResource Include="Resources\Layout\LandingView.axml" />
     <AndroidResource Include="Resources\Layout\Whistlers.axml" />
     <AndroidResource Include="Resources\Layout\AlertDialog.axml" />

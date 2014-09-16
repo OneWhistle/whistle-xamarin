@@ -25,9 +25,9 @@ namespace Whistle.Core.ViewModels
         public void AddNewWhisle(Modal.Whistle item)
         {
               if (!item.Provider)
-                ConsumerWhistleCollection.Add(new WhistleItemViewModel());
+                ConsumerWhistleCollection.Add(new WhistleItemViewModel(item));
               else
-                  ProviderWhistleCollection.Add(new WhistleItemViewModel());
+                  ProviderWhistleCollection.Add(new WhistleItemViewModel(item));
 
         }
 

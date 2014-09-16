@@ -140,9 +140,9 @@ namespace Whistle.Core.ViewModels
             _messenger.Publish(msg);
         }
 
-        public void UpdateUserLocation(double lat, double lg)
+        public void UpdateUserLocation(double longitude, double latitude)
         {
-            var location = new CustomLocation(lat, lg);
+            var location = new CustomLocation(longitude, latitude);
             Task.Factory.StartNew(() =>
                 {
                     innerUpdateUserLocation(location);
@@ -237,7 +237,7 @@ namespace Whistle.Core.ViewModels
                            new MatchingWhistle{ Dist = 0, Obj  = new User { Location= new CustomLocation{ Coordinates = new []{lat-0.001,lng+0.002}}}},                    
                         }
                     }
-                });
+                }, "will_mock_asap");
 
             }
 
@@ -248,7 +248,8 @@ namespace Whistle.Core.ViewModels
 
         protected override void InitFromBundle(IMvxBundle parameters)
         {
-            base.InitFromBundle(parameters);
+            base.InitFromBundle(parameters);            
+
             if (parameters.Data.ContainsKey(Settings.AccessTokenKey))
             {
                 var userJson = parameters.Data[Settings.AccessTokenKey];
@@ -259,9 +260,9 @@ namespace Whistle.Core.ViewModels
                 Mvx.Trace(MvxTraceLevel.Diagnostic, "InitFromBundle MainViewModel with access token {0}", NewUser.AccessToken);
                 this.TrackingViewModel = new ViewModels.TrackingViewModel(userWhistles.Whistles);
             }
-
             phoneService = Mvx.Resolve<IPhoneService>();
         }
+
 
         public void SignOut()
         {
@@ -276,7 +277,7 @@ namespace Whistle.Core.ViewModels
 
         public void ShowWhistler()
         {
-            SelectedWhistleItem = new WhistleItemViewModel();
+            SelectedWhistleItem = new WhistleItemViewModel(new Whistle());// change by whistlerItem
             RaisePropertyChanged(() => SelectedWhistleItem);
         }
 

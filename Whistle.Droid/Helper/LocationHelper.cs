@@ -96,7 +96,7 @@ namespace Whistle.Droid.Helper
                 _destinationLocationMarker = MapView.Map.AddMarker(new MarkerOptions().SetPosition(p0).InvokeIcon(BitmapDescriptorFactory.FromResource(Resource.Drawable.whistlers_pin_red_icon)));
             }
 
-            ViewModel.WhistleEditViewModel.UpdatePosition(p0.Latitude, p0.Longitude, source);
+            ViewModel.WhistleEditViewModel.UpdatePosition(p0.Longitude, p0.Latitude, source);
             var marker = source ? _sourceLocationMarker : _destinationLocationMarker;
             marker.Position = p0;
             UpdateLocationString(p0, source);
@@ -154,8 +154,9 @@ namespace Whistle.Droid.Helper
         public void OnLocationChanged(Location location)
         {
             Mvx.Trace(MvxTraceLevel.Diagnostic, "OnLocationChanged");
-            ViewModel.UpdateUserLocation(location.Latitude, location.Longitude);
+            ViewModel.UpdateUserLocation(location.Longitude, location.Latitude);
             var latng = new LatLng(location.Latitude, location.Longitude);
+
             UpdateMarkers(latng, true);
             CameraUpdate zoom = CameraUpdateFactory.ZoomTo(15);
             MapView.Map.MoveCamera(CameraUpdateFactory.NewLatLng(latng));

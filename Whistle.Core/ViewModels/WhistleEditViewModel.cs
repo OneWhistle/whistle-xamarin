@@ -5,6 +5,10 @@ using System.Collections.Generic;
 using System.Windows.Input;
 using Whistle.Core.Modal;
 using System.Linq;
+using System.Collections.ObjectModel;
+using Cirrious.CrossCore;
+using Whistle.Core.Interfaces;
+using Cirrious.CrossCore.Platform;
 namespace Whistle.Core.ViewModels
 {
 
@@ -43,21 +47,6 @@ namespace Whistle.Core.ViewModels
 
     public class WhistleEditViewModel : BaseEntity
     {
-        string[] rideTypes = new[]
-            {
-                "BIKE",
-                "AUTO",
-                "SMALL_CAR",
-                "LARGE_CAR",
-                "MINI_BUS",
-                "BUS",
-                "TRUCK",
-                "TRAIN",
-                "FLIGHT"
-            };
-        //public bool SourceLocationMode { get; set; }
-        //public bool DestinationLocationMode { get; set; }
-
         public CustomLocation SourcePoint { get; set; }
         public CustomLocation DestinationPoint { get; set; }
 
@@ -83,17 +72,28 @@ namespace Whistle.Core.ViewModels
             }
         }
 
-        readonly IList<ListItem> _selectedPackageList = new List<ListItem>();
+        readonly List<int> _selectedPackageList = new List<int>();
+        public IList<int> SelectedPackageList { get { return _selectedPackageList; } }
 
-        public string SelectedPackageText
+        readonly ObservableCollection<string> _destinationSuggestion = new ObservableCollection<string>();
+        public ObservableCollection<string> DestinationSuggestion { get { return _destinationSuggestion; } }
+
+        private string _destinationHint;
+        public string DestinationHint
         {
-            get
+            get { return _destinationHint; }
+            set
             {
-                if (_selectedPackageList.Count == 0) return null;
-                return _selectedPackageList[0].DisplayName;
+                _destinationHint = value;
+                if (_destinationHint == null
+                    || _destinationHint.Trim().Length < 5)
+                {
+                    DestinationSuggestion.Clear();
+                    return;
+                }
+                locationLookup(_destinationHint, DestinationSuggestion);
             }
         }
-
 
 
         private string _destinationLocation;
@@ -119,10 +119,10 @@ namespace Whistle.Core.ViewModels
         public void OnPackageSelectionchanged(ListItem item)
         {
             if (item.IsSelected == false)
-                _selectedPackageList.Remove(item);
+                _selectedPackageList.Remove(item.Position);
             else
-                _selectedPackageList.Add(item);
-            this.OnPropertyChanged("SelectedPackageText");
+                _selectedPackageList.Add(item.Position);
+            this.OnPropertyChanged("SelectedPackageList");
         }
 
 
@@ -151,11 +151,11 @@ namespace Whistle.Core.ViewModels
         {
             var whistle = new Modal.Whistle
             {
-                Type = rideTypes[selectedRideItem.Position],
+                Type = RideTypeConstants.All[selectedRideItem.Position],
                 Public = true,
                 //LeavingLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(SourcePoint.Item1, SourcePoint.Item2)),
                 DestinationLocation = DestinationPoint,
-                Size = _selectedPackageList.Select(c => c.Position).ToArray(),
+                Size = _selectedPackageList.ToArray(),
                 Comment = JourneyMessage
             };
             return whistle;
@@ -163,14 +163,12 @@ namespace Whistle.Core.ViewModels
 
 
 
-        public string [] IsValid()
+        public string[] IsValid()
         {
-
-            if (SourcePoint == null )
-                return new []{"missing current location"};
+            if (SourcePoint == null)
+                return new[] { "missing current location" };
             if (DestinationPoint == null)
-                return new []{"missing destination location"};
-
+                return new[] { "missing destination location" };
             if (_selectedPackageList.Count == 0 || SelectedRideItem == null)
                 return new[] { "missing either package or ride type" };
             //if (string.IsNullOrEmpty(JourneyMessage))
@@ -178,12 +176,24 @@ namespace Whistle.Core.ViewModels
             return new string[] { };
         }
 
-        public void UpdatePosition(double p1, double p2, bool source = true)
+        public void UpdatePosition(double longitude, double latitude, bool source = true)
         {
             if (source)
-                SourcePoint = new CustomLocation(p1, p2);
+                SourcePoint = new CustomLocation(longitude, latitude);
             else
-                DestinationPoint = new CustomLocation(p1, p2);
+                DestinationPoint = new CustomLocation(longitude, latitude);
         }
+
+        private async void locationLookup(string hint, ObservableCollection<string> targetCollection)
+        {
+            Mvx.Trace(MvxTraceLevel.Diagnostic, "locationLookup {0}", hint);
+            var service = Mvx.Resolve<IAddressService>();
+            var result =  await service.Loopkup(hint);
+
+            targetCollection.Clear();
+            foreach (var item in result)
+                targetCollection.Add(item);
+        }
+
     }
 }

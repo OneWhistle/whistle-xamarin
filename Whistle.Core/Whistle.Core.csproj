@@ -41,10 +41,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App.cs" />
+    <Compile Include="Converters\PackageListConverter.cs" />
+    <Compile Include="Converters\RideLabelConverter.cs" />
     <Compile Include="Helpers\DataProvider.cs" />
     <Compile Include="Helpers\ServiceHandler.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="HomeMessage.cs" />
+    <Compile Include="Interfaces\IAddressService.cs" />
     <Compile Include="Interfaces\IHttpClientHelper.cs" />
     <Compile Include="LandingMessage.cs" />
     <Compile Include="MessageModel\MessageHandler.cs" />
@@ -56,11 +59,18 @@
     <Compile Include="Modal\MatchingWhistle.cs" />
     <Compile Include="Modal\Menus.cs" />
     <Compile Include="Modal\RegistrationRequest.cs" />
+    <Compile Include="Modal\RideTypeConstants.cs" />
     <Compile Include="Modal\ServiceResult.cs" />
     <Compile Include="Modal\Users.cs" />
     <Compile Include="Modal\UserWhistle.cs" />
     <Compile Include="Modal\Whistle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Services\AddressService.cs" />
     <Compile Include="Services\API.cs" />
     <Compile Include="Interfaces\IPhoneService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -133,6 +143,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ToDo-MvvmCross\_ Core.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

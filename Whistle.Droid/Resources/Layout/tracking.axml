@@ -26,7 +26,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     local:MvxBind="ItemsSource TrackingViewModel.ConsumerWhistleCollection"
-                    local:MvxItemTemplate="@layout/favoritesitemlayout"
+                    local:MvxItemTemplate="@layout/item_whistle"
                     android:background="#9A9CA6"
                     android:dividerHeight="2px" />
             </LinearLayout>
@@ -38,7 +38,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     local:MvxBind="ItemsSource TrackingViewModel.ProviderWhistleCollection"
-                    local:MvxItemTemplate="@layout/favoritesitemlayout"
+                    local:MvxItemTemplate="@layout/item_whistle"
                     android:background="#9A9CA6"
                     android:dividerHeight="2px" />
             </LinearLayout>

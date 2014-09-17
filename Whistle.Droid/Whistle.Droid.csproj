@@ -694,6 +694,8 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\drawable\circle_background.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\change_green.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\change_black.png" />
     <Content Include="ToDo-MvvmCross\_ Droid UI.txt" />
   </ItemGroup>
   <ItemGroup>

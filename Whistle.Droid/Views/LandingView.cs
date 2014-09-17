@@ -103,7 +103,7 @@ namespace Whistle.Droid.Views
                     (new GenericAlertFragment(Resource.Color.app_green_modal_color))
                         .WithIcon(Resource.Drawable.happy_face_white_icon)
                         .WithTitle(Resource.String.d_awesome)
-                        .WithDescription(Resource.String.d_password_reset_success)
+                        .WithDescription(Resource.String.d_password_reset_success).AddButton(Resource.String.d_btn_login, () => { ((LandingViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_SIGNIN); })
                         .Show(SupportFragmentManager, "resetpassword_success");
                     break;
                 // Others are handled by the view model

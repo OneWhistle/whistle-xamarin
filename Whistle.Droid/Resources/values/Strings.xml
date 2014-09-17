@@ -39,6 +39,7 @@
 
   <!--DIALOGS BUTTONS-->
   <string name="d_btn_agree">I AGREE</string>
+  <string name="d_btn_login">Try Login</string>
   <string name="d_btn_disagree">I DISAGREE</string>
   <string name="d_btn_sign_out">SIGN OUT</string>
   <string name="d_btn_cancel">CANCEL</string>

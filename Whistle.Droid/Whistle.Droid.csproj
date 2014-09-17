@@ -201,6 +201,7 @@
     <Compile Include="Views\MainView.cs" />
     <Compile Include="Views\WhistleButton.cs" />
     <Compile Include="Views\WhistleTextView.cs" />
+    <Compile Include="WhistleLocationService.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\fonts\ProximaNova-Bold.otf" />

@@ -24,8 +24,18 @@ namespace Whistle.Droid.Views
     [Activity(NoHistory = true, ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/LandingViewTheme")]
     public class LandingView : WhistleActivity<MessageHandler>
     {
+        ListItemHelper _listItemHelper;
+        protected override void OnViewModelSet()
+        {
 
-
+            base.OnViewModelSet();
+            _listItemHelper = new ListItemHelper(this);
+        }
+        protected override void OnResume()
+        {
+            base.OnResume();
+            _listItemHelper.OnResume();
+        }
         protected override void OnReceive(MessageHandler message)
         {
             if (!SupportActionBar.IsShowing)
@@ -39,7 +49,7 @@ namespace Whistle.Droid.Views
                     break;
                 case LandingConstants.ACTION_SIGNIN:
                     viewModel.Title = "SIGN IN";
-                    SwitchScreen(new GenericFragment(Resource.Layout.Login, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "signin");
+                   SwitchScreen(new GenericFragment(Resource.Layout.Login, Resource.Menu.menu_help) { ViewModel = this.ViewModel }, "signin");
                     break;
                 case LandingConstants.ACTION_FORGOT_PASSWORD:
                     (new GenericDialogFragment(Resource.Layout.ForgetPassword) { ViewModel = this.ViewModel }).Show(SupportFragmentManager, "forgot_password");
@@ -103,8 +113,11 @@ namespace Whistle.Droid.Views
                     (new GenericAlertFragment(Resource.Color.app_green_modal_color))
                         .WithIcon(Resource.Drawable.happy_face_white_icon)
                         .WithTitle(Resource.String.d_awesome)
-                        .WithDescription(Resource.String.d_password_reset_success).AddButton(Resource.String.d_btn_login, () => { ((LandingViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_SIGNIN); })
+                        .WithDescription(Resource.String.d_password_reset_success)//.AddButton(Resource.String.d_btn_login, () => { ((LandingViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_SIGNIN); })
                         .Show(SupportFragmentManager, "resetpassword_success");
+                    break;
+                case LandingConstants.ACTION_USER_SELECTION:
+                    _listItemHelper.ShowList(message.Parameter);
                     break;
                 // Others are handled by the view model
                 default:

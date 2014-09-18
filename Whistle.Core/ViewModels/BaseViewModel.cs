@@ -64,6 +64,8 @@ namespace Whistle.Core.ViewModels
 
         #endregion
 
+        public WhistleEditViewModel WhistleEditViewModel { get; private set; }
+
         //Add Update
         #region User CREATION / UPDATE
 
@@ -135,6 +137,7 @@ namespace Whistle.Core.ViewModels
         protected override void InitFromBundle(IMvxBundle parameters)
         {
             base.InitFromBundle(parameters);
+            WhistleEditViewModel = new WhistleEditViewModel();
             if (_messenger != null)
                 return;
             _messenger = Mvx.Resolve<IMvxMessenger>();

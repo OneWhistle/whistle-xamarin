@@ -40,6 +40,18 @@ namespace Whistle.Core.Modal
         public string Gender { get { return _gender; } set { _gender = value; isMale = _gender == "male" ? true : false; } }
         //Yes, We'll use single ahead, based on param
 
+        [JsonProperty(PropertyName = "ride", NullValueHandling = NullValueHandling.Ignore)]
+        public string Ride { get; set; }
+
+        [JsonProperty(PropertyName = "city", NullValueHandling = NullValueHandling.Ignore)]
+        public string City { get; set; }
+
+        [JsonProperty(PropertyName = "country", NullValueHandling = NullValueHandling.Ignore)]
+        public string Country { get; set; }
+
+        [JsonProperty(PropertyName = "zipcode", NullValueHandling = NullValueHandling.Ignore)]
+        public int ZipCode { get; set; }
+
         [JsonIgnore]
         public string DOBStr
         {

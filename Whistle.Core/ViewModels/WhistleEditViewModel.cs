@@ -61,14 +61,35 @@ namespace Whistle.Core.ViewModels
         }
 
 
-        private ListItem selectedRideItem;
-        public ListItem SelectedRideItem
+        //private ListItem selectedRideItem;
+        //public ListItem SelectedRideItem
+        //{
+        //    get { return selectedRideItem; }
+        //    set
+        //    {
+        //        selectedRideItem = value;
+        //        OnPropertyChanged("SelectedRideItem");
+        //    }
+        //}
+
+        private ListItem selectedItem;
+        public ListItem SelectedItem
         {
-            get { return selectedRideItem; }
+            get { return selectedItem; }
             set
             {
-                selectedRideItem = value;
-                OnPropertyChanged("SelectedRideItem");
+                selectedItem = value;
+                OnPropertyChanged("SelectedItem");
+            }
+        }
+        private ListItem selectedCountry;
+        public ListItem SelectedCountry
+        {
+            get { return selectedCountry; }
+            set
+            {
+                selectedCountry = value;
+                OnPropertyChanged("SelectedCountry");
             }
         }
 
@@ -109,13 +130,20 @@ namespace Whistle.Core.ViewModels
         //private MvxCommand setSourceSelection;
         //public ICommand SetSourceSelection { get { return this.setSourceSelection ?? (this.setSourceSelection = new MvxCommand(onSetSourceSelection)); } }
 
-        public void OnRideSelectionChanged(ListItem item)
+        public void OnSelectionChanged(ListItem item)
         {
-            if (this.SelectedRideItem != null)
-                this.SelectedRideItem.UnSelect();
-            this.SelectedRideItem = item;
-        }
+            if (this.SelectedItem != null)
+                this.SelectedItem.UnSelect();
+            this.SelectedItem = item;
 
+        }
+        public void OnContrySelectionChanged(ListItem item)
+        {
+            if (this.SelectedCountry != null)
+                this.SelectedCountry.UnSelect();
+            this.SelectedCountry = item;
+
+        }
         public void OnPackageSelectionchanged(ListItem item)
         {
             if (item.IsSelected == false)
@@ -151,7 +179,7 @@ namespace Whistle.Core.ViewModels
         {
             var whistle = new Modal.Whistle
             {
-                Type = RideTypeConstants.All[selectedRideItem.Position],
+                Type = RideTypeConstants.All[selectedItem.Position],
                 Public = true,
                 //LeavingLocation = new GeoJSON.Net.Geometry.Point(new GeoJSON.Net.Geometry.GeographicPosition(SourcePoint.Item1, SourcePoint.Item2)),
                 DestinationLocation = DestinationPoint,
@@ -169,7 +197,7 @@ namespace Whistle.Core.ViewModels
                 return new[] { "missing current location" };
             if (DestinationPoint == null)
                 return new[] { "missing destination location" };
-            if (_selectedPackageList.Count == 0 || SelectedRideItem == null)
+            if (_selectedPackageList.Count == 0 || SelectedItem == null)
                 return new[] { "missing either package or ride type" };
             //if (string.IsNullOrEmpty(JourneyMessage))
             //    return false;

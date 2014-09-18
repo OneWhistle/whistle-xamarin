@@ -42,7 +42,6 @@ namespace Whistle.Droid.Views
             base.OnViewModelSet();
             _locationHelper = new LocationHelper<MainView>(this);
             _listItemHelper = new ListItemHelper(this);
-            var _icons = new int[] { Resource.Drawable.notification_green_icon, Resource.Drawable.user_account_green_icon, Resource.Drawable.preferences_green_icon, Resource.Drawable.checked_lock_green_icon, Resource.Drawable.question_mark_green_icon };
         }
         /// <summary>
         /// Called when [create].
@@ -160,7 +159,7 @@ namespace Whistle.Droid.Views
                     break;
                 case HomeConstants.NAV_CONTACT_WHISTLER:
                     ViewModel.Title = GetString(Resource.String.t_whistler);
-                        SwitchContent(new GenericFragment(Resource.Layout.UserDetails, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
+                    SwitchContent(new GenericFragment(Resource.Layout.UserDetails, Resource.Menu.menu_switch) { ViewModel = this.ViewModel });
                     break;
 
                 case HomeConstants.ACTION_SHOW_WHISTLERS:
@@ -177,11 +176,13 @@ namespace Whistle.Droid.Views
                         .WithDescription(Resource.String.d_profile_update_success)
                         .Show(SupportFragmentManager, "profile_update_success");
                     break;
+                case LandingConstants.ACTION_REGISTER_CONTINUE:
+                    SwitchContent(new GenericFragment(Resource.Layout.ServiceOptions, Resource.Menu.menu_help) { ViewModel = this.ViewModel });
+                    break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     ((MainViewModel)this.ViewModel).UserAction.Execute(LandingConstants.ACTION_REGISTER_DONE);
                     break;
             }
-
         }
 
         public void OnSelectContext()

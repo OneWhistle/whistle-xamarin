@@ -39,16 +39,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
+                    local:MvxBind="Text WhistleEditViewModel.SelectedItem.DisplayName"
                     android:gravity="center_vertical"
                     android:hint="CITY"
                     android:paddingLeft="10dp"
                     android:textColor="#000" />
-                <ImageView
+                <ImageButton
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    local:MvxBind="Click UserSelection, CommandParameter=CITY"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dp"
-                    android:src="@drawable/options_grey_icon" />
+                    android:background="@drawable/options_green_icon"
+                    android:layout_centerVertical="true" />
             </RelativeLayout>
         </LinearLayout>
         <View
@@ -62,6 +65,7 @@
             android:layout_weight="1"
             android:background="#FFFFFF"
             android:gravity="center_vertical"
+            local:MvxBind="Text NewUser.ZipCode"
             android:hint="ZIPCODE"
             android:paddingLeft="10dp"
             android:textColor="#000" />
@@ -80,15 +84,18 @@
             android:layout_height="match_parent"
             android:background="#EEF0FF"
             android:hint="COUNTRY"
+            local:MvxBind="Text WhistleEditViewModel.SelectedCountry.DisplayName"
             android:paddingLeft="10dp"
             android:textColor="#000" />
-        <ImageView
+        <ImageButton
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            local:MvxBind="Click UserSelection, CommandParameter=COUNTRY"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_gravity="center_vertical"
             android:layout_marginRight="10dp"
-            android:src="@drawable/options_green_icon" />
+            android:background="@drawable/options_green_icon"
+            android:layout_centerInParent="true" />
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -153,6 +160,7 @@
                 android:id="@+id/checkBox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                local:MvxBind="Text NewUser.Ride"
                 android:button="@drawable/custom_bike_checkbox" />
             <TextView
                 android:layout_width="wrap_content"

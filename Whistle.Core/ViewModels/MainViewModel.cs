@@ -69,7 +69,7 @@ namespace Whistle.Core.ViewModels
 
         public ContextSwitchViewModel ContextSwitchViewModel { get; private set; }
 
-        public WhistleEditViewModel WhistleEditViewModel { get; private set; }
+        //public WhistleEditViewModel WhistleEditViewModel { get; private set; }
 
         public WhistleResultViewModel WhistleResultViewModel { get; private set; }
 
@@ -81,7 +81,7 @@ namespace Whistle.Core.ViewModels
         //IMvxLocationWatcher locationWatcher)
         {
             _messenger = messenger;
-            WhistleEditViewModel = new WhistleEditViewModel();
+           // WhistleEditViewModel = new WhistleEditViewModel();
             ContextSwitchViewModel = new ContextSwitchViewModel();
             WhistleResultViewModel = new WhistleResultViewModel(new MatchingWhistle[] { });
 
@@ -191,7 +191,6 @@ namespace Whistle.Core.ViewModels
                     _messenger.Publish(new MessageHandler(this, HomeConstants.ACTION_SHOW_WHISTLERS));
                     break;
                 case LandingConstants.ACTION_REGISTER_DONE:
-                    //testing
                     {
                         var err = NewUser.IsValid(phoneService);
                         if (err.Length > 0)
@@ -201,6 +200,9 @@ namespace Whistle.Core.ViewModels
                         }
                         onUserUpdate("PUT");
                     }
+                    break;
+                case LandingConstants.ACTION_REGISTER_CONTINUE:
+                    _messenger.Publish(new MessageHandler(this, value));
                     break;
                 case LandingConstants.ACTION_REGISTER_VALIDATE:
                     {

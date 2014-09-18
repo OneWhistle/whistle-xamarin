@@ -23,6 +23,8 @@
   
   <string name="d_choose_packages">CHOOSE A PACKAGE</string>
   <string name="d_choose_rides">CHOOSE A RIDE</string>
+  <string name="d_choose_city">CHOOSE CITY</string>
+  <string name="d_choose_country">CHOOSE COUNTRY</string>
   <!--DIALOGS CONTENT-->
   <string name="d_registration_success">Your account created successfully.\r\nThank you for joining!</string>
   <string name="d_password_reset_success">Your password reset successfully.\r\nPlease login again!</string>
@@ -39,11 +41,11 @@
 
   <!--DIALOGS BUTTONS-->
   <string name="d_btn_agree">I AGREE</string>
-  <string name="d_btn_login">Try Login</string>
+ 
   <string name="d_btn_disagree">I DISAGREE</string>
   <string name="d_btn_sign_out">SIGN OUT</string>
   <string name="d_btn_cancel">CANCEL</string>
-
+  <string name="d_btn_login">Try Login</string>
   <!--//string[] packageList = new[] { "ENVELOPS;SMALL;MEDIUM;LARGE;EXTRA LARGE (MORE THAN 100 KG)" };
 
 //string[] rideList = new[] { "BIKE(2 SEATS)", "AUTO(3 SEATS)", "SMALL CAR(4 SEATS)", "LARGE CAR(6 SEATS)", "MINI BUS(12 SEATS)", 
@@ -64,7 +66,24 @@
     <item>TRAIN</item>
     <item>FLIGHT</item>
   </string-array>
+  
+  
+  <string-array name="lst_country">
+    <item>Afganistan</item>
+    <item>Brazil</item>
+    <item>India</item>
+    <item>USA</item>
+    <item>France</item>
+    <item>UAE</item>
+  </string-array>
 
+  <string-array name="lst_city">
+    <item>Mumbai</item>
+    <item>California</item>
+    <item>Banglore</item>
+    <item>Chandigarh</item>
+  </string-array>
+  
   <string-array name="lst_package">
     <item>ENVELOPS</item>
     <item>SMALL (UP TO 10 KG)</item>

@@ -66,18 +66,25 @@ namespace Whistle.Core.ViewModels
         /// </summary>
         public ICommand UserAction { get { return this.userAction ?? (this.userAction = new MvxCommand<string>(OnUserAction)); } }
 
+        private MvxCommand<string> userSelection;
+        /// <summary>
+        /// Gets user action command.
+        /// </para>
+        /// </summary>
+        public ICommand UserSelection { get { return this.userSelection ?? (this.userSelection = new MvxCommand<string>(OnUserSelection)); } }
+
         #endregion
 
         #region Picture Commands
 
         private void TakePicture()
         {
-            _pictureChooserTask.TakePicture(400, 95, OnPictureTaking, () => { });
+            _pictureChooserTask.TakePicture(400, 95, OnPicture, () => { });
         }
-
+       
         private void ChoosePicture()
         {
-            _pictureChooserTask.ChoosePictureFromLibrary(400, 95, OnPictureTaking, () => { Mvx.Trace("Picture cancelled by user!"); });
+            _pictureChooserTask.ChoosePictureFromLibrary(400, 95, OnPicture, () => { Mvx.Trace("Picture cancelled by user!"); });
         }
 
         private byte[] _imageBytes;
@@ -88,7 +95,7 @@ namespace Whistle.Core.ViewModels
         }
 
 
-        private void OnPictureTaking(Stream pictureStream)
+        private void OnPicture(Stream pictureStream)
         {
             var memoryStream = new MemoryStream();
             pictureStream.CopyTo(memoryStream);
@@ -118,7 +125,10 @@ namespace Whistle.Core.ViewModels
                         return;
                     }
                     NewUser.Location = new CustomLocation(10, 10); // to avoid location update fails.
-                    onUserUpdate();
+                    if (!string.IsNullOrEmpty(Settings.AccessToken))
+                        onUserUpdate("PUT");
+                    else
+                        onUserUpdate();
                     break;
                 case LandingConstants.ACTION_FB_LOGIN_VALIDATE:
                 case LandingConstants.ACTION_TWITTER_LOGIN_VALIDATE:
@@ -248,6 +258,13 @@ namespace Whistle.Core.ViewModels
         }
 
         #endregion
+
+        private void OnUserSelection(string selection)
+        {
+            var msg = new MessageHandler(this, LandingConstants.ACTION_USER_SELECTION);
+            msg.Parameter = selection;
+            _messenger.Publish(msg);
+        }
 
         protected override void onUserUpdateFail()
         {

@@ -12,7 +12,7 @@ namespace Tests.ViewModels
         public void GetNewWhistle()
         {
             var vm = new WhistleEditViewModel();
-            vm.SelectedRideItem = new ListItem{ Position = 0};
+            vm.SelectedItem = new ListItem{ Position = 0};
 
             var result = vm.GetNewWhistle();
             //asserts.

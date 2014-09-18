@@ -21,9 +21,10 @@ namespace Whistle.Core
         public const string ACTION_TAKE_PICTURE_GALLERY = "ACTION_TAKE_PICTURE_GALLERY";
         public const string ACTION_GET_PASSWORD_RESET_KEY = "ACTION_GET_PASSWORD_RESET_KEY";
         public const string ACTION_GENERATE_PASSWORD = "ACTION_GENERATE_PASSWORD";
+        public const string ACTION_USER_SELECTION = "ACTION_USER_SELECTION";
         public const string ACTION_ENTER_CODE = "ACTION_ENTER_CODE";
         public const string ACTION_RESET_PASSWORD = "ACTION_RESET_PASSWORD";
-        public const string RESULT_RESET_PASSWORD_SUCCESS = "RESULT_RESET_PASSWORD_SUCCESS"; 
+        public const string RESULT_RESET_PASSWORD_SUCCESS = "RESULT_RESET_PASSWORD_SUCCESS";
         public const string RESULT_BACKEND_ERROR = "{241BA827-C6F6-4D87-87D9-429562BFEE86}";
         public const string RESULT_LOGIN_FAILED = "{3715745E-B25D-4FC0-8815-8C1515299C03}";
         public const string RESULT_REGISTER_SUCCESS = "{25D0F917-CC80-4614-8465-33C843596B64}";
@@ -32,6 +33,7 @@ namespace Whistle.Core
 
         internal static readonly string[] ActionList = new[]
         {
+            ACTION_USER_SELECTION,
             ACTION_LOGIN_VALIDATE,
             ACTION_FORGOT_PASSWORD,
             ACTION_REGISTER_CONTINUE,
